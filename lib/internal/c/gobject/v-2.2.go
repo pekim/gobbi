@@ -1606,29 +1606,41 @@ func Fn_g_value_set_static_boxed(paramInstance unsafe.Pointer, param0 unsafe.Poi
 	C.g_value_set_static_boxed(cValueInstance, cValue0)
 }
 
-func Fn_g_value_set_static_string(paramInstance unsafe.Pointer, param0 string) {
+func Fn_g_value_set_static_string(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GValue)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.g_value_set_static_string(cValueInstance, cValue0)
 }
 
-func Fn_g_value_set_string(paramInstance unsafe.Pointer, param0 string) {
+func Fn_g_value_set_string(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GValue)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.g_value_set_string(cValueInstance, cValue0)
 }
 
-func Fn_g_value_set_string_take_ownership(paramInstance unsafe.Pointer, param0 string) {
+func Fn_g_value_set_string_take_ownership(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GValue)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.g_value_set_string_take_ownership(cValueInstance, cValue0)
 }
@@ -1808,6 +1820,8 @@ func Fn_g_boxed_free(param0 uint64, param1 unsafe.Pointer) {
 // UNSUPPORTED : g_cclosure_new_object_swap : parameter 'callback_func' is callback
 
 // UNSUPPORTED : g_cclosure_new_swap : parameter 'callback_func' is callback
+
+// UNSUPPORTED : g_clear_object : parameter 'object_ptr' is non array with indirect count > 1
 
 func Fn_g_enum_complete_type_info(param0 uint64, param1 unsafe.Pointer, param2 unsafe.Pointer) {
 	cValue0 := (C.GType)(param0)
@@ -2194,7 +2208,7 @@ func Fn_g_param_spec_pointer(param0 string, param1 string, param2 string, param3
 	return unsafe.Pointer(ret)
 }
 
-func Fn_g_param_spec_string(param0 string, param1 string, param2 string, param3 string, param4 int) unsafe.Pointer {
+func Fn_g_param_spec_string(param0 string, param1 string, param2 string, param3 *string, param4 int) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
@@ -2204,8 +2218,12 @@ func Fn_g_param_spec_string(param0 string, param1 string, param2 string, param3 
 	cValue2 := (*C.gchar)(C.CString(param2))
 	defer C.free(unsafe.Pointer(cValue2))
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	cValue4 := (C.GParamFlags)(param4)
 

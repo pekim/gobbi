@@ -7,18 +7,6 @@ import "unsafe"
 
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
-/*
-
-static gboolean c_gdk_pixbuf_save(GdkPixbuf* pixbuf, const char* filename, const char* type, GError** error) {
-    return gdk_pixbuf_save(pixbuf, filename, type, error, NULL);
-}
-*/
-/*
-
-static gboolean c_gdk_pixbuf_save_to_stream(GdkPixbuf* pixbuf, GOutputStream* stream, const char* type, GCancellable* cancellable, GError** error) {
-    return gdk_pixbuf_save_to_stream(pixbuf, stream, type, cancellable, error, NULL);
-}
-*/
 import "C"
 
 func toCBool(b bool) C.gboolean {
@@ -550,21 +538,7 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 	C.gdk_pixbuf_saturate_and_pixelate(cValueInstance, cValue0, cValue1, cValue2)
 }
 
-func Fn_gdk_pixbuf_save(paramInstance unsafe.Pointer, param0 string, param1 string, param2 *unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	cValue1 := (*C.char)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
-
-	cValue2 := (**C.GError)(unsafe.Pointer(param2))
-
-	ret := C.c_gdk_pixbuf_save(cValueInstance, cValue0, cValue1, cValue2)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gdk_pixbuf_save : parameter 'error' is non array with indirect count > 1
 
 // UNSUPPORTED : gdk_pixbuf_save_to_buffer : blacklisted
 
@@ -574,22 +548,7 @@ func Fn_gdk_pixbuf_save(paramInstance unsafe.Pointer, param0 string, param1 stri
 
 // UNSUPPORTED : gdk_pixbuf_save_to_callbackv : parameter 'save_func' is callback
 
-func Fn_gdk_pixbuf_save_to_stream(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, param2 unsafe.Pointer, param3 *unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GOutputStream)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.char)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
-
-	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
-
-	cValue3 := (**C.GError)(unsafe.Pointer(param3))
-
-	ret := C.c_gdk_pixbuf_save_to_stream(cValueInstance, cValue0, cValue1, cValue2, cValue3)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gdk_pixbuf_save_to_stream : parameter 'error' is non array with indirect count > 1
 
 // UNSUPPORTED : gdk_pixbuf_save_to_stream_async : parameter 'callback' is callback
 

@@ -1782,7 +1782,7 @@ const ZlibCompressorFormat_gzip = ZlibCompressorFormat(1)
 // ZlibCompressorFormat_raw is a representation of the C enumeration member G_ZLIB_COMPRESSOR_FORMAT_RAW.
 const ZlibCompressorFormat_raw = ZlibCompressorFormat(2)
 
-// UNSUPPORTED : g_action_parse_detailed_name : throws
+// UNSUPPORTED : g_action_parse_detailed_name : parameter 'action_name' is non array with indirect count > 1
 
 // UNSUPPORTED : g_app_info_create_from_commandline : throws
 
@@ -2026,9 +2026,9 @@ func DbusAddressEscapeValue(string_ string) string {
 
 // UNSUPPORTED : g_dbus_address_get_stream : parameter 'callback' is callback
 
-// UNSUPPORTED : g_dbus_address_get_stream_finish : throws
+// UNSUPPORTED : g_dbus_address_get_stream_finish : parameter 'out_guid' is non array with indirect count > 1
 
-// UNSUPPORTED : g_dbus_address_get_stream_sync : throws
+// UNSUPPORTED : g_dbus_address_get_stream_sync : parameter 'out_guid' is non array with indirect count > 1
 
 // UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
 
@@ -2130,7 +2130,7 @@ func DbusIsUniqueName(string_ string) bool {
 
 // UNSUPPORTED : g_dtls_server_connection_new : throws
 
-// UNSUPPORTED : g_file_new_tmp : throws
+// UNSUPPORTED : g_file_new_tmp : parameter 'iostream' is non array with indirect count > 1
 
 // UNSUPPORTED : g_icon_new_for_string : throws
 

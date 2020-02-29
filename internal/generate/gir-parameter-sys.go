@@ -13,15 +13,23 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 			return jenUnsafePointer()
 		}
 
+		star := ""
+		if p.Nullable && !p.isOut() && !p.Type.isStruct() && !p.Type.isPointer() {
+			// nullable simple type, so make it a pointer
+			star = "*"
+		}
+
 		return jen.
+			Op(star).
 			Add(p.Type.sysParamGoType(false))
 	}
 
-	star := ""
-	if p.isOut() {
-		star = "*"
-	}
 	if p.Array != nil {
+		star := ""
+		if p.isOut() {
+			star = "*"
+		}
+
 		return jen.
 			Op(star).
 			Add(p.Array.sysParamGoType())
@@ -31,18 +39,60 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 }
 
 func (p *Parameter) generateSysCArg(g *jen.Group, goVarName string, cVarName string) {
+	if p.Type != nil && p.Nullable && !p.isOut() && !p.Type.isStruct() && !p.Type.isPointer() {
+		p.generateSysCArgNullable(g, goVarName, cVarName)
+	} else {
+		p.generateSysCArgPlain(g, true, goVarName, cVarName)
+	}
+}
+
+func (p *Parameter) generateSysCArgPlain(g *jen.Group, newcVar bool, goVarName string, cVarName string) {
+	op := "="
+	if newcVar {
+		op = ":="
+	}
+
 	if p.Array != nil {
-		p.generateSysCArgArray(g, goVarName, cVarName)
+		p.generateSysCArgArray(g, op, goVarName, cVarName)
 		return
 	}
 
 	if p.Type.isString() {
-		p.generateSysCArgString(g, goVarName, cVarName)
+		p.generateSysCArgString(g, op, goVarName, cVarName)
 		return
 	}
 
 	cValue := p.generateSysCValue(goVarName)
-	g.Id(cVarName).Op(":=").Add(cValue)
+	g.Id(cVarName).Op(op).Add(cValue)
+}
+
+func (p *Parameter) generateSysCArgNullable(g *jen.Group, goVarName string, cVarName string) {
+	cValueValueVarName := cVarName + "Value"
+
+	var jenGoCType *jen.Statement
+	if p.Type != nil {
+		jenGoCType = p.Type.jenGoCType()
+	}
+	if p.Array != nil {
+		jenGoCType = p.Array.Type.jenGoCType()
+	}
+
+	// 	var cValue0Value *C.gchar
+	g.Var().Id(cValueValueVarName).Add(jenGoCType)
+
+	g.
+		If(jen.Id(goVarName).Op("!=").Nil()).
+		BlockFunc(func(g *jen.Group) {
+			p.generateSysCArgPlain(g, false, goVarName, cValueValueVarName)
+		})
+
+	ampOp := ""
+	if p.isIn() && !p.Type.isString() {
+		ampOp = "&"
+	}
+
+	// 	cValue0 := &cValue0Value
+	g.Id(cVarName).Op(":=").Op(ampOp).Id(cValueValueVarName)
 }
 
 func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
@@ -59,14 +109,14 @@ func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
 	return jen.Parens(p.Type.jenGoCType()).Parens(goValue)
 }
 
-func (p *Parameter) generateSysCArgString(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgString(g *jen.Group, assignOp string, goVarName string, cVarName string) {
 	if p.Type.cType.indirectionCount == 1 {
-		p.generateSysCArgStringSimple(g, goVarName, cVarName)
+		p.generateSysCArgStringSimple(g, assignOp, goVarName, cVarName)
 		return
 	}
 
 	if p.Type.cType.indirectionCount == 2 {
-		p.generateSysCArgStringPointer(g, goVarName, cVarName)
+		p.generateSysCArgStringPointer(g, assignOp, goVarName, cVarName)
 		return
 	}
 
@@ -74,16 +124,21 @@ func (p *Parameter) generateSysCArgString(g *jen.Group, goVarName string, cVarNa
 		p.Type.cType.indirectionCount, p.context))
 }
 
-func (p *Parameter) generateSysCArgStringSimple(g *jen.Group, goVarName string, cVarName string) {
-	cValue := jen.Parens(p.Type.jenGoCType()).Parens(jen.Qual("C", "CString").Call(jen.Id(goVarName)))
-	g.Id(cVarName).Op(":=").Add(cValue)
+func (p *Parameter) generateSysCArgStringSimple(g *jen.Group, assignOp string, goVarName string, cVarName string) {
+	param := jen.Id(goVarName)
+	if p.Nullable {
+		param = jen.Op("*").Id(goVarName)
+	}
+
+	cValue := jen.Parens(p.Type.jenGoCType()).Parens(jen.Qual("C", "CString").Call(param))
+	g.Id(cVarName).Op(assignOp).Add(cValue)
 
 	if p.transferNone() {
 		g.Defer().Qual("C", "free").Call(jenUnsafePointer().Call(jen.Id(cVarName)))
 	}
 }
 
-func (p *Parameter) generateSysCArgStringPointer(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgStringPointer(g *jen.Group, assignOp string, goVarName string, cVarName string) {
 	cStringVarName := cVarName + "String"
 
 	// var cValue0String *C.gchar
@@ -94,7 +149,7 @@ func (p *Parameter) generateSysCArgStringPointer(g *jen.Group, goVarName string,
 		g.Id(cStringVarName).Op("=").Add(cValue)
 	}
 
-	g.Id(cVarName).Op(":=").Op("&").Id(cStringVarName)
+	g.Id(cVarName).Op(assignOp).Op("&").Id(cStringVarName)
 
 	if p.isIn() && p.transferNone() {
 		g.Defer().Qual("C", "free").Call(jenUnsafePointer().Call(jen.Id(cVarName)))
@@ -212,7 +267,7 @@ func (p *Parameter) generateSysCArgArrayPointerOut(g *jen.Group, goVarName strin
 	g.Op("*").Id(goVarName).Op("=").Id(outVarName)
 }
 
-func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgArray(g *jen.Group, assignOp string, goVarName string, cVarName string) {
 	if p.Array.Type.isString() {
 		if p.Array.cType.indirectionCount == 2 {
 			p.generateSysCArgArrayString(g, goVarName, cVarName)
@@ -229,10 +284,10 @@ func (p *Parameter) generateSysCArgArray(g *jen.Group, goVarName string, cVarNam
 	}
 
 	if p.isOut() {
-		p.generateSysCArgArrayNonStringOut(g, goVarName, cVarName)
+		p.generateSysCArgArrayNonStringOut(g, assignOp, goVarName, cVarName)
 		return
 	} else {
-		p.generateSysCArgArrayNonString(g, goVarName, cVarName)
+		p.generateSysCArgArrayNonString(g, assignOp, goVarName, cVarName)
 		return
 	}
 }
@@ -323,7 +378,7 @@ func (p *Parameter) generateGoArrayStringToC(g *jen.Group, goVarName string, cVa
 	return goSliceVarName
 }
 
-func (p *Parameter) generateSysCArgArrayNonString(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgArrayNonString(g *jen.Group, assignOp string, goVarName string, cVarName string) {
 	cType := jen.Op(p.Array.cType.stars).Qual("C", p.Array.cType.typ)
 	if p.Array.cType.typ == "void" && p.Array.cType.indirectionCount == 1 {
 		cType = jenUnsafePointer()
@@ -332,19 +387,19 @@ func (p *Parameter) generateSysCArgArrayNonString(g *jen.Group, goVarName string
 	// cValue2 := ([*]C.SomeType)(unsafe.Pointer(&cParam2[0]))
 	g.
 		Id(cVarName).
-		Op(":=").
+		Op(assignOp).
 		Parens(cType).
 		Parens(jenUnsafePointer().Call(jen.Op("&").Id(goVarName).Index(jen.Lit(0))))
 }
 
-func (p *Parameter) generateSysCArgArrayNonStringOut(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgArrayNonStringOut(g *jen.Group, assignOp string, goVarName string, cVarName string) {
 	cArrayPointerVarName := cVarName + "ArrayPointer"
 
 	// var cValue2ArrayPointer *[*]C.SomeType
 	g.Var().Id(cArrayPointerVarName).Parens(jen.Op(p.Array.Type.cType.stars).Qual("C", p.Array.Type.cType.typ))
 
 	// cValue2 = &cValue2ArrayPointer
-	g.Id(cVarName).Op(":=").Op("&").Id(cArrayPointerVarName)
+	g.Id(cVarName).Op(assignOp).Op("&").Id(cArrayPointerVarName)
 
 	if p.isIn() {
 		panic(fmt.Sprintf("Unsupported inout array param : %s", p.context))

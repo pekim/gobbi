@@ -240,13 +240,7 @@ func BoxedFree(boxedType uint64, boxed unsafe.Pointer) {
 
 // UNSUPPORTED : g_cclosure_new_swap : parameter 'callback_func' is callback
 
-// ClearObject wraps the C function g_clear_object.
-//
-// since 2.28
-func ClearObject(objectPtr **Object) {
-	sys_objectPtr := objectPtr.ToC()
-	gobject.Fn_g_clear_object(sys_objectPtr)
-}
+// UNSUPPORTED : g_clear_object : parameter 'object_ptr' is non array with indirect count > 1
 
 // UNSUPPORTED : g_enum_complete_type_info : has [in]out param, info
 
@@ -550,7 +544,7 @@ func ParamSpecPointer_(name string, nick string, blurb string, flags ParamFlags)
 }
 
 // ParamSpecString_ wraps the C function g_param_spec_string.
-func ParamSpecString_(name string, nick string, blurb string, defaultValue string, flags ParamFlags) *ParamSpec {
+func ParamSpecString_(name string, nick string, blurb string, defaultValue *string, flags ParamFlags) *ParamSpec {
 	sys_name := name
 	sys_nick := nick
 	sys_blurb := blurb

@@ -898,6 +898,8 @@ func Fn_g_unix_mount_point_is_user_mountable(paramInstance unsafe.Pointer) bool 
 	return toGoBool(ret)
 }
 
+// UNSUPPORTED : g_action_parse_detailed_name : parameter 'action_name' is non array with indirect count > 1
+
 // UNSUPPORTED : g_app_info_launch_default_for_uri_async : parameter 'callback' is callback
 
 // UNSUPPORTED : g_async_initable_newv_async : parameter 'callback' is callback
@@ -1075,9 +1077,13 @@ func Fn_g_content_type_get_mime_type(param0 string) string {
 	return C.GoString(ret)
 }
 
-func Fn_g_content_type_guess(param0 string, param1 []uint8, param2 uint64, param3 *bool) string {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_g_content_type_guess(param0 *string, param1 []uint8, param2 uint64, param3 *bool) string {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.guchar)(unsafe.Pointer(&param1[0]))
 
@@ -1135,40 +1141,9 @@ func Fn_g_dbus_address_get_for_bus_sync(param0 int, param1 unsafe.Pointer, error
 
 // UNSUPPORTED : g_dbus_address_get_stream : parameter 'callback' is callback
 
-func Fn_g_dbus_address_get_stream_finish(param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
+// UNSUPPORTED : g_dbus_address_get_stream_finish : parameter 'out_guid' is non array with indirect count > 1
 
-	var cValue1String *C.gchar
-	cValue1 := &cValue1String
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_dbus_address_get_stream_finish(cValue0, cValue1, cError)
-
-	param1String := C.GoString(cValue1String)
-	*param1 = param1String
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_g_dbus_address_get_stream_sync(param0 string, param1 *string, param2 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	var cValue1String *C.gchar
-	cValue1 := &cValue1String
-
-	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_dbus_address_get_stream_sync(cValue0, cValue1, cValue2, cError)
-
-	param1String := C.GoString(cValue1String)
-	*param1 = param1String
-
-	return unsafe.Pointer(ret)
-}
+// UNSUPPORTED : g_dbus_address_get_stream_sync : parameter 'out_guid' is non array with indirect count > 1
 
 // UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
 
@@ -1260,6 +1235,8 @@ func Fn_g_dbus_is_unique_name(param0 string) bool {
 
 	return toGoBool(ret)
 }
+
+// UNSUPPORTED : g_file_new_tmp : parameter 'iostream' is non array with indirect count > 1
 
 func Fn_g_io_error_from_errno(param0 int) int {
 	cValue0 := (C.gint)(param0)
@@ -1492,9 +1469,13 @@ func Fn_g_app_launch_context_launch_failed(paramInstance unsafe.Pointer, param0 
 	C.g_app_launch_context_launch_failed(cValueInstance, cValue0)
 }
 
-func Fn_g_application_new(param0 string, param1 int) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_g_application_new(param0 *string, param1 int) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (C.GApplicationFlags)(param1)
 
@@ -1616,11 +1597,15 @@ func Fn_g_application_set_action_group(paramInstance unsafe.Pointer, param0 unsa
 	C.g_application_set_action_group(cValueInstance, cValue0)
 }
 
-func Fn_g_application_set_application_id(paramInstance unsafe.Pointer, param0 string) {
+func Fn_g_application_set_application_id(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GApplication)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.g_application_set_application_id(cValueInstance, cValue0)
 }
@@ -2191,11 +2176,15 @@ func Fn_g_dbus_connection_new_for_address_sync(param0 string, param1 int, param2
 	return unsafe.Pointer(ret)
 }
 
-func Fn_g_dbus_connection_new_sync(param0 unsafe.Pointer, param1 string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+func Fn_g_dbus_connection_new_sync(param0 unsafe.Pointer, param1 *string, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GIOStream)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	cValue2 := (C.GDBusConnectionFlags)(param2)
 
@@ -2226,11 +2215,15 @@ func Fn_g_dbus_connection_call_finish(paramInstance unsafe.Pointer, param0 unsaf
 	return unsafe.Pointer(ret)
 }
 
-func Fn_g_dbus_connection_call_sync(paramInstance unsafe.Pointer, param0 string, param1 string, param2 string, param3 string, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 int, param7 int, param8 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+func Fn_g_dbus_connection_call_sync(paramInstance unsafe.Pointer, param0 *string, param1 string, param2 string, param3 string, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 int, param7 int, param8 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GDBusConnection)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.gchar)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
@@ -2260,55 +2253,9 @@ func Fn_g_dbus_connection_call_sync(paramInstance unsafe.Pointer, param0 string,
 
 // UNSUPPORTED : g_dbus_connection_call_with_unix_fd_list : parameter 'callback' is callback
 
-func Fn_g_dbus_connection_call_with_unix_fd_list_finish(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GDBusConnection)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : g_dbus_connection_call_with_unix_fd_list_finish : parameter 'out_fd_list' is non array with indirect count > 1
 
-	cValue0 := (**C.GUnixFDList)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GAsyncResult)(unsafe.Pointer(param1))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_dbus_connection_call_with_unix_fd_list_finish(cValueInstance, cValue0, cValue1, cError)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_g_dbus_connection_call_with_unix_fd_list_sync(paramInstance unsafe.Pointer, param0 string, param1 string, param2 string, param3 string, param4 unsafe.Pointer, param5 unsafe.Pointer, param6 int, param7 int, param8 unsafe.Pointer, param9 *unsafe.Pointer, param10 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GDBusConnection)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
-
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
-
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
-
-	cValue4 := (*C.GVariant)(unsafe.Pointer(param4))
-
-	cValue5 := (*C.GVariantType)(unsafe.Pointer(param5))
-
-	cValue6 := (C.GDBusCallFlags)(param6)
-
-	cValue7 := (C.gint)(param7)
-
-	cValue8 := (*C.GUnixFDList)(unsafe.Pointer(param8))
-
-	cValue9 := (**C.GUnixFDList)(unsafe.Pointer(param9))
-
-	cValue10 := (*C.GCancellable)(unsafe.Pointer(param10))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_dbus_connection_call_with_unix_fd_list_sync(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10, cError)
-
-	return unsafe.Pointer(ret)
-}
+// UNSUPPORTED : g_dbus_connection_call_with_unix_fd_list_sync : parameter 'out_fd_list' is non array with indirect count > 1
 
 // UNSUPPORTED : g_dbus_connection_close : parameter 'callback' is callback
 
@@ -2336,11 +2283,15 @@ func Fn_g_dbus_connection_close_sync(paramInstance unsafe.Pointer, param0 unsafe
 	return toGoBool(ret)
 }
 
-func Fn_g_dbus_connection_emit_signal(paramInstance unsafe.Pointer, param0 string, param1 string, param2 string, param3 string, param4 unsafe.Pointer, error unsafe.Pointer) bool {
+func Fn_g_dbus_connection_emit_signal(paramInstance unsafe.Pointer, param0 *string, param1 string, param2 string, param3 string, param4 unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GDBusConnection)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.gchar)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
@@ -2655,15 +2606,23 @@ func Fn_g_dbus_message_new_from_blob(param0 []uint8, param1 uint64, param2 int, 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_g_dbus_message_new_method_call(param0 string, param1 string, param2 string, param3 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_g_dbus_message_new_method_call(param0 *string, param1 string, param2 *string, param3 string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.gchar)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
 	cValue3 := (*C.gchar)(C.CString(param3))
 	defer C.free(unsafe.Pointer(cValue3))
@@ -3472,15 +3431,19 @@ func Fn_g_dbus_proxy_new_for_bus_sync(param0 int, param1 int, param2 unsafe.Poin
 	return unsafe.Pointer(ret)
 }
 
-func Fn_g_dbus_proxy_new_sync(param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, param3 string, param4 string, param5 string, param6 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+func Fn_g_dbus_proxy_new_sync(param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, param3 *string, param4 string, param5 string, param6 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GDBusConnection)(unsafe.Pointer(param0))
 
 	cValue1 := (C.GDBusProxyFlags)(param1)
 
 	cValue2 := (*C.GDBusInterfaceInfo)(unsafe.Pointer(param2))
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	cValue4 := (*C.gchar)(C.CString(param4))
 	defer C.free(unsafe.Pointer(cValue4))
@@ -3534,44 +3497,9 @@ func Fn_g_dbus_proxy_call_sync(paramInstance unsafe.Pointer, param0 string, para
 
 // UNSUPPORTED : g_dbus_proxy_call_with_unix_fd_list : parameter 'callback' is callback
 
-func Fn_g_dbus_proxy_call_with_unix_fd_list_finish(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GDBusProxy)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : g_dbus_proxy_call_with_unix_fd_list_finish : parameter 'out_fd_list' is non array with indirect count > 1
 
-	cValue0 := (**C.GUnixFDList)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GAsyncResult)(unsafe.Pointer(param1))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_dbus_proxy_call_with_unix_fd_list_finish(cValueInstance, cValue0, cValue1, cError)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_g_dbus_proxy_call_with_unix_fd_list_sync(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *unsafe.Pointer, param6 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GDBusProxy)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	cValue1 := (*C.GVariant)(unsafe.Pointer(param1))
-
-	cValue2 := (C.GDBusCallFlags)(param2)
-
-	cValue3 := (C.gint)(param3)
-
-	cValue4 := (*C.GUnixFDList)(unsafe.Pointer(param4))
-
-	cValue5 := (**C.GUnixFDList)(unsafe.Pointer(param5))
-
-	cValue6 := (*C.GCancellable)(unsafe.Pointer(param6))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_dbus_proxy_call_with_unix_fd_list_sync(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cError)
-
-	return unsafe.Pointer(ret)
-}
+// UNSUPPORTED : g_dbus_proxy_call_with_unix_fd_list_sync : parameter 'out_fd_list' is non array with indirect count > 1
 
 func Fn_g_dbus_proxy_get_cached_property(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
 	cValueInstance := (*C.GDBusProxy)(unsafe.Pointer(paramInstance))
@@ -4176,11 +4104,15 @@ func Fn_g_desktop_app_info_get_nodisplay(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-func Fn_g_desktop_app_info_get_show_in(paramInstance unsafe.Pointer, param0 string) bool {
+func Fn_g_desktop_app_info_get_show_in(paramInstance unsafe.Pointer, param0 *string) bool {
 	cValueInstance := (*C.GDesktopAppInfo)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.g_desktop_app_info_get_show_in(cValueInstance, cValue0)
 
@@ -4325,6 +4257,8 @@ func Fn_g_file_enumerator_is_closed(paramInstance unsafe.Pointer) bool {
 
 	return toGoBool(ret)
 }
+
+// UNSUPPORTED : g_file_enumerator_iterate : parameter 'out_info' is non array with indirect count > 1
 
 func Fn_g_file_enumerator_next_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GFileEnumerator)(unsafe.Pointer(paramInstance))
@@ -5561,6 +5495,10 @@ func Fn_g_memory_output_stream_steal_data(paramInstance unsafe.Pointer) unsafe.P
 	return (unsafe.Pointer)(ret)
 }
 
+// UNSUPPORTED : g_menu_attribute_iter_get_next : parameter 'out_name' is non array with indirect count > 1
+
+// UNSUPPORTED : g_menu_link_iter_get_next : parameter 'out_link' is non array with indirect count > 1
+
 func Fn_g_mount_operation_new() unsafe.Pointer {
 	ret := C.g_mount_operation_new()
 
@@ -5881,6 +5819,8 @@ func Fn_g_output_stream_is_closing(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
+// UNSUPPORTED : g_output_stream_printf : parameter 'error' is non array with indirect count > 1
+
 func Fn_g_output_stream_set_pending(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
 
@@ -5920,6 +5860,8 @@ func Fn_g_output_stream_splice_finish(paramInstance unsafe.Pointer, param0 unsaf
 
 	return (uint64)(ret)
 }
+
+// UNSUPPORTED : g_output_stream_vprintf : parameter 'error' is non array with indirect count > 1
 
 func Fn_g_output_stream_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 unsafe.Pointer, error unsafe.Pointer) uint64 {
 	cValueInstance := (*C.GOutputStream)(unsafe.Pointer(paramInstance))
@@ -6091,7 +6033,7 @@ func Fn_g_permission_release_finish(paramInstance unsafe.Pointer, param0 unsafe.
 	return toGoBool(ret)
 }
 
-func Fn_g_proxy_address_new(param0 unsafe.Pointer, param1 uint16, param2 string, param3 string, param4 uint16, param5 string, param6 string) unsafe.Pointer {
+func Fn_g_proxy_address_new(param0 unsafe.Pointer, param1 uint16, param2 string, param3 string, param4 uint16, param5 *string, param6 *string) unsafe.Pointer {
 	cValue0 := (*C.GInetAddress)(unsafe.Pointer(param0))
 
 	cValue1 := (C.guint16)(param1)
@@ -6104,11 +6046,19 @@ func Fn_g_proxy_address_new(param0 unsafe.Pointer, param1 uint16, param2 string,
 
 	cValue4 := (C.guint16)(param4)
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
-	cValue6 := (*C.gchar)(C.CString(param6))
-	defer C.free(unsafe.Pointer(cValue6))
+	var cValue6Value (*C.gchar)
+	if param6 != nil {
+		cValue6Value = (*C.gchar)(C.CString(*param6))
+		defer C.free(unsafe.Pointer(cValue6Value))
+	}
+	cValue6 := cValue6Value
 
 	ret := C.g_proxy_address_new(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
 
@@ -6936,6 +6886,10 @@ func Fn_g_simple_permission_new(param0 bool) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
+// UNSUPPORTED : g_simple_proxy_resolver_set_ignore_hosts : parameter 'ignore_hosts' is non array with indirect count > 1
+
+// UNSUPPORTED : g_simple_proxy_resolver_new : parameter 'ignore_hosts' is non array with indirect count > 1
+
 func Fn_g_socket_new(param0 int, param1 int, param2 int, error unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (C.GSocketFamily)(param0)
 
@@ -7200,55 +7154,9 @@ func Fn_g_socket_receive(paramInstance unsafe.Pointer, param0 []uint8, param1 ui
 	return (uint64)(ret)
 }
 
-func Fn_g_socket_receive_from(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 []uint8, param2 uint64, param3 unsafe.Pointer, error unsafe.Pointer) uint64 {
-	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : g_socket_receive_from : parameter 'address' is non array with indirect count > 1
 
-	cValue0 := (**C.GSocketAddress)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gchar)(unsafe.Pointer(&param1[0]))
-
-	cValue2 := (C.gsize)(param2)
-
-	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_socket_receive_from(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
-
-	return (uint64)(ret)
-}
-
-func Fn_g_socket_receive_message(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 []InputVector, param2 int, param3 *[]unsafe.Pointer, param4 *int, param5 *int, param6 unsafe.Pointer, error unsafe.Pointer) uint64 {
-	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GSocketAddress)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GInputVector)(unsafe.Pointer(&param1[0]))
-
-	cValue2 := (C.gint)(param2)
-
-	var cValue3ArrayPointer (**C.GSocketControlMessage)
-	cValue3 := &cValue3ArrayPointer
-
-	cValue4 := (*C.gint)(unsafe.Pointer(param4))
-
-	cValue5 := (*C.gint)(unsafe.Pointer(param5))
-
-	cValue6 := (*C.GCancellable)(unsafe.Pointer(param6))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_socket_receive_message(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cError)
-
-	param3OutLen := int(*cValue4)
-	param3Out := make([]unsafe.Pointer, param3OutLen, param3OutLen)
-	if param3OutLen > 0 {
-		param3Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue3ArrayPointer))[:param3OutLen:param3OutLen]
-	}
-	*param3 = param3Out
-
-	return (uint64)(ret)
-}
+// UNSUPPORTED : g_socket_receive_message : parameter 'address' is non array with indirect count > 1
 
 func Fn_g_socket_receive_with_blocking(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 bool, param3 unsafe.Pointer, error unsafe.Pointer) uint64 {
 	cValueInstance := (*C.GSocket)(unsafe.Pointer(paramInstance))
@@ -7823,85 +7731,19 @@ func Fn_g_socket_listener_new() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_g_socket_listener_accept(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GSocketListener)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GObject)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_socket_listener_accept(cValueInstance, cValue0, cValue1, cError)
-
-	return unsafe.Pointer(ret)
-}
+// UNSUPPORTED : g_socket_listener_accept : parameter 'source_object' is non array with indirect count > 1
 
 // UNSUPPORTED : g_socket_listener_accept_async : parameter 'callback' is callback
 
-func Fn_g_socket_listener_accept_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GSocketListener)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : g_socket_listener_accept_finish : parameter 'source_object' is non array with indirect count > 1
 
-	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
-
-	cValue1 := (**C.GObject)(unsafe.Pointer(param1))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_socket_listener_accept_finish(cValueInstance, cValue0, cValue1, cError)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_g_socket_listener_accept_socket(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GSocketListener)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GObject)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_socket_listener_accept_socket(cValueInstance, cValue0, cValue1, cError)
-
-	return unsafe.Pointer(ret)
-}
+// UNSUPPORTED : g_socket_listener_accept_socket : parameter 'source_object' is non array with indirect count > 1
 
 // UNSUPPORTED : g_socket_listener_accept_socket_async : parameter 'callback' is callback
 
-func Fn_g_socket_listener_accept_socket_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GSocketListener)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : g_socket_listener_accept_socket_finish : parameter 'source_object' is non array with indirect count > 1
 
-	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
-
-	cValue1 := (**C.GObject)(unsafe.Pointer(param1))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_socket_listener_accept_socket_finish(cValueInstance, cValue0, cValue1, cError)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_g_socket_listener_add_address(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 unsafe.Pointer, param4 *unsafe.Pointer, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GSocketListener)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GSocketAddress)(unsafe.Pointer(param0))
-
-	cValue1 := (C.GSocketType)(param1)
-
-	cValue2 := (C.GSocketProtocol)(param2)
-
-	cValue3 := (*C.GObject)(unsafe.Pointer(param3))
-
-	cValue4 := (**C.GSocketAddress)(unsafe.Pointer(param4))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_socket_listener_add_address(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cError)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : g_socket_listener_add_address : parameter 'effective_address' is non array with indirect count > 1
 
 func Fn_g_socket_listener_add_any_inet_port(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) uint16 {
 	cValueInstance := (*C.GSocketListener)(unsafe.Pointer(paramInstance))
@@ -7983,78 +7825,21 @@ func Fn_g_socket_service_stop(paramInstance unsafe.Pointer) {
 	C.g_socket_service_stop(cValueInstance)
 }
 
+// UNSUPPORTED : g_subprocess_new : parameter 'error' is non array with indirect count > 1
+
 // UNSUPPORTED : g_subprocess_newv : parameter 'argv' is array parameter without length parameter
+
+// UNSUPPORTED : g_subprocess_communicate : parameter 'stdout_buf' is non array with indirect count > 1
 
 // UNSUPPORTED : g_subprocess_communicate_async : parameter 'callback' is callback
 
-func Fn_g_subprocess_communicate_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : g_subprocess_communicate_finish : parameter 'stdout_buf' is non array with indirect count > 1
 
-	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
-
-	cValue1 := (**C.GBytes)(unsafe.Pointer(param1))
-
-	cValue2 := (**C.GBytes)(unsafe.Pointer(param2))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_subprocess_communicate_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
-
-	return toGoBool(ret)
-}
-
-func Fn_g_subprocess_communicate_utf8(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 *string, param3 *string, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
-
-	var cValue2String *C.gchar
-	cValue2 := &cValue2String
-
-	var cValue3String *C.gchar
-	cValue3 := &cValue3String
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_subprocess_communicate_utf8(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
-
-	param2String := C.GoString(cValue2String)
-	*param2 = param2String
-
-	param3String := C.GoString(cValue3String)
-	*param3 = param3String
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : g_subprocess_communicate_utf8 : parameter 'stdout_buf' is non array with indirect count > 1
 
 // UNSUPPORTED : g_subprocess_communicate_utf8_async : parameter 'callback' is callback
 
-func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, param2 *string, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GSubprocess)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
-
-	var cValue1String *C.gchar
-	cValue1 := &cValue1String
-
-	var cValue2String *C.gchar
-	cValue2 := &cValue2String
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_subprocess_communicate_utf8_finish(cValueInstance, cValue0, cValue1, cValue2, cError)
-
-	param1String := C.GoString(cValue1String)
-	*param1 = param1String
-
-	param2String := C.GoString(cValue2String)
-	*param2 = param2String
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : g_subprocess_communicate_utf8_finish : parameter 'stdout_buf' is non array with indirect count > 1
 
 // UNSUPPORTED : g_subprocess_wait_async : parameter 'callback' is callback
 
@@ -8063,6 +7848,8 @@ func Fn_g_subprocess_communicate_utf8_finish(paramInstance unsafe.Pointer, param
 // UNSUPPORTED : g_subprocess_launcher_set_child_setup : parameter 'child_setup' is callback
 
 // UNSUPPORTED : g_subprocess_launcher_set_environ : parameter 'env' is array parameter without length parameter
+
+// UNSUPPORTED : g_subprocess_launcher_spawn : parameter 'error' is non array with indirect count > 1
 
 // UNSUPPORTED : g_subprocess_launcher_spawnv : parameter 'argv' is array parameter without length parameter
 
@@ -8665,15 +8452,7 @@ func Fn_g_tls_password_get_flags(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-func Fn_g_tls_password_get_value(paramInstance unsafe.Pointer, param0 *uint64) *uint8 {
-	cValueInstance := (*C.GTlsPassword)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gsize)(unsafe.Pointer(param0))
-
-	ret := C.g_tls_password_get_value(cValueInstance, cValue0)
-
-	return (*uint8)(ret)
-}
+// UNSUPPORTED : g_tls_password_get_value : blacklisted
 
 func Fn_g_tls_password_get_warning(paramInstance unsafe.Pointer) string {
 	cValueInstance := (*C.GTlsPassword)(unsafe.Pointer(paramInstance))
@@ -9433,6 +9212,8 @@ func Fn_g_action_group_has_action(paramInstance unsafe.Pointer, param0 string) b
 }
 
 // UNSUPPORTED : g_action_group_list_actions : no array length
+
+// UNSUPPORTED : g_action_group_query_action : parameter 'parameter_type' is non array with indirect count > 1
 
 func Fn_g_app_info_add_supports_type(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GAppInfo)(unsafe.Pointer(paramInstance))
@@ -10377,7 +10158,11 @@ func Fn_g_file_is_native(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
+// UNSUPPORTED : g_file_load_bytes : parameter 'etag_out' is non array with indirect count > 1
+
 // UNSUPPORTED : g_file_load_bytes_async : parameter 'callback' is callback
+
+// UNSUPPORTED : g_file_load_bytes_finish : parameter 'etag_out' is non array with indirect count > 1
 
 // UNSUPPORTED : g_file_load_contents : blacklisted
 
@@ -10692,11 +10477,15 @@ func Fn_g_file_read_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_g_file_replace(paramInstance unsafe.Pointer, param0 string, param1 bool, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+func Fn_g_file_replace(paramInstance unsafe.Pointer, param0 *string, param1 bool, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.char)
+	if param0 != nil {
+		cValue0Value = (*C.char)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := toCBool(param1)
 
@@ -10713,56 +10502,13 @@ func Fn_g_file_replace(paramInstance unsafe.Pointer, param0 string, param1 bool,
 
 // UNSUPPORTED : g_file_replace_async : parameter 'callback' is callback
 
-func Fn_g_file_replace_contents(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, param2 string, param3 bool, param4 int, param5 *string, param6 unsafe.Pointer, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.char)(unsafe.Pointer(&param0[0]))
-
-	cValue1 := (C.gsize)(param1)
-
-	cValue2 := (*C.char)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
-
-	cValue3 := toCBool(param3)
-
-	cValue4 := (C.GFileCreateFlags)(param4)
-
-	var cValue5String *C.gchar
-	cValue5 := &cValue5String
-
-	cValue6 := (*C.GCancellable)(unsafe.Pointer(param6))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_file_replace_contents(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cError)
-
-	param5String := C.GoString(cValue5String)
-	*param5 = param5String
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : g_file_replace_contents : parameter 'new_etag' is non array with indirect count > 1
 
 // UNSUPPORTED : g_file_replace_contents_async : parameter 'callback' is callback
 
 // UNSUPPORTED : g_file_replace_contents_bytes_async : parameter 'callback' is callback
 
-func Fn_g_file_replace_contents_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
-
-	var cValue1String *C.gchar
-	cValue1 := &cValue1String
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_file_replace_contents_finish(cValueInstance, cValue0, cValue1, cError)
-
-	param1String := C.GoString(cValue1String)
-	*param1 = param1String
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : g_file_replace_contents_finish : parameter 'new_etag' is non array with indirect count > 1
 
 func Fn_g_file_replace_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
@@ -10776,11 +10522,15 @@ func Fn_g_file_replace_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 	return unsafe.Pointer(ret)
 }
 
-func Fn_g_file_replace_readwrite(paramInstance unsafe.Pointer, param0 string, param1 bool, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+func Fn_g_file_replace_readwrite(paramInstance unsafe.Pointer, param0 *string, param1 bool, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.char)
+	if param0 != nil {
+		cValue0Value = (*C.char)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := toCBool(param1)
 
@@ -10959,19 +10709,7 @@ func Fn_g_file_set_attribute_uint64(paramInstance unsafe.Pointer, param0 string,
 
 // UNSUPPORTED : g_file_set_attributes_async : parameter 'callback' is callback
 
-func Fn_g_file_set_attributes_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
-
-	cValue1 := (**C.GFileInfo)(unsafe.Pointer(param1))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_file_set_attributes_finish(cValueInstance, cValue0, cValue1, cError)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : g_file_set_attributes_finish : parameter 'info' is non array with indirect count > 1
 
 func Fn_g_file_set_attributes_from_info(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GFile)(unsafe.Pointer(paramInstance))
@@ -11134,45 +10872,11 @@ func Fn_g_initable_init(paramInstance unsafe.Pointer, param0 unsafe.Pointer, err
 	return toGoBool(ret)
 }
 
-func Fn_g_loadable_icon_load(paramInstance unsafe.Pointer, param0 int, param1 *string, param2 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GLoadableIcon)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.int)(param0)
-
-	var cValue1String *C.gchar
-	cValue1 := &cValue1String
-
-	cValue2 := (*C.GCancellable)(unsafe.Pointer(param2))
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_loadable_icon_load(cValueInstance, cValue0, cValue1, cValue2, cError)
-
-	param1String := C.GoString(cValue1String)
-	*param1 = param1String
-
-	return unsafe.Pointer(ret)
-}
+// UNSUPPORTED : g_loadable_icon_load : parameter 'type' is non array with indirect count > 1
 
 // UNSUPPORTED : g_loadable_icon_load_async : parameter 'callback' is callback
 
-func Fn_g_loadable_icon_load_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GLoadableIcon)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GAsyncResult)(unsafe.Pointer(param0))
-
-	var cValue1String *C.gchar
-	cValue1 := &cValue1String
-
-	cError := (**C.GError)(error)
-
-	ret := C.g_loadable_icon_load_finish(cValueInstance, cValue0, cValue1, cError)
-
-	param1String := C.GoString(cValue1String)
-	*param1 = param1String
-
-	return unsafe.Pointer(ret)
-}
+// UNSUPPORTED : g_loadable_icon_load_finish : parameter 'type' is non array with indirect count > 1
 
 func Fn_g_mount_can_eject(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GMount)(unsafe.Pointer(paramInstance))

@@ -215,23 +215,7 @@ func Fn_gdk_drag_drop(param0 unsafe.Pointer, param1 uint32) {
 	C.gdk_drag_drop(cValue0, cValue1)
 }
 
-func Fn_gdk_drag_find_window_for_screen(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 int, param4 int, param5 *unsafe.Pointer, param6 *int) {
-	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.GdkScreen)(unsafe.Pointer(param2))
-
-	cValue3 := (C.gint)(param3)
-
-	cValue4 := (C.gint)(param4)
-
-	cValue5 := (**C.GdkWindow)(unsafe.Pointer(param5))
-
-	cValue6 := (*C.GdkDragProtocol)(unsafe.Pointer(param6))
-
-	C.gdk_drag_find_window_for_screen(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
-}
+// UNSUPPORTED : gdk_drag_find_window_for_screen : parameter 'dest_window' is non array with indirect count > 1
 
 func Fn_gdk_drag_get_selection(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
@@ -793,19 +777,7 @@ func Fn_gdk_selection_owner_set_for_display(param0 unsafe.Pointer, param1 unsafe
 	return toGoBool(ret)
 }
 
-func Fn_gdk_selection_property_get(param0 unsafe.Pointer, param1 **uint8, param2 unsafe.Pointer, param3 *int) int {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
-
-	cValue1 := (**C.guchar)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.GdkAtom)(unsafe.Pointer(param2))
-
-	cValue3 := (*C.gint)(unsafe.Pointer(param3))
-
-	ret := C.gdk_selection_property_get(cValue0, cValue1, cValue2, cValue3)
-
-	return (int)(ret)
-}
+// UNSUPPORTED : gdk_selection_property_get : parameter 'data' is non array with indirect count > 1
 
 func Fn_gdk_selection_send_notify(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 uint32) {
 	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
@@ -998,6 +970,10 @@ func Fn_gdk_device_get_history(paramInstance unsafe.Pointer, param0 unsafe.Point
 	return toGoBool(ret)
 }
 
+// UNSUPPORTED : gdk_device_get_position : parameter 'screen' is non array with indirect count > 1
+
+// UNSUPPORTED : gdk_device_get_position_double : parameter 'screen' is non array with indirect count > 1
+
 // UNSUPPORTED : gdk_device_get_state : parameter 'axes' is array parameter without length parameter
 
 func Fn_gdk_device_list_slave_devices(paramInstance unsafe.Pointer) unsafe.Pointer {
@@ -1048,19 +1024,7 @@ func Fn_gdk_device_free_history(param0 []unsafe.Pointer, param1 int) {
 	C.gdk_device_free_history(cValue0, cValue1)
 }
 
-func Fn_gdk_device_grab_info_libgtk_only(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *unsafe.Pointer, param3 *bool) bool {
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GdkDevice)(unsafe.Pointer(param1))
-
-	cValue2 := (**C.GdkWindow)(unsafe.Pointer(param2))
-
-	cValue3 := (*C.gboolean)(unsafe.Pointer(param3))
-
-	ret := C.gdk_device_grab_info_libgtk_only(cValue0, cValue1, cValue2, cValue3)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gdk_device_grab_info_libgtk_only : parameter 'grab_window' is non array with indirect count > 1
 
 func Fn_gdk_display_beep(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
@@ -1148,19 +1112,7 @@ func Fn_gdk_display_get_name(paramInstance unsafe.Pointer) string {
 	return C.GoString(ret)
 }
 
-func Fn_gdk_display_get_pointer(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int, param2 *int, param3 *int) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GdkScreen)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
-
-	cValue3 := (*C.GdkModifierType)(unsafe.Pointer(param3))
-
-	C.gdk_display_get_pointer(cValueInstance, cValue0, cValue1, cValue2, cValue3)
-}
+// UNSUPPORTED : gdk_display_get_pointer : parameter 'screen' is non array with indirect count > 1
 
 func Fn_gdk_display_get_screen(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
 	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
@@ -1840,6 +1792,8 @@ func Fn_gdk_window_get_decorations(paramInstance unsafe.Pointer, param0 *int) bo
 	return toGoBool(ret)
 }
 
+// UNSUPPORTED : gdk_window_get_drag_protocol : parameter 'target' is non array with indirect count > 1
+
 func Fn_gdk_window_get_events(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 
@@ -2240,11 +2194,15 @@ func Fn_gdk_window_set_icon_list(paramInstance unsafe.Pointer, param0 unsafe.Poi
 	C.gdk_window_set_icon_list(cValueInstance, cValue0)
 }
 
-func Fn_gdk_window_set_icon_name(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gdk_window_set_icon_name(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gdk_window_set_icon_name(cValueInstance, cValue0)
 }

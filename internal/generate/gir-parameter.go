@@ -40,6 +40,14 @@ func (p Parameter) isSupported() (bool, string) {
 		return false, "is long double"
 	}
 
+	if p.Type != nil && p.Type.cType.indirectionCount > 1 {
+		return false, "is non array with indirect count > 1	"
+	}
+
+	//if p.Type != nil && p.Nullable && p.Type.cType.indirectionCount > 0 {
+	//	return false, "is nullable with indirect count > 0	"
+	//}
+
 	if p.Array != nil && p.lengthParam == nil {
 		return false, "is array parameter without length parameter"
 	}

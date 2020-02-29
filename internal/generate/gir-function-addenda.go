@@ -24,6 +24,7 @@ var functionBlacklist = map[string]bool{
 	"g_file_load_contents":                  true,
 	"g_file_load_contents_finish":           true,
 	"g_file_load_partial_contents_finish":   true,
+	"g_tls_password_get_value":              true,
 
 	// settings backend implementations
 	"g_settings_backend_get_default":           true,

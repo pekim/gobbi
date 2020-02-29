@@ -1554,25 +1554,9 @@ func Fn_atk_table_get_row_header(paramInstance unsafe.Pointer, param0 int) unsaf
 	return unsafe.Pointer(ret)
 }
 
-func Fn_atk_table_get_selected_columns(paramInstance unsafe.Pointer, param0 **int) int {
-	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : atk_table_get_selected_columns : parameter 'selected' is non array with indirect count > 1
 
-	cValue0 := (**C.gint)(unsafe.Pointer(param0))
-
-	ret := C.atk_table_get_selected_columns(cValueInstance, cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_atk_table_get_selected_rows(paramInstance unsafe.Pointer, param0 **int) int {
-	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.gint)(unsafe.Pointer(param0))
-
-	ret := C.atk_table_get_selected_rows(cValueInstance, cValue0)
-
-	return (int)(ret)
-}
+// UNSUPPORTED : atk_table_get_selected_rows : parameter 'selected' is non array with indirect count > 1
 
 func Fn_atk_table_get_summary(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
@@ -2038,19 +2022,7 @@ func Fn_atk_value_get_sub_ranges(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_atk_value_get_value_and_text(paramInstance unsafe.Pointer, param0 *float64, param1 *string) {
-	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gdouble)(unsafe.Pointer(param0))
-
-	var cValue1String *C.gchar
-	cValue1 := &cValue1String
-
-	C.atk_value_get_value_and_text(cValueInstance, cValue0, cValue1)
-
-	param1String := C.GoString(cValue1String)
-	*param1 = param1String
-}
+// UNSUPPORTED : atk_value_get_value_and_text : parameter 'text' is non array with indirect count > 1
 
 func Fn_atk_value_set_current_value(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
 	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))

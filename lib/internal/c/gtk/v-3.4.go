@@ -1234,17 +1234,7 @@ func Fn_gtk_gradient_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_gradient_resolve(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *unsafe.Pointer) bool {
-	cValueInstance := (*C.GtkGradient)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GtkStyleProperties)(unsafe.Pointer(param0))
-
-	cValue1 := (**C.cairo_pattern_t)(unsafe.Pointer(param1))
-
-	ret := C.gtk_gradient_resolve(cValueInstance, cValue0, cValue1)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_gradient_resolve : parameter 'resolved_gradient' is non array with indirect count > 1
 
 func Fn_gtk_gradient_resolve_for_context(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkGradient)(unsafe.Pointer(paramInstance))
@@ -1326,7 +1316,7 @@ func Fn_gtk_icon_set_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_icon_set_render_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 unsafe.Pointer, param5 string) unsafe.Pointer {
+func Fn_gtk_icon_set_render_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 unsafe.Pointer, param5 *string) unsafe.Pointer {
 	cValueInstance := (*C.GtkIconSet)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
@@ -1339,8 +1329,12 @@ func Fn_gtk_icon_set_render_icon(paramInstance unsafe.Pointer, param0 unsafe.Poi
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	ret := C.gtk_icon_set_render_icon(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 
@@ -1482,11 +1476,15 @@ func Fn_gtk_icon_source_set_filename(paramInstance unsafe.Pointer, param0 string
 	C.gtk_icon_source_set_filename(cValueInstance, cValue0)
 }
 
-func Fn_gtk_icon_source_set_icon_name(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_icon_source_set_icon_name(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkIconSource)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_icon_source_set_icon_name(cValueInstance, cValue0)
 }
@@ -1531,9 +1529,13 @@ func Fn_gtk_icon_source_set_state_wildcarded(paramInstance unsafe.Pointer, param
 	C.gtk_icon_source_set_state_wildcarded(cValueInstance, cValue0)
 }
 
-func Fn_gtk_paper_size_new(param0 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_paper_size_new(param0 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_paper_size_new(cValue0)
 
@@ -1558,11 +1560,15 @@ func Fn_gtk_paper_size_new_custom(param0 string, param1 string, param2 float64, 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_paper_size_new_from_key_file(param0 unsafe.Pointer, param1 string, error unsafe.Pointer) unsafe.Pointer {
+func Fn_gtk_paper_size_new_from_key_file(param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GKeyFile)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	cError := (**C.GError)(error)
 
@@ -1808,11 +1814,15 @@ func Fn_gtk_rc_property_parse_requisition(param0 unsafe.Pointer, param1 unsafe.P
 	return toGoBool(ret)
 }
 
-func Fn_gtk_recent_info_create_app_info(paramInstance unsafe.Pointer, param0 string, error unsafe.Pointer) unsafe.Pointer {
+func Fn_gtk_recent_info_create_app_info(paramInstance unsafe.Pointer, param0 *string, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkRecentInfo)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cError := (**C.GError)(error)
 
@@ -1845,26 +1855,7 @@ func Fn_gtk_recent_info_get_age(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-func Fn_gtk_recent_info_get_application_info(paramInstance unsafe.Pointer, param0 string, param1 *string, param2 *uint, param3 *int64) bool {
-	cValueInstance := (*C.GtkRecentInfo)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	var cValue1String *C.gchar
-	cValue1 := &cValue1String
-
-	cValue2 := (*C.guint)(unsafe.Pointer(param2))
-
-	cValue3 := (*C.time_t)(unsafe.Pointer(param3))
-
-	ret := C.gtk_recent_info_get_application_info(cValueInstance, cValue0, cValue1, cValue2, cValue3)
-
-	param1String := C.GoString(cValue1String)
-	*param1 = param1String
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_recent_info_get_application_info : parameter 'app_exec' is non array with indirect count > 1
 
 func Fn_gtk_recent_info_get_applications(paramInstance unsafe.Pointer, param0 *uint64) []string {
 	cValueInstance := (*C.GtkRecentInfo)(unsafe.Pointer(paramInstance))
@@ -4488,7 +4479,7 @@ func Fn_gtk_main_quit() {
 	C.gtk_main_quit()
 }
 
-func Fn_gtk_paint_arrow(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 bool, param8 int, param9 int, param10 int, param11 int) {
+func Fn_gtk_paint_arrow(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 bool, param8 int, param9 int, param10 int, param11 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4499,8 +4490,12 @@ func Fn_gtk_paint_arrow(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.GtkArrowType)(param6)
 
@@ -4517,7 +4512,7 @@ func Fn_gtk_paint_arrow(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 	C.gtk_paint_arrow(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10, cValue11)
 }
 
-func Fn_gtk_paint_box(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int) {
+func Fn_gtk_paint_box(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4528,8 +4523,12 @@ func Fn_gtk_paint_box(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, 
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4542,7 +4541,7 @@ func Fn_gtk_paint_box(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, 
 	C.gtk_paint_box(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
 }
 
-func Fn_gtk_paint_box_gap(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int, param10 int, param11 int, param12 int) {
+func Fn_gtk_paint_box_gap(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int, param10 int, param11 int, param12 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4553,8 +4552,12 @@ func Fn_gtk_paint_box_gap(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 i
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4573,7 +4576,7 @@ func Fn_gtk_paint_box_gap(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 i
 	C.gtk_paint_box_gap(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10, cValue11, cValue12)
 }
 
-func Fn_gtk_paint_check(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int) {
+func Fn_gtk_paint_check(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4584,8 +4587,12 @@ func Fn_gtk_paint_check(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4598,7 +4605,7 @@ func Fn_gtk_paint_check(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 	C.gtk_paint_check(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
 }
 
-func Fn_gtk_paint_diamond(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int) {
+func Fn_gtk_paint_diamond(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4609,8 +4616,12 @@ func Fn_gtk_paint_diamond(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 i
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4623,7 +4634,7 @@ func Fn_gtk_paint_diamond(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 i
 	C.gtk_paint_diamond(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
 }
 
-func Fn_gtk_paint_expander(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 string, param5 int, param6 int, param7 int) {
+func Fn_gtk_paint_expander(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 *string, param5 int, param6 int, param7 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4632,8 +4643,12 @@ func Fn_gtk_paint_expander(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 
 
 	cValue3 := (*C.GtkWidget)(unsafe.Pointer(param3))
 
-	cValue4 := (*C.gchar)(C.CString(param4))
-	defer C.free(unsafe.Pointer(cValue4))
+	var cValue4Value (*C.gchar)
+	if param4 != nil {
+		cValue4Value = (*C.gchar)(C.CString(*param4))
+		defer C.free(unsafe.Pointer(cValue4Value))
+	}
+	cValue4 := cValue4Value
 
 	cValue5 := (C.gint)(param5)
 
@@ -4644,7 +4659,7 @@ func Fn_gtk_paint_expander(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 
 	C.gtk_paint_expander(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7)
 }
 
-func Fn_gtk_paint_extension(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int, param10 int) {
+func Fn_gtk_paint_extension(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int, param10 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4655,8 +4670,12 @@ func Fn_gtk_paint_extension(param0 unsafe.Pointer, param1 unsafe.Pointer, param2
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4671,7 +4690,7 @@ func Fn_gtk_paint_extension(param0 unsafe.Pointer, param1 unsafe.Pointer, param2
 	C.gtk_paint_extension(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10)
 }
 
-func Fn_gtk_paint_flat_box(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int) {
+func Fn_gtk_paint_flat_box(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4682,8 +4701,12 @@ func Fn_gtk_paint_flat_box(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4696,7 +4719,7 @@ func Fn_gtk_paint_flat_box(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 
 	C.gtk_paint_flat_box(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
 }
 
-func Fn_gtk_paint_focus(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 string, param5 int, param6 int, param7 int, param8 int) {
+func Fn_gtk_paint_focus(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 *string, param5 int, param6 int, param7 int, param8 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4705,8 +4728,12 @@ func Fn_gtk_paint_focus(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 
 	cValue3 := (*C.GtkWidget)(unsafe.Pointer(param3))
 
-	cValue4 := (*C.gchar)(C.CString(param4))
-	defer C.free(unsafe.Pointer(cValue4))
+	var cValue4Value (*C.gchar)
+	if param4 != nil {
+		cValue4Value = (*C.gchar)(C.CString(*param4))
+		defer C.free(unsafe.Pointer(cValue4Value))
+	}
+	cValue4 := cValue4Value
 
 	cValue5 := (C.gint)(param5)
 
@@ -4719,7 +4746,7 @@ func Fn_gtk_paint_focus(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 	C.gtk_paint_focus(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8)
 }
 
-func Fn_gtk_paint_handle(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int, param10 int) {
+func Fn_gtk_paint_handle(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int, param10 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4730,8 +4757,12 @@ func Fn_gtk_paint_handle(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4746,7 +4777,7 @@ func Fn_gtk_paint_handle(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 	C.gtk_paint_handle(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10)
 }
 
-func Fn_gtk_paint_hline(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 string, param5 int, param6 int, param7 int) {
+func Fn_gtk_paint_hline(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 *string, param5 int, param6 int, param7 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4755,8 +4786,12 @@ func Fn_gtk_paint_hline(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 
 	cValue3 := (*C.GtkWidget)(unsafe.Pointer(param3))
 
-	cValue4 := (*C.gchar)(C.CString(param4))
-	defer C.free(unsafe.Pointer(cValue4))
+	var cValue4Value (*C.gchar)
+	if param4 != nil {
+		cValue4Value = (*C.gchar)(C.CString(*param4))
+		defer C.free(unsafe.Pointer(cValue4Value))
+	}
+	cValue4 := cValue4Value
 
 	cValue5 := (C.gint)(param5)
 
@@ -4767,7 +4802,7 @@ func Fn_gtk_paint_hline(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 	C.gtk_paint_hline(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7)
 }
 
-func Fn_gtk_paint_layout(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 bool, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 unsafe.Pointer) {
+func Fn_gtk_paint_layout(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 bool, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 unsafe.Pointer) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4778,8 +4813,12 @@ func Fn_gtk_paint_layout(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4790,7 +4829,7 @@ func Fn_gtk_paint_layout(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 	C.gtk_paint_layout(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8)
 }
 
-func Fn_gtk_paint_option(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int) {
+func Fn_gtk_paint_option(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4801,8 +4840,12 @@ func Fn_gtk_paint_option(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4815,7 +4858,7 @@ func Fn_gtk_paint_option(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 	C.gtk_paint_option(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
 }
 
-func Fn_gtk_paint_resize_grip(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 string, param5 int, param6 int, param7 int, param8 int, param9 int) {
+func Fn_gtk_paint_resize_grip(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 *string, param5 int, param6 int, param7 int, param8 int, param9 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4824,8 +4867,12 @@ func Fn_gtk_paint_resize_grip(param0 unsafe.Pointer, param1 unsafe.Pointer, para
 
 	cValue3 := (*C.GtkWidget)(unsafe.Pointer(param3))
 
-	cValue4 := (*C.gchar)(C.CString(param4))
-	defer C.free(unsafe.Pointer(cValue4))
+	var cValue4Value (*C.gchar)
+	if param4 != nil {
+		cValue4Value = (*C.gchar)(C.CString(*param4))
+		defer C.free(unsafe.Pointer(cValue4Value))
+	}
+	cValue4 := cValue4Value
 
 	cValue5 := (C.GdkWindowEdge)(param5)
 
@@ -4840,7 +4887,7 @@ func Fn_gtk_paint_resize_grip(param0 unsafe.Pointer, param1 unsafe.Pointer, para
 	C.gtk_paint_resize_grip(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
 }
 
-func Fn_gtk_paint_shadow(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int) {
+func Fn_gtk_paint_shadow(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4851,8 +4898,12 @@ func Fn_gtk_paint_shadow(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4865,7 +4916,7 @@ func Fn_gtk_paint_shadow(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 	C.gtk_paint_shadow(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
 }
 
-func Fn_gtk_paint_shadow_gap(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int, param10 int, param11 int, param12 int) {
+func Fn_gtk_paint_shadow_gap(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int, param10 int, param11 int, param12 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4876,8 +4927,12 @@ func Fn_gtk_paint_shadow_gap(param0 unsafe.Pointer, param1 unsafe.Pointer, param
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4896,7 +4951,7 @@ func Fn_gtk_paint_shadow_gap(param0 unsafe.Pointer, param1 unsafe.Pointer, param
 	C.gtk_paint_shadow_gap(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10, cValue11, cValue12)
 }
 
-func Fn_gtk_paint_slider(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int, param10 int) {
+func Fn_gtk_paint_slider(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int, param10 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4907,8 +4962,12 @@ func Fn_gtk_paint_slider(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4923,7 +4982,7 @@ func Fn_gtk_paint_slider(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 in
 	C.gtk_paint_slider(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10)
 }
 
-func Fn_gtk_paint_spinner(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 string, param5 uint, param6 int, param7 int, param8 int, param9 int) {
+func Fn_gtk_paint_spinner(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 *string, param5 uint, param6 int, param7 int, param8 int, param9 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4932,8 +4991,12 @@ func Fn_gtk_paint_spinner(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 i
 
 	cValue3 := (*C.GtkWidget)(unsafe.Pointer(param3))
 
-	cValue4 := (*C.gchar)(C.CString(param4))
-	defer C.free(unsafe.Pointer(cValue4))
+	var cValue4Value (*C.gchar)
+	if param4 != nil {
+		cValue4Value = (*C.gchar)(C.CString(*param4))
+		defer C.free(unsafe.Pointer(cValue4Value))
+	}
+	cValue4 := cValue4Value
 
 	cValue5 := (C.guint)(param5)
 
@@ -4948,7 +5011,7 @@ func Fn_gtk_paint_spinner(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 i
 	C.gtk_paint_spinner(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
 }
 
-func Fn_gtk_paint_tab(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 string, param6 int, param7 int, param8 int, param9 int) {
+func Fn_gtk_paint_tab(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 unsafe.Pointer, param5 *string, param6 int, param7 int, param8 int, param9 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4959,8 +5022,12 @@ func Fn_gtk_paint_tab(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, 
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	cValue6 := (C.gint)(param6)
 
@@ -4973,7 +5040,7 @@ func Fn_gtk_paint_tab(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, 
 	C.gtk_paint_tab(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
 }
 
-func Fn_gtk_paint_vline(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 string, param5 int, param6 int, param7 int) {
+func Fn_gtk_paint_vline(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, param4 *string, param5 int, param6 int, param7 int) {
 	cValue0 := (*C.GtkStyle)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.cairo_t)(unsafe.Pointer(param1))
@@ -4982,8 +5049,12 @@ func Fn_gtk_paint_vline(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int
 
 	cValue3 := (*C.GtkWidget)(unsafe.Pointer(param3))
 
-	cValue4 := (*C.gchar)(C.CString(param4))
-	defer C.free(unsafe.Pointer(cValue4))
+	var cValue4Value (*C.gchar)
+	if param4 != nil {
+		cValue4Value = (*C.gchar)(C.CString(*param4))
+		defer C.free(unsafe.Pointer(cValue4Value))
+	}
+	cValue4 := cValue4Value
 
 	cValue5 := (C.gint)(param5)
 
@@ -5106,14 +5177,22 @@ func Fn_gtk_rc_get_style(param0 unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_rc_get_style_by_paths(param0 unsafe.Pointer, param1 string, param2 string, param3 uint64) unsafe.Pointer {
+func Fn_gtk_rc_get_style_by_paths(param0 unsafe.Pointer, param1 *string, param2 *string, param3 uint64) unsafe.Pointer {
 	cValue0 := (*C.GtkSettings)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.char)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.char)
+	if param1 != nil {
+		cValue1Value = (*C.char)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
-	cValue2 := (*C.char)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.char)
+	if param2 != nil {
+		cValue2Value = (*C.char)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
 	cValue3 := (C.GType)(param3)
 
@@ -5728,11 +5807,15 @@ func Fn_gtk_test_create_simple_window(param0 string, param1 string) unsafe.Point
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_test_create_widget(param0 uint64, param1 string) unsafe.Pointer {
+func Fn_gtk_test_create_widget(param0 uint64, param1 *string) unsafe.Pointer {
 	cValue0 := (C.GType)(param0)
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	ret := C.c_gtk_test_create_widget(cValue0, cValue1)
 
@@ -5902,17 +5985,7 @@ func Fn_gtk_test_widget_send_key(param0 unsafe.Pointer, param1 uint, param2 int)
 	return toGoBool(ret)
 }
 
-func Fn_gtk_tree_get_row_drag_data(param0 unsafe.Pointer, param1 *unsafe.Pointer, param2 *unsafe.Pointer) bool {
-	cValue0 := (*C.GtkSelectionData)(unsafe.Pointer(param0))
-
-	cValue1 := (**C.GtkTreeModel)(unsafe.Pointer(param1))
-
-	cValue2 := (**C.GtkTreePath)(unsafe.Pointer(param2))
-
-	ret := C.gtk_tree_get_row_drag_data(cValue0, cValue1, cValue2)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_tree_get_row_drag_data : parameter 'tree_model' is non array with indirect count > 1
 
 // UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
 
@@ -6048,31 +6121,43 @@ func Fn_gtk_about_dialog_get_wrap_license(paramInstance unsafe.Pointer) bool {
 
 // UNSUPPORTED : gtk_about_dialog_set_authors : parameter 'authors' is array parameter without length parameter
 
-func Fn_gtk_about_dialog_set_comments(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_about_dialog_set_comments(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_about_dialog_set_comments(cValueInstance, cValue0)
 }
 
-func Fn_gtk_about_dialog_set_copyright(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_about_dialog_set_copyright(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_about_dialog_set_copyright(cValueInstance, cValue0)
 }
 
 // UNSUPPORTED : gtk_about_dialog_set_documenters : parameter 'documenters' is array parameter without length parameter
 
-func Fn_gtk_about_dialog_set_license(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_about_dialog_set_license(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_about_dialog_set_license(cValueInstance, cValue0)
 }
@@ -6093,11 +6178,15 @@ func Fn_gtk_about_dialog_set_logo(paramInstance unsafe.Pointer, param0 unsafe.Po
 	C.gtk_about_dialog_set_logo(cValueInstance, cValue0)
 }
 
-func Fn_gtk_about_dialog_set_logo_icon_name(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_about_dialog_set_logo_icon_name(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_about_dialog_set_logo_icon_name(cValueInstance, cValue0)
 }
@@ -6111,29 +6200,41 @@ func Fn_gtk_about_dialog_set_program_name(paramInstance unsafe.Pointer, param0 s
 	C.gtk_about_dialog_set_program_name(cValueInstance, cValue0)
 }
 
-func Fn_gtk_about_dialog_set_translator_credits(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_about_dialog_set_translator_credits(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_about_dialog_set_translator_credits(cValueInstance, cValue0)
 }
 
-func Fn_gtk_about_dialog_set_version(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_about_dialog_set_version(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_about_dialog_set_version(cValueInstance, cValue0)
 }
 
-func Fn_gtk_about_dialog_set_website(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_about_dialog_set_website(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkAboutDialog)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_about_dialog_set_website(cValueInstance, cValue0)
 }
@@ -6452,18 +6553,30 @@ func Fn_gtk_accessible_set_widget(paramInstance unsafe.Pointer, param0 unsafe.Po
 	C.gtk_accessible_set_widget(cValueInstance, cValue0)
 }
 
-func Fn_gtk_action_new(param0 string, param1 string, param2 string, param3 string) unsafe.Pointer {
+func Fn_gtk_action_new(param0 string, param1 *string, param2 *string, param3 *string) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	ret := C.gtk_action_new(cValue0, cValue1, cValue2, cValue3)
 
@@ -6813,13 +6926,17 @@ func Fn_gtk_action_group_add_action(paramInstance unsafe.Pointer, param0 unsafe.
 	C.gtk_action_group_add_action(cValueInstance, cValue0)
 }
 
-func Fn_gtk_action_group_add_action_with_accel(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string) {
+func Fn_gtk_action_group_add_action_with_accel(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string) {
 	cValueInstance := (*C.GtkActionGroup)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GtkAction)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	C.gtk_action_group_add_action_with_accel(cValueInstance, cValue0, cValue1)
 }
@@ -6917,11 +7034,15 @@ func Fn_gtk_action_group_set_sensitive(paramInstance unsafe.Pointer, param0 bool
 
 // UNSUPPORTED : gtk_action_group_set_translate_func : parameter 'func' is callback
 
-func Fn_gtk_action_group_set_translation_domain(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_action_group_set_translation_domain(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkActionGroup)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_action_group_set_translation_domain(cValueInstance, cValue0)
 }
@@ -7406,9 +7527,13 @@ func Fn_gtk_app_chooser_widget_set_show_recommended(paramInstance unsafe.Pointer
 	C.gtk_app_chooser_widget_set_show_recommended(cValueInstance, cValue0)
 }
 
-func Fn_gtk_application_new(param0 string, param1 int) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_application_new(param0 *string, param1 int) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (C.GApplicationFlags)(param1)
 
@@ -7467,15 +7592,19 @@ func Fn_gtk_application_get_windows(paramInstance unsafe.Pointer) unsafe.Pointer
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_application_inhibit(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 string) uint {
+func Fn_gtk_application_inhibit(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 *string) uint {
 	cValueInstance := (*C.GtkApplication)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GtkWindow)(unsafe.Pointer(param0))
 
 	cValue1 := (C.GtkApplicationInhibitFlags)(param1)
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
 	ret := C.gtk_application_inhibit(cValueInstance, cValue0, cValue1, cValue2)
 
@@ -7583,9 +7712,13 @@ func Fn_gtk_arrow_set(paramInstance unsafe.Pointer, param0 int, param1 int) {
 	C.gtk_arrow_set(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_aspect_frame_new(param0 string, param1 float32, param2 float32, param3 float32, param4 bool) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_aspect_frame_new(param0 *string, param1 float32, param2 float32, param3 float32, param4 bool) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (C.gfloat)(param1)
 
@@ -8083,11 +8216,15 @@ func Fn_gtk_builder_get_type_from_name(paramInstance unsafe.Pointer, param0 stri
 
 // UNSUPPORTED : gtk_builder_lookup_callback_symbol : has callback return
 
-func Fn_gtk_builder_set_translation_domain(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_builder_set_translation_domain(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkBuilder)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_builder_set_translation_domain(cValueInstance, cValue0)
 }
@@ -10080,9 +10217,13 @@ func Fn_gtk_color_button_set_use_alpha(paramInstance unsafe.Pointer, param0 bool
 	C.gtk_color_button_set_use_alpha(cValueInstance, cValue0)
 }
 
-func Fn_gtk_color_chooser_dialog_new(param0 string, param1 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_color_chooser_dialog_new(param0 *string, param1 unsafe.Pointer) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.GtkWindow)(unsafe.Pointer(param1))
 
@@ -10493,11 +10634,15 @@ func Fn_gtk_combo_box_set_active(paramInstance unsafe.Pointer, param0 int) {
 	C.gtk_combo_box_set_active(cValueInstance, cValue0)
 }
 
-func Fn_gtk_combo_box_set_active_id(paramInstance unsafe.Pointer, param0 string) bool {
+func Fn_gtk_combo_box_set_active_id(paramInstance unsafe.Pointer, param0 *string) bool {
 	cValueInstance := (*C.GtkComboBox)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_combo_box_set_active_id(cValueInstance, cValue0)
 
@@ -10615,11 +10760,15 @@ func Fn_gtk_combo_box_text_new_with_entry() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_combo_box_text_append(paramInstance unsafe.Pointer, param0 string, param1 string) {
+func Fn_gtk_combo_box_text_append(paramInstance unsafe.Pointer, param0 *string, param1 string) {
 	cValueInstance := (*C.GtkComboBoxText)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.gchar)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
@@ -10644,13 +10793,17 @@ func Fn_gtk_combo_box_text_get_active_text(paramInstance unsafe.Pointer) string 
 	return C.GoString(ret)
 }
 
-func Fn_gtk_combo_box_text_insert(paramInstance unsafe.Pointer, param0 int, param1 string, param2 string) {
+func Fn_gtk_combo_box_text_insert(paramInstance unsafe.Pointer, param0 int, param1 *string, param2 string) {
 	cValueInstance := (*C.GtkComboBoxText)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (C.gint)(param0)
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	cValue2 := (*C.gchar)(C.CString(param2))
 	defer C.free(unsafe.Pointer(cValue2))
@@ -10669,11 +10822,15 @@ func Fn_gtk_combo_box_text_insert_text(paramInstance unsafe.Pointer, param0 int,
 	C.gtk_combo_box_text_insert_text(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_combo_box_text_prepend(paramInstance unsafe.Pointer, param0 string, param1 string) {
+func Fn_gtk_combo_box_text_prepend(paramInstance unsafe.Pointer, param0 *string, param1 string) {
 	cValueInstance := (*C.GtkComboBoxText)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.gchar)(C.CString(param1))
 	defer C.free(unsafe.Pointer(cValue1))
@@ -10838,15 +10995,7 @@ func Fn_gtk_container_get_children(paramInstance unsafe.Pointer) unsafe.Pointer 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_container_get_focus_chain(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) bool {
-	cValueInstance := (*C.GtkContainer)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GList)(unsafe.Pointer(param0))
-
-	ret := C.gtk_container_get_focus_chain(cValueInstance, cValue0)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_container_get_focus_chain : parameter 'focusable_widgets' is non array with indirect count > 1
 
 func Fn_gtk_container_get_focus_child(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkContainer)(unsafe.Pointer(paramInstance))
@@ -11065,12 +11214,16 @@ func Fn_gtk_css_provider_get_default() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_css_provider_get_named(param0 string, param1 string) unsafe.Pointer {
+func Fn_gtk_css_provider_get_named(param0 string, param1 *string) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	ret := C.gtk_css_provider_get_named(cValue0, cValue1)
 
@@ -11083,16 +11236,24 @@ func Fn_gtk_dialog_new() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_dialog_new_with_buttons(param0 string, param1 unsafe.Pointer, param2 int, param3 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_dialog_new_with_buttons(param0 *string, param1 unsafe.Pointer, param2 int, param3 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.GtkWindow)(unsafe.Pointer(param1))
 
 	cValue2 := (C.GtkDialogFlags)(param2)
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	ret := C.c_gtk_dialog_new_with_buttons(cValue0, cValue1, cValue2, cValue3)
 
@@ -11633,13 +11794,17 @@ func Fn_gtk_entry_set_icon_from_gicon(paramInstance unsafe.Pointer, param0 int, 
 	C.gtk_entry_set_icon_from_gicon(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_entry_set_icon_from_icon_name(paramInstance unsafe.Pointer, param0 int, param1 string) {
+func Fn_gtk_entry_set_icon_from_icon_name(paramInstance unsafe.Pointer, param0 int, param1 *string) {
 	cValueInstance := (*C.GtkEntry)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (C.GtkEntryIconPosition)(param0)
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	C.gtk_entry_set_icon_from_icon_name(cValueInstance, cValue0, cValue1)
 }
@@ -11654,13 +11819,17 @@ func Fn_gtk_entry_set_icon_from_pixbuf(paramInstance unsafe.Pointer, param0 int,
 	C.gtk_entry_set_icon_from_pixbuf(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_entry_set_icon_from_stock(paramInstance unsafe.Pointer, param0 int, param1 string) {
+func Fn_gtk_entry_set_icon_from_stock(paramInstance unsafe.Pointer, param0 int, param1 *string) {
 	cValueInstance := (*C.GtkEntry)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (C.GtkEntryIconPosition)(param0)
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	C.gtk_entry_set_icon_from_stock(cValueInstance, cValue0, cValue1)
 }
@@ -11675,24 +11844,32 @@ func Fn_gtk_entry_set_icon_sensitive(paramInstance unsafe.Pointer, param0 int, p
 	C.gtk_entry_set_icon_sensitive(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_entry_set_icon_tooltip_markup(paramInstance unsafe.Pointer, param0 int, param1 string) {
+func Fn_gtk_entry_set_icon_tooltip_markup(paramInstance unsafe.Pointer, param0 int, param1 *string) {
 	cValueInstance := (*C.GtkEntry)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (C.GtkEntryIconPosition)(param0)
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	C.gtk_entry_set_icon_tooltip_markup(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_entry_set_icon_tooltip_text(paramInstance unsafe.Pointer, param0 int, param1 string) {
+func Fn_gtk_entry_set_icon_tooltip_text(paramInstance unsafe.Pointer, param0 int, param1 *string) {
 	cValueInstance := (*C.GtkEntry)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (C.GtkEntryIconPosition)(param0)
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	C.gtk_entry_set_icon_tooltip_text(cValueInstance, cValue0, cValue1)
 }
@@ -11729,11 +11906,15 @@ func Fn_gtk_entry_set_overwrite_mode(paramInstance unsafe.Pointer, param0 bool) 
 	C.gtk_entry_set_overwrite_mode(cValueInstance, cValue0)
 }
 
-func Fn_gtk_entry_set_placeholder_text(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_entry_set_placeholder_text(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkEntry)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_entry_set_placeholder_text(cValueInstance, cValue0)
 }
@@ -11795,9 +11976,13 @@ func Fn_gtk_entry_unset_invisible_char(paramInstance unsafe.Pointer) {
 	C.gtk_entry_unset_invisible_char(cValueInstance)
 }
 
-func Fn_gtk_entry_buffer_new(param0 string, param1 int) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_entry_buffer_new(param0 *string, param1 int) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (C.gint)(param1)
 
@@ -12166,18 +12351,26 @@ func Fn_gtk_event_box_set_visible_window(paramInstance unsafe.Pointer, param0 bo
 
 // UNSUPPORTED : gtk_event_controller_key_set_im_context : blacklisted
 
-func Fn_gtk_expander_new(param0 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_expander_new(param0 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_expander_new(cValue0)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_expander_new_with_mnemonic(param0 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_expander_new_with_mnemonic(param0 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_expander_new_with_mnemonic(cValue0)
 
@@ -12256,11 +12449,15 @@ func Fn_gtk_expander_set_expanded(paramInstance unsafe.Pointer, param0 bool) {
 	C.gtk_expander_set_expanded(cValueInstance, cValue0)
 }
 
-func Fn_gtk_expander_set_label(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_expander_set_label(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkExpander)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_expander_set_label(cValueInstance, cValue0)
 }
@@ -12381,16 +12578,24 @@ func Fn_gtk_file_chooser_button_set_width_chars(paramInstance unsafe.Pointer, pa
 	C.gtk_file_chooser_button_set_width_chars(cValueInstance, cValue0)
 }
 
-func Fn_gtk_file_chooser_dialog_new(param0 string, param1 unsafe.Pointer, param2 int, param3 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_file_chooser_dialog_new(param0 *string, param1 unsafe.Pointer, param2 int, param3 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.GtkWindow)(unsafe.Pointer(param1))
 
 	cValue2 := (C.GtkFileChooserAction)(param2)
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	ret := C.c_gtk_file_chooser_dialog_new(cValue0, cValue1, cValue2, cValue3)
 
@@ -12463,11 +12668,15 @@ func Fn_gtk_file_filter_get_needed(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-func Fn_gtk_file_filter_set_name(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_file_filter_set_name(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkFileFilter)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_file_filter_set_name(cValueInstance, cValue0)
 }
@@ -12625,9 +12834,13 @@ func Fn_gtk_font_button_set_use_size(paramInstance unsafe.Pointer, param0 bool) 
 	C.gtk_font_button_set_use_size(cValueInstance, cValue0)
 }
 
-func Fn_gtk_font_chooser_dialog_new(param0 string, param1 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_font_chooser_dialog_new(param0 *string, param1 unsafe.Pointer) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.GtkWindow)(unsafe.Pointer(param1))
 
@@ -12817,9 +13030,13 @@ func Fn_gtk_font_selection_dialog_set_preview_text(paramInstance unsafe.Pointer,
 	C.gtk_font_selection_dialog_set_preview_text(cValueInstance, cValue0)
 }
 
-func Fn_gtk_frame_new(param0 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_frame_new(param0 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_frame_new(cValue0)
 
@@ -12860,11 +13077,15 @@ func Fn_gtk_frame_get_shadow_type(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-func Fn_gtk_frame_set_label(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_frame_set_label(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkFrame)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_frame_set_label(cValueInstance, cValue0)
 }
@@ -13273,37 +13494,9 @@ func Fn_gtk_im_context_focus_out(paramInstance unsafe.Pointer) {
 	C.gtk_im_context_focus_out(cValueInstance)
 }
 
-func Fn_gtk_im_context_get_preedit_string(paramInstance unsafe.Pointer, param0 *string, param1 *unsafe.Pointer, param2 *int) {
-	cValueInstance := (*C.GtkIMContext)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : gtk_im_context_get_preedit_string : parameter 'str' is non array with indirect count > 1
 
-	var cValue0String *C.gchar
-	cValue0 := &cValue0String
-
-	cValue1 := (**C.PangoAttrList)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
-
-	C.gtk_im_context_get_preedit_string(cValueInstance, cValue0, cValue1, cValue2)
-
-	param0String := C.GoString(cValue0String)
-	*param0 = param0String
-}
-
-func Fn_gtk_im_context_get_surrounding(paramInstance unsafe.Pointer, param0 *string, param1 *int) bool {
-	cValueInstance := (*C.GtkIMContext)(unsafe.Pointer(paramInstance))
-
-	var cValue0String *C.gchar
-	cValue0 := &cValue0String
-
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	ret := C.gtk_im_context_get_surrounding(cValueInstance, cValue0, cValue1)
-
-	param0String := C.GoString(cValue0String)
-	*param0 = param0String
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_im_context_get_surrounding : parameter 'text' is non array with indirect count > 1
 
 func Fn_gtk_im_context_reset(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GtkIMContext)(unsafe.Pointer(paramInstance))
@@ -13674,11 +13867,15 @@ func Fn_gtk_icon_theme_list_contexts(paramInstance unsafe.Pointer) unsafe.Pointe
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_icon_theme_list_icons(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+func Fn_gtk_icon_theme_list_icons(paramInstance unsafe.Pointer, param0 *string) unsafe.Pointer {
 	cValueInstance := (*C.GtkIconTheme)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_icon_theme_list_icons(cValueInstance, cValue0)
 
@@ -13748,11 +13945,15 @@ func Fn_gtk_icon_theme_rescan_if_needed(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-func Fn_gtk_icon_theme_set_custom_theme(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_icon_theme_set_custom_theme(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkIconTheme)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_icon_theme_set_custom_theme(cValueInstance, cValue0)
 }
@@ -13896,59 +14097,13 @@ func Fn_gtk_icon_view_get_columns(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-func Fn_gtk_icon_view_get_cursor(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *unsafe.Pointer) bool {
-	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : gtk_icon_view_get_cursor : parameter 'path' is non array with indirect count > 1
 
-	cValue0 := (**C.GtkTreePath)(unsafe.Pointer(param0))
+// UNSUPPORTED : gtk_icon_view_get_dest_item_at_pos : parameter 'path' is non array with indirect count > 1
 
-	cValue1 := (**C.GtkCellRenderer)(unsafe.Pointer(param1))
+// UNSUPPORTED : gtk_icon_view_get_drag_dest_item : parameter 'path' is non array with indirect count > 1
 
-	ret := C.gtk_icon_view_get_cursor(cValueInstance, cValue0, cValue1)
-
-	return toGoBool(ret)
-}
-
-func Fn_gtk_icon_view_get_dest_item_at_pos(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *unsafe.Pointer, param3 *int) bool {
-	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.gint)(param0)
-
-	cValue1 := (C.gint)(param1)
-
-	cValue2 := (**C.GtkTreePath)(unsafe.Pointer(param2))
-
-	cValue3 := (*C.GtkIconViewDropPosition)(unsafe.Pointer(param3))
-
-	ret := C.gtk_icon_view_get_dest_item_at_pos(cValueInstance, cValue0, cValue1, cValue2, cValue3)
-
-	return toGoBool(ret)
-}
-
-func Fn_gtk_icon_view_get_drag_dest_item(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int) {
-	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GtkTreePath)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GtkIconViewDropPosition)(unsafe.Pointer(param1))
-
-	C.gtk_icon_view_get_drag_dest_item(cValueInstance, cValue0, cValue1)
-}
-
-func Fn_gtk_icon_view_get_item_at_pos(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *unsafe.Pointer, param3 *unsafe.Pointer) bool {
-	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.gint)(param0)
-
-	cValue1 := (C.gint)(param1)
-
-	cValue2 := (**C.GtkTreePath)(unsafe.Pointer(param2))
-
-	cValue3 := (**C.GtkCellRenderer)(unsafe.Pointer(param3))
-
-	ret := C.gtk_icon_view_get_item_at_pos(cValueInstance, cValue0, cValue1, cValue2, cValue3)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_icon_view_get_item_at_pos : parameter 'path' is non array with indirect count > 1
 
 func Fn_gtk_icon_view_get_item_column(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
 	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
@@ -14094,37 +14249,9 @@ func Fn_gtk_icon_view_get_tooltip_column(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-func Fn_gtk_icon_view_get_tooltip_context(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 bool, param3 *unsafe.Pointer, param4 *unsafe.Pointer, param5 unsafe.Pointer) bool {
-	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : gtk_icon_view_get_tooltip_context : parameter 'model' is non array with indirect count > 1
 
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	cValue2 := toCBool(param2)
-
-	cValue3 := (**C.GtkTreeModel)(unsafe.Pointer(param3))
-
-	cValue4 := (**C.GtkTreePath)(unsafe.Pointer(param4))
-
-	cValue5 := (*C.GtkTreeIter)(unsafe.Pointer(param5))
-
-	ret := C.gtk_icon_view_get_tooltip_context(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
-
-	return toGoBool(ret)
-}
-
-func Fn_gtk_icon_view_get_visible_range(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *unsafe.Pointer) bool {
-	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GtkTreePath)(unsafe.Pointer(param0))
-
-	cValue1 := (**C.GtkTreePath)(unsafe.Pointer(param1))
-
-	ret := C.gtk_icon_view_get_visible_range(cValueInstance, cValue0, cValue1)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_icon_view_get_visible_range : parameter 'start_path' is non array with indirect count > 1
 
 func Fn_gtk_icon_view_item_activated(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GtkIconView)(unsafe.Pointer(paramInstance))
@@ -14397,9 +14524,13 @@ func Fn_gtk_image_new_from_gicon(param0 unsafe.Pointer, param1 int) unsafe.Point
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_image_new_from_icon_name(param0 string, param1 int) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_image_new_from_icon_name(param0 *string, param1 int) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (C.GtkIconSize)(param1)
 
@@ -14460,39 +14591,11 @@ func Fn_gtk_image_get_animation(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_image_get_gicon(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int) {
-	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : gtk_image_get_gicon : parameter 'gicon' is non array with indirect count > 1
 
-	cValue0 := (**C.GIcon)(unsafe.Pointer(param0))
+// UNSUPPORTED : gtk_image_get_icon_name : parameter 'icon_name' is non array with indirect count > 1
 
-	cValue1 := (*C.GtkIconSize)(unsafe.Pointer(param1))
-
-	C.gtk_image_get_gicon(cValueInstance, cValue0, cValue1)
-}
-
-func Fn_gtk_image_get_icon_name(paramInstance unsafe.Pointer, param0 *string, param1 *int) {
-	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
-
-	var cValue0String *C.gchar
-	cValue0 := &cValue0String
-
-	cValue1 := (*C.GtkIconSize)(unsafe.Pointer(param1))
-
-	C.gtk_image_get_icon_name(cValueInstance, cValue0, cValue1)
-
-	param0String := C.GoString(cValue0String)
-	*param0 = param0String
-}
-
-func Fn_gtk_image_get_icon_set(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int) {
-	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GtkIconSet)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GtkIconSize)(unsafe.Pointer(param1))
-
-	C.gtk_image_get_icon_set(cValueInstance, cValue0, cValue1)
-}
+// UNSUPPORTED : gtk_image_get_icon_set : parameter 'icon_set' is non array with indirect count > 1
 
 func Fn_gtk_image_get_pixbuf(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
@@ -14510,19 +14613,7 @@ func Fn_gtk_image_get_pixel_size(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-func Fn_gtk_image_get_stock(paramInstance unsafe.Pointer, param0 *string, param1 *int) {
-	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
-
-	var cValue0String *C.gchar
-	cValue0 := &cValue0String
-
-	cValue1 := (*C.GtkIconSize)(unsafe.Pointer(param1))
-
-	C.gtk_image_get_stock(cValueInstance, cValue0, cValue1)
-
-	param0String := C.GoString(cValue0String)
-	*param0 = param0String
-}
+// UNSUPPORTED : gtk_image_get_stock : parameter 'stock_id' is non array with indirect count > 1
 
 func Fn_gtk_image_get_storage_type(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
@@ -14540,11 +14631,15 @@ func Fn_gtk_image_set_from_animation(paramInstance unsafe.Pointer, param0 unsafe
 	C.gtk_image_set_from_animation(cValueInstance, cValue0)
 }
 
-func Fn_gtk_image_set_from_file(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_image_set_from_file(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_image_set_from_file(cValueInstance, cValue0)
 }
@@ -14559,11 +14654,15 @@ func Fn_gtk_image_set_from_gicon(paramInstance unsafe.Pointer, param0 unsafe.Poi
 	C.gtk_image_set_from_gicon(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_image_set_from_icon_name(paramInstance unsafe.Pointer, param0 string, param1 int) {
+func Fn_gtk_image_set_from_icon_name(paramInstance unsafe.Pointer, param0 *string, param1 int) {
 	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (C.GtkIconSize)(param1)
 
@@ -14588,11 +14687,15 @@ func Fn_gtk_image_set_from_pixbuf(paramInstance unsafe.Pointer, param0 unsafe.Po
 	C.gtk_image_set_from_pixbuf(cValueInstance, cValue0)
 }
 
-func Fn_gtk_image_set_from_resource(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_image_set_from_resource(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkImage)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_image_set_from_resource(cValueInstance, cValue0)
 }
@@ -14713,9 +14816,13 @@ func Fn_gtk_info_bar_new() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_info_bar_new_with_buttons(param0 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_info_bar_new_with_buttons(param0 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.c_gtk_info_bar_new_with_buttons(cValue0)
 
@@ -14842,18 +14949,26 @@ func Fn_gtk_invisible_set_screen(paramInstance unsafe.Pointer, param0 unsafe.Poi
 	C.gtk_invisible_set_screen(cValueInstance, cValue0)
 }
 
-func Fn_gtk_label_new(param0 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_label_new(param0 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_label_new(cValue0)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_label_new_with_mnemonic(param0 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_label_new_with_mnemonic(param0 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_label_new_with_mnemonic(cValue0)
 
@@ -15313,12 +15428,16 @@ func Fn_gtk_link_button_new(param0 string) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_link_button_new_with_label(param0 string, param1 string) unsafe.Pointer {
+func Fn_gtk_link_button_new_with_label(param0 string, param1 *string) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	ret := C.gtk_link_button_new_with_label(cValue0, cValue1)
 
@@ -15712,11 +15831,15 @@ func Fn_gtk_menu_set_accel_group(paramInstance unsafe.Pointer, param0 unsafe.Poi
 	C.gtk_menu_set_accel_group(cValueInstance, cValue0)
 }
 
-func Fn_gtk_menu_set_accel_path(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_menu_set_accel_path(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkMenu)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_menu_set_accel_path(cValueInstance, cValue0)
 }
@@ -15761,11 +15884,15 @@ func Fn_gtk_menu_set_tearoff_state(paramInstance unsafe.Pointer, param0 bool) {
 	C.gtk_menu_set_tearoff_state(cValueInstance, cValue0)
 }
 
-func Fn_gtk_menu_set_title(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_menu_set_title(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkMenu)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_menu_set_title(cValueInstance, cValue0)
 }
@@ -15914,11 +16041,15 @@ func Fn_gtk_menu_item_select(paramInstance unsafe.Pointer) {
 	C.gtk_menu_item_select(cValueInstance)
 }
 
-func Fn_gtk_menu_item_set_accel_path(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_menu_item_set_accel_path(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkMenuItem)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_menu_item_set_accel_path(cValueInstance, cValue0)
 }
@@ -16082,11 +16213,15 @@ func Fn_gtk_menu_shell_set_take_focus(paramInstance unsafe.Pointer, param0 bool)
 	C.gtk_menu_shell_set_take_focus(cValueInstance, cValue0)
 }
 
-func Fn_gtk_menu_tool_button_new(param0 unsafe.Pointer, param1 string) unsafe.Pointer {
+func Fn_gtk_menu_tool_button_new(param0 unsafe.Pointer, param1 *string) unsafe.Pointer {
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	ret := C.gtk_menu_tool_button_new(cValue0, cValue1)
 
@@ -16136,7 +16271,7 @@ func Fn_gtk_menu_tool_button_set_menu(paramInstance unsafe.Pointer, param0 unsaf
 	C.gtk_menu_tool_button_set_menu(cValueInstance, cValue0)
 }
 
-func Fn_gtk_message_dialog_new(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 string) unsafe.Pointer {
+func Fn_gtk_message_dialog_new(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 *string) unsafe.Pointer {
 	cValue0 := (*C.GtkWindow)(unsafe.Pointer(param0))
 
 	cValue1 := (C.GtkDialogFlags)(param1)
@@ -16145,15 +16280,19 @@ func Fn_gtk_message_dialog_new(param0 unsafe.Pointer, param1 int, param2 int, pa
 
 	cValue3 := (C.GtkButtonsType)(param3)
 
-	cValue4 := (*C.gchar)(C.CString(param4))
-	defer C.free(unsafe.Pointer(cValue4))
+	var cValue4Value (*C.gchar)
+	if param4 != nil {
+		cValue4Value = (*C.gchar)(C.CString(*param4))
+		defer C.free(unsafe.Pointer(cValue4Value))
+	}
+	cValue4 := cValue4Value
 
 	ret := C.c_gtk_message_dialog_new(cValue0, cValue1, cValue2, cValue3, cValue4)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_message_dialog_new_with_markup(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 string) unsafe.Pointer {
+func Fn_gtk_message_dialog_new_with_markup(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 *string) unsafe.Pointer {
 	cValue0 := (*C.GtkWindow)(unsafe.Pointer(param0))
 
 	cValue1 := (C.GtkDialogFlags)(param1)
@@ -16162,8 +16301,12 @@ func Fn_gtk_message_dialog_new_with_markup(param0 unsafe.Pointer, param1 int, pa
 
 	cValue3 := (C.GtkButtonsType)(param3)
 
-	cValue4 := (*C.gchar)(C.CString(param4))
-	defer C.free(unsafe.Pointer(cValue4))
+	var cValue4Value (*C.gchar)
+	if param4 != nil {
+		cValue4Value = (*C.gchar)(C.CString(*param4))
+		defer C.free(unsafe.Pointer(cValue4Value))
+	}
+	cValue4 := cValue4Value
 
 	ret := C.c_gtk_message_dialog_new_with_markup(cValue0, cValue1, cValue2, cValue3, cValue4)
 
@@ -16179,11 +16322,15 @@ func Fn_gtk_message_dialog_format_secondary_markup(paramInstance unsafe.Pointer,
 	C.c_gtk_message_dialog_format_secondary_markup(cValueInstance, cValue0)
 }
 
-func Fn_gtk_message_dialog_format_secondary_text(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_message_dialog_format_secondary_text(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkMessageDialog)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.c_gtk_message_dialog_format_secondary_text(cValueInstance, cValue0)
 }
@@ -16619,11 +16766,15 @@ func Fn_gtk_notebook_set_current_page(paramInstance unsafe.Pointer, param0 int) 
 	C.gtk_notebook_set_current_page(cValueInstance, cValue0)
 }
 
-func Fn_gtk_notebook_set_group_name(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_notebook_set_group_name(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkNotebook)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_notebook_set_group_name(cValueInstance, cValue0)
 }
@@ -16786,11 +16937,15 @@ func Fn_gtk_numerable_icon_set_background_gicon(paramInstance unsafe.Pointer, pa
 	C.gtk_numerable_icon_set_background_gicon(cValueInstance, cValue0)
 }
 
-func Fn_gtk_numerable_icon_set_background_icon_name(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_numerable_icon_set_background_icon_name(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkNumerableIcon)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_numerable_icon_set_background_icon_name(cValueInstance, cValue0)
 }
@@ -16803,11 +16958,15 @@ func Fn_gtk_numerable_icon_set_count(paramInstance unsafe.Pointer, param0 int) {
 	C.gtk_numerable_icon_set_count(cValueInstance, cValue0)
 }
 
-func Fn_gtk_numerable_icon_set_label(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_numerable_icon_set_label(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkNumerableIcon)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_numerable_icon_set_label(cValueInstance, cValue0)
 }
@@ -16891,11 +17050,15 @@ func Fn_gtk_page_setup_new_from_file(param0 string, error unsafe.Pointer) unsafe
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_page_setup_new_from_key_file(param0 unsafe.Pointer, param1 string, error unsafe.Pointer) unsafe.Pointer {
+func Fn_gtk_page_setup_new_from_key_file(param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GKeyFile)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	cError := (**C.GError)(error)
 
@@ -17021,13 +17184,17 @@ func Fn_gtk_page_setup_load_file(paramInstance unsafe.Pointer, param0 string, er
 	return toGoBool(ret)
 }
 
-func Fn_gtk_page_setup_load_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, error unsafe.Pointer) bool {
+func Fn_gtk_page_setup_load_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkPageSetup)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GKeyFile)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	cError := (**C.GError)(error)
 
@@ -17113,13 +17280,17 @@ func Fn_gtk_page_setup_to_file(paramInstance unsafe.Pointer, param0 string, erro
 	return toGoBool(ret)
 }
 
-func Fn_gtk_page_setup_to_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string) {
+func Fn_gtk_page_setup_to_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string) {
 	cValueInstance := (*C.GtkPageSetup)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GKeyFile)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	C.gtk_page_setup_to_key_file(cValueInstance, cValue0, cValue1)
 }
@@ -17526,11 +17697,15 @@ func Fn_gtk_print_operation_set_current_page(paramInstance unsafe.Pointer, param
 	C.gtk_print_operation_set_current_page(cValueInstance, cValue0)
 }
 
-func Fn_gtk_print_operation_set_custom_tab_label(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_print_operation_set_custom_tab_label(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkPrintOperation)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_print_operation_set_custom_tab_label(cValueInstance, cValue0)
 }
@@ -17656,11 +17831,15 @@ func Fn_gtk_print_settings_new_from_file(param0 string, error unsafe.Pointer) un
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_print_settings_new_from_key_file(param0 unsafe.Pointer, param1 string, error unsafe.Pointer) unsafe.Pointer {
+func Fn_gtk_print_settings_new_from_key_file(param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GKeyFile)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	cError := (**C.GError)(error)
 
@@ -18005,13 +18184,17 @@ func Fn_gtk_print_settings_load_file(paramInstance unsafe.Pointer, param0 string
 	return toGoBool(ret)
 }
 
-func Fn_gtk_print_settings_load_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string, error unsafe.Pointer) bool {
+func Fn_gtk_print_settings_load_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkPrintSettings)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GKeyFile)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	cError := (**C.GError)(error)
 
@@ -18020,14 +18203,18 @@ func Fn_gtk_print_settings_load_key_file(paramInstance unsafe.Pointer, param0 un
 	return toGoBool(ret)
 }
 
-func Fn_gtk_print_settings_set(paramInstance unsafe.Pointer, param0 string, param1 string) {
+func Fn_gtk_print_settings_set(paramInstance unsafe.Pointer, param0 string, param1 *string) {
 	cValueInstance := (*C.GtkPrintSettings)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	C.gtk_print_settings_set(cValueInstance, cValue0, cValue1)
 }
@@ -18305,13 +18492,17 @@ func Fn_gtk_print_settings_to_file(paramInstance unsafe.Pointer, param0 string, 
 	return toGoBool(ret)
 }
 
-func Fn_gtk_print_settings_to_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 string) {
+func Fn_gtk_print_settings_to_key_file(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *string) {
 	cValueInstance := (*C.GtkPrintSettings)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GKeyFile)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	C.gtk_print_settings_to_key_file(cValueInstance, cValue0, cValue1)
 }
@@ -18425,27 +18616,43 @@ func Fn_gtk_progress_bar_set_show_text(paramInstance unsafe.Pointer, param0 bool
 	C.gtk_progress_bar_set_show_text(cValueInstance, cValue0)
 }
 
-func Fn_gtk_progress_bar_set_text(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_progress_bar_set_text(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkProgressBar)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_progress_bar_set_text(cValueInstance, cValue0)
 }
 
-func Fn_gtk_radio_action_new(param0 string, param1 string, param2 string, param3 string, param4 int) unsafe.Pointer {
+func Fn_gtk_radio_action_new(param0 string, param1 *string, param2 *string, param3 *string, param4 int) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	cValue4 := (C.gint)(param4)
 
@@ -18605,11 +18812,15 @@ func Fn_gtk_radio_menu_item_new_with_label(param0 unsafe.Pointer, param1 string)
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_radio_menu_item_new_with_label_from_widget(param0 unsafe.Pointer, param1 string) unsafe.Pointer {
+func Fn_gtk_radio_menu_item_new_with_label_from_widget(param0 unsafe.Pointer, param1 *string) unsafe.Pointer {
 	cValue0 := (*C.GtkRadioMenuItem)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	ret := C.gtk_radio_menu_item_new_with_label_from_widget(cValue0, cValue1)
 
@@ -18627,11 +18838,15 @@ func Fn_gtk_radio_menu_item_new_with_mnemonic(param0 unsafe.Pointer, param1 stri
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_radio_menu_item_new_with_mnemonic_from_widget(param0 unsafe.Pointer, param1 string) unsafe.Pointer {
+func Fn_gtk_radio_menu_item_new_with_mnemonic_from_widget(param0 unsafe.Pointer, param1 *string) unsafe.Pointer {
 	cValue0 := (*C.GtkRadioMenuItem)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	ret := C.gtk_radio_menu_item_new_with_mnemonic_from_widget(cValue0, cValue1)
 
@@ -18952,36 +19167,60 @@ func Fn_gtk_rc_style_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_recent_action_new(param0 string, param1 string, param2 string, param3 string) unsafe.Pointer {
+func Fn_gtk_recent_action_new(param0 string, param1 *string, param2 *string, param3 *string) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	ret := C.gtk_recent_action_new(cValue0, cValue1, cValue2, cValue3)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_recent_action_new_for_manager(param0 string, param1 string, param2 string, param3 string, param4 unsafe.Pointer) unsafe.Pointer {
+func Fn_gtk_recent_action_new_for_manager(param0 string, param1 *string, param2 *string, param3 *string, param4 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	cValue4 := (*C.GtkRecentManager)(unsafe.Pointer(param4))
 
@@ -19006,30 +19245,46 @@ func Fn_gtk_recent_action_set_show_numbers(paramInstance unsafe.Pointer, param0 
 	C.gtk_recent_action_set_show_numbers(cValueInstance, cValue0)
 }
 
-func Fn_gtk_recent_chooser_dialog_new(param0 string, param1 unsafe.Pointer, param2 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_recent_chooser_dialog_new(param0 *string, param1 unsafe.Pointer, param2 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.GtkWindow)(unsafe.Pointer(param1))
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
 	ret := C.c_gtk_recent_chooser_dialog_new(cValue0, cValue1, cValue2)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_recent_chooser_dialog_new_for_manager(param0 string, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_recent_chooser_dialog_new_for_manager(param0 *string, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.GtkWindow)(unsafe.Pointer(param1))
 
 	cValue2 := (*C.GtkRecentManager)(unsafe.Pointer(param2))
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	ret := C.c_gtk_recent_chooser_dialog_new_for_manager(cValue0, cValue1, cValue2, cValue3)
 
@@ -19235,14 +19490,18 @@ func Fn_gtk_recent_manager_lookup_item(paramInstance unsafe.Pointer, param0 stri
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_recent_manager_move_item(paramInstance unsafe.Pointer, param0 string, param1 string, error unsafe.Pointer) bool {
+func Fn_gtk_recent_manager_move_item(paramInstance unsafe.Pointer, param0 string, param1 *string, error unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkRecentManager)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	cError := (**C.GError)(error)
 
@@ -19312,15 +19571,19 @@ func Fn_gtk_scale_new_with_range(param0 int, param1 float64, param2 float64, par
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_scale_add_mark(paramInstance unsafe.Pointer, param0 float64, param1 int, param2 string) {
+func Fn_gtk_scale_add_mark(paramInstance unsafe.Pointer, param0 float64, param1 int, param2 *string) {
 	cValueInstance := (*C.GtkScale)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (C.gdouble)(param0)
 
 	cValue1 := (C.GtkPositionType)(param1)
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
 	C.gtk_scale_add_mark(cValueInstance, cValue0, cValue1, cValue2)
 }
@@ -20156,19 +20419,7 @@ func Fn_gtk_status_icon_new_from_stock(param0 string) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_status_icon_get_geometry(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 unsafe.Pointer, param2 *int) bool {
-	cValueInstance := (*C.GtkStatusIcon)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GdkScreen)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GdkRectangle)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.GtkOrientation)(unsafe.Pointer(param2))
-
-	ret := C.gtk_status_icon_get_geometry(cValueInstance, cValue0, cValue1, cValue2)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_status_icon_get_geometry : parameter 'screen' is non array with indirect count > 1
 
 func Fn_gtk_status_icon_get_gicon(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkStatusIcon)(unsafe.Pointer(paramInstance))
@@ -20359,11 +20610,15 @@ func Fn_gtk_status_icon_set_title(paramInstance unsafe.Pointer, param0 string) {
 	C.gtk_status_icon_set_title(cValueInstance, cValue0)
 }
 
-func Fn_gtk_status_icon_set_tooltip_markup(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_status_icon_set_tooltip_markup(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkStatusIcon)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_status_icon_set_tooltip_markup(cValueInstance, cValue0)
 }
@@ -20580,7 +20835,7 @@ func Fn_gtk_style_lookup_icon_set(paramInstance unsafe.Pointer, param0 string) u
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_style_render_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 unsafe.Pointer, param5 string) unsafe.Pointer {
+func Fn_gtk_style_render_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 unsafe.Pointer, param5 *string) unsafe.Pointer {
 	cValueInstance := (*C.GtkStyle)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GtkIconSource)(unsafe.Pointer(param0))
@@ -20593,8 +20848,12 @@ func Fn_gtk_style_render_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 
 	cValue4 := (*C.GtkWidget)(unsafe.Pointer(param4))
 
-	cValue5 := (*C.gchar)(C.CString(param5))
-	defer C.free(unsafe.Pointer(cValue5))
+	var cValue5Value (*C.gchar)
+	if param5 != nil {
+		cValue5Value = (*C.gchar)(C.CString(*param5))
+		defer C.free(unsafe.Pointer(cValue5Value))
+	}
+	cValue5 := cValue5Value
 
 	ret := C.gtk_style_render_icon(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 
@@ -21472,11 +21731,15 @@ func Fn_gtk_text_buffer_create_child_anchor(paramInstance unsafe.Pointer, param0
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_text_buffer_create_mark(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer, param2 bool) unsafe.Pointer {
+func Fn_gtk_text_buffer_create_mark(paramInstance unsafe.Pointer, param0 *string, param1 unsafe.Pointer, param2 bool) unsafe.Pointer {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.GtkTextIter)(unsafe.Pointer(param1))
 
@@ -21487,14 +21750,22 @@ func Fn_gtk_text_buffer_create_mark(paramInstance unsafe.Pointer, param0 string,
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_text_buffer_create_tag(paramInstance unsafe.Pointer, param0 string, param1 string) unsafe.Pointer {
+func Fn_gtk_text_buffer_create_tag(paramInstance unsafe.Pointer, param0 *string, param1 *string) unsafe.Pointer {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	ret := C.c_gtk_text_buffer_create_tag(cValueInstance, cValue0, cValue1)
 
@@ -22031,11 +22302,15 @@ func Fn_gtk_text_buffer_place_cursor(paramInstance unsafe.Pointer, param0 unsafe
 
 // UNSUPPORTED : gtk_text_buffer_register_deserialize_format : parameter 'function' is callback
 
-func Fn_gtk_text_buffer_register_deserialize_tagset(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+func Fn_gtk_text_buffer_register_deserialize_tagset(paramInstance unsafe.Pointer, param0 *string) unsafe.Pointer {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_text_buffer_register_deserialize_tagset(cValueInstance, cValue0)
 
@@ -22044,11 +22319,15 @@ func Fn_gtk_text_buffer_register_deserialize_tagset(paramInstance unsafe.Pointer
 
 // UNSUPPORTED : gtk_text_buffer_register_serialize_format : parameter 'function' is callback
 
-func Fn_gtk_text_buffer_register_serialize_tagset(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+func Fn_gtk_text_buffer_register_serialize_tagset(paramInstance unsafe.Pointer, param0 *string) unsafe.Pointer {
 	cValueInstance := (*C.GtkTextBuffer)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_text_buffer_register_serialize_tagset(cValueInstance, cValue0)
 
@@ -22188,9 +22467,13 @@ func Fn_gtk_text_child_anchor_get_widgets(paramInstance unsafe.Pointer) unsafe.P
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_text_mark_new(param0 string, param1 bool) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_text_mark_new(param0 *string, param1 bool) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := toCBool(param1)
 
@@ -22247,9 +22530,13 @@ func Fn_gtk_text_mark_set_visible(paramInstance unsafe.Pointer, param0 bool) {
 	C.gtk_text_mark_set_visible(cValueInstance, cValue0)
 }
 
-func Fn_gtk_text_tag_new(param0 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gtk_text_tag_new(param0 *string) unsafe.Pointer {
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_text_tag_new(cValue0)
 
@@ -23145,18 +23432,30 @@ func Fn_gtk_theming_engine_load(param0 string) unsafe.Pointer {
 
 // UNSUPPORTED : gtk_theming_engine_register_property : parameter 'parse_func' is callback
 
-func Fn_gtk_toggle_action_new(param0 string, param1 string, param2 string, param3 string) unsafe.Pointer {
+func Fn_gtk_toggle_action_new(param0 string, param1 *string, param2 *string, param3 *string) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
 	defer C.free(unsafe.Pointer(cValue0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	ret := C.gtk_toggle_action_new(cValue0, cValue1, cValue2, cValue3)
 
@@ -23310,11 +23609,15 @@ func Fn_gtk_toggle_tool_button_set_active(paramInstance unsafe.Pointer, param0 b
 	C.gtk_toggle_tool_button_set_active(cValueInstance, cValue0)
 }
 
-func Fn_gtk_tool_button_new(param0 unsafe.Pointer, param1 string) unsafe.Pointer {
+func Fn_gtk_tool_button_new(param0 unsafe.Pointer, param1 *string) unsafe.Pointer {
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	var cValue1Value (*C.gchar)
+	if param1 != nil {
+		cValue1Value = (*C.gchar)(C.CString(*param1))
+		defer C.free(unsafe.Pointer(cValue1Value))
+	}
+	cValue1 := cValue1Value
 
 	ret := C.gtk_tool_button_new(cValue0, cValue1)
 
@@ -23378,11 +23681,15 @@ func Fn_gtk_tool_button_get_use_underline(paramInstance unsafe.Pointer) bool {
 	return toGoBool(ret)
 }
 
-func Fn_gtk_tool_button_set_icon_name(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_tool_button_set_icon_name(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkToolButton)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_tool_button_set_icon_name(cValueInstance, cValue0)
 }
@@ -23395,11 +23702,15 @@ func Fn_gtk_tool_button_set_icon_widget(paramInstance unsafe.Pointer, param0 uns
 	C.gtk_tool_button_set_icon_widget(cValueInstance, cValue0)
 }
 
-func Fn_gtk_tool_button_set_label(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_tool_button_set_label(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkToolButton)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_tool_button_set_label(cValueInstance, cValue0)
 }
@@ -23412,11 +23723,15 @@ func Fn_gtk_tool_button_set_label_widget(paramInstance unsafe.Pointer, param0 un
 	C.gtk_tool_button_set_label_widget(cValueInstance, cValue0)
 }
 
-func Fn_gtk_tool_button_set_stock_id(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_tool_button_set_stock_id(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkToolButton)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_tool_button_set_stock_id(cValueInstance, cValue0)
 }
@@ -24159,42 +24474,58 @@ func Fn_gtk_tooltip_set_icon_from_gicon(paramInstance unsafe.Pointer, param0 uns
 	C.gtk_tooltip_set_icon_from_gicon(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_tooltip_set_icon_from_icon_name(paramInstance unsafe.Pointer, param0 string, param1 int) {
+func Fn_gtk_tooltip_set_icon_from_icon_name(paramInstance unsafe.Pointer, param0 *string, param1 int) {
 	cValueInstance := (*C.GtkTooltip)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (C.GtkIconSize)(param1)
 
 	C.gtk_tooltip_set_icon_from_icon_name(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_tooltip_set_icon_from_stock(paramInstance unsafe.Pointer, param0 string, param1 int) {
+func Fn_gtk_tooltip_set_icon_from_stock(paramInstance unsafe.Pointer, param0 *string, param1 int) {
 	cValueInstance := (*C.GtkTooltip)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (C.GtkIconSize)(param1)
 
 	C.gtk_tooltip_set_icon_from_stock(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_tooltip_set_markup(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_tooltip_set_markup(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkTooltip)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_tooltip_set_markup(cValueInstance, cValue0)
 }
 
-func Fn_gtk_tooltip_set_text(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_tooltip_set_text(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkTooltip)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_tooltip_set_text(cValueInstance, cValue0)
 }
@@ -24385,27 +24716,9 @@ func Fn_gtk_tree_selection_get_mode(paramInstance unsafe.Pointer) int {
 
 // UNSUPPORTED : gtk_tree_selection_get_select_function : has callback return
 
-func Fn_gtk_tree_selection_get_selected(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 unsafe.Pointer) bool {
-	cValueInstance := (*C.GtkTreeSelection)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : gtk_tree_selection_get_selected : parameter 'model' is non array with indirect count > 1
 
-	cValue0 := (**C.GtkTreeModel)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GtkTreeIter)(unsafe.Pointer(param1))
-
-	ret := C.gtk_tree_selection_get_selected(cValueInstance, cValue0, cValue1)
-
-	return toGoBool(ret)
-}
-
-func Fn_gtk_tree_selection_get_selected_rows(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GtkTreeSelection)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GtkTreeModel)(unsafe.Pointer(param0))
-
-	ret := C.gtk_tree_selection_get_selected_rows(cValueInstance, cValue0)
-
-	return unsafe.Pointer(ret)
-}
+// UNSUPPORTED : gtk_tree_selection_get_selected_rows : parameter 'model' is non array with indirect count > 1
 
 func Fn_gtk_tree_selection_get_tree_view(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkTreeSelection)(unsafe.Pointer(paramInstance))
@@ -24969,41 +25282,11 @@ func Fn_gtk_tree_view_get_columns(paramInstance unsafe.Pointer) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_tree_view_get_cursor(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *unsafe.Pointer) {
-	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : gtk_tree_view_get_cursor : parameter 'path' is non array with indirect count > 1
 
-	cValue0 := (**C.GtkTreePath)(unsafe.Pointer(param0))
+// UNSUPPORTED : gtk_tree_view_get_dest_row_at_pos : parameter 'path' is non array with indirect count > 1
 
-	cValue1 := (**C.GtkTreeViewColumn)(unsafe.Pointer(param1))
-
-	C.gtk_tree_view_get_cursor(cValueInstance, cValue0, cValue1)
-}
-
-func Fn_gtk_tree_view_get_dest_row_at_pos(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *unsafe.Pointer, param3 *int) bool {
-	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.gint)(param0)
-
-	cValue1 := (C.gint)(param1)
-
-	cValue2 := (**C.GtkTreePath)(unsafe.Pointer(param2))
-
-	cValue3 := (*C.GtkTreeViewDropPosition)(unsafe.Pointer(param3))
-
-	ret := C.gtk_tree_view_get_dest_row_at_pos(cValueInstance, cValue0, cValue1, cValue2, cValue3)
-
-	return toGoBool(ret)
-}
-
-func Fn_gtk_tree_view_get_drag_dest_row(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *int) {
-	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GtkTreePath)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GtkTreeViewDropPosition)(unsafe.Pointer(param1))
-
-	C.gtk_tree_view_get_drag_dest_row(cValueInstance, cValue0, cValue1)
-}
+// UNSUPPORTED : gtk_tree_view_get_drag_dest_row : parameter 'path' is non array with indirect count > 1
 
 func Fn_gtk_tree_view_get_enable_search(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
@@ -25109,25 +25392,7 @@ func Fn_gtk_tree_view_get_n_columns(paramInstance unsafe.Pointer) uint {
 	return (uint)(ret)
 }
 
-func Fn_gtk_tree_view_get_path_at_pos(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *unsafe.Pointer, param3 *unsafe.Pointer, param4 *int, param5 *int) bool {
-	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.gint)(param0)
-
-	cValue1 := (C.gint)(param1)
-
-	cValue2 := (**C.GtkTreePath)(unsafe.Pointer(param2))
-
-	cValue3 := (**C.GtkTreeViewColumn)(unsafe.Pointer(param3))
-
-	cValue4 := (*C.gint)(unsafe.Pointer(param4))
-
-	cValue5 := (*C.gint)(unsafe.Pointer(param5))
-
-	ret := C.gtk_tree_view_get_path_at_pos(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_tree_view_get_path_at_pos : parameter 'path' is non array with indirect count > 1
 
 func Fn_gtk_tree_view_get_reorderable(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
@@ -25199,25 +25464,7 @@ func Fn_gtk_tree_view_get_tooltip_column(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-func Fn_gtk_tree_view_get_tooltip_context(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 bool, param3 *unsafe.Pointer, param4 *unsafe.Pointer, param5 unsafe.Pointer) bool {
-	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	cValue2 := toCBool(param2)
-
-	cValue3 := (**C.GtkTreeModel)(unsafe.Pointer(param3))
-
-	cValue4 := (**C.GtkTreePath)(unsafe.Pointer(param4))
-
-	cValue5 := (*C.GtkTreeIter)(unsafe.Pointer(param5))
-
-	ret := C.gtk_tree_view_get_tooltip_context(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_tree_view_get_tooltip_context : parameter 'model' is non array with indirect count > 1
 
 func Fn_gtk_tree_view_get_vadjustment(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
@@ -25227,17 +25474,7 @@ func Fn_gtk_tree_view_get_vadjustment(paramInstance unsafe.Pointer) unsafe.Point
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_tree_view_get_visible_range(paramInstance unsafe.Pointer, param0 *unsafe.Pointer, param1 *unsafe.Pointer) bool {
-	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GtkTreePath)(unsafe.Pointer(param0))
-
-	cValue1 := (**C.GtkTreePath)(unsafe.Pointer(param1))
-
-	ret := C.gtk_tree_view_get_visible_range(cValueInstance, cValue0, cValue1)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_tree_view_get_visible_range : parameter 'start_path' is non array with indirect count > 1
 
 func Fn_gtk_tree_view_get_visible_rect(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
@@ -25276,25 +25513,7 @@ func Fn_gtk_tree_view_insert_column_with_attributes(paramInstance unsafe.Pointer
 
 // UNSUPPORTED : gtk_tree_view_insert_column_with_data_func : parameter 'func' is callback
 
-func Fn_gtk_tree_view_is_blank_at_pos(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *unsafe.Pointer, param3 *unsafe.Pointer, param4 *int, param5 *int) bool {
-	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.gint)(param0)
-
-	cValue1 := (C.gint)(param1)
-
-	cValue2 := (**C.GtkTreePath)(unsafe.Pointer(param2))
-
-	cValue3 := (**C.GtkTreeViewColumn)(unsafe.Pointer(param3))
-
-	cValue4 := (*C.gint)(unsafe.Pointer(param4))
-
-	cValue5 := (*C.gint)(unsafe.Pointer(param5))
-
-	ret := C.gtk_tree_view_is_blank_at_pos(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gtk_tree_view_is_blank_at_pos : parameter 'path' is non array with indirect count > 1
 
 func Fn_gtk_tree_view_is_rubber_banding_active(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkTreeView)(unsafe.Pointer(paramInstance))
@@ -26063,7 +26282,7 @@ func Fn_gtk_ui_manager_new() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_ui_manager_add_ui(paramInstance unsafe.Pointer, param0 uint, param1 string, param2 string, param3 string, param4 int, param5 bool) {
+func Fn_gtk_ui_manager_add_ui(paramInstance unsafe.Pointer, param0 uint, param1 string, param2 string, param3 *string, param4 int, param5 bool) {
 	cValueInstance := (*C.GtkUIManager)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (C.guint)(param0)
@@ -26074,8 +26293,12 @@ func Fn_gtk_ui_manager_add_ui(paramInstance unsafe.Pointer, param0 uint, param1 
 	cValue2 := (*C.gchar)(C.CString(param2))
 	defer C.free(unsafe.Pointer(cValue2))
 
-	cValue3 := (*C.gchar)(C.CString(param3))
-	defer C.free(unsafe.Pointer(cValue3))
+	var cValue3Value (*C.gchar)
+	if param3 != nil {
+		cValue3Value = (*C.gchar)(C.CString(*param3))
+		defer C.free(unsafe.Pointer(cValue3Value))
+	}
+	cValue3 := cValue3Value
 
 	cValue4 := (C.GtkUIManagerItemType)(param4)
 
@@ -26466,25 +26689,7 @@ func Fn_gtk_widget_child_notify(paramInstance unsafe.Pointer, param0 string) {
 	C.gtk_widget_child_notify(cValueInstance, cValue0)
 }
 
-func Fn_gtk_widget_class_path(paramInstance unsafe.Pointer, param0 *uint, param1 *string, param2 *string) {
-	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.guint)(unsafe.Pointer(param0))
-
-	var cValue1String *C.gchar
-	cValue1 := &cValue1String
-
-	var cValue2String *C.gchar
-	cValue2 := &cValue2String
-
-	C.gtk_widget_class_path(cValueInstance, cValue0, cValue1, cValue2)
-
-	param1String := C.GoString(cValue1String)
-	*param1 = param1String
-
-	param2String := C.GoString(cValue2String)
-	*param2 = param2String
-}
+// UNSUPPORTED : gtk_widget_class_path : parameter 'path' is non array with indirect count > 1
 
 func Fn_gtk_widget_compute_expand(paramInstance unsafe.Pointer, param0 int) bool {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
@@ -26504,11 +26709,15 @@ func Fn_gtk_widget_create_pango_context(paramInstance unsafe.Pointer) unsafe.Poi
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_widget_create_pango_layout(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
+func Fn_gtk_widget_create_pango_layout(paramInstance unsafe.Pointer, param0 *string) unsafe.Pointer {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	ret := C.gtk_widget_create_pango_layout(cValueInstance, cValue0)
 
@@ -26521,13 +26730,7 @@ func Fn_gtk_widget_destroy(paramInstance unsafe.Pointer) {
 	C.gtk_widget_destroy(cValueInstance)
 }
 
-func Fn_gtk_widget_destroyed(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
-	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.GtkWidget)(unsafe.Pointer(param0))
-
-	C.gtk_widget_destroyed(cValueInstance, cValue0)
-}
+// UNSUPPORTED : gtk_widget_destroyed : parameter 'widget_pointer' is non array with indirect count > 1
 
 func Fn_gtk_widget_device_is_shadowed(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
@@ -27705,25 +27908,7 @@ func Fn_gtk_widget_override_symbolic_color(paramInstance unsafe.Pointer, param0 
 	C.gtk_widget_override_symbolic_color(cValueInstance, cValue0, cValue1)
 }
 
-func Fn_gtk_widget_path(paramInstance unsafe.Pointer, param0 *uint, param1 *string, param2 *string) {
-	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.guint)(unsafe.Pointer(param0))
-
-	var cValue1String *C.gchar
-	cValue1 := &cValue1String
-
-	var cValue2String *C.gchar
-	cValue2 := &cValue2String
-
-	C.gtk_widget_path(cValueInstance, cValue0, cValue1, cValue2)
-
-	param1String := C.GoString(cValue1String)
-	*param1 = param1String
-
-	param2String := C.GoString(cValue2String)
-	*param2 = param2String
-}
+// UNSUPPORTED : gtk_widget_path : parameter 'path' is non array with indirect count > 1
 
 func Fn_gtk_widget_queue_compute_expand(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
@@ -27809,7 +27994,7 @@ func Fn_gtk_widget_remove_mnemonic_label(paramInstance unsafe.Pointer, param0 un
 	C.gtk_widget_remove_mnemonic_label(cValueInstance, cValue0)
 }
 
-func Fn_gtk_widget_render_icon(paramInstance unsafe.Pointer, param0 string, param1 int, param2 string) unsafe.Pointer {
+func Fn_gtk_widget_render_icon(paramInstance unsafe.Pointer, param0 string, param1 int, param2 *string) unsafe.Pointer {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -27817,8 +28002,12 @@ func Fn_gtk_widget_render_icon(paramInstance unsafe.Pointer, param0 string, para
 
 	cValue1 := (C.GtkIconSize)(param1)
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
 	ret := C.gtk_widget_render_icon(cValueInstance, cValue0, cValue1, cValue2)
 
@@ -27878,11 +28067,15 @@ func Fn_gtk_widget_send_focus_change(paramInstance unsafe.Pointer, param0 unsafe
 	return toGoBool(ret)
 }
 
-func Fn_gtk_widget_set_accel_path(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) {
+func Fn_gtk_widget_set_accel_path(paramInstance unsafe.Pointer, param0 *string, param1 unsafe.Pointer) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	cValue1 := (*C.GtkAccelGroup)(unsafe.Pointer(param1))
 
@@ -28171,20 +28364,28 @@ func Fn_gtk_widget_set_support_multidevice(paramInstance unsafe.Pointer, param0 
 	C.gtk_widget_set_support_multidevice(cValueInstance, cValue0)
 }
 
-func Fn_gtk_widget_set_tooltip_markup(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_widget_set_tooltip_markup(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_widget_set_tooltip_markup(cValueInstance, cValue0)
 }
 
-func Fn_gtk_widget_set_tooltip_text(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_widget_set_tooltip_text(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkWidget)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_widget_set_tooltip_text(cValueInstance, cValue0)
 }
@@ -29104,11 +29305,15 @@ func Fn_gtk_window_set_icon_list(paramInstance unsafe.Pointer, param0 unsafe.Poi
 	C.gtk_window_set_icon_list(cValueInstance, cValue0)
 }
 
-func Fn_gtk_window_set_icon_name(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_window_set_icon_name(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkWindow)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_window_set_icon_name(cValueInstance, cValue0)
 }
@@ -29406,11 +29611,15 @@ func Fn_gtk_actionable_get_action_target_value(paramInstance unsafe.Pointer) uns
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gtk_actionable_set_action_name(paramInstance unsafe.Pointer, param0 string) {
+func Fn_gtk_actionable_set_action_name(paramInstance unsafe.Pointer, param0 *string) {
 	cValueInstance := (*C.GtkActionable)(unsafe.Pointer(paramInstance))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	var cValue0Value (*C.gchar)
+	if param0 != nil {
+		cValue0Value = (*C.gchar)(C.CString(*param0))
+		defer C.free(unsafe.Pointer(cValue0Value))
+	}
+	cValue0 := cValue0Value
 
 	C.gtk_actionable_set_action_name(cValueInstance, cValue0)
 }
@@ -29511,15 +29720,19 @@ func Fn_gtk_app_chooser_refresh(paramInstance unsafe.Pointer) {
 	C.gtk_app_chooser_refresh(cValueInstance)
 }
 
-func Fn_gtk_buildable_add_child(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 string) {
+func Fn_gtk_buildable_add_child(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *string) {
 	cValueInstance := (*C.GtkBuildable)(unsafe.Pointer(paramInstance))
 
 	cValue0 := (*C.GtkBuilder)(unsafe.Pointer(param0))
 
 	cValue1 := (*C.GObject)(unsafe.Pointer(param1))
 
-	cValue2 := (*C.gchar)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
+	var cValue2Value (*C.gchar)
+	if param2 != nil {
+		cValue2Value = (*C.gchar)(C.CString(*param2))
+		defer C.free(unsafe.Pointer(cValue2Value))
+	}
+	cValue2 := cValue2Value
 
 	C.gtk_buildable_add_child(cValueInstance, cValue0, cValue1, cValue2)
 }

@@ -7,7 +7,13 @@ import (
 func (p *Parameter) libParamGoType() *jen.Statement {
 
 	if p.Type != nil {
-		return jen.Add(p.Type.libParamGoType(false))
+		star := ""
+		if p.Nullable && !p.isOut() && !p.Type.isStruct() && !p.Type.isPointer() {
+			// nullable simple type, so make it a pointer
+			star = "*"
+		}
+
+		return jen.Op(star).Add(p.Type.libParamGoType(false))
 	}
 
 	//star := ""

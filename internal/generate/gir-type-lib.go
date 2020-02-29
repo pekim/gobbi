@@ -9,6 +9,7 @@ import (
 func (t *Type) libParamGoType(decrementIndirectionCount bool) *jen.Statement {
 	if t.isString() {
 		stars := ""
+
 		if t.cType.indirectionCount > 0 {
 			stars = strings.Repeat("*", t.cType.indirectionCount-1)
 		}

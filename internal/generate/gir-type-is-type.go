@@ -87,6 +87,10 @@ func (t *Type) isUnion() bool {
 }
 
 func (t *Type) isStruct() bool {
+	if t == nil {
+		return false
+	}
+
 	return t.isClass() ||
 		t.isRecord() ||
 		t.isInterface() ||
@@ -102,6 +106,10 @@ func (t *Type) isBoolean() bool {
 }
 
 func (t *Type) isPointer() bool {
+	if t == nil {
+		return false
+	}
+
 	return t.Name == "gpointer"
 }
 

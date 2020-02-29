@@ -1448,25 +1448,9 @@ func Fn_atk_table_get_row_header(paramInstance unsafe.Pointer, param0 int) unsaf
 	return unsafe.Pointer(ret)
 }
 
-func Fn_atk_table_get_selected_columns(paramInstance unsafe.Pointer, param0 **int) int {
-	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
+// UNSUPPORTED : atk_table_get_selected_columns : parameter 'selected' is non array with indirect count > 1
 
-	cValue0 := (**C.gint)(unsafe.Pointer(param0))
-
-	ret := C.atk_table_get_selected_columns(cValueInstance, cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_atk_table_get_selected_rows(paramInstance unsafe.Pointer, param0 **int) int {
-	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (**C.gint)(unsafe.Pointer(param0))
-
-	ret := C.atk_table_get_selected_rows(cValueInstance, cValue0)
-
-	return (int)(ret)
-}
+// UNSUPPORTED : atk_table_get_selected_rows : parameter 'selected' is non array with indirect count > 1
 
 func Fn_atk_table_get_summary(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.AtkTable)(unsafe.Pointer(paramInstance))
@@ -1839,6 +1823,8 @@ func Fn_atk_value_get_minimum_value(paramInstance unsafe.Pointer, param0 unsafe.
 
 	C.atk_value_get_minimum_value(cValueInstance, cValue0)
 }
+
+// UNSUPPORTED : atk_value_get_value_and_text : parameter 'text' is non array with indirect count > 1
 
 func Fn_atk_value_set_current_value(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
 	cValueInstance := (*C.AtkValue)(unsafe.Pointer(paramInstance))

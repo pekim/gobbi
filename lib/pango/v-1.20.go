@@ -1033,13 +1033,13 @@ func Log2visGetEmbeddingLevels(text string, length int, pbaseDir *Direction) *ui
 
 // UNSUPPORTED : pango_lookup_aliases : blacklisted
 
-// UNSUPPORTED : pango_markup_parser_finish : throws
+// UNSUPPORTED : pango_markup_parser_finish : parameter 'attr_list' is non array with indirect count > 1
 
 // UNSUPPORTED : pango_module_register : blacklisted
 
-// UNSUPPORTED : pango_parse_enum : has [in]out param, value
+// UNSUPPORTED : pango_parse_enum : parameter 'possible_values' is non array with indirect count > 1
 
-// UNSUPPORTED : pango_parse_markup : throws
+// UNSUPPORTED : pango_parse_markup : parameter 'attr_list' is non array with indirect count > 1
 
 // UNSUPPORTED : pango_parse_stretch : has [in]out param, stretch
 
@@ -1062,11 +1062,11 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 	return ret
 }
 
-// UNSUPPORTED : pango_scan_int : has [in]out param, pos
+// UNSUPPORTED : pango_scan_int : parameter 'pos' is non array with indirect count > 1
 
-// UNSUPPORTED : pango_scan_string : has [in]out param, pos
+// UNSUPPORTED : pango_scan_string : parameter 'pos' is non array with indirect count > 1
 
-// UNSUPPORTED : pango_scan_word : has [in]out param, pos
+// UNSUPPORTED : pango_scan_word : parameter 'pos' is non array with indirect count > 1
 
 // Shape wraps the C function pango_shape.
 func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
@@ -1077,7 +1077,7 @@ func Shape(text string, length int, analysis *Analysis, glyphs *GlyphString) {
 	pango.Fn_pango_shape(sys_text, sys_length, sys_analysis, sys_glyphs)
 }
 
-// UNSUPPORTED : pango_skip_space : has [in]out param, pos
+// UNSUPPORTED : pango_skip_space : parameter 'pos' is non array with indirect count > 1
 
 // UNSUPPORTED : pango_split_file_list : no array length
 

@@ -8298,7 +8298,7 @@ func DragDropSucceeded(context *DragContext) bool {
 	return ret
 }
 
-// UNSUPPORTED : gdk_drag_find_window_for_screen : has [in]out param, dest_window
+// UNSUPPORTED : gdk_drag_find_window_for_screen : parameter 'dest_window' is non array with indirect count > 1
 
 // DragGetSelection wraps the C function gdk_drag_get_selection.
 func DragGetSelection(context *DragContext) *Atom {
@@ -8747,17 +8747,7 @@ func SelectionOwnerSetForDisplay(display *Display, owner *Window, selection Atom
 	return ret
 }
 
-// SelectionPropertyGet wraps the C function gdk_selection_property_get.
-func SelectionPropertyGet(requestor *Window, data **uint8, propType *Atom, propFormat *int) int {
-	sys_requestor := requestor.ToC()
-	sys_data := data
-	sys_propType := propType.ToC()
-	sys_propFormat := propFormat
-	retSys := gdk.Fn_gdk_selection_property_get(sys_requestor, sys_data, sys_propType, sys_propFormat)
-	ret := retSys
-
-	return ret
-}
+// UNSUPPORTED : gdk_selection_property_get : parameter 'data' is non array with indirect count > 1
 
 // SelectionSendNotify wraps the C function gdk_selection_send_notify.
 func SelectionSendNotify(requestor *Window, selection Atom, target Atom, property Atom, time uint32) {
