@@ -45,6 +45,10 @@ generate () {
     GOGC=off go run cmd/generate/*.go $@ 2>&1
 }
 
+generateCairo () {
+  c-for-go -nostamp -out ../lib/ generate/cairo/cairo.yml
+}
+
 generateClean () {
     grep -l -r "Code generated - DO NOT EDIT" lib/ | xargs rm -f && \
     generate $@
@@ -99,6 +103,9 @@ processSubcommand () {
       ;;
     generate)
       generate $@
+      ;;
+    generate-cairo)
+      generateCairo $@
       ;;
     generate-clean)
       generateClean $@

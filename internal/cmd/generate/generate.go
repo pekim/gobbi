@@ -8,7 +8,7 @@ import (
 
 var libraries = generate.RepositorySpecs{
 	{Version: "1.0", Name: "Atk"},
-	{Version: "1.0", Name: "cairo"},
+	//{Version: "1.0", Name: "cairo"},
 	//{Version: "2.0", Name: "freetype2"},
 	{Version: "3.0", Name: "Gdk"},
 	{Version: "2.0", Name: "GdkPixbuf"},
