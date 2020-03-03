@@ -39,7 +39,15 @@ func (p Parameter) isArray() bool {
 	return p.Array != nil
 }
 
+func (p Parameter) isVarargs() bool {
+	return p.Varargs != nil
+}
+
 func (p Parameter) isSupported() (bool, string) {
+	if !(p.isType() || p.isArray() || p.isVarargs()) {
+		return false, "not a Type, Array, or Varargs"
+	}
+
 	if p.isType() && p.Type.isCallback() {
 		return false, "is callback"
 	}
@@ -88,5 +96,5 @@ func (p *Parameter) isInOut() bool {
 }
 
 func (p *Parameter) isVarargsOrValist() bool {
-	return (p.isType() && p.Type.isVaList()) || p.Varargs != nil
+	return (p.isType() && p.Type.isVaList()) || p.isVarargs()
 }
