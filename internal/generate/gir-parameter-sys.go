@@ -7,7 +7,7 @@ import (
 )
 
 func (p *Parameter) sysParamGoType() *jen.Statement {
-	if p.Type != nil {
+	if p.isType() {
 		// Atoms are really pointers underneath.
 		if p.Type.CType == "GdkAtom" {
 			return jenUnsafePointer()
@@ -24,7 +24,7 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 			Add(p.Type.sysParamGoType(false))
 	}
 
-	if p.Array != nil {
+	if p.isArray() {
 		star := ""
 		if p.isOut() {
 			star = "*"
@@ -39,7 +39,7 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 }
 
 func (p *Parameter) generateSysCArg(g *jen.Group, goVarName string, cVarName string) {
-	if p.Type != nil && p.Nullable && !p.isOut() && !p.Type.isStruct() && !p.Type.isPointer() {
+	if p.isType() && p.Nullable && !p.isOut() && !p.Type.isStruct() && !p.Type.isPointer() {
 		p.generateSysCArgNullable(g, goVarName, cVarName)
 	} else {
 		p.generateSysCArgPlain(g, true, goVarName, cVarName)
@@ -52,7 +52,7 @@ func (p *Parameter) generateSysCArgPlain(g *jen.Group, newcVar bool, goVarName s
 		op = ":="
 	}
 
-	if p.Array != nil {
+	if p.isArray() {
 		p.generateSysCArgArray(g, op, goVarName, cVarName)
 		return
 	}
@@ -70,10 +70,10 @@ func (p *Parameter) generateSysCArgNullable(g *jen.Group, goVarName string, cVar
 	cValueValueVarName := cVarName + "Value"
 
 	var jenGoCType *jen.Statement
-	if p.Type != nil {
+	if p.isType() {
 		jenGoCType = p.Type.jenGoCType()
 	}
-	if p.Array != nil {
+	if p.isArray() {
 		jenGoCType = p.Array.Type.jenGoCType()
 	}
 
@@ -161,11 +161,11 @@ func (p *Parameter) generateSysCArgOut(g *jen.Group, goVarName string, cVarName 
 		return
 	}
 
-	if p.Type != nil && p.Type.isString() && p.Type.cType.indirectionCount == 2 {
+	if p.isType() && p.Type.isString() && p.Type.cType.indirectionCount == 2 {
 		p.generateSysCArgStringPointerOut(g, goVarName, cVarName)
 	}
 
-	if p.Array != nil {
+	if p.isArray() {
 		if p.lengthParam == nil {
 			panic(fmt.Sprintf("No length param for %s", p.context))
 		}

@@ -60,7 +60,7 @@ func (pp Parameters) hasVarargs() bool {
 
 func (pp Parameters) hasVaList() bool {
 	for _, p := range pp {
-		if p.Type != nil && p.Type.isVaList() {
+		if p.isType() && p.Type.isVaList() {
 			return true
 		}
 	}

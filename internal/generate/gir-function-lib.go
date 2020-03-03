@@ -22,7 +22,7 @@ func (f *Function) generateLib(fi *jen.File, version semver.Version) {
 
 	// TODO
 	for _, p := range f.Parameters {
-		if p.Array != nil {
+		if p.isArray() {
 			fi.Commentf("UNSUPPORTED : %s : has array param, %s", f.CIdentifier, p.Name)
 			fi.Line()
 			return

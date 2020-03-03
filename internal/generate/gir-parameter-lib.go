@@ -6,7 +6,7 @@ import (
 
 func (p *Parameter) libParamGoType() *jen.Statement {
 
-	if p.Type != nil {
+	if p.isType() {
 		star := ""
 		if p.Nullable && !p.isOut() && !p.Type.isStruct() && !p.Type.isPointer() {
 			// nullable simple type, so make it a pointer
@@ -20,7 +20,7 @@ func (p *Parameter) libParamGoType() *jen.Statement {
 	//if p.isOut() {
 	//	star = "*"
 	//}
-	if p.Array != nil {
+	if p.isArray() {
 		//return jen.
 		//	Op(star).
 		//	Add(p.Array.sysParamGoType())
@@ -30,7 +30,7 @@ func (p *Parameter) libParamGoType() *jen.Statement {
 }
 
 func (p *Parameter) generateLibArg(g *jen.Group, varName string) {
-	if p.Type != nil {
+	if p.isType() {
 		argValue := jen.Id(p.goVarName)
 
 		if p.Type.isStruct() {
@@ -47,7 +47,7 @@ func (p *Parameter) generateLibArg(g *jen.Group, varName string) {
 		g.Id(varName).Op(":=").Add(argValue)
 	}
 
-	//if p.Array != nil {
+	//if p.isArray() {
 	//	p.generateSysCArgArray(g, goVarName, cVarName)
 	//	return
 	//}

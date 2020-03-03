@@ -31,34 +31,42 @@ func (p *Parameter) init(ns *Namespace, parentContext *context) {
 	p.goVarName = makeUnexportedGoName(p.Name)
 }
 
+func (p Parameter) isType() bool {
+	return p.Type != nil
+}
+
+func (p Parameter) isArray() bool {
+	return p.Array != nil
+}
+
 func (p Parameter) isSupported() (bool, string) {
-	if p.Type != nil && p.Type.isCallback() {
+	if p.isType() && p.Type.isCallback() {
 		return false, "is callback"
 	}
 
-	if p.Type != nil && p.Type.isLongDouble() {
+	if p.isType() && p.Type.isLongDouble() {
 		return false, "is long double"
 	}
 
-	if p.Type != nil && p.Type.cType.indirectionCount > 1 {
+	if p.isType() && p.Type.cType.indirectionCount > 1 {
 		return false, "is non array with indirect count > 1	"
 	}
 
-	//if p.Type != nil && p.Nullable && p.Type.cType.indirectionCount > 0 {
+	//if p.isType() && p.Nullable && p.Type.cType.indirectionCount > 0 {
 	//	return false, "is nullable with indirect count > 0	"
 	//}
 
-	if p.Array != nil && p.lengthParam == nil {
+	if p.isArray() && p.lengthParam == nil {
 		return false, "is array parameter without length parameter"
 	}
 
-	if p.Array != nil && p.Array.cType.indirectionCount == 0 {
+	if p.isArray() && p.Array.cType.indirectionCount == 0 {
 		if !p.Array.Type.isString() {
 			return false, fmt.Sprintf("is array parameter with indirection of %d", p.Array.cType.indirectionCount)
 		}
 	}
 
-	if p.Array != nil {
+	if p.isArray() {
 		if supported, reason := p.Array.isSupported(); !supported {
 			return supported, reason
 		}
@@ -80,5 +88,5 @@ func (p *Parameter) isInOut() bool {
 }
 
 func (p *Parameter) isVarargsOrValist() bool {
-	return (p.Type != nil && p.Type.isVaList()) || p.Varargs != nil
+	return (p.isType() && p.Type.isVaList()) || p.Varargs != nil
 }
