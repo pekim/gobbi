@@ -88,7 +88,7 @@ func (r *ReturnValue) generateSysGoTypeValue(cVarName string) *jen.Statement {
 		return jen.Id("toGoBool").Call(jen.Id(cVarName))
 	}
 
-	return jen.Parens(r.Type.sysParamGoType(false)).Parens(jen.Id("ret"))
+	return jen.Parens(r.Type.sysParamGoType()).Parens(jen.Id("ret"))
 }
 
 func (r *ReturnValue) generateSysGoArrayValue(g *jen.Group, cVarName string) *jen.Statement {
@@ -147,7 +147,7 @@ func (r *ReturnValue) generateSysGoArrayValue(g *jen.Group, cVarName string) *je
 
 func (r *ReturnValue) sysParamGoType() *jen.Statement {
 	if r.Type != nil {
-		return jen.Add(r.Type.sysParamGoType(false))
+		return jen.Add(r.Type.sysParamGoType())
 	}
 
 	if r.Array != nil {

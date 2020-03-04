@@ -21,7 +21,7 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 
 		return jen.
 			Op(star).
-			Add(p.Type.sysParamGoType(false))
+			Add(p.Type.sysParamGoType())
 	}
 
 	if p.isArray() {

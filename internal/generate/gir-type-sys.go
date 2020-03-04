@@ -30,11 +30,11 @@ func (t *Type) sysParamGoPlainType() *jen.Statement {
 	if t.isAlias() {
 		if t.isQualifiedName() {
 			alias, _ := t.foreignNamespace.Aliases.byName(t.foreignName)
-			return jen.Add(alias.Type.sysParamGoType(false))
+			return jen.Add(alias.Type.sysParamGoType())
 		}
 
 		alias, _ := t.namespace.Aliases.byName(t.Name)
-		return jen.Add(alias.Type.sysParamGoType(false))
+		return jen.Add(alias.Type.sysParamGoType())
 	}
 
 	if t.isBitfield() || t.isEnumeration() {
@@ -52,7 +52,7 @@ func (t *Type) sysParamGoPlainType() *jen.Statement {
 	panic(fmt.Sprintf("Unsupported type : %s %s (%s)", t.namespace.Name, t.Name, t.CType))
 }
 
-func (t *Type) sysParamGoType(decrementIndirectionCount bool) *jen.Statement {
+func (t *Type) sysParamGoType() *jen.Statement {
 	if t.CType == "GdkAtom" {
 		return jenUnsafePointer()
 	}
@@ -75,9 +75,6 @@ func (t *Type) sysParamGoType(decrementIndirectionCount bool) *jen.Statement {
 	}
 
 	stars := t.cType.stars
-	if decrementIndirectionCount && t.cType.indirectionCount > 0 {
-		stars = strings.Repeat("*", t.cType.indirectionCount-1)
-	}
 
 	if simpleGoType, ok := simpleSysParamGoTypes[t.cType.typ]; ok {
 		return jen.Op(stars).Add(simpleGoType)
@@ -89,11 +86,11 @@ func (t *Type) sysParamGoType(decrementIndirectionCount bool) *jen.Statement {
 	if t.isAlias() {
 		if t.isQualifiedName() {
 			alias, _ := t.foreignNamespace.Aliases.byName(t.foreignName)
-			return jen.Op(stars).Add(alias.Type.sysParamGoType(false))
+			return jen.Op(stars).Add(alias.Type.sysParamGoType())
 		}
 
 		alias, _ := t.namespace.Aliases.byName(t.Name)
-		return jen.Op(stars).Add(alias.Type.sysParamGoType(false))
+		return jen.Op(stars).Add(alias.Type.sysParamGoType())
 	}
 
 	if t.isBitfield() || t.isEnumeration() {

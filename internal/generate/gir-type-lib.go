@@ -60,11 +60,11 @@ func (t *Type) libParamGoType(decrementIndirectionCount bool) *jen.Statement {
 	if t.isAlias() {
 		if t.isQualifiedName() {
 			alias, _ := t.foreignNamespace.Aliases.byName(t.foreignName)
-			return jen.Op(stars).Add(alias.Type.sysParamGoType(false))
+			return jen.Op(stars).Add(alias.Type.sysParamGoType())
 		}
 
 		alias, _ := t.namespace.Aliases.byName(t.Name)
-		return jen.Op(stars).Add(alias.Type.sysParamGoType(false))
+		return jen.Op(stars).Add(alias.Type.sysParamGoType())
 	}
 
 	if t.isRecord() && t.cType.indirectionCount == 0 {
