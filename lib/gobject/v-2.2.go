@@ -671,7 +671,7 @@ func PointerTypeRegisterStatic(name string) uint64 {
 
 // UNSUPPORTED : g_signal_add_emission_hook : parameter 'hook_func' is callback
 
-// UNSUPPORTED : g_signal_chain_from_overridden : parameter 'instance_and_params' is array parameter without length parameter
+// UNSUPPORTED : g_signal_chain_from_overridden : has array param, instance_and_params
 
 // SignalConnectClosure wraps the C function g_signal_connect_closure.
 func SignalConnectClosure(instance unsafe.Pointer, detailedSignal string, closure *Closure, after bool) uint64 {
@@ -725,7 +725,7 @@ func SignalEmitValist(instance unsafe.Pointer, signalId uint, detail uint32) {
 	gobject.Fn_g_signal_emit_valist(sys_instance, sys_signalId, sys_detail)
 }
 
-// UNSUPPORTED : g_signal_emitv : parameter 'instance_and_params' is array parameter without length parameter
+// UNSUPPORTED : g_signal_emitv : has array param, instance_and_params
 
 // SignalGetInvocationHint wraps the C function g_signal_get_invocation_hint.
 func SignalGetInvocationHint(instance unsafe.Pointer) *SignalInvocationHint {

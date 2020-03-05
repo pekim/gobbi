@@ -2745,7 +2745,13 @@ func Fn_g_signal_accumulator_true_handled(param0 unsafe.Pointer, param1 unsafe.P
 
 // UNSUPPORTED : g_signal_add_emission_hook : parameter 'hook_func' is callback
 
-// UNSUPPORTED : g_signal_chain_from_overridden : parameter 'instance_and_params' is array parameter without length parameter
+func Fn_g_signal_chain_from_overridden(param0 []Value, param1 unsafe.Pointer) {
+	cValue0 := (*C.GValue)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+
+	C.g_signal_chain_from_overridden(cValue0, cValue1)
+}
 
 func Fn_g_signal_chain_from_overridden_handler(param0 unsafe.Pointer) {
 	cValue0 := (C.gpointer)(param0)
@@ -2817,7 +2823,17 @@ func Fn_g_signal_emit_valist(param0 unsafe.Pointer, param1 uint, param2 uint32) 
 	C.c_g_signal_emit_valist(cValue0, cValue1, cValue2)
 }
 
-// UNSUPPORTED : g_signal_emitv : parameter 'instance_and_params' is array parameter without length parameter
+func Fn_g_signal_emitv(param0 []Value, param1 uint, param2 uint32, param3 unsafe.Pointer) {
+	cValue0 := (*C.GValue)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.guint)(param1)
+
+	cValue2 := (C.GQuark)(param2)
+
+	cValue3 := (*C.GValue)(unsafe.Pointer(param3))
+
+	C.g_signal_emitv(cValue0, cValue1, cValue2, cValue3)
+}
 
 func Fn_g_signal_get_invocation_hint(param0 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (C.gpointer)(param0)

@@ -1019,7 +1019,7 @@ func RemoveKeyEventListener(listenerId uint) {
 	atk.Fn_atk_remove_key_event_listener(sys_listenerId)
 }
 
-// UNSUPPORTED : atk_text_free_ranges : parameter 'ranges' is array parameter without length parameter
+// UNSUPPORTED : atk_text_free_ranges : has array param, ranges
 
 // ActionIface is a representation of the C record AtkActionIface.
 type ActionIface struct {

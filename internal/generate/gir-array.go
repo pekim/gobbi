@@ -9,7 +9,7 @@ type Array struct {
 	CType          string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
 	FixedSize      *int   `xml:"fixed-size,attr"`
 	Length         *int   `xml:"length,attr"`
-	ZeroTerminated string `xml:"zero-terminated,attr"`
+	ZeroTerminated bool   `xml:"zero-terminated,attr"`
 
 	namespace *Namespace
 	cType     cType

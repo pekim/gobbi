@@ -140,8 +140,6 @@ func Fn_atk_remove_key_event_listener(param0 uint) {
 	C.atk_remove_key_event_listener(cValue0)
 }
 
-// UNSUPPORTED : atk_text_free_ranges : parameter 'ranges' is array parameter without length parameter
-
 func Fn_atk_gobject_accessible_get_object(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.AtkGObjectAccessible)(unsafe.Pointer(paramInstance))
 

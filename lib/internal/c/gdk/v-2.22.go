@@ -620,7 +620,21 @@ func Fn_gdk_pango_layout_get_clip_region(param0 unsafe.Pointer, param1 int, para
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : gdk_pango_layout_line_get_clip_region : parameter 'index_ranges' is array parameter without length parameter
+func Fn_gdk_pango_layout_line_get_clip_region(param0 unsafe.Pointer, param1 int, param2 int, param3 []int, param4 int) unsafe.Pointer {
+	cValue0 := (*C.PangoLayoutLine)(unsafe.Pointer(param0))
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.gint)(param2)
+
+	cValue3 := (*C.gint)(unsafe.Pointer(&param3[0]))
+
+	cValue4 := (C.gint)(param4)
+
+	ret := C.gdk_pango_layout_line_get_clip_region(cValue0, cValue1, cValue2, cValue3, cValue4)
+
+	return unsafe.Pointer(ret)
+}
 
 func Fn_gdk_parse_args(param0 *int, param1 *[]string) {
 	cValue0 := (*C.gint)(unsafe.Pointer(param0))
@@ -977,7 +991,26 @@ func Fn_gdk_test_simulate_key(param0 unsafe.Pointer, param1 int, param2 int, par
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : gdk_text_property_to_utf8_list_for_display : parameter 'list' is array parameter without length parameter
+func Fn_gdk_text_property_to_utf8_list_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 []uint8, param4 int, param5 *[]string) int {
+	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+
+	cValue1 := (C.GdkAtom)(param1)
+
+	cValue2 := (C.gint)(param2)
+
+	cValue3 := (*C.guchar)(unsafe.Pointer(&param3[0]))
+
+	cValue4 := (C.gint)(param4)
+
+	// TODO
+	var cValue5ArrayPointer **C.gchar
+	cValue5 := &cValue5ArrayPointer
+
+	ret := C.gdk_text_property_to_utf8_list_for_display(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	// TODO - 0 terminated array
+
+	return (int)(ret)
+}
 
 // UNSUPPORTED : gdk_threads_add_idle : parameter 'function' is callback
 
@@ -1162,7 +1195,19 @@ func Fn_gdk_cursor_unref(paramInstance unsafe.Pointer) {
 	C.gdk_cursor_unref(cValueInstance)
 }
 
-// UNSUPPORTED : gdk_device_get_axis : parameter 'axes' is array parameter without length parameter
+func Fn_gdk_device_get_axis(paramInstance unsafe.Pointer, param0 []float64, param1 int, param2 *float64) bool {
+	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gdouble)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.GdkAxisUse)(param1)
+
+	cValue2 := (*C.gdouble)(unsafe.Pointer(param2))
+
+	ret := C.gdk_device_get_axis(cValueInstance, cValue0, cValue1, cValue2)
+
+	return toGoBool(ret)
+}
 
 func Fn_gdk_device_get_axis_use(paramInstance unsafe.Pointer, param0 uint) int {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -1173,8 +1218,6 @@ func Fn_gdk_device_get_axis_use(paramInstance unsafe.Pointer, param0 uint) int {
 
 	return (int)(ret)
 }
-
-// UNSUPPORTED : gdk_device_get_axis_value : parameter 'axes' is array parameter without length parameter
 
 func Fn_gdk_device_get_has_cursor(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
@@ -1252,7 +1295,17 @@ func Fn_gdk_device_get_source(paramInstance unsafe.Pointer) int {
 	return (int)(ret)
 }
 
-// UNSUPPORTED : gdk_device_get_state : parameter 'axes' is array parameter without length parameter
+func Fn_gdk_device_get_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []float64, param2 *int) {
+	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gdouble)(unsafe.Pointer(&param1[0]))
+
+	cValue2 := (*C.GdkModifierType)(unsafe.Pointer(param2))
+
+	C.gdk_device_get_state(cValueInstance, cValue0, cValue1, cValue2)
+}
 
 func Fn_gdk_device_list_slave_devices(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))

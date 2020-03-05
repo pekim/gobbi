@@ -3137,7 +3137,7 @@ func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint, keyco
 
 // UNSUPPORTED : gtk_accelerator_parse : has [in]out param, accelerator_key
 
-// UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
+// UNSUPPORTED : gtk_accelerator_parse_with_keycode : has [in]out param, accelerator_key
 
 // AcceleratorSetDefaultModMask wraps the C function gtk_accelerator_set_default_mod_mask.
 func AcceleratorSetDefaultModMask(defaultModMask gdk.ModifierType) {
@@ -3494,7 +3494,7 @@ func GrabGetCurrent() *Widget {
 
 // UNSUPPORTED : gtk_init_check : has [in]out param, argc
 
-// UNSUPPORTED : gtk_init_with_args : parameter 'entries' is array parameter without length parameter
+// UNSUPPORTED : gtk_init_with_args : throws
 
 // UNSUPPORTED : gtk_key_snooper_install : parameter 'snooper' is callback
 
@@ -4015,7 +4015,7 @@ func RcScannerNew() *glib.Scanner {
 	return ret
 }
 
-// UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
+// UNSUPPORTED : gtk_rc_set_default_files : has array param, filenames
 
 // RenderActivity wraps the C function gtk_render_activity.
 //
@@ -4539,7 +4539,7 @@ func TestWidgetWaitForDraw(widget *Widget) {
 
 // UNSUPPORTED : gtk_tree_get_row_drag_data : parameter 'tree_model' is non array with indirect count > 1
 
-// UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
+// UNSUPPORTED : gtk_tree_row_reference_reordered : has array param, new_order
 
 // TreeSetRowDragData wraps the C function gtk_tree_set_row_drag_data.
 func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) bool {

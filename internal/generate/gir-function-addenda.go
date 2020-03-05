@@ -71,6 +71,13 @@ var functionBlacklist = map[string]bool{
 	"XOpenDisplay": true,
 }
 
+var functionZeroTerminatedParamAddenda = map[string]map[string]bool{
+	"gdk_text_property_to_utf8_list_for_display": {"list": true},
+	"gtk_accelerator_parse_with_keycode":         {"accelerator_codes": true},
+	// array terminated by GDK_AXIS_IGNORE, which conveniently is 0
+	"gtk_gesture_stylus_get_axes": {"values": true},
+}
+
 func (f *Function) applyAddenda() {
 	// Parameters with a type of ResponseType do not match the signature of functions
 	// of that accept the parameters.
@@ -98,4 +105,21 @@ func (f *Function) applyAddenda() {
 	if _, ok := functionBlacklist[f.CIdentifier]; ok {
 		f.blacklist = true
 	}
+
+	if fn, ok := functionZeroTerminatedParamAddenda[f.CIdentifier]; ok {
+		for i, param := range f.Parameters {
+			if _, ok := fn[param.Name]; ok {
+				param.Array.ZeroTerminated = true
+				f.Parameters[i] = param
+			}
+		}
+	}
+	//if f.CIdentifier == "gtk_accelerator_parse_with_keycode" || f.CIdentifier == "gdk_text_property_to_utf8_list_for_display" {
+	//	for i, param := range f.Parameters {
+	//		if param.Name == "accelerator_codes" || param.Name == "list" {
+	//			param.Array.ZeroTerminated = true
+	//			f.Parameters[i] = param
+	//		}
+	//	}
+	//}
 }

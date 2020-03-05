@@ -8491,7 +8491,7 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int, yOrigin int, in
 	return ret
 }
 
-// UNSUPPORTED : gdk_pango_layout_line_get_clip_region : parameter 'index_ranges' is array parameter without length parameter
+// UNSUPPORTED : gdk_pango_layout_line_get_clip_region : has array param, index_ranges
 
 // UNSUPPORTED : gdk_parse_args : has [in]out param, argc
 
@@ -8691,7 +8691,7 @@ func SettingGet(name string, value *gobject.Value) bool {
 
 // UNSUPPORTED : gdk_synthesize_window_state : blacklisted
 
-// UNSUPPORTED : gdk_text_property_to_utf8_list_for_display : parameter 'list' is array parameter without length parameter
+// UNSUPPORTED : gdk_text_property_to_utf8_list_for_display : has array param, text
 
 // UNSUPPORTED : gdk_threads_add_idle : parameter 'function' is callback
 

@@ -1659,7 +1659,7 @@ func ContentTypeIsUnknown(type_ string) bool {
 	return ret
 }
 
-// UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
+// UNSUPPORTED : g_content_type_set_mime_dirs : has array param, dirs
 
 // ContentTypesGetRegistered wraps the C function g_content_types_get_registered.
 func ContentTypesGetRegistered() *glib.List {
@@ -1677,7 +1677,7 @@ func ContentTypesGetRegistered() *glib.List {
 
 // UNSUPPORTED : g_dbus_address_get_stream_sync : parameter 'out_guid' is non array with indirect count > 1
 
-// UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
+// UNSUPPORTED : g_dbus_annotation_info_lookup : has array param, annotations
 
 // UNSUPPORTED : g_dbus_error_register_error_domain : has array param, entries
 

@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/internal/c/glib"
+	"unsafe"
+)
 
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -358,7 +361,16 @@ func Fn_g_dbus_annotation_info_unref(paramInstance unsafe.Pointer) {
 	C.g_dbus_annotation_info_unref(cValueInstance)
 }
 
-// UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
+func Fn_g_dbus_annotation_info_lookup(param0 []unsafe.Pointer, param1 string) string {
+	cValue0 := (**C.GDBusAnnotationInfo)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (*C.gchar)(C.CString(param1))
+	defer C.free(unsafe.Pointer(cValue1))
+
+	ret := C.g_dbus_annotation_info_lookup(cValue0, cValue1)
+
+	return C.GoString(ret)
+}
 
 func Fn_g_dbus_arg_info_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GDBusArgInfo)(unsafe.Pointer(paramInstance))
@@ -1472,8 +1484,6 @@ func Fn_g_content_type_is_unknown(param0 string) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
-
 func Fn_g_content_types_get_registered() unsafe.Pointer {
 	ret := C.g_content_types_get_registered()
 
@@ -1506,8 +1516,6 @@ func Fn_g_dbus_address_get_for_bus_sync(param0 int, param1 unsafe.Pointer, error
 // UNSUPPORTED : g_dbus_address_get_stream_finish : parameter 'out_guid' is non array with indirect count > 1
 
 // UNSUPPORTED : g_dbus_address_get_stream_sync : parameter 'out_guid' is non array with indirect count > 1
-
-// UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
 
 func Fn_g_dbus_generate_guid() string {
 	ret := C.g_dbus_generate_guid()
@@ -2039,7 +2047,13 @@ func Fn_g_application_add_main_option(paramInstance unsafe.Pointer, param0 strin
 	C.g_application_add_main_option(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
 }
 
-// UNSUPPORTED : g_application_add_main_option_entries : parameter 'entries' is array parameter without length parameter
+func Fn_g_application_add_main_option_entries(paramInstance unsafe.Pointer, param0 []glib.OptionEntry) {
+	cValueInstance := (*C.GApplication)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GOptionEntry)(unsafe.Pointer(&param0[0]))
+
+	C.g_application_add_main_option_entries(cValueInstance, cValue0)
+}
 
 func Fn_g_application_add_option_group(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GApplication)(unsafe.Pointer(paramInstance))
@@ -5757,7 +5771,24 @@ func Fn_g_file_info_set_attribute_string(paramInstance unsafe.Pointer, param0 st
 	C.g_file_info_set_attribute_string(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : g_file_info_set_attribute_stringv : parameter 'attr_value' is array parameter without length parameter
+func Fn_g_file_info_set_attribute_stringv(paramInstance unsafe.Pointer, param0 string, param1 []string) {
+	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	param1Len := len(param1)
+	cValue1Array := C.malloc((C.ulong)(param1Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue1Array))
+	param1Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1Len:param1Len]
+	for param1i, param1String := range param1 {
+		param1Slice[param1i] = (*C.gchar)(C.CString(param1String))
+		defer C.free(unsafe.Pointer(param1Slice[param1i]))
+	}
+	cValue1 := &param1Slice[0]
+
+	C.g_file_info_set_attribute_stringv(cValueInstance, cValue0, cValue1)
+}
 
 func Fn_g_file_info_set_attribute_uint32(paramInstance unsafe.Pointer, param0 string, param1 uint32) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
@@ -6175,7 +6206,15 @@ func Fn_g_inet_address_new_any(param0 int) unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_inet_address_new_from_bytes : parameter 'bytes' is array parameter without length parameter
+func Fn_g_inet_address_new_from_bytes(param0 []uint8, param1 int) unsafe.Pointer {
+	cValue0 := (*C.guint8)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.GSocketFamily)(param1)
+
+	ret := C.g_inet_address_new_from_bytes(cValue0, cValue1)
+
+	return unsafe.Pointer(ret)
+}
 
 func Fn_g_inet_address_new_from_string(param0 string) unsafe.Pointer {
 	cValue0 := (*C.gchar)(C.CString(param0))
@@ -8615,7 +8654,26 @@ func Fn_g_settings_set_string(paramInstance unsafe.Pointer, param0 string, param
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_settings_set_strv : parameter 'value' is array parameter without length parameter
+func Fn_g_settings_set_strv(paramInstance unsafe.Pointer, param0 string, param1 []string) bool {
+	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gchar)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	param1Len := len(param1)
+	cValue1Array := C.malloc((C.ulong)(param1Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue1Array))
+	param1Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1Len:param1Len]
+	for param1i, param1String := range param1 {
+		param1Slice[param1i] = (*C.gchar)(C.CString(param1String))
+		defer C.free(unsafe.Pointer(param1Slice[param1i]))
+	}
+	cValue1 := &param1Slice[0]
+
+	ret := C.g_settings_set_strv(cValueInstance, cValue0, cValue1)
+
+	return toGoBool(ret)
+}
 
 func Fn_g_settings_set_uint(paramInstance unsafe.Pointer, param0 string, param1 uint) bool {
 	cValueInstance := (*C.GSettings)(unsafe.Pointer(paramInstance))
@@ -10150,7 +10208,25 @@ func Fn_g_socket_service_stop(paramInstance unsafe.Pointer) {
 
 // UNSUPPORTED : g_subprocess_new : parameter 'error' is non array with indirect count > 1
 
-// UNSUPPORTED : g_subprocess_newv : parameter 'argv' is array parameter without length parameter
+func Fn_g_subprocess_newv(param0 []string, param1 int, error unsafe.Pointer) unsafe.Pointer {
+	param0Len := len(param0)
+	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
+	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
+	for param0i, param0String := range param0 {
+		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
+	}
+	cValue0 := &param0Slice[0]
+
+	cValue1 := (C.GSubprocessFlags)(param1)
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_subprocess_newv(cValue0, cValue1, cError)
+
+	return unsafe.Pointer(ret)
+}
 
 // UNSUPPORTED : g_subprocess_communicate : parameter 'stdout_buf' is non array with indirect count > 1
 
@@ -10340,7 +10416,21 @@ func Fn_g_subprocess_launcher_set_cwd(paramInstance unsafe.Pointer, param0 strin
 	C.g_subprocess_launcher_set_cwd(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : g_subprocess_launcher_set_environ : parameter 'env' is array parameter without length parameter
+func Fn_g_subprocess_launcher_set_environ(paramInstance unsafe.Pointer, param0 []string) {
+	cValueInstance := (*C.GSubprocessLauncher)(unsafe.Pointer(paramInstance))
+
+	param0Len := len(param0)
+	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
+	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
+	for param0i, param0String := range param0 {
+		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
+	}
+	cValue0 := &param0Slice[0]
+
+	C.g_subprocess_launcher_set_environ(cValueInstance, cValue0)
+}
 
 func Fn_g_subprocess_launcher_set_flags(paramInstance unsafe.Pointer, param0 int) {
 	cValueInstance := (*C.GSubprocessLauncher)(unsafe.Pointer(paramInstance))
@@ -10401,7 +10491,25 @@ func Fn_g_subprocess_launcher_setenv(paramInstance unsafe.Pointer, param0 string
 
 // UNSUPPORTED : g_subprocess_launcher_spawn : parameter 'error' is non array with indirect count > 1
 
-// UNSUPPORTED : g_subprocess_launcher_spawnv : parameter 'argv' is array parameter without length parameter
+func Fn_g_subprocess_launcher_spawnv(paramInstance unsafe.Pointer, param0 []string, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GSubprocessLauncher)(unsafe.Pointer(paramInstance))
+
+	param0Len := len(param0)
+	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
+	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
+	for param0i, param0String := range param0 {
+		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
+	}
+	cValue0 := &param0Slice[0]
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_subprocess_launcher_spawnv(cValueInstance, cValue0, cError)
+
+	return unsafe.Pointer(ret)
+}
 
 func Fn_g_subprocess_launcher_take_fd(paramInstance unsafe.Pointer, param0 int, param1 int) {
 	cValueInstance := (*C.GSubprocessLauncher)(unsafe.Pointer(paramInstance))
@@ -10995,8 +11103,6 @@ func Fn_g_tls_connection_handshake_finish(paramInstance unsafe.Pointer, param0 u
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_tls_connection_set_advertised_protocols : parameter 'protocols' is array parameter without length parameter
-
 func Fn_g_tls_connection_set_certificate(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GTlsConnection)(unsafe.Pointer(paramInstance))
 
@@ -11120,9 +11226,25 @@ func Fn_g_tls_database_lookup_certificate_issuer_finish(paramInstance unsafe.Poi
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : g_tls_database_lookup_certificates_issued_by : parameter 'issuer_raw_dn' is array parameter without length parameter
+func Fn_g_tls_database_lookup_certificates_issued_by(paramInstance unsafe.Pointer, param0 []uint8, param1 unsafe.Pointer, param2 int, param3 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	cValueInstance := (*C.GTlsDatabase)(unsafe.Pointer(paramInstance))
 
-// UNSUPPORTED : g_tls_database_lookup_certificates_issued_by_async : parameter 'issuer_raw_dn' is array parameter without length parameter
+	cValue0 := (*C.GByteArray)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (*C.GTlsInteraction)(unsafe.Pointer(param1))
+
+	cValue2 := (C.GTlsDatabaseLookupFlags)(param2)
+
+	cValue3 := (*C.GCancellable)(unsafe.Pointer(param3))
+
+	cError := (**C.GError)(error)
+
+	ret := C.g_tls_database_lookup_certificates_issued_by(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+
+	return unsafe.Pointer(ret)
+}
+
+// UNSUPPORTED : g_tls_database_lookup_certificates_issued_by_async : parameter 'callback' is callback
 
 func Fn_g_tls_database_lookup_certificates_issued_by_finish(paramInstance unsafe.Pointer, param0 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
 	cValueInstance := (*C.GTlsDatabase)(unsafe.Pointer(paramInstance))
@@ -12975,8 +13097,6 @@ func Fn_g_dtls_connection_handshake_finish(paramInstance unsafe.Pointer, param0 
 
 	return toGoBool(ret)
 }
-
-// UNSUPPORTED : g_dtls_connection_set_advertised_protocols : parameter 'protocols' is array parameter without length parameter
 
 func Fn_g_dtls_connection_set_certificate(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
 	cValueInstance := (*C.GDtlsConnection)(unsafe.Pointer(paramInstance))

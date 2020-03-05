@@ -166,15 +166,22 @@ func (p *Parameter) generateSysCArgOut(g *jen.Group, goVarName string, cVarName 
 	}
 
 	if p.isArray() {
-		if p.lengthParam == nil {
-			panic(fmt.Sprintf("No length param for %s", p.context))
+		if p.Array.ZeroTerminated {
+			g.Comment("TODO - 0 terminated array")
+			return
 		}
 
-		if p.Array.Type.isString() && p.Array.cType.indirectionCount == 3 {
-			p.generateSysCArgArrayStringPointerOut(g, goVarName, cVarName)
-		} else {
-			p.generateSysCArgArrayPointerOut(g, goVarName, cVarName)
+		if p.lengthParam != nil {
+			if p.Array.Type.isString() && p.Array.cType.indirectionCount == 3 {
+				p.generateSysCArgArrayStringPointerOut(g, goVarName, cVarName)
+			} else {
+				p.generateSysCArgArrayPointerOut(g, goVarName, cVarName)
+			}
+
+			return
 		}
+
+		panic(fmt.Sprintf("Array with no length param, and not 0 terminated, for %s", p.context))
 	}
 }
 
@@ -268,6 +275,10 @@ func (p *Parameter) generateSysCArgArrayPointerOut(g *jen.Group, goVarName strin
 }
 
 func (p *Parameter) generateSysCArgArray(g *jen.Group, assignOp string, goVarName string, cVarName string) {
+	if p.Array.ZeroTerminated {
+		g.Comment("TODO")
+	}
+
 	if p.Array.Type.isString() {
 		if p.Array.cType.indirectionCount == 2 {
 			p.generateSysCArgArrayString(g, goVarName, cVarName)

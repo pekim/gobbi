@@ -1301,8 +1301,6 @@ func Fn_gtk_selection_data_set_text(paramInstance unsafe.Pointer, param0 string,
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : gtk_selection_data_set_uris : parameter 'uris' is array parameter without length parameter
-
 func Fn_gtk_selection_data_targets_include_text(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkSelectionData)(unsafe.Pointer(paramInstance))
 
@@ -2355,7 +2353,17 @@ func Fn_gtk_tree_row_reference_inserted(param0 unsafe.Pointer, param1 unsafe.Poi
 	C.gtk_tree_row_reference_inserted(cValue0, cValue1)
 }
 
-// UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
+func Fn_gtk_tree_row_reference_reordered(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 []int) {
+	cValue0 := (*C.GObject)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.GtkTreePath)(unsafe.Pointer(param1))
+
+	cValue2 := (*C.GtkTreeIter)(unsafe.Pointer(param2))
+
+	cValue3 := (*C.gint)(unsafe.Pointer(&param3[0]))
+
+	C.gtk_tree_row_reference_reordered(cValue0, cValue1, cValue2, cValue3)
+}
 
 // UNSUPPORTED : gtk_widget_class_bind_template_callback_full : parameter 'callback_symbol' is callback
 
@@ -2473,8 +2481,6 @@ func Fn_gtk_accelerator_parse(param0 string, param1 *uint, param2 *int) {
 
 	C.gtk_accelerator_parse(cValue0, cValue1, cValue2)
 }
-
-// UNSUPPORTED : gtk_accelerator_parse_with_keycode : parameter 'accelerator_codes' is array parameter without length parameter
 
 func Fn_gtk_accelerator_set_default_mod_mask(param0 int) {
 	cValue0 := (C.GdkModifierType)(param0)
@@ -2730,8 +2736,6 @@ func Fn_gtk_init_check(param0 *int, param1 *[]string) bool {
 
 	return toGoBool(ret)
 }
-
-// UNSUPPORTED : gtk_init_with_args : parameter 'entries' is array parameter without length parameter
 
 // UNSUPPORTED : gtk_key_snooper_install : parameter 'snooper' is callback
 
@@ -3557,7 +3561,19 @@ func Fn_gtk_rc_scanner_new() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : gtk_rc_set_default_files : parameter 'filenames' is array parameter without length parameter
+func Fn_gtk_rc_set_default_files(param0 []string) {
+	param0Len := len(param0)
+	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue0Array))
+	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
+	for param0i, param0String := range param0 {
+		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
+		defer C.free(unsafe.Pointer(param0Slice[param0i]))
+	}
+	cValue0 := &param0Slice[0]
+
+	C.gtk_rc_set_default_files(cValue0)
+}
 
 func Fn_gtk_selection_add_target(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 uint) {
 	cValue0 := (*C.GtkWidget)(unsafe.Pointer(param0))
@@ -3680,8 +3696,6 @@ func Fn_gtk_stock_lookup(param0 string, param1 unsafe.Pointer) bool {
 
 // UNSUPPORTED : gtk_tree_get_row_drag_data : parameter 'tree_model' is non array with indirect count > 1
 
-// UNSUPPORTED : gtk_tree_row_reference_reordered : parameter 'new_order' is array parameter without length parameter
-
 func Fn_gtk_tree_set_row_drag_data(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) bool {
 	cValue0 := (*C.GtkSelectionData)(unsafe.Pointer(param0))
 
@@ -3700,19 +3714,11 @@ func Fn_gtk_true() bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : gtk_about_dialog_add_credit_section : parameter 'people' is array parameter without length parameter
-
 // UNSUPPORTED : gtk_about_dialog_get_artists : no array length
 
 // UNSUPPORTED : gtk_about_dialog_get_authors : no array length
 
 // UNSUPPORTED : gtk_about_dialog_get_documenters : no array length
-
-// UNSUPPORTED : gtk_about_dialog_set_artists : parameter 'artists' is array parameter without length parameter
-
-// UNSUPPORTED : gtk_about_dialog_set_authors : parameter 'authors' is array parameter without length parameter
-
-// UNSUPPORTED : gtk_about_dialog_set_documenters : parameter 'documenters' is array parameter without length parameter
 
 func Fn_gtk_accel_group_new() unsafe.Pointer {
 	ret := C.gtk_accel_group_new()
@@ -4102,8 +4108,6 @@ func Fn_gtk_app_chooser_widget_set_default_text(paramInstance unsafe.Pointer, pa
 
 // UNSUPPORTED : gtk_application_list_action_descriptions : no array length
 
-// UNSUPPORTED : gtk_application_set_accels_for_action : parameter 'accels' is array parameter without length parameter
-
 func Fn_gtk_arrow_new(param0 int, param1 int) unsafe.Pointer {
 	cValue0 := (C.GtkArrowType)(param0)
 
@@ -4274,12 +4278,6 @@ func Fn_gtk_box_set_spacing(paramInstance unsafe.Pointer, param0 int) {
 // UNSUPPORTED : gtk_builder_add_callback_symbol : parameter 'callback_symbol' is callback
 
 // UNSUPPORTED : gtk_builder_add_callback_symbols : parameter 'first_callback_symbol' is callback
-
-// UNSUPPORTED : gtk_builder_add_objects_from_file : parameter 'object_ids' is array parameter without length parameter
-
-// UNSUPPORTED : gtk_builder_add_objects_from_resource : parameter 'object_ids' is array parameter without length parameter
-
-// UNSUPPORTED : gtk_builder_add_objects_from_string : parameter 'object_ids' is array parameter without length parameter
 
 // UNSUPPORTED : gtk_builder_connect_signals_full : parameter 'func' is callback
 
@@ -5893,8 +5891,6 @@ func Fn_gtk_gesture_get_last_event(paramInstance unsafe.Pointer, param0 unsafe.P
 	return unsafe.Pointer(ret)
 }
 
-// UNSUPPORTED : gtk_gesture_stylus_get_axes : parameter 'axes' is array parameter without length parameter
-
 func Fn_gtk_grid_new() unsafe.Pointer {
 	ret := C.gtk_grid_new()
 
@@ -6203,7 +6199,17 @@ func Fn_gtk_im_context_simple_add_compose_file(paramInstance unsafe.Pointer, par
 	C.gtk_im_context_simple_add_compose_file(cValueInstance, cValue0)
 }
 
-// UNSUPPORTED : gtk_im_context_simple_add_table : parameter 'data' is array parameter without length parameter
+func Fn_gtk_im_context_simple_add_table(paramInstance unsafe.Pointer, param0 []uint16, param1 int, param2 int) {
+	cValueInstance := (*C.GtkIMContextSimple)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.guint16)(unsafe.Pointer(&param0[0]))
+
+	cValue1 := (C.gint)(param1)
+
+	cValue2 := (C.gint)(param2)
+
+	C.gtk_im_context_simple_add_table(cValueInstance, cValue0, cValue1, cValue2)
+}
 
 func Fn_gtk_im_multicontext_new() unsafe.Pointer {
 	ret := C.gtk_im_multicontext_new()
@@ -6273,10 +6279,6 @@ func Fn_gtk_icon_factory_lookup_default(param0 string) unsafe.Pointer {
 // UNSUPPORTED : gtk_icon_info_load_symbolic_async : parameter 'callback' is callback
 
 // UNSUPPORTED : gtk_icon_info_load_symbolic_for_context_async : parameter 'callback' is callback
-
-// UNSUPPORTED : gtk_icon_theme_choose_icon : parameter 'icon_names' is array parameter without length parameter
-
-// UNSUPPORTED : gtk_icon_theme_choose_icon_for_scale : parameter 'icon_names' is array parameter without length parameter
 
 // UNSUPPORTED : gtk_icon_theme_get_icon_sizes : no array length
 
@@ -6989,7 +6991,13 @@ func Fn_gtk_list_store_remove(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : gtk_list_store_reorder : parameter 'new_order' is array parameter without length parameter
+func Fn_gtk_list_store_reorder(paramInstance unsafe.Pointer, param0 []int) {
+	cValueInstance := (*C.GtkListStore)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.gint)(unsafe.Pointer(&param0[0]))
+
+	C.gtk_list_store_reorder(cValueInstance, cValue0)
+}
 
 func Fn_gtk_list_store_set_column_types(paramInstance unsafe.Pointer, param0 int, param1 []uint64) {
 	cValueInstance := (*C.GtkListStore)(unsafe.Pointer(paramInstance))
@@ -8209,10 +8217,6 @@ func Fn_gtk_scale_set_value_pos(paramInstance unsafe.Pointer, param0 int) {
 
 	C.gtk_scale_set_value_pos(cValueInstance, cValue0)
 }
-
-// UNSUPPORTED : gtk_scale_button_new : parameter 'icons' is array parameter without length parameter
-
-// UNSUPPORTED : gtk_scale_button_set_icons : parameter 'icons' is array parameter without length parameter
 
 func Fn_gtk_scrolled_window_new(param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
 	cValue0 := (*C.GtkAdjustment)(unsafe.Pointer(param0))
@@ -10813,7 +10817,15 @@ func Fn_gtk_tree_store_remove(paramInstance unsafe.Pointer, param0 unsafe.Pointe
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : gtk_tree_store_reorder : parameter 'new_order' is array parameter without length parameter
+func Fn_gtk_tree_store_reorder(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []int) {
+	cValueInstance := (*C.GtkTreeStore)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.GtkTreeIter)(unsafe.Pointer(param0))
+
+	cValue1 := (*C.gint)(unsafe.Pointer(&param1[0]))
+
+	C.gtk_tree_store_reorder(cValueInstance, cValue0, cValue1)
+}
 
 func Fn_gtk_tree_store_set_column_types(paramInstance unsafe.Pointer, param0 int, param1 []uint64) {
 	cValueInstance := (*C.GtkTreeStore)(unsafe.Pointer(paramInstance))
@@ -13860,8 +13872,6 @@ func Fn_gtk_editable_set_position(paramInstance unsafe.Pointer, param0 int) {
 
 	C.gtk_editable_set_position(cValueInstance, cValue0)
 }
-
-// UNSUPPORTED : gtk_file_chooser_add_choice : parameter 'options' is array parameter without length parameter
 
 func Fn_gtk_file_chooser_get_use_preview_label(paramInstance unsafe.Pointer) bool {
 	cValueInstance := (*C.GtkFileChooser)(unsafe.Pointer(paramInstance))

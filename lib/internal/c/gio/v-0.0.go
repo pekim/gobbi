@@ -213,8 +213,6 @@ type VolumeMonitorClass C.GVolumeMonitorClass
 type ZlibCompressorClass C.GZlibCompressorClass
 type ZlibDecompressorClass C.GZlibDecompressorClass
 
-// UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
-
 func Fn_g_file_attribute_info_list_new() unsafe.Pointer {
 	ret := C.g_file_attribute_info_list_new()
 
@@ -664,8 +662,6 @@ func Fn_g_content_type_is_unknown(param0 string) bool {
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_content_type_set_mime_dirs : parameter 'dirs' is array parameter without length parameter
-
 func Fn_g_content_types_get_registered() unsafe.Pointer {
 	ret := C.g_content_types_get_registered()
 
@@ -677,8 +673,6 @@ func Fn_g_content_types_get_registered() unsafe.Pointer {
 // UNSUPPORTED : g_dbus_address_get_stream_finish : parameter 'out_guid' is non array with indirect count > 1
 
 // UNSUPPORTED : g_dbus_address_get_stream_sync : parameter 'out_guid' is non array with indirect count > 1
-
-// UNSUPPORTED : g_dbus_annotation_info_lookup : parameter 'annotations' is array parameter without length parameter
 
 // UNSUPPORTED : g_file_new_tmp : parameter 'iostream' is non array with indirect count > 1
 
@@ -919,8 +913,6 @@ func Fn_g_application_new(param0 *string, param1 int) unsafe.Pointer {
 
 	return unsafe.Pointer(ret)
 }
-
-// UNSUPPORTED : g_application_add_main_option_entries : parameter 'entries' is array parameter without length parameter
 
 func Fn_g_application_hold(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GApplication)(unsafe.Pointer(paramInstance))
@@ -2098,7 +2090,24 @@ func Fn_g_file_info_set_attribute_string(paramInstance unsafe.Pointer, param0 st
 	C.g_file_info_set_attribute_string(cValueInstance, cValue0, cValue1)
 }
 
-// UNSUPPORTED : g_file_info_set_attribute_stringv : parameter 'attr_value' is array parameter without length parameter
+func Fn_g_file_info_set_attribute_stringv(paramInstance unsafe.Pointer, param0 string, param1 []string) {
+	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	param1Len := len(param1)
+	cValue1Array := C.malloc((C.ulong)(param1Len) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(cValue1Array))
+	param1Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1Len:param1Len]
+	for param1i, param1String := range param1 {
+		param1Slice[param1i] = (*C.gchar)(C.CString(param1String))
+		defer C.free(unsafe.Pointer(param1Slice[param1i]))
+	}
+	cValue1 := &param1Slice[0]
+
+	C.g_file_info_set_attribute_stringv(cValueInstance, cValue0, cValue1)
+}
 
 func Fn_g_file_info_set_attribute_uint32(paramInstance unsafe.Pointer, param0 string, param1 uint32) {
 	cValueInstance := (*C.GFileInfo)(unsafe.Pointer(paramInstance))
@@ -2417,8 +2426,6 @@ func Fn_g_filter_output_stream_set_close_base_stream(paramInstance unsafe.Pointe
 // UNSUPPORTED : g_io_stream_close_async : parameter 'callback' is callback
 
 // UNSUPPORTED : g_io_stream_splice_async : parameter 'callback' is callback
-
-// UNSUPPORTED : g_inet_address_new_from_bytes : parameter 'bytes' is array parameter without length parameter
 
 func Fn_g_input_stream_clear_pending(paramInstance unsafe.Pointer) {
 	cValueInstance := (*C.GInputStream)(unsafe.Pointer(paramInstance))
@@ -2956,8 +2963,6 @@ func Fn_g_settings_set_flags(paramInstance unsafe.Pointer, param0 string, param1
 	return toGoBool(ret)
 }
 
-// UNSUPPORTED : g_settings_set_strv : parameter 'value' is array parameter without length parameter
-
 // UNSUPPORTED : g_settings_list_relocatable_schemas : no array length
 
 // UNSUPPORTED : g_settings_list_schemas : no array length
@@ -3195,8 +3200,6 @@ func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 
 
 // UNSUPPORTED : g_subprocess_new : parameter 'error' is non array with indirect count > 1
 
-// UNSUPPORTED : g_subprocess_newv : parameter 'argv' is array parameter without length parameter
-
 // UNSUPPORTED : g_subprocess_communicate : parameter 'stdout_buf' is non array with indirect count > 1
 
 // UNSUPPORTED : g_subprocess_communicate_async : parameter 'callback' is callback
@@ -3215,11 +3218,7 @@ func Fn_g_socket_client_connect_to_service(paramInstance unsafe.Pointer, param0 
 
 // UNSUPPORTED : g_subprocess_launcher_set_child_setup : parameter 'child_setup' is callback
 
-// UNSUPPORTED : g_subprocess_launcher_set_environ : parameter 'env' is array parameter without length parameter
-
 // UNSUPPORTED : g_subprocess_launcher_spawn : parameter 'error' is non array with indirect count > 1
-
-// UNSUPPORTED : g_subprocess_launcher_spawnv : parameter 'argv' is array parameter without length parameter
 
 func Fn_g_subprocess_launcher_take_fd(paramInstance unsafe.Pointer, param0 int, param1 int) {
 	cValueInstance := (*C.GSubprocessLauncher)(unsafe.Pointer(paramInstance))
@@ -3367,8 +3366,6 @@ func Fn_g_tls_connection_get_use_system_certdb(paramInstance unsafe.Pointer) boo
 
 // UNSUPPORTED : g_tls_connection_handshake_async : parameter 'callback' is callback
 
-// UNSUPPORTED : g_tls_connection_set_advertised_protocols : parameter 'protocols' is array parameter without length parameter
-
 func Fn_g_tls_connection_set_use_system_certdb(paramInstance unsafe.Pointer, param0 bool) {
 	cValueInstance := (*C.GTlsConnection)(unsafe.Pointer(paramInstance))
 
@@ -3381,9 +3378,7 @@ func Fn_g_tls_connection_set_use_system_certdb(paramInstance unsafe.Pointer, par
 
 // UNSUPPORTED : g_tls_database_lookup_certificate_issuer_async : parameter 'callback' is callback
 
-// UNSUPPORTED : g_tls_database_lookup_certificates_issued_by : parameter 'issuer_raw_dn' is array parameter without length parameter
-
-// UNSUPPORTED : g_tls_database_lookup_certificates_issued_by_async : parameter 'issuer_raw_dn' is array parameter without length parameter
+// UNSUPPORTED : g_tls_database_lookup_certificates_issued_by_async : parameter 'callback' is callback
 
 // UNSUPPORTED : g_tls_database_verify_chain_async : parameter 'callback' is callback
 
@@ -3905,8 +3900,6 @@ func Fn_g_drive_poll_for_media_finish(paramInstance unsafe.Pointer, param0 unsaf
 // UNSUPPORTED : g_dtls_connection_close_async : parameter 'callback' is callback
 
 // UNSUPPORTED : g_dtls_connection_handshake_async : parameter 'callback' is callback
-
-// UNSUPPORTED : g_dtls_connection_set_advertised_protocols : parameter 'protocols' is array parameter without length parameter
 
 // UNSUPPORTED : g_dtls_connection_shutdown_async : parameter 'callback' is callback
 

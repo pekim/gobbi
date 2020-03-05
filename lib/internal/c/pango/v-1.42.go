@@ -786,9 +786,29 @@ func Fn_pango_glyph_item_free(paramInstance unsafe.Pointer) {
 	C.pango_glyph_item_free(cValueInstance)
 }
 
-// UNSUPPORTED : pango_glyph_item_get_logical_widths : parameter 'logical_widths' is array parameter without length parameter
+func Fn_pango_glyph_item_get_logical_widths(paramInstance unsafe.Pointer, param0 string, param1 []int) {
+	cValueInstance := (*C.PangoGlyphItem)(unsafe.Pointer(paramInstance))
 
-// UNSUPPORTED : pango_glyph_item_letter_space : parameter 'log_attrs' is array parameter without length parameter
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.int)(unsafe.Pointer(&param1[0]))
+
+	C.pango_glyph_item_get_logical_widths(cValueInstance, cValue0, cValue1)
+}
+
+func Fn_pango_glyph_item_letter_space(paramInstance unsafe.Pointer, param0 string, param1 []LogAttr, param2 int) {
+	cValueInstance := (*C.PangoGlyphItem)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (*C.PangoLogAttr)(unsafe.Pointer(&param1[0]))
+
+	cValue2 := (C.int)(param2)
+
+	C.pango_glyph_item_letter_space(cValueInstance, cValue0, cValue1, cValue2)
+}
 
 func Fn_pango_glyph_item_split(paramInstance unsafe.Pointer, param0 string, param1 int) unsafe.Pointer {
 	cValueInstance := (*C.PangoGlyphItem)(unsafe.Pointer(paramInstance))
@@ -907,7 +927,20 @@ func Fn_pango_glyph_string_free(paramInstance unsafe.Pointer) {
 	C.pango_glyph_string_free(cValueInstance)
 }
 
-// UNSUPPORTED : pango_glyph_string_get_logical_widths : parameter 'logical_widths' is array parameter without length parameter
+func Fn_pango_glyph_string_get_logical_widths(paramInstance unsafe.Pointer, param0 string, param1 int, param2 int, param3 []int) {
+	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))
+
+	cValue0 := (*C.char)(C.CString(param0))
+	defer C.free(unsafe.Pointer(cValue0))
+
+	cValue1 := (C.int)(param1)
+
+	cValue2 := (C.int)(param2)
+
+	cValue3 := (*C.int)(unsafe.Pointer(&param3[0]))
+
+	C.pango_glyph_string_get_logical_widths(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+}
 
 func Fn_pango_glyph_string_get_width(paramInstance unsafe.Pointer) int {
 	cValueInstance := (*C.PangoGlyphString)(unsafe.Pointer(paramInstance))

@@ -60,14 +60,6 @@ func (p Parameter) isSupported() (bool, string) {
 		return false, "is non array with indirect count > 1	"
 	}
 
-	//if p.isType() && p.Nullable && p.Type.cType.indirectionCount > 0 {
-	//	return false, "is nullable with indirect count > 0	"
-	//}
-
-	if p.isArray() && p.lengthParam == nil {
-		return false, "is array parameter without length parameter"
-	}
-
 	if p.isArray() && p.Array.cType.indirectionCount == 0 {
 		if !p.Array.Type.isString() {
 			return false, fmt.Sprintf("is array parameter with indirection of %d", p.Array.cType.indirectionCount)
