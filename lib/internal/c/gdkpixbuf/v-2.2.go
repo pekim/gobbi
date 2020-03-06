@@ -359,6 +359,8 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 
 // UNSUPPORTED : gdk_pixbuf_save_to_buffer : blacklisted
 
+// UNSUPPORTED : gdk_pixbuf_save_to_bufferv : parameter 'buffer' is non array with indirect count > 1
+
 // UNSUPPORTED : gdk_pixbuf_save_to_callback : parameter 'save_func' is callback
 
 // UNSUPPORTED : gdk_pixbuf_save_to_callbackv : parameter 'save_func' is callback

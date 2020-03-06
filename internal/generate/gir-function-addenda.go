@@ -1,6 +1,8 @@
 package generate
 
-import "strings"
+import (
+	"strings"
+)
 
 var functionBlacklist = map[string]bool{
 	// atk
@@ -114,12 +116,14 @@ func (f *Function) applyAddenda() {
 			}
 		}
 	}
-	//if f.CIdentifier == "gtk_accelerator_parse_with_keycode" || f.CIdentifier == "gdk_text_property_to_utf8_list_for_display" {
-	//	for i, param := range f.Parameters {
-	//		if param.Name == "accelerator_codes" || param.Name == "list" {
-	//			param.Array.ZeroTerminated = true
-	//			f.Parameters[i] = param
-	//		}
-	//	}
-	//}
+
+	if f.CIdentifier == "gdk_pixbuf_save_to_bufferv" {
+		for i, param := range f.Parameters {
+			if param.Name == "buffer" {
+				param.Array = nil
+				param.Type = &Type{Name: "utf8", CType: "char**"}
+				f.Parameters[i] = param
+			}
+		}
+	}
 }

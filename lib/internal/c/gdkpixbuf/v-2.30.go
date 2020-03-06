@@ -556,50 +556,7 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 
 // UNSUPPORTED : gdk_pixbuf_save_to_buffer : blacklisted
 
-func Fn_gdk_pixbuf_save_to_bufferv(paramInstance unsafe.Pointer, param0 *[]uint8, param1 *uint64, param2 string, param3 []string, param4 []string, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	var cValue0ArrayPointer (C.guint8)
-	cValue0 := &cValue0ArrayPointer
-
-	cValue1 := (*C.gsize)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.char)(C.CString(param2))
-	defer C.free(unsafe.Pointer(cValue2))
-
-	param3Len := len(param3)
-	cValue3Array := C.malloc((C.ulong)(param3Len) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue3Array))
-	param3Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue3Array))[:param3Len:param3Len]
-	for param3i, param3String := range param3 {
-		param3Slice[param3i] = (*C.gchar)(C.CString(param3String))
-		defer C.free(unsafe.Pointer(param3Slice[param3i]))
-	}
-	cValue3 := &param3Slice[0]
-
-	param4Len := len(param4)
-	cValue4Array := C.malloc((C.ulong)(param4Len) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue4Array))
-	param4Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue4Array))[:param4Len:param4Len]
-	for param4i, param4String := range param4 {
-		param4Slice[param4i] = (*C.gchar)(C.CString(param4String))
-		defer C.free(unsafe.Pointer(param4Slice[param4i]))
-	}
-	cValue4 := &param4Slice[0]
-
-	cError := (**C.GError)(error)
-
-	ret := C.gdk_pixbuf_save_to_bufferv(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cError)
-
-	param0OutLen := int(*cValue1)
-	param0Out := make([]uint8, param0OutLen, param0OutLen)
-	if param0OutLen > 0 {
-		param0Out = (*[1 << 30](uint8))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
-	}
-	*param0 = param0Out
-
-	return toGoBool(ret)
-}
+// UNSUPPORTED : gdk_pixbuf_save_to_bufferv : parameter 'buffer' is non array with indirect count > 1
 
 // UNSUPPORTED : gdk_pixbuf_save_to_callback : parameter 'save_func' is callback
 
