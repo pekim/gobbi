@@ -57,7 +57,7 @@ func TestArraySysParamGoType(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			test.array.init(ns)
+			test.array.init(ns, nil)
 
 			// generate
 			f := jen.NewFile("test")

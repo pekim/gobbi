@@ -23,458 +23,458 @@ type PixbufFormat C.GdkPixbufFormat
 type PixbufLoaderClass C.GdkPixbufLoaderClass
 type PixbufSimpleAnimClass C.GdkPixbufSimpleAnimClass
 
-func Fn_gdk_pixbuf_format_get_description(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkPixbufFormat)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_format_get_description(format unsafe.Pointer) string {
+	c_format := (*C.GdkPixbufFormat)(unsafe.Pointer(format))
 
-	ret := C.gdk_pixbuf_format_get_description(cValueInstance)
+	ret := C.gdk_pixbuf_format_get_description(c_format)
 
 	return C.GoString(ret)
 }
 
 // UNSUPPORTED : gdk_pixbuf_format_get_extensions : no array length
 
-func Fn_gdk_pixbuf_format_get_license(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkPixbufFormat)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_format_get_license(format unsafe.Pointer) string {
+	c_format := (*C.GdkPixbufFormat)(unsafe.Pointer(format))
 
-	ret := C.gdk_pixbuf_format_get_license(cValueInstance)
+	ret := C.gdk_pixbuf_format_get_license(c_format)
 
 	return C.GoString(ret)
 }
 
 // UNSUPPORTED : gdk_pixbuf_format_get_mime_types : no array length
 
-func Fn_gdk_pixbuf_format_get_name(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkPixbufFormat)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_format_get_name(format unsafe.Pointer) string {
+	c_format := (*C.GdkPixbufFormat)(unsafe.Pointer(format))
 
-	ret := C.gdk_pixbuf_format_get_name(cValueInstance)
+	ret := C.gdk_pixbuf_format_get_name(c_format)
 
 	return C.GoString(ret)
 }
 
-func Fn_gdk_pixbuf_format_is_disabled(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbufFormat)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_format_is_disabled(format unsafe.Pointer) bool {
+	c_format := (*C.GdkPixbufFormat)(unsafe.Pointer(format))
 
-	ret := C.gdk_pixbuf_format_is_disabled(cValueInstance)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_pixbuf_format_is_scalable(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbufFormat)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_pixbuf_format_is_scalable(cValueInstance)
+	ret := C.gdk_pixbuf_format_is_disabled(c_format)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_format_is_writable(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbufFormat)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_format_is_scalable(format unsafe.Pointer) bool {
+	c_format := (*C.GdkPixbufFormat)(unsafe.Pointer(format))
 
-	ret := C.gdk_pixbuf_format_is_writable(cValueInstance)
+	ret := C.gdk_pixbuf_format_is_scalable(c_format)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_format_set_disabled(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkPixbufFormat)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_format_is_writable(format unsafe.Pointer) bool {
+	c_format := (*C.GdkPixbufFormat)(unsafe.Pointer(format))
 
-	cValue0 := toCBool(param0)
+	ret := C.gdk_pixbuf_format_is_writable(c_format)
 
-	C.gdk_pixbuf_format_set_disabled(cValueInstance, cValue0)
+	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_new(param0 int, param1 bool, param2 int, param3 int, param4 int) unsafe.Pointer {
-	cValue0 := (C.GdkColorspace)(param0)
+func Fn_gdk_pixbuf_format_set_disabled(format unsafe.Pointer, disabled bool) {
+	c_format := (*C.GdkPixbufFormat)(unsafe.Pointer(format))
 
-	cValue1 := toCBool(param1)
+	c_disabled := toCBool(disabled)
 
-	cValue2 := (C.int)(param2)
+	C.gdk_pixbuf_format_set_disabled(c_format, c_disabled)
+}
 
-	cValue3 := (C.int)(param3)
+func Fn_gdk_pixbuf_new(colorspace int, hasAlpha bool, bitsPerSample int, width int, height int) unsafe.Pointer {
+	c_colorspace := (C.GdkColorspace)(colorspace)
 
-	cValue4 := (C.int)(param4)
+	c_hasAlpha := toCBool(hasAlpha)
 
-	ret := C.gdk_pixbuf_new(cValue0, cValue1, cValue2, cValue3, cValue4)
+	c_bitsPerSample := (C.int)(bitsPerSample)
+
+	c_width := (C.int)(width)
+
+	c_height := (C.int)(height)
+
+	ret := C.gdk_pixbuf_new(c_colorspace, c_hasAlpha, c_bitsPerSample, c_width, c_height)
 
 	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : gdk_pixbuf_new_from_data : parameter 'destroy_fn' is callback
 
-func Fn_gdk_pixbuf_new_from_file(param0 string, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_pixbuf_new_from_file(filename string, error unsafe.Pointer) unsafe.Pointer {
+	c_filename := (*C.char)(C.CString(filename))
+	defer C.free(unsafe.Pointer(c_filename))
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_new_from_file(cValue0, cError)
+	ret := C.gdk_pixbuf_new_from_file(c_filename, cError)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_new_from_file_at_scale(param0 string, param1 int, param2 int, param3 bool, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_pixbuf_new_from_file_at_scale(filename string, width int, height int, preserveAspectRatio bool, error unsafe.Pointer) unsafe.Pointer {
+	c_filename := (*C.char)(C.CString(filename))
+	defer C.free(unsafe.Pointer(c_filename))
 
-	cValue1 := (C.int)(param1)
+	c_width := (C.int)(width)
 
-	cValue2 := (C.int)(param2)
+	c_height := (C.int)(height)
 
-	cValue3 := toCBool(param3)
+	c_preserveAspectRatio := toCBool(preserveAspectRatio)
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_new_from_file_at_scale(cValue0, cValue1, cValue2, cValue3, cError)
+	ret := C.gdk_pixbuf_new_from_file_at_scale(c_filename, c_width, c_height, c_preserveAspectRatio, cError)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_new_from_file_at_size(param0 string, param1 int, param2 int, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_pixbuf_new_from_file_at_size(filename string, width int, height int, error unsafe.Pointer) unsafe.Pointer {
+	c_filename := (*C.char)(C.CString(filename))
+	defer C.free(unsafe.Pointer(c_filename))
 
-	cValue1 := (C.int)(param1)
+	c_width := (C.int)(width)
 
-	cValue2 := (C.int)(param2)
+	c_height := (C.int)(height)
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_new_from_file_at_size(cValue0, cValue1, cValue2, cError)
+	ret := C.gdk_pixbuf_new_from_file_at_size(c_filename, c_width, c_height, cError)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_new_from_inline(param0 int, param1 []uint8, param2 bool, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (C.gint)(param0)
+func Fn_gdk_pixbuf_new_from_inline(dataLength int, data []uint8, copyPixels bool, error unsafe.Pointer) unsafe.Pointer {
+	c_dataLength := (C.gint)(dataLength)
 
-	cValue1 := (*C.guint8)(unsafe.Pointer(&param1[0]))
+	c_data := (*C.guint8)(unsafe.Pointer(&data[0]))
 
-	cValue2 := toCBool(param2)
+	c_copyPixels := toCBool(copyPixels)
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_new_from_inline(cValue0, cValue1, cValue2, cError)
+	ret := C.gdk_pixbuf_new_from_inline(c_dataLength, c_data, c_copyPixels, cError)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_new_from_stream(param0 unsafe.Pointer, param1 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GInputStream)(unsafe.Pointer(param0))
+func Fn_gdk_pixbuf_new_from_stream(stream unsafe.Pointer, cancellable unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	c_stream := (*C.GInputStream)(unsafe.Pointer(stream))
 
-	cValue1 := (*C.GCancellable)(unsafe.Pointer(param1))
+	c_cancellable := (*C.GCancellable)(unsafe.Pointer(cancellable))
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_new_from_stream(cValue0, cValue1, cError)
+	ret := C.gdk_pixbuf_new_from_stream(c_stream, c_cancellable, cError)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_new_from_stream_at_scale(param0 unsafe.Pointer, param1 int, param2 int, param3 bool, param4 unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GInputStream)(unsafe.Pointer(param0))
+func Fn_gdk_pixbuf_new_from_stream_at_scale(stream unsafe.Pointer, width int, height int, preserveAspectRatio bool, cancellable unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	c_stream := (*C.GInputStream)(unsafe.Pointer(stream))
 
-	cValue1 := (C.gint)(param1)
+	c_width := (C.gint)(width)
 
-	cValue2 := (C.gint)(param2)
+	c_height := (C.gint)(height)
 
-	cValue3 := toCBool(param3)
+	c_preserveAspectRatio := toCBool(preserveAspectRatio)
 
-	cValue4 := (*C.GCancellable)(unsafe.Pointer(param4))
+	c_cancellable := (*C.GCancellable)(unsafe.Pointer(cancellable))
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_new_from_stream_at_scale(cValue0, cValue1, cValue2, cValue3, cValue4, cError)
+	ret := C.gdk_pixbuf_new_from_stream_at_scale(c_stream, c_width, c_height, c_preserveAspectRatio, c_cancellable, cError)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_new_from_xpm_data(param0 []string) unsafe.Pointer {
-	param0Len := len(param0)
-	cValue0Array := C.malloc((C.ulong)(param0Len) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue0Array))
-	param0Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue0Array))[:param0Len:param0Len]
-	for param0i, param0String := range param0 {
-		param0Slice[param0i] = (*C.gchar)(C.CString(param0String))
-		defer C.free(unsafe.Pointer(param0Slice[param0i]))
+func Fn_gdk_pixbuf_new_from_xpm_data(data []string) unsafe.Pointer {
+	dataLen := len(data)
+	c_dataArray := C.malloc((C.ulong)(dataLen) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(c_dataArray))
+	dataSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(c_dataArray))[:dataLen:dataLen]
+	for datai, dataString := range data {
+		dataSlice[datai] = (*C.gchar)(C.CString(dataString))
+		defer C.free(unsafe.Pointer(dataSlice[datai]))
 	}
-	cValue0 := &param0Slice[0]
+	c_data := &dataSlice[0]
 
-	ret := C.gdk_pixbuf_new_from_xpm_data(cValue0)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_pixbuf_add_alpha(paramInstance unsafe.Pointer, param0 bool, param1 uint8, param2 uint8, param3 uint8) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	cValue0 := toCBool(param0)
-
-	cValue1 := (C.guchar)(param1)
-
-	cValue2 := (C.guchar)(param2)
-
-	cValue3 := (C.guchar)(param3)
-
-	ret := C.gdk_pixbuf_add_alpha(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	ret := C.gdk_pixbuf_new_from_xpm_data(c_data)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_apply_embedded_orientation(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_add_alpha(pixbuf unsafe.Pointer, substituteColor bool, r uint8, g uint8, b uint8) unsafe.Pointer {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	ret := C.gdk_pixbuf_apply_embedded_orientation(cValueInstance)
+	c_substituteColor := toCBool(substituteColor)
 
-	return unsafe.Pointer(ret)
-}
+	c_r := (C.guchar)(r)
 
-func Fn_gdk_pixbuf_composite(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int, param5 float64, param6 float64, param7 float64, param8 float64, param9 int, param10 int) {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+	c_g := (C.guchar)(g)
 
-	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
+	c_b := (C.guchar)(b)
 
-	cValue1 := (C.int)(param1)
-
-	cValue2 := (C.int)(param2)
-
-	cValue3 := (C.int)(param3)
-
-	cValue4 := (C.int)(param4)
-
-	cValue5 := (C.double)(param5)
-
-	cValue6 := (C.double)(param6)
-
-	cValue7 := (C.double)(param7)
-
-	cValue8 := (C.double)(param8)
-
-	cValue9 := (C.GdkInterpType)(param9)
-
-	cValue10 := (C.int)(param10)
-
-	C.gdk_pixbuf_composite(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10)
-}
-
-func Fn_gdk_pixbuf_composite_color(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int, param5 float64, param6 float64, param7 float64, param8 float64, param9 int, param10 int, param11 int, param12 int, param13 int, param14 uint32, param15 uint32) {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
-
-	cValue1 := (C.int)(param1)
-
-	cValue2 := (C.int)(param2)
-
-	cValue3 := (C.int)(param3)
-
-	cValue4 := (C.int)(param4)
-
-	cValue5 := (C.double)(param5)
-
-	cValue6 := (C.double)(param6)
-
-	cValue7 := (C.double)(param7)
-
-	cValue8 := (C.double)(param8)
-
-	cValue9 := (C.GdkInterpType)(param9)
-
-	cValue10 := (C.int)(param10)
-
-	cValue11 := (C.int)(param11)
-
-	cValue12 := (C.int)(param12)
-
-	cValue13 := (C.int)(param13)
-
-	cValue14 := (C.guint32)(param14)
-
-	cValue15 := (C.guint32)(param15)
-
-	C.gdk_pixbuf_composite_color(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9, cValue10, cValue11, cValue12, cValue13, cValue14, cValue15)
-}
-
-func Fn_gdk_pixbuf_composite_color_simple(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int, param4 int, param5 uint32, param6 uint32) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.int)(param0)
-
-	cValue1 := (C.int)(param1)
-
-	cValue2 := (C.GdkInterpType)(param2)
-
-	cValue3 := (C.int)(param3)
-
-	cValue4 := (C.int)(param4)
-
-	cValue5 := (C.guint32)(param5)
-
-	cValue6 := (C.guint32)(param6)
-
-	ret := C.gdk_pixbuf_composite_color_simple(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
+	ret := C.gdk_pixbuf_add_alpha(c_pixbuf, c_substituteColor, c_r, c_g, c_b)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_apply_embedded_orientation(src unsafe.Pointer) unsafe.Pointer {
+	c_src := (*C.GdkPixbuf)(unsafe.Pointer(src))
 
-	ret := C.gdk_pixbuf_copy(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_pixbuf_copy_area(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int, param4 unsafe.Pointer, param5 int, param6 int) {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.int)(param0)
-
-	cValue1 := (C.int)(param1)
-
-	cValue2 := (C.int)(param2)
-
-	cValue3 := (C.int)(param3)
-
-	cValue4 := (*C.GdkPixbuf)(unsafe.Pointer(param4))
-
-	cValue5 := (C.int)(param5)
-
-	cValue6 := (C.int)(param6)
-
-	C.gdk_pixbuf_copy_area(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
-}
-
-func Fn_gdk_pixbuf_fill(paramInstance unsafe.Pointer, param0 uint32) {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.guint32)(param0)
-
-	C.gdk_pixbuf_fill(cValueInstance, cValue0)
-}
-
-func Fn_gdk_pixbuf_flip(paramInstance unsafe.Pointer, param0 bool) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	cValue0 := toCBool(param0)
-
-	ret := C.gdk_pixbuf_flip(cValueInstance, cValue0)
+	ret := C.gdk_pixbuf_apply_embedded_orientation(c_src)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_get_bits_per_sample(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_composite(src unsafe.Pointer, dest unsafe.Pointer, destX int, destY int, destWidth int, destHeight int, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType int, overallAlpha int) {
+	c_src := (*C.GdkPixbuf)(unsafe.Pointer(src))
 
-	ret := C.gdk_pixbuf_get_bits_per_sample(cValueInstance)
+	c_dest := (*C.GdkPixbuf)(unsafe.Pointer(dest))
+
+	c_destX := (C.int)(destX)
+
+	c_destY := (C.int)(destY)
+
+	c_destWidth := (C.int)(destWidth)
+
+	c_destHeight := (C.int)(destHeight)
+
+	c_offsetX := (C.double)(offsetX)
+
+	c_offsetY := (C.double)(offsetY)
+
+	c_scaleX := (C.double)(scaleX)
+
+	c_scaleY := (C.double)(scaleY)
+
+	c_interpType := (C.GdkInterpType)(interpType)
+
+	c_overallAlpha := (C.int)(overallAlpha)
+
+	C.gdk_pixbuf_composite(c_src, c_dest, c_destX, c_destY, c_destWidth, c_destHeight, c_offsetX, c_offsetY, c_scaleX, c_scaleY, c_interpType, c_overallAlpha)
+}
+
+func Fn_gdk_pixbuf_composite_color(src unsafe.Pointer, dest unsafe.Pointer, destX int, destY int, destWidth int, destHeight int, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType int, overallAlpha int, checkX int, checkY int, checkSize int, color1 uint32, color2 uint32) {
+	c_src := (*C.GdkPixbuf)(unsafe.Pointer(src))
+
+	c_dest := (*C.GdkPixbuf)(unsafe.Pointer(dest))
+
+	c_destX := (C.int)(destX)
+
+	c_destY := (C.int)(destY)
+
+	c_destWidth := (C.int)(destWidth)
+
+	c_destHeight := (C.int)(destHeight)
+
+	c_offsetX := (C.double)(offsetX)
+
+	c_offsetY := (C.double)(offsetY)
+
+	c_scaleX := (C.double)(scaleX)
+
+	c_scaleY := (C.double)(scaleY)
+
+	c_interpType := (C.GdkInterpType)(interpType)
+
+	c_overallAlpha := (C.int)(overallAlpha)
+
+	c_checkX := (C.int)(checkX)
+
+	c_checkY := (C.int)(checkY)
+
+	c_checkSize := (C.int)(checkSize)
+
+	c_color1 := (C.guint32)(color1)
+
+	c_color2 := (C.guint32)(color2)
+
+	C.gdk_pixbuf_composite_color(c_src, c_dest, c_destX, c_destY, c_destWidth, c_destHeight, c_offsetX, c_offsetY, c_scaleX, c_scaleY, c_interpType, c_overallAlpha, c_checkX, c_checkY, c_checkSize, c_color1, c_color2)
+}
+
+func Fn_gdk_pixbuf_composite_color_simple(src unsafe.Pointer, destWidth int, destHeight int, interpType int, overallAlpha int, checkSize int, color1 uint32, color2 uint32) unsafe.Pointer {
+	c_src := (*C.GdkPixbuf)(unsafe.Pointer(src))
+
+	c_destWidth := (C.int)(destWidth)
+
+	c_destHeight := (C.int)(destHeight)
+
+	c_interpType := (C.GdkInterpType)(interpType)
+
+	c_overallAlpha := (C.int)(overallAlpha)
+
+	c_checkSize := (C.int)(checkSize)
+
+	c_color1 := (C.guint32)(color1)
+
+	c_color2 := (C.guint32)(color2)
+
+	ret := C.gdk_pixbuf_composite_color_simple(c_src, c_destWidth, c_destHeight, c_interpType, c_overallAlpha, c_checkSize, c_color1, c_color2)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_pixbuf_copy(pixbuf unsafe.Pointer) unsafe.Pointer {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
+
+	ret := C.gdk_pixbuf_copy(c_pixbuf)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_pixbuf_copy_area(srcPixbuf unsafe.Pointer, srcX int, srcY int, width int, height int, destPixbuf unsafe.Pointer, destX int, destY int) {
+	c_srcPixbuf := (*C.GdkPixbuf)(unsafe.Pointer(srcPixbuf))
+
+	c_srcX := (C.int)(srcX)
+
+	c_srcY := (C.int)(srcY)
+
+	c_width := (C.int)(width)
+
+	c_height := (C.int)(height)
+
+	c_destPixbuf := (*C.GdkPixbuf)(unsafe.Pointer(destPixbuf))
+
+	c_destX := (C.int)(destX)
+
+	c_destY := (C.int)(destY)
+
+	C.gdk_pixbuf_copy_area(c_srcPixbuf, c_srcX, c_srcY, c_width, c_height, c_destPixbuf, c_destX, c_destY)
+}
+
+func Fn_gdk_pixbuf_fill(pixbuf unsafe.Pointer, pixel uint32) {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
+
+	c_pixel := (C.guint32)(pixel)
+
+	C.gdk_pixbuf_fill(c_pixbuf, c_pixel)
+}
+
+func Fn_gdk_pixbuf_flip(src unsafe.Pointer, horizontal bool) unsafe.Pointer {
+	c_src := (*C.GdkPixbuf)(unsafe.Pointer(src))
+
+	c_horizontal := toCBool(horizontal)
+
+	ret := C.gdk_pixbuf_flip(c_src, c_horizontal)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_pixbuf_get_bits_per_sample(pixbuf unsafe.Pointer) int {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
+
+	ret := C.gdk_pixbuf_get_bits_per_sample(c_pixbuf)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_pixbuf_get_colorspace(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_get_colorspace(pixbuf unsafe.Pointer) int {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	ret := C.gdk_pixbuf_get_colorspace(cValueInstance)
+	ret := C.gdk_pixbuf_get_colorspace(c_pixbuf)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_pixbuf_get_has_alpha(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_get_has_alpha(pixbuf unsafe.Pointer) bool {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	ret := C.gdk_pixbuf_get_has_alpha(cValueInstance)
+	ret := C.gdk_pixbuf_get_has_alpha(c_pixbuf)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_get_height(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_get_height(pixbuf unsafe.Pointer) int {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	ret := C.gdk_pixbuf_get_height(cValueInstance)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_pixbuf_get_n_channels(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_pixbuf_get_n_channels(cValueInstance)
+	ret := C.gdk_pixbuf_get_height(c_pixbuf)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_pixbuf_get_option(paramInstance unsafe.Pointer, param0 string) string {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_get_n_channels(pixbuf unsafe.Pointer) int {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	ret := C.gdk_pixbuf_get_n_channels(c_pixbuf)
 
-	ret := C.gdk_pixbuf_get_option(cValueInstance, cValue0)
+	return (int)(ret)
+}
+
+func Fn_gdk_pixbuf_get_option(pixbuf unsafe.Pointer, key string) string {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
+
+	c_key := (*C.gchar)(C.CString(key))
+	defer C.free(unsafe.Pointer(c_key))
+
+	ret := C.gdk_pixbuf_get_option(c_pixbuf, c_key)
 
 	return C.GoString(ret)
 }
 
 // UNSUPPORTED : gdk_pixbuf_get_pixels : no array length
 
-func Fn_gdk_pixbuf_get_rowstride(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_get_rowstride(pixbuf unsafe.Pointer) int {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	ret := C.gdk_pixbuf_get_rowstride(cValueInstance)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_pixbuf_get_width(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_pixbuf_get_width(cValueInstance)
+	ret := C.gdk_pixbuf_get_rowstride(c_pixbuf)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_pixbuf_new_subpixbuf(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_get_width(pixbuf unsafe.Pointer) int {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	cValue0 := (C.int)(param0)
+	ret := C.gdk_pixbuf_get_width(c_pixbuf)
 
-	cValue1 := (C.int)(param1)
+	return (int)(ret)
+}
 
-	cValue2 := (C.int)(param2)
+func Fn_gdk_pixbuf_new_subpixbuf(srcPixbuf unsafe.Pointer, srcX int, srcY int, width int, height int) unsafe.Pointer {
+	c_srcPixbuf := (*C.GdkPixbuf)(unsafe.Pointer(srcPixbuf))
 
-	cValue3 := (C.int)(param3)
+	c_srcX := (C.int)(srcX)
 
-	ret := C.gdk_pixbuf_new_subpixbuf(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	c_srcY := (C.int)(srcY)
+
+	c_width := (C.int)(width)
+
+	c_height := (C.int)(height)
+
+	ret := C.gdk_pixbuf_new_subpixbuf(c_srcPixbuf, c_srcX, c_srcY, c_width, c_height)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_ref(pixbuf unsafe.Pointer) unsafe.Pointer {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	ret := C.gdk_pixbuf_ref(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_pixbuf_rotate_simple(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.GdkPixbufRotation)(param0)
-
-	ret := C.gdk_pixbuf_rotate_simple(cValueInstance, cValue0)
+	ret := C.gdk_pixbuf_ref(c_pixbuf)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 float32, param2 bool) {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_rotate_simple(src unsafe.Pointer, angle int) unsafe.Pointer {
+	c_src := (*C.GdkPixbuf)(unsafe.Pointer(src))
 
-	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
+	c_angle := (C.GdkPixbufRotation)(angle)
 
-	cValue1 := (C.gfloat)(param1)
+	ret := C.gdk_pixbuf_rotate_simple(c_src, c_angle)
 
-	cValue2 := toCBool(param2)
+	return unsafe.Pointer(ret)
+}
 
-	C.gdk_pixbuf_saturate_and_pixelate(cValueInstance, cValue0, cValue1, cValue2)
+func Fn_gdk_pixbuf_saturate_and_pixelate(src unsafe.Pointer, dest unsafe.Pointer, saturation float32, pixelate bool) {
+	c_src := (*C.GdkPixbuf)(unsafe.Pointer(src))
+
+	c_dest := (*C.GdkPixbuf)(unsafe.Pointer(dest))
+
+	c_saturation := (C.gfloat)(saturation)
+
+	c_pixelate := toCBool(pixelate)
+
+	C.gdk_pixbuf_saturate_and_pixelate(c_src, c_dest, c_saturation, c_pixelate)
 }
 
 // UNSUPPORTED : gdk_pixbuf_save : parameter 'error' is non array with indirect count > 1
@@ -493,111 +493,111 @@ func Fn_gdk_pixbuf_saturate_and_pixelate(paramInstance unsafe.Pointer, param0 un
 
 // UNSUPPORTED : gdk_pixbuf_save_to_streamv_async : parameter 'callback' is callback
 
-func Fn_gdk_pixbuf_savev(paramInstance unsafe.Pointer, param0 string, param1 string, param2 []string, param3 []string, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_savev(pixbuf unsafe.Pointer, filename string, type_ string, optionKeys []string, optionValues []string, error unsafe.Pointer) bool {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	c_filename := (*C.char)(C.CString(filename))
+	defer C.free(unsafe.Pointer(c_filename))
 
-	cValue1 := (*C.char)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	c_type_ := (*C.char)(C.CString(type_))
+	defer C.free(unsafe.Pointer(c_type_))
 
-	param2Len := len(param2)
-	cValue2Array := C.malloc((C.ulong)(param2Len) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue2Array))
-	param2Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue2Array))[:param2Len:param2Len]
-	for param2i, param2String := range param2 {
-		param2Slice[param2i] = (*C.gchar)(C.CString(param2String))
-		defer C.free(unsafe.Pointer(param2Slice[param2i]))
+	optionKeysLen := len(optionKeys)
+	c_optionKeysArray := C.malloc((C.ulong)(optionKeysLen) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(c_optionKeysArray))
+	optionKeysSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(c_optionKeysArray))[:optionKeysLen:optionKeysLen]
+	for optionKeysi, optionKeysString := range optionKeys {
+		optionKeysSlice[optionKeysi] = (*C.gchar)(C.CString(optionKeysString))
+		defer C.free(unsafe.Pointer(optionKeysSlice[optionKeysi]))
 	}
-	cValue2 := &param2Slice[0]
+	c_optionKeys := &optionKeysSlice[0]
 
-	param3Len := len(param3)
-	cValue3Array := C.malloc((C.ulong)(param3Len) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue3Array))
-	param3Slice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue3Array))[:param3Len:param3Len]
-	for param3i, param3String := range param3 {
-		param3Slice[param3i] = (*C.gchar)(C.CString(param3String))
-		defer C.free(unsafe.Pointer(param3Slice[param3i]))
+	optionValuesLen := len(optionValues)
+	c_optionValuesArray := C.malloc((C.ulong)(optionValuesLen) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(c_optionValuesArray))
+	optionValuesSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(c_optionValuesArray))[:optionValuesLen:optionValuesLen]
+	for optionValuesi, optionValuesString := range optionValues {
+		optionValuesSlice[optionValuesi] = (*C.gchar)(C.CString(optionValuesString))
+		defer C.free(unsafe.Pointer(optionValuesSlice[optionValuesi]))
 	}
-	cValue3 := &param3Slice[0]
+	c_optionValues := &optionValuesSlice[0]
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_savev(cValueInstance, cValue0, cValue1, cValue2, cValue3, cError)
+	ret := C.gdk_pixbuf_savev(c_pixbuf, c_filename, c_type_, c_optionKeys, c_optionValues, cError)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_scale(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int, param5 float64, param6 float64, param7 float64, param8 float64, param9 int) {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_scale(src unsafe.Pointer, dest unsafe.Pointer, destX int, destY int, destWidth int, destHeight int, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType int) {
+	c_src := (*C.GdkPixbuf)(unsafe.Pointer(src))
 
-	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
+	c_dest := (*C.GdkPixbuf)(unsafe.Pointer(dest))
 
-	cValue1 := (C.int)(param1)
+	c_destX := (C.int)(destX)
 
-	cValue2 := (C.int)(param2)
+	c_destY := (C.int)(destY)
 
-	cValue3 := (C.int)(param3)
+	c_destWidth := (C.int)(destWidth)
 
-	cValue4 := (C.int)(param4)
+	c_destHeight := (C.int)(destHeight)
 
-	cValue5 := (C.double)(param5)
+	c_offsetX := (C.double)(offsetX)
 
-	cValue6 := (C.double)(param6)
+	c_offsetY := (C.double)(offsetY)
 
-	cValue7 := (C.double)(param7)
+	c_scaleX := (C.double)(scaleX)
 
-	cValue8 := (C.double)(param8)
+	c_scaleY := (C.double)(scaleY)
 
-	cValue9 := (C.GdkInterpType)(param9)
+	c_interpType := (C.GdkInterpType)(interpType)
 
-	C.gdk_pixbuf_scale(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
+	C.gdk_pixbuf_scale(c_src, c_dest, c_destX, c_destY, c_destWidth, c_destHeight, c_offsetX, c_offsetY, c_scaleX, c_scaleY, c_interpType)
 }
 
-func Fn_gdk_pixbuf_scale_simple(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_scale_simple(src unsafe.Pointer, destWidth int, destHeight int, interpType int) unsafe.Pointer {
+	c_src := (*C.GdkPixbuf)(unsafe.Pointer(src))
 
-	cValue0 := (C.int)(param0)
+	c_destWidth := (C.int)(destWidth)
 
-	cValue1 := (C.int)(param1)
+	c_destHeight := (C.int)(destHeight)
 
-	cValue2 := (C.GdkInterpType)(param2)
+	c_interpType := (C.GdkInterpType)(interpType)
 
-	ret := C.gdk_pixbuf_scale_simple(cValueInstance, cValue0, cValue1, cValue2)
+	ret := C.gdk_pixbuf_scale_simple(c_src, c_destWidth, c_destHeight, c_interpType)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_set_option(paramInstance unsafe.Pointer, param0 string, param1 string) bool {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_set_option(pixbuf unsafe.Pointer, key string, value string) bool {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	c_key := (*C.gchar)(C.CString(key))
+	defer C.free(unsafe.Pointer(c_key))
 
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
+	c_value := (*C.gchar)(C.CString(value))
+	defer C.free(unsafe.Pointer(c_value))
 
-	ret := C.gdk_pixbuf_set_option(cValueInstance, cValue0, cValue1)
+	ret := C.gdk_pixbuf_set_option(c_pixbuf, c_key, c_value)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_unref(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkPixbuf)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_unref(pixbuf unsafe.Pointer) {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	C.gdk_pixbuf_unref(cValueInstance)
+	C.gdk_pixbuf_unref(c_pixbuf)
 }
 
-func Fn_gdk_pixbuf_get_file_info(param0 string, param1 *int, param2 *int) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_pixbuf_get_file_info(filename string, width *int, height *int) unsafe.Pointer {
+	c_filename := (*C.gchar)(C.CString(filename))
+	defer C.free(unsafe.Pointer(c_filename))
 
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+	c_width := (*C.gint)(unsafe.Pointer(width))
 
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+	c_height := (*C.gint)(unsafe.Pointer(height))
 
-	ret := C.gdk_pixbuf_get_file_info(cValue0, cValue1, cValue2)
+	ret := C.gdk_pixbuf_get_file_info(c_filename, c_width, c_height)
 
 	return unsafe.Pointer(ret)
 }
@@ -614,105 +614,105 @@ func Fn_gdk_pixbuf_get_formats() unsafe.Pointer {
 
 // UNSUPPORTED : gdk_pixbuf_new_from_stream_at_scale_async : parameter 'callback' is callback
 
-func Fn_gdk_pixbuf_animation_new_from_file(param0 string, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_pixbuf_animation_new_from_file(filename string, error unsafe.Pointer) unsafe.Pointer {
+	c_filename := (*C.char)(C.CString(filename))
+	defer C.free(unsafe.Pointer(c_filename))
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_animation_new_from_file(cValue0, cError)
+	ret := C.gdk_pixbuf_animation_new_from_file(c_filename, cError)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_animation_get_height(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkPixbufAnimation)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_animation_get_height(animation unsafe.Pointer) int {
+	c_animation := (*C.GdkPixbufAnimation)(unsafe.Pointer(animation))
 
-	ret := C.gdk_pixbuf_animation_get_height(cValueInstance)
+	ret := C.gdk_pixbuf_animation_get_height(c_animation)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_pixbuf_animation_get_iter(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbufAnimation)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_animation_get_iter(animation unsafe.Pointer, startTime unsafe.Pointer) unsafe.Pointer {
+	c_animation := (*C.GdkPixbufAnimation)(unsafe.Pointer(animation))
 
-	cValue0 := (*C.GTimeVal)(unsafe.Pointer(param0))
+	c_startTime := (*C.GTimeVal)(unsafe.Pointer(startTime))
 
-	ret := C.gdk_pixbuf_animation_get_iter(cValueInstance, cValue0)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_pixbuf_animation_get_static_image(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbufAnimation)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_pixbuf_animation_get_static_image(cValueInstance)
+	ret := C.gdk_pixbuf_animation_get_iter(c_animation, c_startTime)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_animation_get_width(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkPixbufAnimation)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_animation_get_static_image(animation unsafe.Pointer) unsafe.Pointer {
+	c_animation := (*C.GdkPixbufAnimation)(unsafe.Pointer(animation))
 
-	ret := C.gdk_pixbuf_animation_get_width(cValueInstance)
+	ret := C.gdk_pixbuf_animation_get_static_image(c_animation)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_pixbuf_animation_get_width(animation unsafe.Pointer) int {
+	c_animation := (*C.GdkPixbufAnimation)(unsafe.Pointer(animation))
+
+	ret := C.gdk_pixbuf_animation_get_width(c_animation)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_pixbuf_animation_is_static_image(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbufAnimation)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_animation_is_static_image(animation unsafe.Pointer) bool {
+	c_animation := (*C.GdkPixbufAnimation)(unsafe.Pointer(animation))
 
-	ret := C.gdk_pixbuf_animation_is_static_image(cValueInstance)
+	ret := C.gdk_pixbuf_animation_is_static_image(c_animation)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_animation_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbufAnimation)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_animation_ref(animation unsafe.Pointer) unsafe.Pointer {
+	c_animation := (*C.GdkPixbufAnimation)(unsafe.Pointer(animation))
 
-	ret := C.gdk_pixbuf_animation_ref(cValueInstance)
+	ret := C.gdk_pixbuf_animation_ref(c_animation)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_animation_unref(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkPixbufAnimation)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_animation_unref(animation unsafe.Pointer) {
+	c_animation := (*C.GdkPixbufAnimation)(unsafe.Pointer(animation))
 
-	C.gdk_pixbuf_animation_unref(cValueInstance)
+	C.gdk_pixbuf_animation_unref(c_animation)
 }
 
 // UNSUPPORTED : gdk_pixbuf_animation_new_from_stream_async : parameter 'callback' is callback
 
-func Fn_gdk_pixbuf_animation_iter_advance(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_animation_iter_advance(iter unsafe.Pointer, currentTime unsafe.Pointer) bool {
+	c_iter := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(iter))
 
-	cValue0 := (*C.GTimeVal)(unsafe.Pointer(param0))
+	c_currentTime := (*C.GTimeVal)(unsafe.Pointer(currentTime))
 
-	ret := C.gdk_pixbuf_animation_iter_advance(cValueInstance, cValue0)
+	ret := C.gdk_pixbuf_animation_iter_advance(c_iter, c_currentTime)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_animation_iter_get_delay_time(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_animation_iter_get_delay_time(iter unsafe.Pointer) int {
+	c_iter := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(iter))
 
-	ret := C.gdk_pixbuf_animation_iter_get_delay_time(cValueInstance)
+	ret := C.gdk_pixbuf_animation_iter_get_delay_time(c_iter)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_pixbuf_animation_iter_get_pixbuf(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_animation_iter_get_pixbuf(iter unsafe.Pointer) unsafe.Pointer {
+	c_iter := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(iter))
 
-	ret := C.gdk_pixbuf_animation_iter_get_pixbuf(cValueInstance)
+	ret := C.gdk_pixbuf_animation_iter_get_pixbuf(c_iter)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_animation_iter_on_currently_loading_frame(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_animation_iter_on_currently_loading_frame(iter unsafe.Pointer) bool {
+	c_iter := (*C.GdkPixbufAnimationIter)(unsafe.Pointer(iter))
 
-	ret := C.gdk_pixbuf_animation_iter_on_currently_loading_frame(cValueInstance)
+	ret := C.gdk_pixbuf_animation_iter_on_currently_loading_frame(c_iter)
 
 	return toGoBool(ret)
 }
@@ -723,118 +723,118 @@ func Fn_gdk_pixbuf_loader_new() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_loader_new_with_mime_type(param0 string, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_pixbuf_loader_new_with_mime_type(mimeType string, error unsafe.Pointer) unsafe.Pointer {
+	c_mimeType := (*C.char)(C.CString(mimeType))
+	defer C.free(unsafe.Pointer(c_mimeType))
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_loader_new_with_mime_type(cValue0, cError)
+	ret := C.gdk_pixbuf_loader_new_with_mime_type(c_mimeType, cError)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_loader_new_with_type(param0 string, error unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.char)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_pixbuf_loader_new_with_type(imageType string, error unsafe.Pointer) unsafe.Pointer {
+	c_imageType := (*C.char)(C.CString(imageType))
+	defer C.free(unsafe.Pointer(c_imageType))
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_loader_new_with_type(cValue0, cError)
+	ret := C.gdk_pixbuf_loader_new_with_type(c_imageType, cError)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_loader_close(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbufLoader)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_loader_close(loader unsafe.Pointer, error unsafe.Pointer) bool {
+	c_loader := (*C.GdkPixbufLoader)(unsafe.Pointer(loader))
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_loader_close(cValueInstance, cError)
+	ret := C.gdk_pixbuf_loader_close(c_loader, cError)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_loader_get_animation(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbufLoader)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_loader_get_animation(loader unsafe.Pointer) unsafe.Pointer {
+	c_loader := (*C.GdkPixbufLoader)(unsafe.Pointer(loader))
 
-	ret := C.gdk_pixbuf_loader_get_animation(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_pixbuf_loader_get_format(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbufLoader)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_pixbuf_loader_get_format(cValueInstance)
+	ret := C.gdk_pixbuf_loader_get_animation(c_loader)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_loader_get_pixbuf(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkPixbufLoader)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_loader_get_format(loader unsafe.Pointer) unsafe.Pointer {
+	c_loader := (*C.GdkPixbufLoader)(unsafe.Pointer(loader))
 
-	ret := C.gdk_pixbuf_loader_get_pixbuf(cValueInstance)
+	ret := C.gdk_pixbuf_loader_get_format(c_loader)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_loader_set_size(paramInstance unsafe.Pointer, param0 int, param1 int) {
-	cValueInstance := (*C.GdkPixbufLoader)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_loader_get_pixbuf(loader unsafe.Pointer) unsafe.Pointer {
+	c_loader := (*C.GdkPixbufLoader)(unsafe.Pointer(loader))
 
-	cValue0 := (C.int)(param0)
+	ret := C.gdk_pixbuf_loader_get_pixbuf(c_loader)
 
-	cValue1 := (C.int)(param1)
-
-	C.gdk_pixbuf_loader_set_size(cValueInstance, cValue0, cValue1)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_loader_write(paramInstance unsafe.Pointer, param0 []uint8, param1 uint64, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbufLoader)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_loader_set_size(loader unsafe.Pointer, width int, height int) {
+	c_loader := (*C.GdkPixbufLoader)(unsafe.Pointer(loader))
 
-	cValue0 := (*C.guchar)(unsafe.Pointer(&param0[0]))
+	c_width := (C.int)(width)
 
-	cValue1 := (C.gsize)(param1)
+	c_height := (C.int)(height)
+
+	C.gdk_pixbuf_loader_set_size(c_loader, c_width, c_height)
+}
+
+func Fn_gdk_pixbuf_loader_write(loader unsafe.Pointer, buf []uint8, count uint64, error unsafe.Pointer) bool {
+	c_loader := (*C.GdkPixbufLoader)(unsafe.Pointer(loader))
+
+	c_buf := (*C.guchar)(unsafe.Pointer(&buf[0]))
+
+	c_count := (C.gsize)(count)
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_pixbuf_loader_write(cValueInstance, cValue0, cValue1, cError)
+	ret := C.gdk_pixbuf_loader_write(c_loader, c_buf, c_count, cError)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_simple_anim_new(param0 int, param1 int, param2 float32) unsafe.Pointer {
-	cValue0 := (C.gint)(param0)
+func Fn_gdk_pixbuf_simple_anim_new(width int, height int, rate float32) unsafe.Pointer {
+	c_width := (C.gint)(width)
 
-	cValue1 := (C.gint)(param1)
+	c_height := (C.gint)(height)
 
-	cValue2 := (C.gfloat)(param2)
+	c_rate := (C.gfloat)(rate)
 
-	ret := C.gdk_pixbuf_simple_anim_new(cValue0, cValue1, cValue2)
+	ret := C.gdk_pixbuf_simple_anim_new(c_width, c_height, c_rate)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_simple_anim_add_frame(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkPixbufSimpleAnim)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_simple_anim_add_frame(animation unsafe.Pointer, pixbuf unsafe.Pointer) {
+	c_animation := (*C.GdkPixbufSimpleAnim)(unsafe.Pointer(animation))
 
-	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	C.gdk_pixbuf_simple_anim_add_frame(cValueInstance, cValue0)
+	C.gdk_pixbuf_simple_anim_add_frame(c_animation, c_pixbuf)
 }
 
-func Fn_gdk_pixbuf_simple_anim_get_loop(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkPixbufSimpleAnim)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_simple_anim_get_loop(animation unsafe.Pointer) bool {
+	c_animation := (*C.GdkPixbufSimpleAnim)(unsafe.Pointer(animation))
 
-	ret := C.gdk_pixbuf_simple_anim_get_loop(cValueInstance)
+	ret := C.gdk_pixbuf_simple_anim_get_loop(c_animation)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pixbuf_simple_anim_set_loop(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkPixbufSimpleAnim)(unsafe.Pointer(paramInstance))
+func Fn_gdk_pixbuf_simple_anim_set_loop(animation unsafe.Pointer, loop bool) {
+	c_animation := (*C.GdkPixbufSimpleAnim)(unsafe.Pointer(animation))
 
-	cValue0 := toCBool(param0)
+	c_loop := toCBool(loop)
 
-	C.gdk_pixbuf_simple_anim_set_loop(cValueInstance, cValue0)
+	C.gdk_pixbuf_simple_anim_set_loop(c_animation, c_loop)
 }

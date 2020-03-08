@@ -14,8 +14,9 @@ type Parameter struct {
 	//Doc       *Doc      `xml:"doc"`
 	Varargs *struct{} `xml:"varargs"`
 
-	goVarName string
 	namespace *Namespace
+	goVarName string
+	cVarName  string
 
 	lengthParam     *Parameter
 	lengthParamN    int
@@ -27,8 +28,10 @@ func (p *Parameter) init(ns *Namespace, parentContext *context) {
 	p.context = newContext(parentContext, "Parameter", p.Name)
 	p.namespace = ns
 	p.Type.init(ns)
-	p.Array.init(ns)
+	p.Array.init(ns, nil)
+
 	p.goVarName = makeUnexportedGoName(p.Name)
+	p.cVarName = "c_" + p.goVarName
 }
 
 func (p Parameter) isType() bool {

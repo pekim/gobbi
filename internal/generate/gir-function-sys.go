@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/blang/semver"
 	"github.com/dave/jennifer/jen"
-	"strconv"
 	"strings"
 )
 
@@ -43,19 +42,18 @@ func (f *Function) generateSys(fi *jen.File, version semver.Version) {
 func (f *Function) generateSysParamsDeclaration(g *jen.Group) {
 	if f.InstanceParameter != nil {
 		goType := f.InstanceParameter.sysParamGoType()
-		g.Id("paramInstance").Add(goType)
+		g.Id(f.InstanceParameter.goVarName).Add(goType)
 
 	}
 
-	for i, param := range f.Parameters {
+	for _, param := range f.Parameters {
 		if param.isVarargsOrValist() {
 			continue
 		}
 
-		paramName := "param" + strconv.Itoa(i)
 		goType := param.sysParamGoType()
 
-		g.Id(paramName).Add(goType)
+		g.Id(param.goVarName).Add(goType)
 	}
 
 	if f.Throws {
@@ -95,19 +93,16 @@ func (f *Function) generateSysBody(g *jen.Group) {
 
 func (f *Function) generateSysCArgs(g *jen.Group) {
 	if f.InstanceParameter != nil {
-		f.InstanceParameter.generateSysCArg(g, "paramInstance", "cValueInstance")
+		f.InstanceParameter.generateSysCArg(g)
 		g.Line()
 	}
 
-	for i, param := range f.Parameters {
+	for _, param := range f.Parameters {
 		if param.isVarargsOrValist() {
 			continue
 		}
 
-		paramName := "param" + strconv.Itoa(i)
-		cVarName := "cValue" + strconv.Itoa(i)
-
-		param.generateSysCArg(g, paramName, cVarName)
+		param.generateSysCArg(g)
 		g.Line()
 	}
 
@@ -120,25 +115,22 @@ func (f *Function) generateSysCArgs(g *jen.Group) {
 }
 
 func (f *Function) generateSysCArgsOut(g *jen.Group) {
-	for i, param := range f.Parameters {
-		paramName := "param" + strconv.Itoa(i)
-		cVarName := "cValue" + strconv.Itoa(i)
-
-		param.generateSysCArgOut(g, paramName, cVarName)
+	for _, param := range f.Parameters {
+		param.generateSysCArgOut(g, param.goVarName, param.cVarName)
 	}
 }
 
 func (f *Function) generateSysCallParams(g *jen.Group) {
 	if f.InstanceParameter != nil {
-		g.Id("cValueInstance")
+		g.Id(f.InstanceParameter.cVarName)
 	}
 
-	for i, param := range f.Parameters {
+	for _, param := range f.Parameters {
 		if param.isVarargsOrValist() {
 			continue
 		}
 
-		g.Id("cValue" + strconv.Itoa(i))
+		g.Id(param.cVarName)
 	}
 
 	if f.Throws {

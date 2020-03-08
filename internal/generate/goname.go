@@ -14,6 +14,8 @@ const (
 var goNameReservedWords = map[string]bool{
 	"func":      true,
 	"interface": true,
+	"len":       true,
+	"range":     true,
 	"select":    true,
 	"string":    true,
 	"type":      true,

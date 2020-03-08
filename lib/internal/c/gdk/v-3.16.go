@@ -59,342 +59,342 @@ type WindowAttr C.GdkWindowAttr
 type WindowClass C.GdkWindowClass
 type WindowRedirect C.GdkWindowRedirect
 
-func Fn_gdk_atom_name(paramInstance unsafe.Pointer) string {
-	cValueInstance := (C.GdkAtom)(paramInstance)
+func Fn_gdk_atom_name(atom unsafe.Pointer) string {
+	c_atom := (C.GdkAtom)(atom)
 
-	ret := C.gdk_atom_name(cValueInstance)
+	ret := C.gdk_atom_name(c_atom)
 
 	return C.GoString(ret)
 }
 
-func Fn_gdk_atom_intern(param0 string, param1 bool) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_atom_intern(atomName string, onlyIfExists bool) unsafe.Pointer {
+	c_atomName := (*C.gchar)(C.CString(atomName))
+	defer C.free(unsafe.Pointer(c_atomName))
 
-	cValue1 := toCBool(param1)
+	c_onlyIfExists := toCBool(onlyIfExists)
 
-	ret := C.gdk_atom_intern(cValue0, cValue1)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_atom_intern_static_string(param0 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.gdk_atom_intern_static_string(cValue0)
+	ret := C.gdk_atom_intern(c_atomName, c_onlyIfExists)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_color_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkColor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_atom_intern_static_string(atomName string) unsafe.Pointer {
+	c_atomName := (*C.gchar)(C.CString(atomName))
+	defer C.free(unsafe.Pointer(c_atomName))
 
-	ret := C.gdk_color_copy(cValueInstance)
+	ret := C.gdk_atom_intern_static_string(c_atomName)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_color_equal(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkColor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_color_copy(color unsafe.Pointer) unsafe.Pointer {
+	c_color := (*C.GdkColor)(unsafe.Pointer(color))
 
-	cValue0 := (*C.GdkColor)(unsafe.Pointer(param0))
+	ret := C.gdk_color_copy(c_color)
 
-	ret := C.gdk_color_equal(cValueInstance, cValue0)
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_color_equal(colora unsafe.Pointer, colorb unsafe.Pointer) bool {
+	c_colora := (*C.GdkColor)(unsafe.Pointer(colora))
+
+	c_colorb := (*C.GdkColor)(unsafe.Pointer(colorb))
+
+	ret := C.gdk_color_equal(c_colora, c_colorb)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_color_free(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkColor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_color_free(color unsafe.Pointer) {
+	c_color := (*C.GdkColor)(unsafe.Pointer(color))
 
-	C.gdk_color_free(cValueInstance)
+	C.gdk_color_free(c_color)
 }
 
-func Fn_gdk_color_hash(paramInstance unsafe.Pointer) uint {
-	cValueInstance := (*C.GdkColor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_color_hash(color unsafe.Pointer) uint {
+	c_color := (*C.GdkColor)(unsafe.Pointer(color))
 
-	ret := C.gdk_color_hash(cValueInstance)
+	ret := C.gdk_color_hash(c_color)
 
 	return (uint)(ret)
 }
 
-func Fn_gdk_color_to_string(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkColor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_color_to_string(color unsafe.Pointer) string {
+	c_color := (*C.GdkColor)(unsafe.Pointer(color))
 
-	ret := C.gdk_color_to_string(cValueInstance)
+	ret := C.gdk_color_to_string(c_color)
 
 	return C.GoString(ret)
 }
 
-func Fn_gdk_color_parse(param0 string, param1 unsafe.Pointer) bool {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_color_parse(spec string, color unsafe.Pointer) bool {
+	c_spec := (*C.gchar)(C.CString(spec))
+	defer C.free(unsafe.Pointer(c_spec))
 
-	cValue1 := (*C.GdkColor)(unsafe.Pointer(param1))
+	c_color := (*C.GdkColor)(unsafe.Pointer(color))
 
-	ret := C.gdk_color_parse(cValue0, cValue1)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_frame_timings_get_complete(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkFrameTimings)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_frame_timings_get_complete(cValueInstance)
+	ret := C.gdk_color_parse(c_spec, c_color)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_frame_timings_get_frame_counter(paramInstance unsafe.Pointer) int64 {
-	cValueInstance := (*C.GdkFrameTimings)(unsafe.Pointer(paramInstance))
+func Fn_gdk_frame_timings_get_complete(timings unsafe.Pointer) bool {
+	c_timings := (*C.GdkFrameTimings)(unsafe.Pointer(timings))
 
-	ret := C.gdk_frame_timings_get_frame_counter(cValueInstance)
+	ret := C.gdk_frame_timings_get_complete(c_timings)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_frame_timings_get_frame_counter(timings unsafe.Pointer) int64 {
+	c_timings := (*C.GdkFrameTimings)(unsafe.Pointer(timings))
+
+	ret := C.gdk_frame_timings_get_frame_counter(c_timings)
 
 	return (int64)(ret)
 }
 
-func Fn_gdk_frame_timings_get_frame_time(paramInstance unsafe.Pointer) int64 {
-	cValueInstance := (*C.GdkFrameTimings)(unsafe.Pointer(paramInstance))
+func Fn_gdk_frame_timings_get_frame_time(timings unsafe.Pointer) int64 {
+	c_timings := (*C.GdkFrameTimings)(unsafe.Pointer(timings))
 
-	ret := C.gdk_frame_timings_get_frame_time(cValueInstance)
-
-	return (int64)(ret)
-}
-
-func Fn_gdk_frame_timings_get_predicted_presentation_time(paramInstance unsafe.Pointer) int64 {
-	cValueInstance := (*C.GdkFrameTimings)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_frame_timings_get_predicted_presentation_time(cValueInstance)
+	ret := C.gdk_frame_timings_get_frame_time(c_timings)
 
 	return (int64)(ret)
 }
 
-func Fn_gdk_frame_timings_get_presentation_time(paramInstance unsafe.Pointer) int64 {
-	cValueInstance := (*C.GdkFrameTimings)(unsafe.Pointer(paramInstance))
+func Fn_gdk_frame_timings_get_predicted_presentation_time(timings unsafe.Pointer) int64 {
+	c_timings := (*C.GdkFrameTimings)(unsafe.Pointer(timings))
 
-	ret := C.gdk_frame_timings_get_presentation_time(cValueInstance)
-
-	return (int64)(ret)
-}
-
-func Fn_gdk_frame_timings_get_refresh_interval(paramInstance unsafe.Pointer) int64 {
-	cValueInstance := (*C.GdkFrameTimings)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_frame_timings_get_refresh_interval(cValueInstance)
+	ret := C.gdk_frame_timings_get_predicted_presentation_time(c_timings)
 
 	return (int64)(ret)
 }
 
-func Fn_gdk_frame_timings_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkFrameTimings)(unsafe.Pointer(paramInstance))
+func Fn_gdk_frame_timings_get_presentation_time(timings unsafe.Pointer) int64 {
+	c_timings := (*C.GdkFrameTimings)(unsafe.Pointer(timings))
 
-	ret := C.gdk_frame_timings_ref(cValueInstance)
+	ret := C.gdk_frame_timings_get_presentation_time(c_timings)
+
+	return (int64)(ret)
+}
+
+func Fn_gdk_frame_timings_get_refresh_interval(timings unsafe.Pointer) int64 {
+	c_timings := (*C.GdkFrameTimings)(unsafe.Pointer(timings))
+
+	ret := C.gdk_frame_timings_get_refresh_interval(c_timings)
+
+	return (int64)(ret)
+}
+
+func Fn_gdk_frame_timings_ref(timings unsafe.Pointer) unsafe.Pointer {
+	c_timings := (*C.GdkFrameTimings)(unsafe.Pointer(timings))
+
+	ret := C.gdk_frame_timings_ref(c_timings)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_frame_timings_unref(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkFrameTimings)(unsafe.Pointer(paramInstance))
+func Fn_gdk_frame_timings_unref(timings unsafe.Pointer) {
+	c_timings := (*C.GdkFrameTimings)(unsafe.Pointer(timings))
 
-	C.gdk_frame_timings_unref(cValueInstance)
+	C.gdk_frame_timings_unref(c_timings)
 }
 
-func Fn_gdk_rgba_copy(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkRGBA)(unsafe.Pointer(paramInstance))
+func Fn_gdk_rgba_copy(rgba unsafe.Pointer) unsafe.Pointer {
+	c_rgba := (*C.GdkRGBA)(unsafe.Pointer(rgba))
 
-	ret := C.gdk_rgba_copy(cValueInstance)
+	ret := C.gdk_rgba_copy(c_rgba)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_rgba_equal(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
-	cValueInstance := (C.gconstpointer)(paramInstance)
+func Fn_gdk_rgba_equal(p1 unsafe.Pointer, p2 unsafe.Pointer) bool {
+	c_p1 := (C.gconstpointer)(p1)
 
-	cValue0 := (C.gconstpointer)(param0)
+	c_p2 := (C.gconstpointer)(p2)
 
-	ret := C.gdk_rgba_equal(cValueInstance, cValue0)
+	ret := C.gdk_rgba_equal(c_p1, c_p2)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_rgba_free(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkRGBA)(unsafe.Pointer(paramInstance))
+func Fn_gdk_rgba_free(rgba unsafe.Pointer) {
+	c_rgba := (*C.GdkRGBA)(unsafe.Pointer(rgba))
 
-	C.gdk_rgba_free(cValueInstance)
+	C.gdk_rgba_free(c_rgba)
 }
 
-func Fn_gdk_rgba_hash(paramInstance unsafe.Pointer) uint {
-	cValueInstance := (C.gconstpointer)(paramInstance)
+func Fn_gdk_rgba_hash(p unsafe.Pointer) uint {
+	c_p := (C.gconstpointer)(p)
 
-	ret := C.gdk_rgba_hash(cValueInstance)
+	ret := C.gdk_rgba_hash(c_p)
 
 	return (uint)(ret)
 }
 
-func Fn_gdk_rgba_parse(paramInstance unsafe.Pointer, param0 string) bool {
-	cValueInstance := (*C.GdkRGBA)(unsafe.Pointer(paramInstance))
+func Fn_gdk_rgba_parse(rgba unsafe.Pointer, spec string) bool {
+	c_rgba := (*C.GdkRGBA)(unsafe.Pointer(rgba))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	c_spec := (*C.gchar)(C.CString(spec))
+	defer C.free(unsafe.Pointer(c_spec))
 
-	ret := C.gdk_rgba_parse(cValueInstance, cValue0)
+	ret := C.gdk_rgba_parse(c_rgba, c_spec)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_rgba_to_string(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkRGBA)(unsafe.Pointer(paramInstance))
+func Fn_gdk_rgba_to_string(rgba unsafe.Pointer) string {
+	c_rgba := (*C.GdkRGBA)(unsafe.Pointer(rgba))
 
-	ret := C.gdk_rgba_to_string(cValueInstance)
+	ret := C.gdk_rgba_to_string(c_rgba)
 
 	return C.GoString(ret)
 }
 
-func Fn_gdk_rectangle_intersect(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkRectangle)(unsafe.Pointer(paramInstance))
+func Fn_gdk_rectangle_intersect(src1 unsafe.Pointer, src2 unsafe.Pointer, dest unsafe.Pointer) bool {
+	c_src1 := (*C.GdkRectangle)(unsafe.Pointer(src1))
 
-	cValue0 := (*C.GdkRectangle)(unsafe.Pointer(param0))
+	c_src2 := (*C.GdkRectangle)(unsafe.Pointer(src2))
 
-	cValue1 := (*C.GdkRectangle)(unsafe.Pointer(param1))
+	c_dest := (*C.GdkRectangle)(unsafe.Pointer(dest))
 
-	ret := C.gdk_rectangle_intersect(cValueInstance, cValue0, cValue1)
+	ret := C.gdk_rectangle_intersect(c_src1, c_src2, c_dest)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_rectangle_union(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GdkRectangle)(unsafe.Pointer(paramInstance))
+func Fn_gdk_rectangle_union(src1 unsafe.Pointer, src2 unsafe.Pointer, dest unsafe.Pointer) {
+	c_src1 := (*C.GdkRectangle)(unsafe.Pointer(src1))
 
-	cValue0 := (*C.GdkRectangle)(unsafe.Pointer(param0))
+	c_src2 := (*C.GdkRectangle)(unsafe.Pointer(src2))
 
-	cValue1 := (*C.GdkRectangle)(unsafe.Pointer(param1))
+	c_dest := (*C.GdkRectangle)(unsafe.Pointer(dest))
 
-	C.gdk_rectangle_union(cValueInstance, cValue0, cValue1)
+	C.gdk_rectangle_union(c_src1, c_src2, c_dest)
 }
 
-func Fn_gdk_add_option_entries_libgtk_only(param0 unsafe.Pointer) {
-	cValue0 := (*C.GOptionGroup)(unsafe.Pointer(param0))
+func Fn_gdk_add_option_entries_libgtk_only(group unsafe.Pointer) {
+	c_group := (*C.GOptionGroup)(unsafe.Pointer(group))
 
-	C.gdk_add_option_entries_libgtk_only(cValue0)
+	C.gdk_add_option_entries_libgtk_only(c_group)
 }
 
 func Fn_gdk_beep() {
 	C.gdk_beep()
 }
 
-func Fn_gdk_cairo_create(param0 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_create(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_cairo_create(cValue0)
+	ret := C.gdk_cairo_create(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_cairo_draw_from_gl(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 int, param5 int, param6 int, param7 int, param8 int) {
-	cValue0 := (*C.cairo_t)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_draw_from_gl(cr unsafe.Pointer, window unsafe.Pointer, source int, sourceType int, bufferScale int, x int, y int, width int, height int) {
+	c_cr := (*C.cairo_t)(unsafe.Pointer(cr))
 
-	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue2 := (C.int)(param2)
+	c_source := (C.int)(source)
 
-	cValue3 := (C.int)(param3)
+	c_sourceType := (C.int)(sourceType)
 
-	cValue4 := (C.int)(param4)
+	c_bufferScale := (C.int)(bufferScale)
 
-	cValue5 := (C.int)(param5)
+	c_x := (C.int)(x)
 
-	cValue6 := (C.int)(param6)
+	c_y := (C.int)(y)
 
-	cValue7 := (C.int)(param7)
+	c_width := (C.int)(width)
 
-	cValue8 := (C.int)(param8)
+	c_height := (C.int)(height)
 
-	C.gdk_cairo_draw_from_gl(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8)
+	C.gdk_cairo_draw_from_gl(c_cr, c_window, c_source, c_sourceType, c_bufferScale, c_x, c_y, c_width, c_height)
 }
 
-func Fn_gdk_cairo_get_clip_rectangle(param0 unsafe.Pointer, param1 unsafe.Pointer) bool {
-	cValue0 := (*C.cairo_t)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_get_clip_rectangle(cr unsafe.Pointer, rect unsafe.Pointer) bool {
+	c_cr := (*C.cairo_t)(unsafe.Pointer(cr))
 
-	cValue1 := (*C.GdkRectangle)(unsafe.Pointer(param1))
+	c_rect := (*C.GdkRectangle)(unsafe.Pointer(rect))
 
-	ret := C.gdk_cairo_get_clip_rectangle(cValue0, cValue1)
+	ret := C.gdk_cairo_get_clip_rectangle(c_cr, c_rect)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_cairo_rectangle(param0 unsafe.Pointer, param1 unsafe.Pointer) {
-	cValue0 := (*C.cairo_t)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_rectangle(cr unsafe.Pointer, rectangle unsafe.Pointer) {
+	c_cr := (*C.cairo_t)(unsafe.Pointer(cr))
 
-	cValue1 := (*C.GdkRectangle)(unsafe.Pointer(param1))
+	c_rectangle := (*C.GdkRectangle)(unsafe.Pointer(rectangle))
 
-	C.gdk_cairo_rectangle(cValue0, cValue1)
+	C.gdk_cairo_rectangle(c_cr, c_rectangle)
 }
 
-func Fn_gdk_cairo_region(param0 unsafe.Pointer, param1 unsafe.Pointer) {
-	cValue0 := (*C.cairo_t)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_region(cr unsafe.Pointer, region unsafe.Pointer) {
+	c_cr := (*C.cairo_t)(unsafe.Pointer(cr))
 
-	cValue1 := (*C.cairo_region_t)(unsafe.Pointer(param1))
+	c_region := (*C.cairo_region_t)(unsafe.Pointer(region))
 
-	C.gdk_cairo_region(cValue0, cValue1)
+	C.gdk_cairo_region(c_cr, c_region)
 }
 
-func Fn_gdk_cairo_region_create_from_surface(param0 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.cairo_surface_t)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_region_create_from_surface(surface unsafe.Pointer) unsafe.Pointer {
+	c_surface := (*C.cairo_surface_t)(unsafe.Pointer(surface))
 
-	ret := C.gdk_cairo_region_create_from_surface(cValue0)
+	ret := C.gdk_cairo_region_create_from_surface(c_surface)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_cairo_set_source_color(param0 unsafe.Pointer, param1 unsafe.Pointer) {
-	cValue0 := (*C.cairo_t)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_set_source_color(cr unsafe.Pointer, color unsafe.Pointer) {
+	c_cr := (*C.cairo_t)(unsafe.Pointer(cr))
 
-	cValue1 := (*C.GdkColor)(unsafe.Pointer(param1))
+	c_color := (*C.GdkColor)(unsafe.Pointer(color))
 
-	C.gdk_cairo_set_source_color(cValue0, cValue1)
+	C.gdk_cairo_set_source_color(c_cr, c_color)
 }
 
-func Fn_gdk_cairo_set_source_pixbuf(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 float64, param3 float64) {
-	cValue0 := (*C.cairo_t)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_set_source_pixbuf(cr unsafe.Pointer, pixbuf unsafe.Pointer, pixbufX float64, pixbufY float64) {
+	c_cr := (*C.cairo_t)(unsafe.Pointer(cr))
 
-	cValue1 := (*C.GdkPixbuf)(unsafe.Pointer(param1))
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	cValue2 := (C.gdouble)(param2)
+	c_pixbufX := (C.gdouble)(pixbufX)
 
-	cValue3 := (C.gdouble)(param3)
+	c_pixbufY := (C.gdouble)(pixbufY)
 
-	C.gdk_cairo_set_source_pixbuf(cValue0, cValue1, cValue2, cValue3)
+	C.gdk_cairo_set_source_pixbuf(c_cr, c_pixbuf, c_pixbufX, c_pixbufY)
 }
 
-func Fn_gdk_cairo_set_source_rgba(param0 unsafe.Pointer, param1 unsafe.Pointer) {
-	cValue0 := (*C.cairo_t)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_set_source_rgba(cr unsafe.Pointer, rgba unsafe.Pointer) {
+	c_cr := (*C.cairo_t)(unsafe.Pointer(cr))
 
-	cValue1 := (*C.GdkRGBA)(unsafe.Pointer(param1))
+	c_rgba := (*C.GdkRGBA)(unsafe.Pointer(rgba))
 
-	C.gdk_cairo_set_source_rgba(cValue0, cValue1)
+	C.gdk_cairo_set_source_rgba(c_cr, c_rgba)
 }
 
-func Fn_gdk_cairo_set_source_window(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 float64, param3 float64) {
-	cValue0 := (*C.cairo_t)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_set_source_window(cr unsafe.Pointer, window unsafe.Pointer, x float64, y float64) {
+	c_cr := (*C.cairo_t)(unsafe.Pointer(cr))
 
-	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue2 := (C.gdouble)(param2)
+	c_x := (C.gdouble)(x)
 
-	cValue3 := (C.gdouble)(param3)
+	c_y := (C.gdouble)(y)
 
-	C.gdk_cairo_set_source_window(cValue0, cValue1, cValue2, cValue3)
+	C.gdk_cairo_set_source_window(c_cr, c_window, c_x, c_y)
 }
 
-func Fn_gdk_cairo_surface_create_from_pixbuf(param0 unsafe.Pointer, param1 int, param2 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GdkPixbuf)(unsafe.Pointer(param0))
+func Fn_gdk_cairo_surface_create_from_pixbuf(pixbuf unsafe.Pointer, scale int, forWindow unsafe.Pointer) unsafe.Pointer {
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	cValue1 := (C.int)(param1)
+	c_scale := (C.int)(scale)
 
-	cValue2 := (*C.GdkWindow)(unsafe.Pointer(param2))
+	c_forWindow := (*C.GdkWindow)(unsafe.Pointer(forWindow))
 
-	ret := C.gdk_cairo_surface_create_from_pixbuf(cValue0, cValue1, cValue2)
+	ret := C.gdk_cairo_surface_create_from_pixbuf(c_pixbuf, c_scale, c_forWindow)
 
 	return unsafe.Pointer(ret)
 }
@@ -403,112 +403,112 @@ func Fn_gdk_disable_multidevice() {
 	C.gdk_disable_multidevice()
 }
 
-func Fn_gdk_drag_abort(param0 unsafe.Pointer, param1 uint32) {
-	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
+func Fn_gdk_drag_abort(context unsafe.Pointer, time uint32) {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	cValue1 := (C.guint32)(param1)
+	c_time := (C.guint32)(time)
 
-	C.gdk_drag_abort(cValue0, cValue1)
+	C.gdk_drag_abort(c_context, c_time)
 }
 
-func Fn_gdk_drag_begin(param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_drag_begin(window unsafe.Pointer, targets unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (*C.GList)(unsafe.Pointer(param1))
+	c_targets := (*C.GList)(unsafe.Pointer(targets))
 
-	ret := C.gdk_drag_begin(cValue0, cValue1)
+	ret := C.gdk_drag_begin(c_window, c_targets)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_drag_begin_for_device(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_drag_begin_for_device(window unsafe.Pointer, device unsafe.Pointer, targets unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (*C.GdkDevice)(unsafe.Pointer(param1))
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue2 := (*C.GList)(unsafe.Pointer(param2))
+	c_targets := (*C.GList)(unsafe.Pointer(targets))
 
-	ret := C.gdk_drag_begin_for_device(cValue0, cValue1, cValue2)
+	ret := C.gdk_drag_begin_for_device(c_window, c_device, c_targets)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_drag_drop(param0 unsafe.Pointer, param1 uint32) {
-	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
+func Fn_gdk_drag_drop(context unsafe.Pointer, time uint32) {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	cValue1 := (C.guint32)(param1)
+	c_time := (C.guint32)(time)
 
-	C.gdk_drag_drop(cValue0, cValue1)
+	C.gdk_drag_drop(c_context, c_time)
 }
 
-func Fn_gdk_drag_drop_succeeded(param0 unsafe.Pointer) bool {
-	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
+func Fn_gdk_drag_drop_succeeded(context unsafe.Pointer) bool {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_drag_drop_succeeded(cValue0)
+	ret := C.gdk_drag_drop_succeeded(c_context)
 
 	return toGoBool(ret)
 }
 
 // UNSUPPORTED : gdk_drag_find_window_for_screen : parameter 'dest_window' is non array with indirect count > 1
 
-func Fn_gdk_drag_get_selection(param0 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
+func Fn_gdk_drag_get_selection(context unsafe.Pointer) unsafe.Pointer {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_drag_get_selection(cValue0)
+	ret := C.gdk_drag_get_selection(c_context)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_drag_motion(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int, param4 int, param5 int, param6 int, param7 uint32) bool {
-	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
+func Fn_gdk_drag_motion(context unsafe.Pointer, destWindow unsafe.Pointer, protocol int, xRoot int, yRoot int, suggestedAction int, possibleActions int, time uint32) bool {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
+	c_destWindow := (*C.GdkWindow)(unsafe.Pointer(destWindow))
 
-	cValue2 := (C.GdkDragProtocol)(param2)
+	c_protocol := (C.GdkDragProtocol)(protocol)
 
-	cValue3 := (C.gint)(param3)
+	c_xRoot := (C.gint)(xRoot)
 
-	cValue4 := (C.gint)(param4)
+	c_yRoot := (C.gint)(yRoot)
 
-	cValue5 := (C.GdkDragAction)(param5)
+	c_suggestedAction := (C.GdkDragAction)(suggestedAction)
 
-	cValue6 := (C.GdkDragAction)(param6)
+	c_possibleActions := (C.GdkDragAction)(possibleActions)
 
-	cValue7 := (C.guint32)(param7)
+	c_time := (C.guint32)(time)
 
-	ret := C.gdk_drag_motion(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7)
+	ret := C.gdk_drag_motion(c_context, c_destWindow, c_protocol, c_xRoot, c_yRoot, c_suggestedAction, c_possibleActions, c_time)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_drag_status(param0 unsafe.Pointer, param1 int, param2 uint32) {
-	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
+func Fn_gdk_drag_status(context unsafe.Pointer, action int, time uint32) {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	cValue1 := (C.GdkDragAction)(param1)
+	c_action := (C.GdkDragAction)(action)
 
-	cValue2 := (C.guint32)(param2)
+	c_time := (C.guint32)(time)
 
-	C.gdk_drag_status(cValue0, cValue1, cValue2)
+	C.gdk_drag_status(c_context, c_action, c_time)
 }
 
-func Fn_gdk_drop_finish(param0 unsafe.Pointer, param1 bool, param2 uint32) {
-	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
+func Fn_gdk_drop_finish(context unsafe.Pointer, success bool, time uint32) {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	cValue1 := toCBool(param1)
+	c_success := toCBool(success)
 
-	cValue2 := (C.guint32)(param2)
+	c_time := (C.guint32)(time)
 
-	C.gdk_drop_finish(cValue0, cValue1, cValue2)
+	C.gdk_drop_finish(c_context, c_success, c_time)
 }
 
-func Fn_gdk_drop_reply(param0 unsafe.Pointer, param1 bool, param2 uint32) {
-	cValue0 := (*C.GdkDragContext)(unsafe.Pointer(param0))
+func Fn_gdk_drop_reply(context unsafe.Pointer, accepted bool, time uint32) {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	cValue1 := toCBool(param1)
+	c_accepted := toCBool(accepted)
 
-	cValue2 := (C.guint32)(param2)
+	c_time := (C.guint32)(time)
 
-	C.gdk_drop_reply(cValue0, cValue1, cValue2)
+	C.gdk_drop_reply(c_context, c_accepted, c_time)
 }
 
 func Fn_gdk_error_trap_pop() int {
@@ -527,40 +527,40 @@ func Fn_gdk_error_trap_push() {
 
 // UNSUPPORTED : gdk_event_handler_set : parameter 'func' is callback
 
-func Fn_gdk_events_get_angle(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *float64) bool {
-	cValue0 := (*C.GdkEvent)(unsafe.Pointer(param0))
+func Fn_gdk_events_get_angle(event1 unsafe.Pointer, event2 unsafe.Pointer, angle *float64) bool {
+	c_event1 := (*C.GdkEvent)(unsafe.Pointer(event1))
 
-	cValue1 := (*C.GdkEvent)(unsafe.Pointer(param1))
+	c_event2 := (*C.GdkEvent)(unsafe.Pointer(event2))
 
-	cValue2 := (*C.gdouble)(unsafe.Pointer(param2))
+	c_angle := (*C.gdouble)(unsafe.Pointer(angle))
 
-	ret := C.gdk_events_get_angle(cValue0, cValue1, cValue2)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_events_get_center(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *float64, param3 *float64) bool {
-	cValue0 := (*C.GdkEvent)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.GdkEvent)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.gdouble)(unsafe.Pointer(param2))
-
-	cValue3 := (*C.gdouble)(unsafe.Pointer(param3))
-
-	ret := C.gdk_events_get_center(cValue0, cValue1, cValue2, cValue3)
+	ret := C.gdk_events_get_angle(c_event1, c_event2, c_angle)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_events_get_distance(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 *float64) bool {
-	cValue0 := (*C.GdkEvent)(unsafe.Pointer(param0))
+func Fn_gdk_events_get_center(event1 unsafe.Pointer, event2 unsafe.Pointer, x *float64, y *float64) bool {
+	c_event1 := (*C.GdkEvent)(unsafe.Pointer(event1))
 
-	cValue1 := (*C.GdkEvent)(unsafe.Pointer(param1))
+	c_event2 := (*C.GdkEvent)(unsafe.Pointer(event2))
 
-	cValue2 := (*C.gdouble)(unsafe.Pointer(param2))
+	c_x := (*C.gdouble)(unsafe.Pointer(x))
 
-	ret := C.gdk_events_get_distance(cValue0, cValue1, cValue2)
+	c_y := (*C.gdouble)(unsafe.Pointer(y))
+
+	ret := C.gdk_events_get_center(c_event1, c_event2, c_x, c_y)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_events_get_distance(event1 unsafe.Pointer, event2 unsafe.Pointer, distance *float64) bool {
+	c_event1 := (*C.GdkEvent)(unsafe.Pointer(event1))
+
+	c_event2 := (*C.GdkEvent)(unsafe.Pointer(event2))
+
+	c_distance := (*C.gdouble)(unsafe.Pointer(distance))
+
+	ret := C.gdk_events_get_distance(c_event1, c_event2, c_distance)
 
 	return toGoBool(ret)
 }
@@ -605,151 +605,151 @@ func Fn_gdk_get_show_events() bool {
 	return toGoBool(ret)
 }
 
-func Fn_gdk_init(param0 *int, param1 *[]string) {
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+func Fn_gdk_init(argc *int, argv *[]string) {
+	c_argc := (*C.gint)(unsafe.Pointer(argc))
 
-	var cValue1ArrayPointer **C.gchar
-	cValue1 := &cValue1ArrayPointer
-	param1Indirected := *param1
-	param1IndirectedLen := len(param1Indirected)
-	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue1Array))
-	param1IndirectedSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1IndirectedLen:param1IndirectedLen]
-	for param1Indirectedi, param1IndirectedString := range param1Indirected {
-		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
-		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
+	var c_argvArrayPointer **C.gchar
+	c_argv := &c_argvArrayPointer
+	argvIndirected := *argv
+	argvIndirectedLen := len(argvIndirected)
+	c_argvArray := C.malloc((C.ulong)(argvIndirectedLen) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(c_argvArray))
+	argvIndirectedSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(c_argvArray))[:argvIndirectedLen:argvIndirectedLen]
+	for argvIndirectedi, argvIndirectedString := range argvIndirected {
+		argvIndirectedSlice[argvIndirectedi] = (*C.gchar)(C.CString(argvIndirectedString))
+		defer C.free(unsafe.Pointer(argvIndirectedSlice[argvIndirectedi]))
 	}
-	if len(param1IndirectedSlice) > 0 {
-		cValue1ArrayPointer = &param1IndirectedSlice[0]
+	if len(argvIndirectedSlice) > 0 {
+		c_argvArrayPointer = &argvIndirectedSlice[0]
 	}
 
-	C.gdk_init(cValue0, cValue1)
+	C.gdk_init(c_argc, c_argv)
 
-	param1OutLen := int(*cValue0)
-	param1Out := make([]string, param1OutLen, param1OutLen)
-	if param1OutLen > 0 {
-		param1OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
-		for param1Outi, param1OutCString := range param1OutCSlice {
-			param1Out[param1Outi] = C.GoString(param1OutCString)
+	argvOutLen := int(*c_argc)
+	argvOut := make([]string, argvOutLen, argvOutLen)
+	if argvOutLen > 0 {
+		argvOutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(c_argvArrayPointer))[:argvOutLen:argvOutLen]
+		for argvOuti, argvOutCString := range argvOutCSlice {
+			argvOut[argvOuti] = C.GoString(argvOutCString)
 		}
 	}
-	*param1 = param1Out
+	*argv = argvOut
 }
 
-func Fn_gdk_init_check(param0 *int, param1 *[]string) bool {
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+func Fn_gdk_init_check(argc *int, argv *[]string) bool {
+	c_argc := (*C.gint)(unsafe.Pointer(argc))
 
-	var cValue1ArrayPointer **C.gchar
-	cValue1 := &cValue1ArrayPointer
-	param1Indirected := *param1
-	param1IndirectedLen := len(param1Indirected)
-	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue1Array))
-	param1IndirectedSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1IndirectedLen:param1IndirectedLen]
-	for param1Indirectedi, param1IndirectedString := range param1Indirected {
-		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
-		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
+	var c_argvArrayPointer **C.gchar
+	c_argv := &c_argvArrayPointer
+	argvIndirected := *argv
+	argvIndirectedLen := len(argvIndirected)
+	c_argvArray := C.malloc((C.ulong)(argvIndirectedLen) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(c_argvArray))
+	argvIndirectedSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(c_argvArray))[:argvIndirectedLen:argvIndirectedLen]
+	for argvIndirectedi, argvIndirectedString := range argvIndirected {
+		argvIndirectedSlice[argvIndirectedi] = (*C.gchar)(C.CString(argvIndirectedString))
+		defer C.free(unsafe.Pointer(argvIndirectedSlice[argvIndirectedi]))
 	}
-	if len(param1IndirectedSlice) > 0 {
-		cValue1ArrayPointer = &param1IndirectedSlice[0]
+	if len(argvIndirectedSlice) > 0 {
+		c_argvArrayPointer = &argvIndirectedSlice[0]
 	}
 
-	ret := C.gdk_init_check(cValue0, cValue1)
+	ret := C.gdk_init_check(c_argc, c_argv)
 
-	param1OutLen := int(*cValue0)
-	param1Out := make([]string, param1OutLen, param1OutLen)
-	if param1OutLen > 0 {
-		param1OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
-		for param1Outi, param1OutCString := range param1OutCSlice {
-			param1Out[param1Outi] = C.GoString(param1OutCString)
+	argvOutLen := int(*c_argc)
+	argvOut := make([]string, argvOutLen, argvOutLen)
+	if argvOutLen > 0 {
+		argvOutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(c_argvArrayPointer))[:argvOutLen:argvOutLen]
+		for argvOuti, argvOutCString := range argvOutCSlice {
+			argvOut[argvOuti] = C.GoString(argvOutCString)
 		}
 	}
-	*param1 = param1Out
+	*argv = argvOut
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_keyboard_grab(param0 unsafe.Pointer, param1 bool, param2 uint32) int {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_keyboard_grab(window unsafe.Pointer, ownerEvents bool, time uint32) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := toCBool(param1)
+	c_ownerEvents := toCBool(ownerEvents)
 
-	cValue2 := (C.guint32)(param2)
+	c_time := (C.guint32)(time)
 
-	ret := C.gdk_keyboard_grab(cValue0, cValue1, cValue2)
+	ret := C.gdk_keyboard_grab(c_window, c_ownerEvents, c_time)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_keyboard_ungrab(param0 uint32) {
-	cValue0 := (C.guint32)(param0)
+func Fn_gdk_keyboard_ungrab(time uint32) {
+	c_time := (C.guint32)(time)
 
-	C.gdk_keyboard_ungrab(cValue0)
+	C.gdk_keyboard_ungrab(c_time)
 }
 
-func Fn_gdk_keyval_convert_case(param0 uint, param1 *uint, param2 *uint) {
-	cValue0 := (C.guint)(param0)
+func Fn_gdk_keyval_convert_case(symbol uint, lower *uint, upper *uint) {
+	c_symbol := (C.guint)(symbol)
 
-	cValue1 := (*C.guint)(unsafe.Pointer(param1))
+	c_lower := (*C.guint)(unsafe.Pointer(lower))
 
-	cValue2 := (*C.guint)(unsafe.Pointer(param2))
+	c_upper := (*C.guint)(unsafe.Pointer(upper))
 
-	C.gdk_keyval_convert_case(cValue0, cValue1, cValue2)
+	C.gdk_keyval_convert_case(c_symbol, c_lower, c_upper)
 }
 
-func Fn_gdk_keyval_from_name(param0 string) uint {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_keyval_from_name(keyvalName string) uint {
+	c_keyvalName := (*C.gchar)(C.CString(keyvalName))
+	defer C.free(unsafe.Pointer(c_keyvalName))
 
-	ret := C.gdk_keyval_from_name(cValue0)
+	ret := C.gdk_keyval_from_name(c_keyvalName)
 
 	return (uint)(ret)
 }
 
-func Fn_gdk_keyval_is_lower(param0 uint) bool {
-	cValue0 := (C.guint)(param0)
+func Fn_gdk_keyval_is_lower(keyval uint) bool {
+	c_keyval := (C.guint)(keyval)
 
-	ret := C.gdk_keyval_is_lower(cValue0)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_keyval_is_upper(param0 uint) bool {
-	cValue0 := (C.guint)(param0)
-
-	ret := C.gdk_keyval_is_upper(cValue0)
+	ret := C.gdk_keyval_is_lower(c_keyval)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_keyval_name(param0 uint) string {
-	cValue0 := (C.guint)(param0)
+func Fn_gdk_keyval_is_upper(keyval uint) bool {
+	c_keyval := (C.guint)(keyval)
 
-	ret := C.gdk_keyval_name(cValue0)
+	ret := C.gdk_keyval_is_upper(c_keyval)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_keyval_name(keyval uint) string {
+	c_keyval := (C.guint)(keyval)
+
+	ret := C.gdk_keyval_name(c_keyval)
 
 	return C.GoString(ret)
 }
 
-func Fn_gdk_keyval_to_lower(param0 uint) uint {
-	cValue0 := (C.guint)(param0)
+func Fn_gdk_keyval_to_lower(keyval uint) uint {
+	c_keyval := (C.guint)(keyval)
 
-	ret := C.gdk_keyval_to_lower(cValue0)
+	ret := C.gdk_keyval_to_lower(c_keyval)
 
 	return (uint)(ret)
 }
 
-func Fn_gdk_keyval_to_unicode(param0 uint) uint32 {
-	cValue0 := (C.guint)(param0)
+func Fn_gdk_keyval_to_unicode(keyval uint) uint32 {
+	c_keyval := (C.guint)(keyval)
 
-	ret := C.gdk_keyval_to_unicode(cValue0)
+	ret := C.gdk_keyval_to_unicode(c_keyval)
 
 	return (uint32)(ret)
 }
 
-func Fn_gdk_keyval_to_upper(param0 uint) uint {
-	cValue0 := (C.guint)(param0)
+func Fn_gdk_keyval_to_upper(keyval uint) uint {
+	c_keyval := (C.guint)(keyval)
 
-	ret := C.gdk_keyval_to_upper(cValue0)
+	ret := C.gdk_keyval_to_upper(c_keyval)
 
 	return (uint)(ret)
 }
@@ -764,35 +764,35 @@ func Fn_gdk_notify_startup_complete() {
 	C.gdk_notify_startup_complete()
 }
 
-func Fn_gdk_notify_startup_complete_with_id(param0 string) {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_notify_startup_complete_with_id(startupId string) {
+	c_startupId := (*C.gchar)(C.CString(startupId))
+	defer C.free(unsafe.Pointer(c_startupId))
 
-	C.gdk_notify_startup_complete_with_id(cValue0)
+	C.gdk_notify_startup_complete_with_id(c_startupId)
 }
 
-func Fn_gdk_offscreen_window_get_embedder(param0 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_offscreen_window_get_embedder(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_offscreen_window_get_embedder(cValue0)
+	ret := C.gdk_offscreen_window_get_embedder(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_offscreen_window_get_surface(param0 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_offscreen_window_get_surface(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_offscreen_window_get_surface(cValue0)
+	ret := C.gdk_offscreen_window_get_surface(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_offscreen_window_set_embedder(param0 unsafe.Pointer, param1 unsafe.Pointer) {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_offscreen_window_set_embedder(window unsafe.Pointer, embedder unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
+	c_embedder := (*C.GdkWindow)(unsafe.Pointer(embedder))
 
-	C.gdk_offscreen_window_set_embedder(cValue0, cValue1)
+	C.gdk_offscreen_window_set_embedder(c_window, c_embedder)
 }
 
 func Fn_gdk_pango_context_get() unsafe.Pointer {
@@ -801,123 +801,123 @@ func Fn_gdk_pango_context_get() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pango_context_get_for_screen(param0 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GdkScreen)(unsafe.Pointer(param0))
+func Fn_gdk_pango_context_get_for_screen(screen unsafe.Pointer) unsafe.Pointer {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_pango_context_get_for_screen(cValue0)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_pango_layout_get_clip_region(param0 unsafe.Pointer, param1 int, param2 int, param3 *int, param4 int) unsafe.Pointer {
-	cValue0 := (*C.PangoLayout)(unsafe.Pointer(param0))
-
-	cValue1 := (C.gint)(param1)
-
-	cValue2 := (C.gint)(param2)
-
-	cValue3 := (*C.gint)(unsafe.Pointer(param3))
-
-	cValue4 := (C.gint)(param4)
-
-	ret := C.gdk_pango_layout_get_clip_region(cValue0, cValue1, cValue2, cValue3, cValue4)
+	ret := C.gdk_pango_context_get_for_screen(c_screen)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pango_layout_line_get_clip_region(param0 unsafe.Pointer, param1 int, param2 int, param3 []int, param4 int) unsafe.Pointer {
-	cValue0 := (*C.PangoLayoutLine)(unsafe.Pointer(param0))
+func Fn_gdk_pango_layout_get_clip_region(layout unsafe.Pointer, xOrigin int, yOrigin int, indexRanges *int, nRanges int) unsafe.Pointer {
+	c_layout := (*C.PangoLayout)(unsafe.Pointer(layout))
 
-	cValue1 := (C.gint)(param1)
+	c_xOrigin := (C.gint)(xOrigin)
 
-	cValue2 := (C.gint)(param2)
+	c_yOrigin := (C.gint)(yOrigin)
 
-	cValue3 := (*C.gint)(unsafe.Pointer(&param3[0]))
+	c_indexRanges := (*C.gint)(unsafe.Pointer(indexRanges))
 
-	cValue4 := (C.gint)(param4)
+	c_nRanges := (C.gint)(nRanges)
 
-	ret := C.gdk_pango_layout_line_get_clip_region(cValue0, cValue1, cValue2, cValue3, cValue4)
+	ret := C.gdk_pango_layout_get_clip_region(c_layout, c_xOrigin, c_yOrigin, c_indexRanges, c_nRanges)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_parse_args(param0 *int, param1 *[]string) {
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+func Fn_gdk_pango_layout_line_get_clip_region(line unsafe.Pointer, xOrigin int, yOrigin int, indexRanges []int, nRanges int) unsafe.Pointer {
+	c_line := (*C.PangoLayoutLine)(unsafe.Pointer(line))
 
-	var cValue1ArrayPointer **C.gchar
-	cValue1 := &cValue1ArrayPointer
-	param1Indirected := *param1
-	param1IndirectedLen := len(param1Indirected)
-	cValue1Array := C.malloc((C.ulong)(param1IndirectedLen) * C.sizeof_gpointer)
-	defer C.free(unsafe.Pointer(cValue1Array))
-	param1IndirectedSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1Array))[:param1IndirectedLen:param1IndirectedLen]
-	for param1Indirectedi, param1IndirectedString := range param1Indirected {
-		param1IndirectedSlice[param1Indirectedi] = (*C.gchar)(C.CString(param1IndirectedString))
-		defer C.free(unsafe.Pointer(param1IndirectedSlice[param1Indirectedi]))
+	c_xOrigin := (C.gint)(xOrigin)
+
+	c_yOrigin := (C.gint)(yOrigin)
+
+	c_indexRanges := (*C.gint)(unsafe.Pointer(&indexRanges[0]))
+
+	c_nRanges := (C.gint)(nRanges)
+
+	ret := C.gdk_pango_layout_line_get_clip_region(c_line, c_xOrigin, c_yOrigin, c_indexRanges, c_nRanges)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_parse_args(argc *int, argv *[]string) {
+	c_argc := (*C.gint)(unsafe.Pointer(argc))
+
+	var c_argvArrayPointer **C.gchar
+	c_argv := &c_argvArrayPointer
+	argvIndirected := *argv
+	argvIndirectedLen := len(argvIndirected)
+	c_argvArray := C.malloc((C.ulong)(argvIndirectedLen) * C.sizeof_gpointer)
+	defer C.free(unsafe.Pointer(c_argvArray))
+	argvIndirectedSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(c_argvArray))[:argvIndirectedLen:argvIndirectedLen]
+	for argvIndirectedi, argvIndirectedString := range argvIndirected {
+		argvIndirectedSlice[argvIndirectedi] = (*C.gchar)(C.CString(argvIndirectedString))
+		defer C.free(unsafe.Pointer(argvIndirectedSlice[argvIndirectedi]))
 	}
-	if len(param1IndirectedSlice) > 0 {
-		cValue1ArrayPointer = &param1IndirectedSlice[0]
+	if len(argvIndirectedSlice) > 0 {
+		c_argvArrayPointer = &argvIndirectedSlice[0]
 	}
 
-	C.gdk_parse_args(cValue0, cValue1)
+	C.gdk_parse_args(c_argc, c_argv)
 
-	param1OutLen := int(*cValue0)
-	param1Out := make([]string, param1OutLen, param1OutLen)
-	if param1OutLen > 0 {
-		param1OutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
-		for param1Outi, param1OutCString := range param1OutCSlice {
-			param1Out[param1Outi] = C.GoString(param1OutCString)
+	argvOutLen := int(*c_argc)
+	argvOut := make([]string, argvOutLen, argvOutLen)
+	if argvOutLen > 0 {
+		argvOutCSlice := (*[1 << 30](*C.gchar))(unsafe.Pointer(c_argvArrayPointer))[:argvOutLen:argvOutLen]
+		for argvOuti, argvOutCString := range argvOutCSlice {
+			argvOut[argvOuti] = C.GoString(argvOutCString)
 		}
 	}
-	*param1 = param1Out
+	*argv = argvOut
 }
 
-func Fn_gdk_pixbuf_get_from_surface(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int) unsafe.Pointer {
-	cValue0 := (*C.cairo_surface_t)(unsafe.Pointer(param0))
+func Fn_gdk_pixbuf_get_from_surface(surface unsafe.Pointer, srcX int, srcY int, width int, height int) unsafe.Pointer {
+	c_surface := (*C.cairo_surface_t)(unsafe.Pointer(surface))
 
-	cValue1 := (C.gint)(param1)
+	c_srcX := (C.gint)(srcX)
 
-	cValue2 := (C.gint)(param2)
+	c_srcY := (C.gint)(srcY)
 
-	cValue3 := (C.gint)(param3)
+	c_width := (C.gint)(width)
 
-	cValue4 := (C.gint)(param4)
+	c_height := (C.gint)(height)
 
-	ret := C.gdk_pixbuf_get_from_surface(cValue0, cValue1, cValue2, cValue3, cValue4)
+	ret := C.gdk_pixbuf_get_from_surface(c_surface, c_srcX, c_srcY, c_width, c_height)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pixbuf_get_from_window(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 int) unsafe.Pointer {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_pixbuf_get_from_window(window unsafe.Pointer, srcX int, srcY int, width int, height int) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (C.gint)(param1)
+	c_srcX := (C.gint)(srcX)
 
-	cValue2 := (C.gint)(param2)
+	c_srcY := (C.gint)(srcY)
 
-	cValue3 := (C.gint)(param3)
+	c_width := (C.gint)(width)
 
-	cValue4 := (C.gint)(param4)
+	c_height := (C.gint)(height)
 
-	ret := C.gdk_pixbuf_get_from_window(cValue0, cValue1, cValue2, cValue3, cValue4)
+	ret := C.gdk_pixbuf_get_from_window(c_window, c_srcX, c_srcY, c_width, c_height)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_pointer_grab(param0 unsafe.Pointer, param1 bool, param2 int, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 uint32) int {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_pointer_grab(window unsafe.Pointer, ownerEvents bool, eventMask int, confineTo unsafe.Pointer, cursor unsafe.Pointer, time uint32) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := toCBool(param1)
+	c_ownerEvents := toCBool(ownerEvents)
 
-	cValue2 := (C.GdkEventMask)(param2)
+	c_eventMask := (C.GdkEventMask)(eventMask)
 
-	cValue3 := (*C.GdkWindow)(unsafe.Pointer(param3))
+	c_confineTo := (*C.GdkWindow)(unsafe.Pointer(confineTo))
 
-	cValue4 := (*C.GdkCursor)(unsafe.Pointer(param4))
+	c_cursor := (*C.GdkCursor)(unsafe.Pointer(cursor))
 
-	cValue5 := (C.guint32)(param5)
+	c_time := (C.guint32)(time)
 
-	ret := C.gdk_pointer_grab(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	ret := C.gdk_pointer_grab(c_window, c_ownerEvents, c_eventMask, c_confineTo, c_cursor, c_time)
 
 	return (int)(ret)
 }
@@ -928,297 +928,297 @@ func Fn_gdk_pointer_is_grabbed() bool {
 	return toGoBool(ret)
 }
 
-func Fn_gdk_pointer_ungrab(param0 uint32) {
-	cValue0 := (C.guint32)(param0)
+func Fn_gdk_pointer_ungrab(time uint32) {
+	c_time := (C.guint32)(time)
 
-	C.gdk_pointer_ungrab(cValue0)
+	C.gdk_pointer_ungrab(c_time)
 }
 
 func Fn_gdk_pre_parse_libgtk_only() {
 	C.gdk_pre_parse_libgtk_only()
 }
 
-func Fn_gdk_property_change(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 int, param4 int, param5 *uint8, param6 int) {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_property_change(window unsafe.Pointer, property unsafe.Pointer, type_ unsafe.Pointer, format int, mode int, data *uint8, nelements int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (C.GdkAtom)(param1)
+	c_property := (C.GdkAtom)(property)
 
-	cValue2 := (C.GdkAtom)(param2)
+	c_type_ := (C.GdkAtom)(type_)
 
-	cValue3 := (C.gint)(param3)
+	c_format := (C.gint)(format)
 
-	cValue4 := (C.GdkPropMode)(param4)
+	c_mode := (C.GdkPropMode)(mode)
 
-	cValue5 := (*C.guchar)(unsafe.Pointer(param5))
+	c_data := (*C.guchar)(unsafe.Pointer(data))
 
-	cValue6 := (C.gint)(param6)
+	c_nelements := (C.gint)(nelements)
 
-	C.gdk_property_change(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
+	C.gdk_property_change(c_window, c_property, c_type_, c_format, c_mode, c_data, c_nelements)
 }
 
-func Fn_gdk_property_delete(param0 unsafe.Pointer, param1 unsafe.Pointer) {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_property_delete(window unsafe.Pointer, property unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (C.GdkAtom)(param1)
+	c_property := (C.GdkAtom)(property)
 
-	C.gdk_property_delete(cValue0, cValue1)
+	C.gdk_property_delete(c_window, c_property)
 }
 
-func Fn_gdk_property_get(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 uint64, param4 uint64, param5 int, param6 unsafe.Pointer, param7 *int, param8 *int, param9 *[]uint8) bool {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_property_get(window unsafe.Pointer, property unsafe.Pointer, type_ unsafe.Pointer, offset uint64, length uint64, pdelete int, actualPropertyType unsafe.Pointer, actualFormat *int, actualLength *int, data *[]uint8) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (C.GdkAtom)(param1)
+	c_property := (C.GdkAtom)(property)
 
-	cValue2 := (C.GdkAtom)(param2)
+	c_type_ := (C.GdkAtom)(type_)
 
-	cValue3 := (C.gulong)(param3)
+	c_offset := (C.gulong)(offset)
 
-	cValue4 := (C.gulong)(param4)
+	c_length := (C.gulong)(length)
 
-	cValue5 := (C.gint)(param5)
+	c_pdelete := (C.gint)(pdelete)
 
-	cValue6 := (*C.GdkAtom)(unsafe.Pointer(param6))
+	c_actualPropertyType := (*C.GdkAtom)(unsafe.Pointer(actualPropertyType))
 
-	cValue7 := (*C.gint)(unsafe.Pointer(param7))
+	c_actualFormat := (*C.gint)(unsafe.Pointer(actualFormat))
 
-	cValue8 := (*C.gint)(unsafe.Pointer(param8))
+	c_actualLength := (*C.gint)(unsafe.Pointer(actualLength))
 
-	var cValue9ArrayPointer (*C.guchar)
-	cValue9 := &cValue9ArrayPointer
+	var c_dataArrayPointer (*C.guchar)
+	c_data := &c_dataArrayPointer
 
-	ret := C.gdk_property_get(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6, cValue7, cValue8, cValue9)
+	ret := C.gdk_property_get(c_window, c_property, c_type_, c_offset, c_length, c_pdelete, c_actualPropertyType, c_actualFormat, c_actualLength, c_data)
 
-	param9OutLen := int(*cValue8)
-	param9Out := make([]uint8, param9OutLen, param9OutLen)
-	if param9OutLen > 0 {
-		param9Out = (*[1 << 30](uint8))(unsafe.Pointer(cValue9ArrayPointer))[:param9OutLen:param9OutLen]
+	dataOutLen := int(*c_actualLength)
+	dataOut := make([]uint8, dataOutLen, dataOutLen)
+	if dataOutLen > 0 {
+		dataOut = (*[1 << 30](uint8))(unsafe.Pointer(c_dataArrayPointer))[:dataOutLen:dataOutLen]
 	}
-	*param9 = param9Out
+	*data = dataOut
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_query_depths(param0 *[]int, param1 *int) {
-	var cValue0ArrayPointer (*C.gint)
-	cValue0 := &cValue0ArrayPointer
+func Fn_gdk_query_depths(depths *[]int, count *int) {
+	var c_depthsArrayPointer (*C.gint)
+	c_depths := &c_depthsArrayPointer
 
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+	c_count := (*C.gint)(unsafe.Pointer(count))
 
-	C.gdk_query_depths(cValue0, cValue1)
+	C.gdk_query_depths(c_depths, c_count)
 
-	param0OutLen := int(*cValue1)
-	param0Out := make([]int, param0OutLen, param0OutLen)
-	if param0OutLen > 0 {
-		param0Out = (*[1 << 30](int))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
+	depthsOutLen := int(*c_count)
+	depthsOut := make([]int, depthsOutLen, depthsOutLen)
+	if depthsOutLen > 0 {
+		depthsOut = (*[1 << 30](int))(unsafe.Pointer(c_depthsArrayPointer))[:depthsOutLen:depthsOutLen]
 	}
-	*param0 = param0Out
+	*depths = depthsOut
 }
 
-func Fn_gdk_query_visual_types(param0 *[]int, param1 *int) {
-	var cValue0ArrayPointer (*C.GdkVisualType)
-	cValue0 := &cValue0ArrayPointer
+func Fn_gdk_query_visual_types(visualTypes *[]int, count *int) {
+	var c_visualTypesArrayPointer (*C.GdkVisualType)
+	c_visualTypes := &c_visualTypesArrayPointer
 
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+	c_count := (*C.gint)(unsafe.Pointer(count))
 
-	C.gdk_query_visual_types(cValue0, cValue1)
+	C.gdk_query_visual_types(c_visualTypes, c_count)
 
-	param0OutLen := int(*cValue1)
-	param0Out := make([]int, param0OutLen, param0OutLen)
-	if param0OutLen > 0 {
-		param0Out = (*[1 << 30](int))(unsafe.Pointer(cValue0ArrayPointer))[:param0OutLen:param0OutLen]
+	visualTypesOutLen := int(*c_count)
+	visualTypesOut := make([]int, visualTypesOutLen, visualTypesOutLen)
+	if visualTypesOutLen > 0 {
+		visualTypesOut = (*[1 << 30](int))(unsafe.Pointer(c_visualTypesArrayPointer))[:visualTypesOutLen:visualTypesOutLen]
 	}
-	*param0 = param0Out
+	*visualTypes = visualTypesOut
 }
 
-func Fn_gdk_selection_convert(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 uint32) {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_selection_convert(requestor unsafe.Pointer, selection unsafe.Pointer, target unsafe.Pointer, time uint32) {
+	c_requestor := (*C.GdkWindow)(unsafe.Pointer(requestor))
 
-	cValue1 := (C.GdkAtom)(param1)
+	c_selection := (C.GdkAtom)(selection)
 
-	cValue2 := (C.GdkAtom)(param2)
+	c_target := (C.GdkAtom)(target)
 
-	cValue3 := (C.guint32)(param3)
+	c_time := (C.guint32)(time)
 
-	C.gdk_selection_convert(cValue0, cValue1, cValue2, cValue3)
+	C.gdk_selection_convert(c_requestor, c_selection, c_target, c_time)
 }
 
-func Fn_gdk_selection_owner_get(param0 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (C.GdkAtom)(param0)
+func Fn_gdk_selection_owner_get(selection unsafe.Pointer) unsafe.Pointer {
+	c_selection := (C.GdkAtom)(selection)
 
-	ret := C.gdk_selection_owner_get(cValue0)
+	ret := C.gdk_selection_owner_get(c_selection)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_selection_owner_get_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+func Fn_gdk_selection_owner_get_for_display(display unsafe.Pointer, selection unsafe.Pointer) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue1 := (C.GdkAtom)(param1)
+	c_selection := (C.GdkAtom)(selection)
 
-	ret := C.gdk_selection_owner_get_for_display(cValue0, cValue1)
+	ret := C.gdk_selection_owner_get_for_display(c_display, c_selection)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_selection_owner_set(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 uint32, param3 bool) bool {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_selection_owner_set(owner unsafe.Pointer, selection unsafe.Pointer, time uint32, sendEvent bool) bool {
+	c_owner := (*C.GdkWindow)(unsafe.Pointer(owner))
 
-	cValue1 := (C.GdkAtom)(param1)
+	c_selection := (C.GdkAtom)(selection)
 
-	cValue2 := (C.guint32)(param2)
+	c_time := (C.guint32)(time)
 
-	cValue3 := toCBool(param3)
+	c_sendEvent := toCBool(sendEvent)
 
-	ret := C.gdk_selection_owner_set(cValue0, cValue1, cValue2, cValue3)
+	ret := C.gdk_selection_owner_set(c_owner, c_selection, c_time, c_sendEvent)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_selection_owner_set_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 uint32, param4 bool) bool {
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+func Fn_gdk_selection_owner_set_for_display(display unsafe.Pointer, owner unsafe.Pointer, selection unsafe.Pointer, time uint32, sendEvent bool) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
+	c_owner := (*C.GdkWindow)(unsafe.Pointer(owner))
 
-	cValue2 := (C.GdkAtom)(param2)
+	c_selection := (C.GdkAtom)(selection)
 
-	cValue3 := (C.guint32)(param3)
+	c_time := (C.guint32)(time)
 
-	cValue4 := toCBool(param4)
+	c_sendEvent := toCBool(sendEvent)
 
-	ret := C.gdk_selection_owner_set_for_display(cValue0, cValue1, cValue2, cValue3, cValue4)
+	ret := C.gdk_selection_owner_set_for_display(c_display, c_owner, c_selection, c_time, c_sendEvent)
 
 	return toGoBool(ret)
 }
 
 // UNSUPPORTED : gdk_selection_property_get : parameter 'data' is non array with indirect count > 1
 
-func Fn_gdk_selection_send_notify(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 uint32) {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_selection_send_notify(requestor unsafe.Pointer, selection unsafe.Pointer, target unsafe.Pointer, property unsafe.Pointer, time uint32) {
+	c_requestor := (*C.GdkWindow)(unsafe.Pointer(requestor))
 
-	cValue1 := (C.GdkAtom)(param1)
+	c_selection := (C.GdkAtom)(selection)
 
-	cValue2 := (C.GdkAtom)(param2)
+	c_target := (C.GdkAtom)(target)
 
-	cValue3 := (C.GdkAtom)(param3)
+	c_property := (C.GdkAtom)(property)
 
-	cValue4 := (C.guint32)(param4)
+	c_time := (C.guint32)(time)
 
-	C.gdk_selection_send_notify(cValue0, cValue1, cValue2, cValue3, cValue4)
+	C.gdk_selection_send_notify(c_requestor, c_selection, c_target, c_property, c_time)
 }
 
-func Fn_gdk_selection_send_notify_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 unsafe.Pointer, param3 unsafe.Pointer, param4 unsafe.Pointer, param5 uint32) {
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+func Fn_gdk_selection_send_notify_for_display(display unsafe.Pointer, requestor unsafe.Pointer, selection unsafe.Pointer, target unsafe.Pointer, property unsafe.Pointer, time uint32) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue1 := (*C.GdkWindow)(unsafe.Pointer(param1))
+	c_requestor := (*C.GdkWindow)(unsafe.Pointer(requestor))
 
-	cValue2 := (C.GdkAtom)(param2)
+	c_selection := (C.GdkAtom)(selection)
 
-	cValue3 := (C.GdkAtom)(param3)
+	c_target := (C.GdkAtom)(target)
 
-	cValue4 := (C.GdkAtom)(param4)
+	c_property := (C.GdkAtom)(property)
 
-	cValue5 := (C.guint32)(param5)
+	c_time := (C.guint32)(time)
 
-	C.gdk_selection_send_notify_for_display(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	C.gdk_selection_send_notify_for_display(c_display, c_requestor, c_selection, c_target, c_property, c_time)
 }
 
-func Fn_gdk_set_allowed_backends(param0 string) {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_set_allowed_backends(backends string) {
+	c_backends := (*C.gchar)(C.CString(backends))
+	defer C.free(unsafe.Pointer(c_backends))
 
-	C.gdk_set_allowed_backends(cValue0)
+	C.gdk_set_allowed_backends(c_backends)
 }
 
-func Fn_gdk_set_double_click_time(param0 uint) {
-	cValue0 := (C.guint)(param0)
+func Fn_gdk_set_double_click_time(msec uint) {
+	c_msec := (C.guint)(msec)
 
-	C.gdk_set_double_click_time(cValue0)
+	C.gdk_set_double_click_time(c_msec)
 }
 
-func Fn_gdk_set_program_class(param0 string) {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_set_program_class(programClass string) {
+	c_programClass := (*C.gchar)(C.CString(programClass))
+	defer C.free(unsafe.Pointer(c_programClass))
 
-	C.gdk_set_program_class(cValue0)
+	C.gdk_set_program_class(c_programClass)
 }
 
-func Fn_gdk_set_show_events(param0 bool) {
-	cValue0 := toCBool(param0)
+func Fn_gdk_set_show_events(showEvents bool) {
+	c_showEvents := toCBool(showEvents)
 
-	C.gdk_set_show_events(cValue0)
+	C.gdk_set_show_events(c_showEvents)
 }
 
-func Fn_gdk_setting_get(param0 string, param1 unsafe.Pointer) bool {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_setting_get(name string, value unsafe.Pointer) bool {
+	c_name := (*C.gchar)(C.CString(name))
+	defer C.free(unsafe.Pointer(c_name))
 
-	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+	c_value := (*C.GValue)(unsafe.Pointer(value))
 
-	ret := C.gdk_setting_get(cValue0, cValue1)
+	ret := C.gdk_setting_get(c_name, c_value)
 
 	return toGoBool(ret)
 }
 
 // UNSUPPORTED : gdk_synthesize_window_state : blacklisted
 
-func Fn_gdk_test_render_sync(param0 unsafe.Pointer) {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_test_render_sync(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_test_render_sync(cValue0)
+	C.gdk_test_render_sync(c_window)
 }
 
-func Fn_gdk_test_simulate_button(param0 unsafe.Pointer, param1 int, param2 int, param3 uint, param4 int, param5 int) bool {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_test_simulate_button(window unsafe.Pointer, x int, y int, button uint, modifiers int, buttonPressrelease int) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (C.gint)(param1)
+	c_x := (C.gint)(x)
 
-	cValue2 := (C.gint)(param2)
+	c_y := (C.gint)(y)
 
-	cValue3 := (C.guint)(param3)
+	c_button := (C.guint)(button)
 
-	cValue4 := (C.GdkModifierType)(param4)
+	c_modifiers := (C.GdkModifierType)(modifiers)
 
-	cValue5 := (C.GdkEventType)(param5)
+	c_buttonPressrelease := (C.GdkEventType)(buttonPressrelease)
 
-	ret := C.gdk_test_simulate_button(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	ret := C.gdk_test_simulate_button(c_window, c_x, c_y, c_button, c_modifiers, c_buttonPressrelease)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_test_simulate_key(param0 unsafe.Pointer, param1 int, param2 int, param3 uint, param4 int, param5 int) bool {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_test_simulate_key(window unsafe.Pointer, x int, y int, keyval uint, modifiers int, keyPressrelease int) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (C.gint)(param1)
+	c_x := (C.gint)(x)
 
-	cValue2 := (C.gint)(param2)
+	c_y := (C.gint)(y)
 
-	cValue3 := (C.guint)(param3)
+	c_keyval := (C.guint)(keyval)
 
-	cValue4 := (C.GdkModifierType)(param4)
+	c_modifiers := (C.GdkModifierType)(modifiers)
 
-	cValue5 := (C.GdkEventType)(param5)
+	c_keyPressrelease := (C.GdkEventType)(keyPressrelease)
 
-	ret := C.gdk_test_simulate_key(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	ret := C.gdk_test_simulate_key(c_window, c_x, c_y, c_keyval, c_modifiers, c_keyPressrelease)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_text_property_to_utf8_list_for_display(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 []uint8, param4 int, param5 *[]string) int {
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+func Fn_gdk_text_property_to_utf8_list_for_display(display unsafe.Pointer, encoding unsafe.Pointer, format int, text []uint8, length int, list *[]string) int {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue1 := (C.GdkAtom)(param1)
+	c_encoding := (C.GdkAtom)(encoding)
 
-	cValue2 := (C.gint)(param2)
+	c_format := (C.gint)(format)
 
-	cValue3 := (*C.guchar)(unsafe.Pointer(&param3[0]))
+	c_text := (*C.guchar)(unsafe.Pointer(&text[0]))
 
-	cValue4 := (C.gint)(param4)
+	c_length := (C.gint)(length)
 
 	// TODO
-	var cValue5ArrayPointer **C.gchar
-	cValue5 := &cValue5ArrayPointer
+	var c_listArrayPointer **C.gchar
+	c_list := &c_listArrayPointer
 
-	ret := C.gdk_text_property_to_utf8_list_for_display(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	ret := C.gdk_text_property_to_utf8_list_for_display(c_display, c_encoding, c_format, c_text, c_length, c_list)
 	// TODO - 0 terminated array
 
 	return (int)(ret)
@@ -1250,19 +1250,19 @@ func Fn_gdk_threads_leave() {
 
 // UNSUPPORTED : gdk_threads_set_lock_functions : parameter 'enter_fn' is callback
 
-func Fn_gdk_unicode_to_keyval(param0 uint32) uint {
-	cValue0 := (C.guint32)(param0)
+func Fn_gdk_unicode_to_keyval(wc uint32) uint {
+	c_wc := (C.guint32)(wc)
 
-	ret := C.gdk_unicode_to_keyval(cValue0)
+	ret := C.gdk_unicode_to_keyval(c_wc)
 
 	return (uint)(ret)
 }
 
-func Fn_gdk_utf8_to_string_target(param0 string) string {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_utf8_to_string_target(str string) string {
+	c_str := (*C.gchar)(C.CString(str))
+	defer C.free(unsafe.Pointer(c_str))
 
-	ret := C.gdk_utf8_to_string_target(cValue0)
+	ret := C.gdk_utf8_to_string_target(c_str)
 
 	return C.GoString(ret)
 }
@@ -1273,312 +1273,312 @@ func Fn_gdk_app_launch_context_new() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_app_launch_context_set_desktop(paramInstance unsafe.Pointer, param0 int) {
-	cValueInstance := (*C.GdkAppLaunchContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_app_launch_context_set_desktop(context unsafe.Pointer, desktop int) {
+	c_context := (*C.GdkAppLaunchContext)(unsafe.Pointer(context))
 
-	cValue0 := (C.gint)(param0)
+	c_desktop := (C.gint)(desktop)
 
-	C.gdk_app_launch_context_set_desktop(cValueInstance, cValue0)
+	C.gdk_app_launch_context_set_desktop(c_context, c_desktop)
 }
 
-func Fn_gdk_app_launch_context_set_display(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkAppLaunchContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_app_launch_context_set_display(context unsafe.Pointer, display unsafe.Pointer) {
+	c_context := (*C.GdkAppLaunchContext)(unsafe.Pointer(context))
 
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	C.gdk_app_launch_context_set_display(cValueInstance, cValue0)
+	C.gdk_app_launch_context_set_display(c_context, c_display)
 }
 
-func Fn_gdk_app_launch_context_set_icon(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkAppLaunchContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_app_launch_context_set_icon(context unsafe.Pointer, icon unsafe.Pointer) {
+	c_context := (*C.GdkAppLaunchContext)(unsafe.Pointer(context))
 
-	cValue0 := (*C.GIcon)(unsafe.Pointer(param0))
+	c_icon := (*C.GIcon)(unsafe.Pointer(icon))
 
-	C.gdk_app_launch_context_set_icon(cValueInstance, cValue0)
+	C.gdk_app_launch_context_set_icon(c_context, c_icon)
 }
 
-func Fn_gdk_app_launch_context_set_icon_name(paramInstance unsafe.Pointer, param0 *string) {
-	cValueInstance := (*C.GdkAppLaunchContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_app_launch_context_set_icon_name(context unsafe.Pointer, iconName *string) {
+	c_context := (*C.GdkAppLaunchContext)(unsafe.Pointer(context))
 
-	var cValue0Value (*C.char)
-	if param0 != nil {
-		cValue0Value = (*C.char)(C.CString(*param0))
-		defer C.free(unsafe.Pointer(cValue0Value))
+	var c_iconNameValue (*C.char)
+	if iconName != nil {
+		c_iconNameValue = (*C.char)(C.CString(*iconName))
+		defer C.free(unsafe.Pointer(c_iconNameValue))
 	}
-	cValue0 := cValue0Value
+	c_iconName := c_iconNameValue
 
-	C.gdk_app_launch_context_set_icon_name(cValueInstance, cValue0)
+	C.gdk_app_launch_context_set_icon_name(c_context, c_iconName)
 }
 
-func Fn_gdk_app_launch_context_set_screen(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkAppLaunchContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_app_launch_context_set_screen(context unsafe.Pointer, screen unsafe.Pointer) {
+	c_context := (*C.GdkAppLaunchContext)(unsafe.Pointer(context))
 
-	cValue0 := (*C.GdkScreen)(unsafe.Pointer(param0))
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	C.gdk_app_launch_context_set_screen(cValueInstance, cValue0)
+	C.gdk_app_launch_context_set_screen(c_context, c_screen)
 }
 
-func Fn_gdk_app_launch_context_set_timestamp(paramInstance unsafe.Pointer, param0 uint32) {
-	cValueInstance := (*C.GdkAppLaunchContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_app_launch_context_set_timestamp(context unsafe.Pointer, timestamp uint32) {
+	c_context := (*C.GdkAppLaunchContext)(unsafe.Pointer(context))
 
-	cValue0 := (C.guint32)(param0)
+	c_timestamp := (C.guint32)(timestamp)
 
-	C.gdk_app_launch_context_set_timestamp(cValueInstance, cValue0)
+	C.gdk_app_launch_context_set_timestamp(c_context, c_timestamp)
 }
 
-func Fn_gdk_cursor_new(param0 int) unsafe.Pointer {
-	cValue0 := (C.GdkCursorType)(param0)
+func Fn_gdk_cursor_new(cursorType int) unsafe.Pointer {
+	c_cursorType := (C.GdkCursorType)(cursorType)
 
-	ret := C.gdk_cursor_new(cValue0)
+	ret := C.gdk_cursor_new(c_cursorType)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_cursor_new_for_display(param0 unsafe.Pointer, param1 int) unsafe.Pointer {
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+func Fn_gdk_cursor_new_for_display(display unsafe.Pointer, cursorType int) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue1 := (C.GdkCursorType)(param1)
+	c_cursorType := (C.GdkCursorType)(cursorType)
 
-	ret := C.gdk_cursor_new_for_display(cValue0, cValue1)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_cursor_new_from_name(param0 unsafe.Pointer, param1 string) unsafe.Pointer {
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gchar)(C.CString(param1))
-	defer C.free(unsafe.Pointer(cValue1))
-
-	ret := C.gdk_cursor_new_from_name(cValue0, cValue1)
+	ret := C.gdk_cursor_new_for_display(c_display, c_cursorType)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_cursor_new_from_pixbuf(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int, param3 int) unsafe.Pointer {
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+func Fn_gdk_cursor_new_from_name(display unsafe.Pointer, name string) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue1 := (*C.GdkPixbuf)(unsafe.Pointer(param1))
+	c_name := (*C.gchar)(C.CString(name))
+	defer C.free(unsafe.Pointer(c_name))
 
-	cValue2 := (C.gint)(param2)
-
-	cValue3 := (C.gint)(param3)
-
-	ret := C.gdk_cursor_new_from_pixbuf(cValue0, cValue1, cValue2, cValue3)
+	ret := C.gdk_cursor_new_from_name(c_display, c_name)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_cursor_new_from_surface(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 float64, param3 float64) unsafe.Pointer {
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+func Fn_gdk_cursor_new_from_pixbuf(display unsafe.Pointer, pixbuf unsafe.Pointer, x int, y int) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue1 := (*C.cairo_surface_t)(unsafe.Pointer(param1))
+	c_pixbuf := (*C.GdkPixbuf)(unsafe.Pointer(pixbuf))
 
-	cValue2 := (C.gdouble)(param2)
+	c_x := (C.gint)(x)
 
-	cValue3 := (C.gdouble)(param3)
+	c_y := (C.gint)(y)
 
-	ret := C.gdk_cursor_new_from_surface(cValue0, cValue1, cValue2, cValue3)
+	ret := C.gdk_cursor_new_from_pixbuf(c_display, c_pixbuf, c_x, c_y)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_cursor_get_cursor_type(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkCursor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_cursor_new_from_surface(display unsafe.Pointer, surface unsafe.Pointer, x float64, y float64) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_cursor_get_cursor_type(cValueInstance)
+	c_surface := (*C.cairo_surface_t)(unsafe.Pointer(surface))
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	ret := C.gdk_cursor_new_from_surface(c_display, c_surface, c_x, c_y)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_cursor_get_cursor_type(cursor unsafe.Pointer) int {
+	c_cursor := (*C.GdkCursor)(unsafe.Pointer(cursor))
+
+	ret := C.gdk_cursor_get_cursor_type(c_cursor)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_cursor_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkCursor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_cursor_get_display(cursor unsafe.Pointer) unsafe.Pointer {
+	c_cursor := (*C.GdkCursor)(unsafe.Pointer(cursor))
 
-	ret := C.gdk_cursor_get_display(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_cursor_get_image(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkCursor)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_cursor_get_image(cValueInstance)
+	ret := C.gdk_cursor_get_display(c_cursor)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_cursor_get_surface(paramInstance unsafe.Pointer, param0 *float64, param1 *float64) unsafe.Pointer {
-	cValueInstance := (*C.GdkCursor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_cursor_get_image(cursor unsafe.Pointer) unsafe.Pointer {
+	c_cursor := (*C.GdkCursor)(unsafe.Pointer(cursor))
 
-	cValue0 := (*C.gdouble)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gdouble)(unsafe.Pointer(param1))
-
-	ret := C.gdk_cursor_get_surface(cValueInstance, cValue0, cValue1)
+	ret := C.gdk_cursor_get_image(c_cursor)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_cursor_ref(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkCursor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_cursor_get_surface(cursor unsafe.Pointer, xHot *float64, yHot *float64) unsafe.Pointer {
+	c_cursor := (*C.GdkCursor)(unsafe.Pointer(cursor))
 
-	ret := C.gdk_cursor_ref(cValueInstance)
+	c_xHot := (*C.gdouble)(unsafe.Pointer(xHot))
 
-	return unsafe.Pointer(ret)
-}
+	c_yHot := (*C.gdouble)(unsafe.Pointer(yHot))
 
-func Fn_gdk_cursor_unref(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkCursor)(unsafe.Pointer(paramInstance))
-
-	C.gdk_cursor_unref(cValueInstance)
-}
-
-func Fn_gdk_device_get_associated_device(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_device_get_associated_device(cValueInstance)
+	ret := C.gdk_cursor_get_surface(c_cursor, c_xHot, c_yHot)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_device_get_axis(paramInstance unsafe.Pointer, param0 []float64, param1 int, param2 *float64) bool {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_cursor_ref(cursor unsafe.Pointer) unsafe.Pointer {
+	c_cursor := (*C.GdkCursor)(unsafe.Pointer(cursor))
 
-	cValue0 := (*C.gdouble)(unsafe.Pointer(&param0[0]))
+	ret := C.gdk_cursor_ref(c_cursor)
 
-	cValue1 := (C.GdkAxisUse)(param1)
+	return unsafe.Pointer(ret)
+}
 
-	cValue2 := (*C.gdouble)(unsafe.Pointer(param2))
+func Fn_gdk_cursor_unref(cursor unsafe.Pointer) {
+	c_cursor := (*C.GdkCursor)(unsafe.Pointer(cursor))
 
-	ret := C.gdk_device_get_axis(cValueInstance, cValue0, cValue1, cValue2)
+	C.gdk_cursor_unref(c_cursor)
+}
+
+func Fn_gdk_device_get_associated_device(device unsafe.Pointer) unsafe.Pointer {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	ret := C.gdk_device_get_associated_device(c_device)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_device_get_axis(device unsafe.Pointer, axes []float64, use int, value *float64) bool {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	c_axes := (*C.gdouble)(unsafe.Pointer(&axes[0]))
+
+	c_use := (C.GdkAxisUse)(use)
+
+	c_value := (*C.gdouble)(unsafe.Pointer(value))
+
+	ret := C.gdk_device_get_axis(c_device, c_axes, c_use, c_value)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_device_get_axis_use(paramInstance unsafe.Pointer, param0 uint) int {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_axis_use(device unsafe.Pointer, index uint) int {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue0 := (C.guint)(param0)
+	c_index := (C.guint)(index)
 
-	ret := C.gdk_device_get_axis_use(cValueInstance, cValue0)
+	ret := C.gdk_device_get_axis_use(c_device, c_index)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_device_get_axis_value(paramInstance unsafe.Pointer, param0 []float64, param1 unsafe.Pointer, param2 *float64) bool {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_axis_value(device unsafe.Pointer, axes []float64, axisLabel unsafe.Pointer, value *float64) bool {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue0 := (*C.gdouble)(unsafe.Pointer(&param0[0]))
+	c_axes := (*C.gdouble)(unsafe.Pointer(&axes[0]))
 
-	cValue1 := (C.GdkAtom)(param1)
+	c_axisLabel := (C.GdkAtom)(axisLabel)
 
-	cValue2 := (*C.gdouble)(unsafe.Pointer(param2))
+	c_value := (*C.gdouble)(unsafe.Pointer(value))
 
-	ret := C.gdk_device_get_axis_value(cValueInstance, cValue0, cValue1, cValue2)
+	ret := C.gdk_device_get_axis_value(c_device, c_axes, c_axisLabel, c_value)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_device_get_device_type(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_device_type(device unsafe.Pointer) int {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_device_get_device_type(cValueInstance)
+	ret := C.gdk_device_get_device_type(c_device)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_device_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_display(device unsafe.Pointer) unsafe.Pointer {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_device_get_display(cValueInstance)
+	ret := C.gdk_device_get_display(c_device)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_device_get_has_cursor(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_has_cursor(device unsafe.Pointer) bool {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_device_get_has_cursor(cValueInstance)
+	ret := C.gdk_device_get_has_cursor(c_device)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_device_get_history(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32, param2 uint32, param3 *[]unsafe.Pointer, param4 *int) bool {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_history(device unsafe.Pointer, window unsafe.Pointer, start uint32, stop uint32, events *[]unsafe.Pointer, nEvents *int) bool {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (C.guint32)(param1)
+	c_start := (C.guint32)(start)
 
-	cValue2 := (C.guint32)(param2)
+	c_stop := (C.guint32)(stop)
 
-	var cValue3ArrayPointer (**C.GdkTimeCoord)
-	cValue3 := &cValue3ArrayPointer
+	var c_eventsArrayPointer (**C.GdkTimeCoord)
+	c_events := &c_eventsArrayPointer
 
-	cValue4 := (*C.gint)(unsafe.Pointer(param4))
+	c_nEvents := (*C.gint)(unsafe.Pointer(nEvents))
 
-	ret := C.gdk_device_get_history(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4)
+	ret := C.gdk_device_get_history(c_device, c_window, c_start, c_stop, c_events, c_nEvents)
 
-	param3OutLen := int(*cValue4)
-	param3Out := make([]unsafe.Pointer, param3OutLen, param3OutLen)
-	if param3OutLen > 0 {
-		param3Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue3ArrayPointer))[:param3OutLen:param3OutLen]
+	eventsOutLen := int(*c_nEvents)
+	eventsOut := make([]unsafe.Pointer, eventsOutLen, eventsOutLen)
+	if eventsOutLen > 0 {
+		eventsOut = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(c_eventsArrayPointer))[:eventsOutLen:eventsOutLen]
 	}
-	*param3 = param3Out
+	*events = eventsOut
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_device_get_key(paramInstance unsafe.Pointer, param0 uint, param1 *uint, param2 *int) bool {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_key(device unsafe.Pointer, index uint, keyval *uint, modifiers *int) bool {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue0 := (C.guint)(param0)
+	c_index := (C.guint)(index)
 
-	cValue1 := (*C.guint)(unsafe.Pointer(param1))
+	c_keyval := (*C.guint)(unsafe.Pointer(keyval))
 
-	cValue2 := (*C.GdkModifierType)(unsafe.Pointer(param2))
+	c_modifiers := (*C.GdkModifierType)(unsafe.Pointer(modifiers))
 
-	ret := C.gdk_device_get_key(cValueInstance, cValue0, cValue1, cValue2)
+	ret := C.gdk_device_get_key(c_device, c_index, c_keyval, c_modifiers)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_device_get_last_event_window(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_last_event_window(device unsafe.Pointer) unsafe.Pointer {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_device_get_last_event_window(cValueInstance)
+	ret := C.gdk_device_get_last_event_window(c_device)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_device_get_mode(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_mode(device unsafe.Pointer) int {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_device_get_mode(cValueInstance)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_device_get_n_axes(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_device_get_n_axes(cValueInstance)
+	ret := C.gdk_device_get_mode(c_device)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_device_get_n_keys(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_n_axes(device unsafe.Pointer) int {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_device_get_n_keys(cValueInstance)
+	ret := C.gdk_device_get_n_axes(c_device)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_device_get_name(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_n_keys(device unsafe.Pointer) int {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_device_get_name(cValueInstance)
+	ret := C.gdk_device_get_n_keys(c_device)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_device_get_name(device unsafe.Pointer) string {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	ret := C.gdk_device_get_name(c_device)
 
 	return C.GoString(ret)
 }
@@ -1587,501 +1587,501 @@ func Fn_gdk_device_get_name(paramInstance unsafe.Pointer) string {
 
 // UNSUPPORTED : gdk_device_get_position_double : parameter 'screen' is non array with indirect count > 1
 
-func Fn_gdk_device_get_product_id(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_product_id(device unsafe.Pointer) string {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_device_get_product_id(cValueInstance)
-
-	return C.GoString(ret)
-}
-
-func Fn_gdk_device_get_source(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_device_get_source(cValueInstance)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_device_get_state(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 []float64, param2 *int) {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gdouble)(unsafe.Pointer(&param1[0]))
-
-	cValue2 := (*C.GdkModifierType)(unsafe.Pointer(param2))
-
-	C.gdk_device_get_state(cValueInstance, cValue0, cValue1, cValue2)
-}
-
-func Fn_gdk_device_get_vendor_id(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_device_get_vendor_id(cValueInstance)
+	ret := C.gdk_device_get_product_id(c_device)
 
 	return C.GoString(ret)
 }
 
-func Fn_gdk_device_get_window_at_position(paramInstance unsafe.Pointer, param0 *int, param1 *int) unsafe.Pointer {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_source(device unsafe.Pointer) int {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	ret := C.gdk_device_get_window_at_position(cValueInstance, cValue0, cValue1)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_device_get_window_at_position_double(paramInstance unsafe.Pointer, param0 *float64, param1 *float64) unsafe.Pointer {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gdouble)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gdouble)(unsafe.Pointer(param1))
-
-	ret := C.gdk_device_get_window_at_position_double(cValueInstance, cValue0, cValue1)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_device_grab(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 bool, param3 int, param4 unsafe.Pointer, param5 uint32) int {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
-
-	cValue1 := (C.GdkGrabOwnership)(param1)
-
-	cValue2 := toCBool(param2)
-
-	cValue3 := (C.GdkEventMask)(param3)
-
-	cValue4 := (*C.GdkCursor)(unsafe.Pointer(param4))
-
-	cValue5 := (C.guint32)(param5)
-
-	ret := C.gdk_device_grab(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	ret := C.gdk_device_get_source(c_device)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_device_list_axes(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_state(device unsafe.Pointer, window unsafe.Pointer, axes []float64, mask *int) {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_device_list_axes(cValueInstance)
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	c_axes := (*C.gdouble)(unsafe.Pointer(&axes[0]))
+
+	c_mask := (*C.GdkModifierType)(unsafe.Pointer(mask))
+
+	C.gdk_device_get_state(c_device, c_window, c_axes, c_mask)
+}
+
+func Fn_gdk_device_get_vendor_id(device unsafe.Pointer) string {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	ret := C.gdk_device_get_vendor_id(c_device)
+
+	return C.GoString(ret)
+}
+
+func Fn_gdk_device_get_window_at_position(device unsafe.Pointer, winX *int, winY *int) unsafe.Pointer {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	c_winX := (*C.gint)(unsafe.Pointer(winX))
+
+	c_winY := (*C.gint)(unsafe.Pointer(winY))
+
+	ret := C.gdk_device_get_window_at_position(c_device, c_winX, c_winY)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_device_list_slave_devices(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_get_window_at_position_double(device unsafe.Pointer, winX *float64, winY *float64) unsafe.Pointer {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_device_list_slave_devices(cValueInstance)
+	c_winX := (*C.gdouble)(unsafe.Pointer(winX))
+
+	c_winY := (*C.gdouble)(unsafe.Pointer(winY))
+
+	ret := C.gdk_device_get_window_at_position_double(c_device, c_winX, c_winY)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_device_set_axis_use(paramInstance unsafe.Pointer, param0 uint, param1 int) {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_grab(device unsafe.Pointer, window unsafe.Pointer, grabOwnership int, ownerEvents bool, eventMask int, cursor unsafe.Pointer, time uint32) int {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue0 := (C.guint)(param0)
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue1 := (C.GdkAxisUse)(param1)
+	c_grabOwnership := (C.GdkGrabOwnership)(grabOwnership)
 
-	C.gdk_device_set_axis_use(cValueInstance, cValue0, cValue1)
+	c_ownerEvents := toCBool(ownerEvents)
+
+	c_eventMask := (C.GdkEventMask)(eventMask)
+
+	c_cursor := (*C.GdkCursor)(unsafe.Pointer(cursor))
+
+	c_time := (C.guint32)(time)
+
+	ret := C.gdk_device_grab(c_device, c_window, c_grabOwnership, c_ownerEvents, c_eventMask, c_cursor, c_time)
+
+	return (int)(ret)
 }
 
-func Fn_gdk_device_set_key(paramInstance unsafe.Pointer, param0 uint, param1 uint, param2 int) {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_list_axes(device unsafe.Pointer) unsafe.Pointer {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue0 := (C.guint)(param0)
+	ret := C.gdk_device_list_axes(c_device)
 
-	cValue1 := (C.guint)(param1)
-
-	cValue2 := (C.GdkModifierType)(param2)
-
-	C.gdk_device_set_key(cValueInstance, cValue0, cValue1, cValue2)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_device_set_mode(paramInstance unsafe.Pointer, param0 int) bool {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_list_slave_devices(device unsafe.Pointer) unsafe.Pointer {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue0 := (C.GdkInputMode)(param0)
+	ret := C.gdk_device_list_slave_devices(c_device)
 
-	ret := C.gdk_device_set_mode(cValueInstance, cValue0)
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_device_set_axis_use(device unsafe.Pointer, index uint, use int) {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	c_index := (C.guint)(index)
+
+	c_use := (C.GdkAxisUse)(use)
+
+	C.gdk_device_set_axis_use(c_device, c_index, c_use)
+}
+
+func Fn_gdk_device_set_key(device unsafe.Pointer, index uint, keyval uint, modifiers int) {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	c_index := (C.guint)(index)
+
+	c_keyval := (C.guint)(keyval)
+
+	c_modifiers := (C.GdkModifierType)(modifiers)
+
+	C.gdk_device_set_key(c_device, c_index, c_keyval, c_modifiers)
+}
+
+func Fn_gdk_device_set_mode(device unsafe.Pointer, mode int) bool {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	c_mode := (C.GdkInputMode)(mode)
+
+	ret := C.gdk_device_set_mode(c_device, c_mode)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_device_ungrab(paramInstance unsafe.Pointer, param0 uint32) {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_ungrab(device unsafe.Pointer, time uint32) {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue0 := (C.guint32)(param0)
+	c_time := (C.guint32)(time)
 
-	C.gdk_device_ungrab(cValueInstance, cValue0)
+	C.gdk_device_ungrab(c_device, c_time)
 }
 
-func Fn_gdk_device_warp(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int) {
-	cValueInstance := (*C.GdkDevice)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_warp(device unsafe.Pointer, screen unsafe.Pointer, x int, y int) {
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue0 := (*C.GdkScreen)(unsafe.Pointer(param0))
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	cValue1 := (C.gint)(param1)
+	c_x := (C.gint)(x)
 
-	cValue2 := (C.gint)(param2)
+	c_y := (C.gint)(y)
 
-	C.gdk_device_warp(cValueInstance, cValue0, cValue1, cValue2)
+	C.gdk_device_warp(c_device, c_screen, c_x, c_y)
 }
 
-func Fn_gdk_device_free_history(param0 []unsafe.Pointer, param1 int) {
-	cValue0 := (**C.GdkTimeCoord)(unsafe.Pointer(&param0[0]))
+func Fn_gdk_device_free_history(events []unsafe.Pointer, nEvents int) {
+	c_events := (**C.GdkTimeCoord)(unsafe.Pointer(&events[0]))
 
-	cValue1 := (C.gint)(param1)
+	c_nEvents := (C.gint)(nEvents)
 
-	C.gdk_device_free_history(cValue0, cValue1)
+	C.gdk_device_free_history(c_events, c_nEvents)
 }
 
 // UNSUPPORTED : gdk_device_grab_info_libgtk_only : parameter 'grab_window' is non array with indirect count > 1
 
-func Fn_gdk_device_manager_get_client_pointer(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDeviceManager)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_manager_get_client_pointer(deviceManager unsafe.Pointer) unsafe.Pointer {
+	c_deviceManager := (*C.GdkDeviceManager)(unsafe.Pointer(deviceManager))
 
-	ret := C.gdk_device_manager_get_client_pointer(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_device_manager_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDeviceManager)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_device_manager_get_display(cValueInstance)
+	ret := C.gdk_device_manager_get_client_pointer(c_deviceManager)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_device_manager_list_devices(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
-	cValueInstance := (*C.GdkDeviceManager)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_manager_get_display(deviceManager unsafe.Pointer) unsafe.Pointer {
+	c_deviceManager := (*C.GdkDeviceManager)(unsafe.Pointer(deviceManager))
 
-	cValue0 := (C.GdkDeviceType)(param0)
-
-	ret := C.gdk_device_manager_list_devices(cValueInstance, cValue0)
+	ret := C.gdk_device_manager_get_display(c_deviceManager)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_beep(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_device_manager_list_devices(deviceManager unsafe.Pointer, type_ int) unsafe.Pointer {
+	c_deviceManager := (*C.GdkDeviceManager)(unsafe.Pointer(deviceManager))
 
-	C.gdk_display_beep(cValueInstance)
+	c_type_ := (C.GdkDeviceType)(type_)
+
+	ret := C.gdk_device_manager_list_devices(c_deviceManager, c_type_)
+
+	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_close(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_beep(display unsafe.Pointer) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	C.gdk_display_close(cValueInstance)
+	C.gdk_display_beep(c_display)
 }
 
-func Fn_gdk_display_device_is_grabbed(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_close(display unsafe.Pointer) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
+	C.gdk_display_close(c_display)
+}
 
-	ret := C.gdk_display_device_is_grabbed(cValueInstance, cValue0)
+func Fn_gdk_display_device_is_grabbed(display unsafe.Pointer, device unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
+
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	ret := C.gdk_display_device_is_grabbed(c_display, c_device)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_display_flush(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_flush(display unsafe.Pointer) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	C.gdk_display_flush(cValueInstance)
+	C.gdk_display_flush(c_display)
 }
 
-func Fn_gdk_display_get_app_launch_context(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_get_app_launch_context(display unsafe.Pointer) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_get_app_launch_context(cValueInstance)
+	ret := C.gdk_display_get_app_launch_context(c_display)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_get_default_cursor_size(paramInstance unsafe.Pointer) uint {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_get_default_cursor_size(display unsafe.Pointer) uint {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_get_default_cursor_size(cValueInstance)
+	ret := C.gdk_display_get_default_cursor_size(c_display)
 
 	return (uint)(ret)
 }
 
-func Fn_gdk_display_get_default_group(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_get_default_group(display unsafe.Pointer) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_get_default_group(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_display_get_default_screen(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_display_get_default_screen(cValueInstance)
+	ret := C.gdk_display_get_default_group(c_display)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_get_device_manager(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_get_default_screen(display unsafe.Pointer) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_get_device_manager(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_display_get_event(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_display_get_event(cValueInstance)
+	ret := C.gdk_display_get_default_screen(c_display)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_get_maximal_cursor_size(paramInstance unsafe.Pointer, param0 *uint, param1 *uint) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_get_device_manager(display unsafe.Pointer) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (*C.guint)(unsafe.Pointer(param0))
+	ret := C.gdk_display_get_device_manager(c_display)
 
-	cValue1 := (*C.guint)(unsafe.Pointer(param1))
-
-	C.gdk_display_get_maximal_cursor_size(cValueInstance, cValue0, cValue1)
+	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_get_n_screens(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_get_event(display unsafe.Pointer) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_get_n_screens(cValueInstance)
+	ret := C.gdk_display_get_event(c_display)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_display_get_maximal_cursor_size(display unsafe.Pointer, width *uint, height *uint) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
+
+	c_width := (*C.guint)(unsafe.Pointer(width))
+
+	c_height := (*C.guint)(unsafe.Pointer(height))
+
+	C.gdk_display_get_maximal_cursor_size(c_display, c_width, c_height)
+}
+
+func Fn_gdk_display_get_n_screens(display unsafe.Pointer) int {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
+
+	ret := C.gdk_display_get_n_screens(c_display)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_display_get_name(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_get_name(display unsafe.Pointer) string {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_get_name(cValueInstance)
+	ret := C.gdk_display_get_name(c_display)
 
 	return C.GoString(ret)
 }
 
 // UNSUPPORTED : gdk_display_get_pointer : parameter 'screen' is non array with indirect count > 1
 
-func Fn_gdk_display_get_screen(paramInstance unsafe.Pointer, param0 int) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_get_screen(display unsafe.Pointer, screenNum int) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (C.gint)(param0)
+	c_screenNum := (C.gint)(screenNum)
 
-	ret := C.gdk_display_get_screen(cValueInstance, cValue0)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_display_get_window_at_pointer(paramInstance unsafe.Pointer, param0 *int, param1 *int) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	ret := C.gdk_display_get_window_at_pointer(cValueInstance, cValue0, cValue1)
+	ret := C.gdk_display_get_screen(c_display, c_screenNum)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_has_pending(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_get_window_at_pointer(display unsafe.Pointer, winX *int, winY *int) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_has_pending(cValueInstance)
+	c_winX := (*C.gint)(unsafe.Pointer(winX))
 
-	return toGoBool(ret)
-}
+	c_winY := (*C.gint)(unsafe.Pointer(winY))
 
-func Fn_gdk_display_is_closed(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_display_is_closed(cValueInstance)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_display_keyboard_ungrab(paramInstance unsafe.Pointer, param0 uint32) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.guint32)(param0)
-
-	C.gdk_display_keyboard_ungrab(cValueInstance, cValue0)
-}
-
-func Fn_gdk_display_list_devices(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_display_list_devices(cValueInstance)
+	ret := C.gdk_display_get_window_at_pointer(c_display, c_winX, c_winY)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_notify_startup_complete(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_has_pending(display unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	ret := C.gdk_display_has_pending(c_display)
 
-	C.gdk_display_notify_startup_complete(cValueInstance, cValue0)
+	return toGoBool(ret)
 }
 
-func Fn_gdk_display_peek_event(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_is_closed(display unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_peek_event(cValueInstance)
+	ret := C.gdk_display_is_closed(c_display)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_display_keyboard_ungrab(display unsafe.Pointer, time uint32) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
+
+	c_time := (C.guint32)(time)
+
+	C.gdk_display_keyboard_ungrab(c_display, c_time)
+}
+
+func Fn_gdk_display_list_devices(display unsafe.Pointer) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
+
+	ret := C.gdk_display_list_devices(c_display)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_pointer_is_grabbed(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_notify_startup_complete(display unsafe.Pointer, startupId string) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_pointer_is_grabbed(cValueInstance)
+	c_startupId := (*C.gchar)(C.CString(startupId))
+	defer C.free(unsafe.Pointer(c_startupId))
+
+	C.gdk_display_notify_startup_complete(c_display, c_startupId)
+}
+
+func Fn_gdk_display_peek_event(display unsafe.Pointer) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
+
+	ret := C.gdk_display_peek_event(c_display)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_display_pointer_is_grabbed(display unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
+
+	ret := C.gdk_display_pointer_is_grabbed(c_display)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_display_pointer_ungrab(paramInstance unsafe.Pointer, param0 uint32) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_pointer_ungrab(display unsafe.Pointer, time uint32) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (C.guint32)(param0)
+	c_time := (C.guint32)(time)
 
-	C.gdk_display_pointer_ungrab(cValueInstance, cValue0)
+	C.gdk_display_pointer_ungrab(c_display, c_time)
 }
 
-func Fn_gdk_display_put_event(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_put_event(display unsafe.Pointer, event unsafe.Pointer) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (*C.GdkEvent)(unsafe.Pointer(param0))
+	c_event := (*C.GdkEvent)(unsafe.Pointer(event))
 
-	C.gdk_display_put_event(cValueInstance, cValue0)
+	C.gdk_display_put_event(c_display, c_event)
 }
 
-func Fn_gdk_display_request_selection_notification(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_request_selection_notification(display unsafe.Pointer, selection unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (C.GdkAtom)(param0)
+	c_selection := (C.GdkAtom)(selection)
 
-	ret := C.gdk_display_request_selection_notification(cValueInstance, cValue0)
+	ret := C.gdk_display_request_selection_notification(c_display, c_selection)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_display_set_double_click_distance(paramInstance unsafe.Pointer, param0 uint) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_set_double_click_distance(display unsafe.Pointer, distance uint) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (C.guint)(param0)
+	c_distance := (C.guint)(distance)
 
-	C.gdk_display_set_double_click_distance(cValueInstance, cValue0)
+	C.gdk_display_set_double_click_distance(c_display, c_distance)
 }
 
-func Fn_gdk_display_set_double_click_time(paramInstance unsafe.Pointer, param0 uint) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_set_double_click_time(display unsafe.Pointer, msec uint) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (C.guint)(param0)
+	c_msec := (C.guint)(msec)
 
-	C.gdk_display_set_double_click_time(cValueInstance, cValue0)
+	C.gdk_display_set_double_click_time(c_display, c_msec)
 }
 
-func Fn_gdk_display_store_clipboard(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 uint32, param2 []Atom, param3 int) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_store_clipboard(display unsafe.Pointer, clipboardWindow unsafe.Pointer, time uint32, targets []Atom, nTargets int) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+	c_clipboardWindow := (*C.GdkWindow)(unsafe.Pointer(clipboardWindow))
 
-	cValue1 := (C.guint32)(param1)
+	c_time := (C.guint32)(time)
 
-	cValue2 := (*C.GdkAtom)(unsafe.Pointer(&param2[0]))
+	c_targets := (*C.GdkAtom)(unsafe.Pointer(&targets[0]))
 
-	cValue3 := (C.gint)(param3)
+	c_nTargets := (C.gint)(nTargets)
 
-	C.gdk_display_store_clipboard(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	C.gdk_display_store_clipboard(c_display, c_clipboardWindow, c_time, c_targets, c_nTargets)
 }
 
-func Fn_gdk_display_supports_clipboard_persistence(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_supports_clipboard_persistence(display unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_supports_clipboard_persistence(cValueInstance)
+	ret := C.gdk_display_supports_clipboard_persistence(c_display)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_display_supports_composite(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_supports_composite(display unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_supports_composite(cValueInstance)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_display_supports_cursor_alpha(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_display_supports_cursor_alpha(cValueInstance)
+	ret := C.gdk_display_supports_composite(c_display)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_display_supports_cursor_color(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_supports_cursor_alpha(display unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_supports_cursor_color(cValueInstance)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_display_supports_input_shapes(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_display_supports_input_shapes(cValueInstance)
+	ret := C.gdk_display_supports_cursor_alpha(c_display)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_display_supports_selection_notification(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_supports_cursor_color(display unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_display_supports_selection_notification(cValueInstance)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_display_supports_shapes(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_display_supports_shapes(cValueInstance)
+	ret := C.gdk_display_supports_cursor_color(c_display)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_display_sync(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_supports_input_shapes(display unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	C.gdk_display_sync(cValueInstance)
+	ret := C.gdk_display_supports_input_shapes(c_display)
+
+	return toGoBool(ret)
 }
 
-func Fn_gdk_display_warp_pointer(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int) {
-	cValueInstance := (*C.GdkDisplay)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_supports_selection_notification(display unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	cValue0 := (*C.GdkScreen)(unsafe.Pointer(param0))
+	ret := C.gdk_display_supports_selection_notification(c_display)
 
-	cValue1 := (C.gint)(param1)
+	return toGoBool(ret)
+}
 
-	cValue2 := (C.gint)(param2)
+func Fn_gdk_display_supports_shapes(display unsafe.Pointer) bool {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	C.gdk_display_warp_pointer(cValueInstance, cValue0, cValue1, cValue2)
+	ret := C.gdk_display_supports_shapes(c_display)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_display_sync(display unsafe.Pointer) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
+
+	C.gdk_display_sync(c_display)
+}
+
+func Fn_gdk_display_warp_pointer(display unsafe.Pointer, screen unsafe.Pointer, x int, y int) {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
+
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	C.gdk_display_warp_pointer(c_display, c_screen, c_x, c_y)
 }
 
 func Fn_gdk_display_get_default() unsafe.Pointer {
@@ -2090,11 +2090,11 @@ func Fn_gdk_display_get_default() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_open(param0 string) unsafe.Pointer {
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+func Fn_gdk_display_open(displayName string) unsafe.Pointer {
+	c_displayName := (*C.gchar)(C.CString(displayName))
+	defer C.free(unsafe.Pointer(c_displayName))
 
-	ret := C.gdk_display_open(cValue0)
+	ret := C.gdk_display_open(c_displayName)
 
 	return unsafe.Pointer(ret)
 }
@@ -2105,39 +2105,39 @@ func Fn_gdk_display_open_default_libgtk_only() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_manager_get_default_display(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplayManager)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_manager_get_default_display(manager unsafe.Pointer) unsafe.Pointer {
+	c_manager := (*C.GdkDisplayManager)(unsafe.Pointer(manager))
 
-	ret := C.gdk_display_manager_get_default_display(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_display_manager_list_displays(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplayManager)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_display_manager_list_displays(cValueInstance)
+	ret := C.gdk_display_manager_get_default_display(c_manager)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_manager_open_display(paramInstance unsafe.Pointer, param0 string) unsafe.Pointer {
-	cValueInstance := (*C.GdkDisplayManager)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_manager_list_displays(manager unsafe.Pointer) unsafe.Pointer {
+	c_manager := (*C.GdkDisplayManager)(unsafe.Pointer(manager))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
-
-	ret := C.gdk_display_manager_open_display(cValueInstance, cValue0)
+	ret := C.gdk_display_manager_list_displays(c_manager)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_display_manager_set_default_display(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkDisplayManager)(unsafe.Pointer(paramInstance))
+func Fn_gdk_display_manager_open_display(manager unsafe.Pointer, name string) unsafe.Pointer {
+	c_manager := (*C.GdkDisplayManager)(unsafe.Pointer(manager))
 
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+	c_name := (*C.gchar)(C.CString(name))
+	defer C.free(unsafe.Pointer(c_name))
 
-	C.gdk_display_manager_set_default_display(cValueInstance, cValue0)
+	ret := C.gdk_display_manager_open_display(c_manager, c_name)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_display_manager_set_default_display(manager unsafe.Pointer, display unsafe.Pointer) {
+	c_manager := (*C.GdkDisplayManager)(unsafe.Pointer(manager))
+
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
+
+	C.gdk_display_manager_set_default_display(c_manager, c_display)
 }
 
 func Fn_gdk_display_manager_get() unsafe.Pointer {
@@ -2146,252 +2146,252 @@ func Fn_gdk_display_manager_get() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_drag_context_get_actions(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkDragContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_drag_context_get_actions(context unsafe.Pointer) int {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_drag_context_get_actions(cValueInstance)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_drag_context_get_dest_window(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDragContext)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_drag_context_get_dest_window(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_drag_context_get_device(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDragContext)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_drag_context_get_device(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_drag_context_get_protocol(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkDragContext)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_drag_context_get_protocol(cValueInstance)
+	ret := C.gdk_drag_context_get_actions(c_context)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_drag_context_get_selected_action(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkDragContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_drag_context_get_dest_window(context unsafe.Pointer) unsafe.Pointer {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_drag_context_get_selected_action(cValueInstance)
+	ret := C.gdk_drag_context_get_dest_window(c_context)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_drag_context_get_device(context unsafe.Pointer) unsafe.Pointer {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
+
+	ret := C.gdk_drag_context_get_device(c_context)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_drag_context_get_protocol(context unsafe.Pointer) int {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
+
+	ret := C.gdk_drag_context_get_protocol(c_context)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_drag_context_get_source_window(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDragContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_drag_context_get_selected_action(context unsafe.Pointer) int {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_drag_context_get_source_window(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_drag_context_get_suggested_action(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkDragContext)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_drag_context_get_suggested_action(cValueInstance)
+	ret := C.gdk_drag_context_get_selected_action(c_context)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_drag_context_list_targets(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkDragContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_drag_context_get_source_window(context unsafe.Pointer) unsafe.Pointer {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_drag_context_list_targets(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_drag_context_set_device(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkDragContext)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
-
-	C.gdk_drag_context_set_device(cValueInstance, cValue0)
-}
-
-func Fn_gdk_frame_clock_begin_updating(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkFrameClock)(unsafe.Pointer(paramInstance))
-
-	C.gdk_frame_clock_begin_updating(cValueInstance)
-}
-
-func Fn_gdk_frame_clock_end_updating(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkFrameClock)(unsafe.Pointer(paramInstance))
-
-	C.gdk_frame_clock_end_updating(cValueInstance)
-}
-
-func Fn_gdk_frame_clock_get_current_timings(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkFrameClock)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_frame_clock_get_current_timings(cValueInstance)
+	ret := C.gdk_drag_context_get_source_window(c_context)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_frame_clock_get_frame_counter(paramInstance unsafe.Pointer) int64 {
-	cValueInstance := (*C.GdkFrameClock)(unsafe.Pointer(paramInstance))
+func Fn_gdk_drag_context_get_suggested_action(context unsafe.Pointer) int {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_frame_clock_get_frame_counter(cValueInstance)
+	ret := C.gdk_drag_context_get_suggested_action(c_context)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_drag_context_list_targets(context unsafe.Pointer) unsafe.Pointer {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
+
+	ret := C.gdk_drag_context_list_targets(c_context)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_drag_context_set_device(context unsafe.Pointer, device unsafe.Pointer) {
+	c_context := (*C.GdkDragContext)(unsafe.Pointer(context))
+
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	C.gdk_drag_context_set_device(c_context, c_device)
+}
+
+func Fn_gdk_frame_clock_begin_updating(frameClock unsafe.Pointer) {
+	c_frameClock := (*C.GdkFrameClock)(unsafe.Pointer(frameClock))
+
+	C.gdk_frame_clock_begin_updating(c_frameClock)
+}
+
+func Fn_gdk_frame_clock_end_updating(frameClock unsafe.Pointer) {
+	c_frameClock := (*C.GdkFrameClock)(unsafe.Pointer(frameClock))
+
+	C.gdk_frame_clock_end_updating(c_frameClock)
+}
+
+func Fn_gdk_frame_clock_get_current_timings(frameClock unsafe.Pointer) unsafe.Pointer {
+	c_frameClock := (*C.GdkFrameClock)(unsafe.Pointer(frameClock))
+
+	ret := C.gdk_frame_clock_get_current_timings(c_frameClock)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_frame_clock_get_frame_counter(frameClock unsafe.Pointer) int64 {
+	c_frameClock := (*C.GdkFrameClock)(unsafe.Pointer(frameClock))
+
+	ret := C.gdk_frame_clock_get_frame_counter(c_frameClock)
 
 	return (int64)(ret)
 }
 
-func Fn_gdk_frame_clock_get_frame_time(paramInstance unsafe.Pointer) int64 {
-	cValueInstance := (*C.GdkFrameClock)(unsafe.Pointer(paramInstance))
+func Fn_gdk_frame_clock_get_frame_time(frameClock unsafe.Pointer) int64 {
+	c_frameClock := (*C.GdkFrameClock)(unsafe.Pointer(frameClock))
 
-	ret := C.gdk_frame_clock_get_frame_time(cValueInstance)
-
-	return (int64)(ret)
-}
-
-func Fn_gdk_frame_clock_get_history_start(paramInstance unsafe.Pointer) int64 {
-	cValueInstance := (*C.GdkFrameClock)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_frame_clock_get_history_start(cValueInstance)
+	ret := C.gdk_frame_clock_get_frame_time(c_frameClock)
 
 	return (int64)(ret)
 }
 
-func Fn_gdk_frame_clock_get_refresh_info(paramInstance unsafe.Pointer, param0 int64, param1 *int64, param2 *int64) {
-	cValueInstance := (*C.GdkFrameClock)(unsafe.Pointer(paramInstance))
+func Fn_gdk_frame_clock_get_history_start(frameClock unsafe.Pointer) int64 {
+	c_frameClock := (*C.GdkFrameClock)(unsafe.Pointer(frameClock))
 
-	cValue0 := (C.gint64)(param0)
+	ret := C.gdk_frame_clock_get_history_start(c_frameClock)
 
-	cValue1 := (*C.gint64)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.gint64)(unsafe.Pointer(param2))
-
-	C.gdk_frame_clock_get_refresh_info(cValueInstance, cValue0, cValue1, cValue2)
+	return (int64)(ret)
 }
 
-func Fn_gdk_frame_clock_get_timings(paramInstance unsafe.Pointer, param0 int64) unsafe.Pointer {
-	cValueInstance := (*C.GdkFrameClock)(unsafe.Pointer(paramInstance))
+func Fn_gdk_frame_clock_get_refresh_info(frameClock unsafe.Pointer, baseTime int64, refreshIntervalReturn *int64, presentationTimeReturn *int64) {
+	c_frameClock := (*C.GdkFrameClock)(unsafe.Pointer(frameClock))
 
-	cValue0 := (C.gint64)(param0)
+	c_baseTime := (C.gint64)(baseTime)
 
-	ret := C.gdk_frame_clock_get_timings(cValueInstance, cValue0)
+	c_refreshIntervalReturn := (*C.gint64)(unsafe.Pointer(refreshIntervalReturn))
+
+	c_presentationTimeReturn := (*C.gint64)(unsafe.Pointer(presentationTimeReturn))
+
+	C.gdk_frame_clock_get_refresh_info(c_frameClock, c_baseTime, c_refreshIntervalReturn, c_presentationTimeReturn)
+}
+
+func Fn_gdk_frame_clock_get_timings(frameClock unsafe.Pointer, frameCounter int64) unsafe.Pointer {
+	c_frameClock := (*C.GdkFrameClock)(unsafe.Pointer(frameClock))
+
+	c_frameCounter := (C.gint64)(frameCounter)
+
+	ret := C.gdk_frame_clock_get_timings(c_frameClock, c_frameCounter)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_frame_clock_request_phase(paramInstance unsafe.Pointer, param0 int) {
-	cValueInstance := (*C.GdkFrameClock)(unsafe.Pointer(paramInstance))
+func Fn_gdk_frame_clock_request_phase(frameClock unsafe.Pointer, phase int) {
+	c_frameClock := (*C.GdkFrameClock)(unsafe.Pointer(frameClock))
 
-	cValue0 := (C.GdkFrameClockPhase)(param0)
+	c_phase := (C.GdkFrameClockPhase)(phase)
 
-	C.gdk_frame_clock_request_phase(cValueInstance, cValue0)
+	C.gdk_frame_clock_request_phase(c_frameClock, c_phase)
 }
 
-func Fn_gdk_gl_context_get_debug_enabled(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_get_debug_enabled(context unsafe.Pointer) bool {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_gl_context_get_debug_enabled(cValueInstance)
+	ret := C.gdk_gl_context_get_debug_enabled(c_context)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_gl_context_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_get_display(context unsafe.Pointer) unsafe.Pointer {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_gl_context_get_display(cValueInstance)
+	ret := C.gdk_gl_context_get_display(c_context)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_gl_context_get_forward_compatible(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_get_forward_compatible(context unsafe.Pointer) bool {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_gl_context_get_forward_compatible(cValueInstance)
+	ret := C.gdk_gl_context_get_forward_compatible(c_context)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_gl_context_get_required_version(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_get_required_version(context unsafe.Pointer, major *int, minor *int) {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	cValue0 := (*C.int)(unsafe.Pointer(param0))
+	c_major := (*C.int)(unsafe.Pointer(major))
 
-	cValue1 := (*C.int)(unsafe.Pointer(param1))
+	c_minor := (*C.int)(unsafe.Pointer(minor))
 
-	C.gdk_gl_context_get_required_version(cValueInstance, cValue0, cValue1)
+	C.gdk_gl_context_get_required_version(c_context, c_major, c_minor)
 }
 
-func Fn_gdk_gl_context_get_shared_context(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_get_shared_context(context unsafe.Pointer) unsafe.Pointer {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_gl_context_get_shared_context(cValueInstance)
+	ret := C.gdk_gl_context_get_shared_context(c_context)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_gl_context_get_version(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_get_version(context unsafe.Pointer, major *int, minor *int) {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	cValue0 := (*C.int)(unsafe.Pointer(param0))
+	c_major := (*C.int)(unsafe.Pointer(major))
 
-	cValue1 := (*C.int)(unsafe.Pointer(param1))
+	c_minor := (*C.int)(unsafe.Pointer(minor))
 
-	C.gdk_gl_context_get_version(cValueInstance, cValue0, cValue1)
+	C.gdk_gl_context_get_version(c_context, c_major, c_minor)
 }
 
-func Fn_gdk_gl_context_get_window(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_get_window(context unsafe.Pointer) unsafe.Pointer {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	ret := C.gdk_gl_context_get_window(cValueInstance)
+	ret := C.gdk_gl_context_get_window(c_context)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_gl_context_make_current(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_make_current(context unsafe.Pointer) {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	C.gdk_gl_context_make_current(cValueInstance)
+	C.gdk_gl_context_make_current(c_context)
 }
 
-func Fn_gdk_gl_context_realize(paramInstance unsafe.Pointer, error unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_realize(context unsafe.Pointer, error unsafe.Pointer) bool {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_gl_context_realize(cValueInstance, cError)
+	ret := C.gdk_gl_context_realize(c_context, cError)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_gl_context_set_debug_enabled(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_set_debug_enabled(context unsafe.Pointer, enabled bool) {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	cValue0 := toCBool(param0)
+	c_enabled := toCBool(enabled)
 
-	C.gdk_gl_context_set_debug_enabled(cValueInstance, cValue0)
+	C.gdk_gl_context_set_debug_enabled(c_context, c_enabled)
 }
 
-func Fn_gdk_gl_context_set_forward_compatible(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_set_forward_compatible(context unsafe.Pointer, compatible bool) {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	cValue0 := toCBool(param0)
+	c_compatible := toCBool(compatible)
 
-	C.gdk_gl_context_set_forward_compatible(cValueInstance, cValue0)
+	C.gdk_gl_context_set_forward_compatible(c_context, c_compatible)
 }
 
-func Fn_gdk_gl_context_set_required_version(paramInstance unsafe.Pointer, param0 int, param1 int) {
-	cValueInstance := (*C.GdkGLContext)(unsafe.Pointer(paramInstance))
+func Fn_gdk_gl_context_set_required_version(context unsafe.Pointer, major int, minor int) {
+	c_context := (*C.GdkGLContext)(unsafe.Pointer(context))
 
-	cValue0 := (C.int)(param0)
+	c_major := (C.int)(major)
 
-	cValue1 := (C.int)(param1)
+	c_minor := (C.int)(minor)
 
-	C.gdk_gl_context_set_required_version(cValueInstance, cValue0, cValue1)
+	C.gdk_gl_context_set_required_version(c_context, c_major, c_minor)
 }
 
 func Fn_gdk_gl_context_clear_current() {
@@ -2404,156 +2404,156 @@ func Fn_gdk_gl_context_get_current() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_keymap_add_virtual_modifiers(paramInstance unsafe.Pointer, param0 *int) {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
+func Fn_gdk_keymap_add_virtual_modifiers(keymap unsafe.Pointer, state *int) {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	cValue0 := (*C.GdkModifierType)(unsafe.Pointer(param0))
+	c_state := (*C.GdkModifierType)(unsafe.Pointer(state))
 
-	C.gdk_keymap_add_virtual_modifiers(cValueInstance, cValue0)
+	C.gdk_keymap_add_virtual_modifiers(c_keymap, c_state)
 }
 
-func Fn_gdk_keymap_get_caps_lock_state(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
+func Fn_gdk_keymap_get_caps_lock_state(keymap unsafe.Pointer) bool {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	ret := C.gdk_keymap_get_caps_lock_state(cValueInstance)
+	ret := C.gdk_keymap_get_caps_lock_state(c_keymap)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_keymap_get_direction(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
+func Fn_gdk_keymap_get_direction(keymap unsafe.Pointer) int {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	ret := C.gdk_keymap_get_direction(cValueInstance)
+	ret := C.gdk_keymap_get_direction(c_keymap)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_keymap_get_entries_for_keycode(paramInstance unsafe.Pointer, param0 uint, param1 *[]unsafe.Pointer, param2 *[]uint, param3 *int) bool {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
+func Fn_gdk_keymap_get_entries_for_keycode(keymap unsafe.Pointer, hardwareKeycode uint, keys *[]unsafe.Pointer, keyvals *[]uint, nEntries *int) bool {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	cValue0 := (C.guint)(param0)
+	c_hardwareKeycode := (C.guint)(hardwareKeycode)
 
-	var cValue1ArrayPointer (*C.GdkKeymapKey)
-	cValue1 := &cValue1ArrayPointer
+	var c_keysArrayPointer (*C.GdkKeymapKey)
+	c_keys := &c_keysArrayPointer
 
-	var cValue2ArrayPointer (*C.guint)
-	cValue2 := &cValue2ArrayPointer
+	var c_keyvalsArrayPointer (*C.guint)
+	c_keyvals := &c_keyvalsArrayPointer
 
-	cValue3 := (*C.gint)(unsafe.Pointer(param3))
+	c_nEntries := (*C.gint)(unsafe.Pointer(nEntries))
 
-	ret := C.gdk_keymap_get_entries_for_keycode(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	ret := C.gdk_keymap_get_entries_for_keycode(c_keymap, c_hardwareKeycode, c_keys, c_keyvals, c_nEntries)
 
-	param1OutLen := int(*cValue3)
-	param1Out := make([]unsafe.Pointer, param1OutLen, param1OutLen)
-	if param1OutLen > 0 {
-		param1Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
+	keysOutLen := int(*c_nEntries)
+	keysOut := make([]unsafe.Pointer, keysOutLen, keysOutLen)
+	if keysOutLen > 0 {
+		keysOut = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(c_keysArrayPointer))[:keysOutLen:keysOutLen]
 	}
-	*param1 = param1Out
+	*keys = keysOut
 
-	param2OutLen := int(*cValue3)
-	param2Out := make([]uint, param2OutLen, param2OutLen)
-	if param2OutLen > 0 {
-		param2Out = (*[1 << 30](uint))(unsafe.Pointer(cValue2ArrayPointer))[:param2OutLen:param2OutLen]
+	keyvalsOutLen := int(*c_nEntries)
+	keyvalsOut := make([]uint, keyvalsOutLen, keyvalsOutLen)
+	if keyvalsOutLen > 0 {
+		keyvalsOut = (*[1 << 30](uint))(unsafe.Pointer(c_keyvalsArrayPointer))[:keyvalsOutLen:keyvalsOutLen]
 	}
-	*param2 = param2Out
+	*keyvals = keyvalsOut
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_keymap_get_entries_for_keyval(paramInstance unsafe.Pointer, param0 uint, param1 *[]unsafe.Pointer, param2 *int) bool {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
+func Fn_gdk_keymap_get_entries_for_keyval(keymap unsafe.Pointer, keyval uint, keys *[]unsafe.Pointer, nKeys *int) bool {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	cValue0 := (C.guint)(param0)
+	c_keyval := (C.guint)(keyval)
 
-	var cValue1ArrayPointer (*C.GdkKeymapKey)
-	cValue1 := &cValue1ArrayPointer
+	var c_keysArrayPointer (*C.GdkKeymapKey)
+	c_keys := &c_keysArrayPointer
 
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+	c_nKeys := (*C.gint)(unsafe.Pointer(nKeys))
 
-	ret := C.gdk_keymap_get_entries_for_keyval(cValueInstance, cValue0, cValue1, cValue2)
+	ret := C.gdk_keymap_get_entries_for_keyval(c_keymap, c_keyval, c_keys, c_nKeys)
 
-	param1OutLen := int(*cValue2)
-	param1Out := make([]unsafe.Pointer, param1OutLen, param1OutLen)
-	if param1OutLen > 0 {
-		param1Out = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(cValue1ArrayPointer))[:param1OutLen:param1OutLen]
+	keysOutLen := int(*c_nKeys)
+	keysOut := make([]unsafe.Pointer, keysOutLen, keysOutLen)
+	if keysOutLen > 0 {
+		keysOut = (*[1 << 30](unsafe.Pointer))(unsafe.Pointer(c_keysArrayPointer))[:keysOutLen:keysOutLen]
 	}
-	*param1 = param1Out
+	*keys = keysOut
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_keymap_get_modifier_mask(paramInstance unsafe.Pointer, param0 int) int {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
+func Fn_gdk_keymap_get_modifier_mask(keymap unsafe.Pointer, intent int) int {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	cValue0 := (C.GdkModifierIntent)(param0)
+	c_intent := (C.GdkModifierIntent)(intent)
 
-	ret := C.gdk_keymap_get_modifier_mask(cValueInstance, cValue0)
+	ret := C.gdk_keymap_get_modifier_mask(c_keymap, c_intent)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_keymap_get_modifier_state(paramInstance unsafe.Pointer) uint {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
+func Fn_gdk_keymap_get_modifier_state(keymap unsafe.Pointer) uint {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	ret := C.gdk_keymap_get_modifier_state(cValueInstance)
-
-	return (uint)(ret)
-}
-
-func Fn_gdk_keymap_get_num_lock_state(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_keymap_get_num_lock_state(cValueInstance)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_keymap_have_bidi_layouts(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_keymap_have_bidi_layouts(cValueInstance)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_keymap_lookup_key(paramInstance unsafe.Pointer, param0 unsafe.Pointer) uint {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GdkKeymapKey)(unsafe.Pointer(param0))
-
-	ret := C.gdk_keymap_lookup_key(cValueInstance, cValue0)
+	ret := C.gdk_keymap_get_modifier_state(c_keymap)
 
 	return (uint)(ret)
 }
 
-func Fn_gdk_keymap_map_virtual_modifiers(paramInstance unsafe.Pointer, param0 *int) bool {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
+func Fn_gdk_keymap_get_num_lock_state(keymap unsafe.Pointer) bool {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	cValue0 := (*C.GdkModifierType)(unsafe.Pointer(param0))
-
-	ret := C.gdk_keymap_map_virtual_modifiers(cValueInstance, cValue0)
+	ret := C.gdk_keymap_get_num_lock_state(c_keymap)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_keymap_translate_keyboard_state(paramInstance unsafe.Pointer, param0 uint, param1 int, param2 int, param3 *uint, param4 *int, param5 *int, param6 *int) bool {
-	cValueInstance := (*C.GdkKeymap)(unsafe.Pointer(paramInstance))
+func Fn_gdk_keymap_have_bidi_layouts(keymap unsafe.Pointer) bool {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	cValue0 := (C.guint)(param0)
+	ret := C.gdk_keymap_have_bidi_layouts(c_keymap)
 
-	cValue1 := (C.GdkModifierType)(param1)
+	return toGoBool(ret)
+}
 
-	cValue2 := (C.gint)(param2)
+func Fn_gdk_keymap_lookup_key(keymap unsafe.Pointer, key unsafe.Pointer) uint {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	cValue3 := (*C.guint)(unsafe.Pointer(param3))
+	c_key := (*C.GdkKeymapKey)(unsafe.Pointer(key))
 
-	cValue4 := (*C.gint)(unsafe.Pointer(param4))
+	ret := C.gdk_keymap_lookup_key(c_keymap, c_key)
 
-	cValue5 := (*C.gint)(unsafe.Pointer(param5))
+	return (uint)(ret)
+}
 
-	cValue6 := (*C.GdkModifierType)(unsafe.Pointer(param6))
+func Fn_gdk_keymap_map_virtual_modifiers(keymap unsafe.Pointer, state *int) bool {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
 
-	ret := C.gdk_keymap_translate_keyboard_state(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5, cValue6)
+	c_state := (*C.GdkModifierType)(unsafe.Pointer(state))
+
+	ret := C.gdk_keymap_map_virtual_modifiers(c_keymap, c_state)
+
+	return toGoBool(ret)
+}
+
+func Fn_gdk_keymap_translate_keyboard_state(keymap unsafe.Pointer, hardwareKeycode uint, state int, group int, keyval *uint, effectiveGroup *int, level *int, consumedModifiers *int) bool {
+	c_keymap := (*C.GdkKeymap)(unsafe.Pointer(keymap))
+
+	c_hardwareKeycode := (C.guint)(hardwareKeycode)
+
+	c_state := (C.GdkModifierType)(state)
+
+	c_group := (C.gint)(group)
+
+	c_keyval := (*C.guint)(unsafe.Pointer(keyval))
+
+	c_effectiveGroup := (*C.gint)(unsafe.Pointer(effectiveGroup))
+
+	c_level := (*C.gint)(unsafe.Pointer(level))
+
+	c_consumedModifiers := (*C.GdkModifierType)(unsafe.Pointer(consumedModifiers))
+
+	ret := C.gdk_keymap_translate_keyboard_state(c_keymap, c_hardwareKeycode, c_state, c_group, c_keyval, c_effectiveGroup, c_level, c_consumedModifiers)
 
 	return toGoBool(ret)
 }
@@ -2564,291 +2564,291 @@ func Fn_gdk_keymap_get_default() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_keymap_get_for_display(param0 unsafe.Pointer) unsafe.Pointer {
-	cValue0 := (*C.GdkDisplay)(unsafe.Pointer(param0))
+func Fn_gdk_keymap_get_for_display(display unsafe.Pointer) unsafe.Pointer {
+	c_display := (*C.GdkDisplay)(unsafe.Pointer(display))
 
-	ret := C.gdk_keymap_get_for_display(cValue0)
+	ret := C.gdk_keymap_get_for_display(c_display)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_monitor_get_manufacturer(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkMonitor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_monitor_get_manufacturer(monitor unsafe.Pointer) string {
+	c_monitor := (*C.GdkMonitor)(unsafe.Pointer(monitor))
 
-	ret := C.gdk_monitor_get_manufacturer(cValueInstance)
+	ret := C.gdk_monitor_get_manufacturer(c_monitor)
 
 	return C.GoString(ret)
 }
 
-func Fn_gdk_monitor_get_model(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkMonitor)(unsafe.Pointer(paramInstance))
+func Fn_gdk_monitor_get_model(monitor unsafe.Pointer) string {
+	c_monitor := (*C.GdkMonitor)(unsafe.Pointer(monitor))
 
-	ret := C.gdk_monitor_get_model(cValueInstance)
-
-	return C.GoString(ret)
-}
-
-func Fn_gdk_screen_get_active_window(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_screen_get_active_window(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_screen_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_screen_get_display(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_screen_get_font_options(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_screen_get_font_options(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_screen_get_height(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_screen_get_height(cValueInstance)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_screen_get_height_mm(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_screen_get_height_mm(cValueInstance)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_screen_get_monitor_at_point(paramInstance unsafe.Pointer, param0 int, param1 int) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.gint)(param0)
-
-	cValue1 := (C.gint)(param1)
-
-	ret := C.gdk_screen_get_monitor_at_point(cValueInstance, cValue0, cValue1)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_screen_get_monitor_at_window(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
-
-	ret := C.gdk_screen_get_monitor_at_window(cValueInstance, cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_screen_get_monitor_geometry(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.gint)(param0)
-
-	cValue1 := (*C.GdkRectangle)(unsafe.Pointer(param1))
-
-	C.gdk_screen_get_monitor_geometry(cValueInstance, cValue0, cValue1)
-}
-
-func Fn_gdk_screen_get_monitor_height_mm(paramInstance unsafe.Pointer, param0 int) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.gint)(param0)
-
-	ret := C.gdk_screen_get_monitor_height_mm(cValueInstance, cValue0)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_screen_get_monitor_plug_name(paramInstance unsafe.Pointer, param0 int) string {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.gint)(param0)
-
-	ret := C.gdk_screen_get_monitor_plug_name(cValueInstance, cValue0)
+	ret := C.gdk_monitor_get_model(c_monitor)
 
 	return C.GoString(ret)
 }
 
-func Fn_gdk_screen_get_monitor_scale_factor(paramInstance unsafe.Pointer, param0 int) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_active_window(screen unsafe.Pointer) unsafe.Pointer {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	cValue0 := (C.gint)(param0)
+	ret := C.gdk_screen_get_active_window(c_screen)
 
-	ret := C.gdk_screen_get_monitor_scale_factor(cValueInstance, cValue0)
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_screen_get_display(screen unsafe.Pointer) unsafe.Pointer {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	ret := C.gdk_screen_get_display(c_screen)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_screen_get_font_options(screen unsafe.Pointer) unsafe.Pointer {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	ret := C.gdk_screen_get_font_options(c_screen)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_screen_get_height(screen unsafe.Pointer) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	ret := C.gdk_screen_get_height(c_screen)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_screen_get_monitor_width_mm(paramInstance unsafe.Pointer, param0 int) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_height_mm(screen unsafe.Pointer) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	cValue0 := (C.gint)(param0)
-
-	ret := C.gdk_screen_get_monitor_width_mm(cValueInstance, cValue0)
+	ret := C.gdk_screen_get_height_mm(c_screen)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_screen_get_monitor_workarea(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_monitor_at_point(screen unsafe.Pointer, x int, y int) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	cValue0 := (C.gint)(param0)
+	c_x := (C.gint)(x)
 
-	cValue1 := (*C.GdkRectangle)(unsafe.Pointer(param1))
+	c_y := (C.gint)(y)
 
-	C.gdk_screen_get_monitor_workarea(cValueInstance, cValue0, cValue1)
-}
-
-func Fn_gdk_screen_get_n_monitors(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_screen_get_n_monitors(cValueInstance)
+	ret := C.gdk_screen_get_monitor_at_point(c_screen, c_x, c_y)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_screen_get_number(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_monitor_at_window(screen unsafe.Pointer, window unsafe.Pointer) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_screen_get_number(cValueInstance)
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	return (int)(ret)
-}
-
-func Fn_gdk_screen_get_primary_monitor(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_screen_get_primary_monitor(cValueInstance)
+	ret := C.gdk_screen_get_monitor_at_window(c_screen, c_window)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_screen_get_resolution(paramInstance unsafe.Pointer) float64 {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_monitor_geometry(screen unsafe.Pointer, monitorNum int, dest unsafe.Pointer) {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_screen_get_resolution(cValueInstance)
+	c_monitorNum := (C.gint)(monitorNum)
+
+	c_dest := (*C.GdkRectangle)(unsafe.Pointer(dest))
+
+	C.gdk_screen_get_monitor_geometry(c_screen, c_monitorNum, c_dest)
+}
+
+func Fn_gdk_screen_get_monitor_height_mm(screen unsafe.Pointer, monitorNum int) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	c_monitorNum := (C.gint)(monitorNum)
+
+	ret := C.gdk_screen_get_monitor_height_mm(c_screen, c_monitorNum)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_screen_get_monitor_plug_name(screen unsafe.Pointer, monitorNum int) string {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	c_monitorNum := (C.gint)(monitorNum)
+
+	ret := C.gdk_screen_get_monitor_plug_name(c_screen, c_monitorNum)
+
+	return C.GoString(ret)
+}
+
+func Fn_gdk_screen_get_monitor_scale_factor(screen unsafe.Pointer, monitorNum int) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	c_monitorNum := (C.gint)(monitorNum)
+
+	ret := C.gdk_screen_get_monitor_scale_factor(c_screen, c_monitorNum)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_screen_get_monitor_width_mm(screen unsafe.Pointer, monitorNum int) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	c_monitorNum := (C.gint)(monitorNum)
+
+	ret := C.gdk_screen_get_monitor_width_mm(c_screen, c_monitorNum)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_screen_get_monitor_workarea(screen unsafe.Pointer, monitorNum int, dest unsafe.Pointer) {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	c_monitorNum := (C.gint)(monitorNum)
+
+	c_dest := (*C.GdkRectangle)(unsafe.Pointer(dest))
+
+	C.gdk_screen_get_monitor_workarea(c_screen, c_monitorNum, c_dest)
+}
+
+func Fn_gdk_screen_get_n_monitors(screen unsafe.Pointer) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	ret := C.gdk_screen_get_n_monitors(c_screen)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_screen_get_number(screen unsafe.Pointer) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	ret := C.gdk_screen_get_number(c_screen)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_screen_get_primary_monitor(screen unsafe.Pointer) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	ret := C.gdk_screen_get_primary_monitor(c_screen)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_screen_get_resolution(screen unsafe.Pointer) float64 {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	ret := C.gdk_screen_get_resolution(c_screen)
 
 	return (float64)(ret)
 }
 
-func Fn_gdk_screen_get_rgba_visual(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_rgba_visual(screen unsafe.Pointer) unsafe.Pointer {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_screen_get_rgba_visual(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_screen_get_root_window(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_screen_get_root_window(cValueInstance)
+	ret := C.gdk_screen_get_rgba_visual(c_screen)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_screen_get_setting(paramInstance unsafe.Pointer, param0 string, param1 unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_root_window(screen unsafe.Pointer) unsafe.Pointer {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	ret := C.gdk_screen_get_root_window(c_screen)
 
-	cValue1 := (*C.GValue)(unsafe.Pointer(param1))
+	return unsafe.Pointer(ret)
+}
 
-	ret := C.gdk_screen_get_setting(cValueInstance, cValue0, cValue1)
+func Fn_gdk_screen_get_setting(screen unsafe.Pointer, name string, value unsafe.Pointer) bool {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	c_name := (*C.gchar)(C.CString(name))
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_value := (*C.GValue)(unsafe.Pointer(value))
+
+	ret := C.gdk_screen_get_setting(c_screen, c_name, c_value)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_screen_get_system_visual(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_system_visual(screen unsafe.Pointer) unsafe.Pointer {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_screen_get_system_visual(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_screen_get_toplevel_windows(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_screen_get_toplevel_windows(cValueInstance)
+	ret := C.gdk_screen_get_system_visual(c_screen)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_screen_get_width(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_toplevel_windows(screen unsafe.Pointer) unsafe.Pointer {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_screen_get_width(cValueInstance)
+	ret := C.gdk_screen_get_toplevel_windows(c_screen)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_screen_get_width(screen unsafe.Pointer) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
+
+	ret := C.gdk_screen_get_width(c_screen)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_screen_get_width_mm(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_width_mm(screen unsafe.Pointer) int {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_screen_get_width_mm(cValueInstance)
+	ret := C.gdk_screen_get_width_mm(c_screen)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_screen_get_window_stack(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_get_window_stack(screen unsafe.Pointer) unsafe.Pointer {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_screen_get_window_stack(cValueInstance)
+	ret := C.gdk_screen_get_window_stack(c_screen)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_screen_is_composited(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_is_composited(screen unsafe.Pointer) bool {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_screen_is_composited(cValueInstance)
+	ret := C.gdk_screen_is_composited(c_screen)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_screen_list_visuals(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_list_visuals(screen unsafe.Pointer) unsafe.Pointer {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_screen_list_visuals(cValueInstance)
+	ret := C.gdk_screen_list_visuals(c_screen)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_screen_make_display_name(paramInstance unsafe.Pointer) string {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_make_display_name(screen unsafe.Pointer) string {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	ret := C.gdk_screen_make_display_name(cValueInstance)
+	ret := C.gdk_screen_make_display_name(c_screen)
 
 	return C.GoString(ret)
 }
 
-func Fn_gdk_screen_set_font_options(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_set_font_options(screen unsafe.Pointer, options unsafe.Pointer) {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	cValue0 := (*C.cairo_font_options_t)(unsafe.Pointer(param0))
+	c_options := (*C.cairo_font_options_t)(unsafe.Pointer(options))
 
-	C.gdk_screen_set_font_options(cValueInstance, cValue0)
+	C.gdk_screen_set_font_options(c_screen, c_options)
 }
 
-func Fn_gdk_screen_set_resolution(paramInstance unsafe.Pointer, param0 float64) {
-	cValueInstance := (*C.GdkScreen)(unsafe.Pointer(paramInstance))
+func Fn_gdk_screen_set_resolution(screen unsafe.Pointer, dpi float64) {
+	c_screen := (*C.GdkScreen)(unsafe.Pointer(screen))
 
-	cValue0 := (C.gdouble)(param0)
+	c_dpi := (C.gdouble)(dpi)
 
-	C.gdk_screen_set_resolution(cValueInstance, cValue0)
+	C.gdk_screen_set_resolution(c_screen, c_dpi)
 }
 
 func Fn_gdk_screen_get_default() unsafe.Pointer {
@@ -2881,96 +2881,96 @@ func Fn_gdk_screen_width_mm() int {
 	return (int)(ret)
 }
 
-func Fn_gdk_seat_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkSeat)(unsafe.Pointer(paramInstance))
+func Fn_gdk_seat_get_display(seat unsafe.Pointer) unsafe.Pointer {
+	c_seat := (*C.GdkSeat)(unsafe.Pointer(seat))
 
-	ret := C.gdk_seat_get_display(cValueInstance)
+	ret := C.gdk_seat_get_display(c_seat)
 
 	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : gdk_seat_grab : parameter 'prepare_func' is callback
 
-func Fn_gdk_visual_get_bits_per_rgb(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
+func Fn_gdk_visual_get_bits_per_rgb(visual unsafe.Pointer) int {
+	c_visual := (*C.GdkVisual)(unsafe.Pointer(visual))
 
-	ret := C.gdk_visual_get_bits_per_rgb(cValueInstance)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_visual_get_blue_pixel_details(paramInstance unsafe.Pointer, param0 *uint32, param1 *int, param2 *int) {
-	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.guint32)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
-
-	C.gdk_visual_get_blue_pixel_details(cValueInstance, cValue0, cValue1, cValue2)
-}
-
-func Fn_gdk_visual_get_byte_order(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_visual_get_byte_order(cValueInstance)
+	ret := C.gdk_visual_get_bits_per_rgb(c_visual)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_visual_get_colormap_size(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
+func Fn_gdk_visual_get_blue_pixel_details(visual unsafe.Pointer, mask *uint32, shift *int, precision *int) {
+	c_visual := (*C.GdkVisual)(unsafe.Pointer(visual))
 
-	ret := C.gdk_visual_get_colormap_size(cValueInstance)
+	c_mask := (*C.guint32)(unsafe.Pointer(mask))
+
+	c_shift := (*C.gint)(unsafe.Pointer(shift))
+
+	c_precision := (*C.gint)(unsafe.Pointer(precision))
+
+	C.gdk_visual_get_blue_pixel_details(c_visual, c_mask, c_shift, c_precision)
+}
+
+func Fn_gdk_visual_get_byte_order(visual unsafe.Pointer) int {
+	c_visual := (*C.GdkVisual)(unsafe.Pointer(visual))
+
+	ret := C.gdk_visual_get_byte_order(c_visual)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_visual_get_depth(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
+func Fn_gdk_visual_get_colormap_size(visual unsafe.Pointer) int {
+	c_visual := (*C.GdkVisual)(unsafe.Pointer(visual))
 
-	ret := C.gdk_visual_get_depth(cValueInstance)
+	ret := C.gdk_visual_get_colormap_size(c_visual)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_visual_get_green_pixel_details(paramInstance unsafe.Pointer, param0 *uint32, param1 *int, param2 *int) {
-	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
+func Fn_gdk_visual_get_depth(visual unsafe.Pointer) int {
+	c_visual := (*C.GdkVisual)(unsafe.Pointer(visual))
 
-	cValue0 := (*C.guint32)(unsafe.Pointer(param0))
+	ret := C.gdk_visual_get_depth(c_visual)
 
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
-
-	C.gdk_visual_get_green_pixel_details(cValueInstance, cValue0, cValue1, cValue2)
+	return (int)(ret)
 }
 
-func Fn_gdk_visual_get_red_pixel_details(paramInstance unsafe.Pointer, param0 *uint32, param1 *int, param2 *int) {
-	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
+func Fn_gdk_visual_get_green_pixel_details(visual unsafe.Pointer, mask *uint32, shift *int, precision *int) {
+	c_visual := (*C.GdkVisual)(unsafe.Pointer(visual))
 
-	cValue0 := (*C.guint32)(unsafe.Pointer(param0))
+	c_mask := (*C.guint32)(unsafe.Pointer(mask))
 
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+	c_shift := (*C.gint)(unsafe.Pointer(shift))
 
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+	c_precision := (*C.gint)(unsafe.Pointer(precision))
 
-	C.gdk_visual_get_red_pixel_details(cValueInstance, cValue0, cValue1, cValue2)
+	C.gdk_visual_get_green_pixel_details(c_visual, c_mask, c_shift, c_precision)
 }
 
-func Fn_gdk_visual_get_screen(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
+func Fn_gdk_visual_get_red_pixel_details(visual unsafe.Pointer, mask *uint32, shift *int, precision *int) {
+	c_visual := (*C.GdkVisual)(unsafe.Pointer(visual))
 
-	ret := C.gdk_visual_get_screen(cValueInstance)
+	c_mask := (*C.guint32)(unsafe.Pointer(mask))
+
+	c_shift := (*C.gint)(unsafe.Pointer(shift))
+
+	c_precision := (*C.gint)(unsafe.Pointer(precision))
+
+	C.gdk_visual_get_red_pixel_details(c_visual, c_mask, c_shift, c_precision)
+}
+
+func Fn_gdk_visual_get_screen(visual unsafe.Pointer) unsafe.Pointer {
+	c_visual := (*C.GdkVisual)(unsafe.Pointer(visual))
+
+	ret := C.gdk_visual_get_screen(c_visual)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_visual_get_visual_type(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkVisual)(unsafe.Pointer(paramInstance))
+func Fn_gdk_visual_get_visual_type(visual unsafe.Pointer) int {
+	c_visual := (*C.GdkVisual)(unsafe.Pointer(visual))
 
-	ret := C.gdk_visual_get_visual_type(cValueInstance)
+	ret := C.gdk_visual_get_visual_type(c_visual)
 
 	return (int)(ret)
 }
@@ -2993,28 +2993,28 @@ func Fn_gdk_visual_get_best_type() int {
 	return (int)(ret)
 }
 
-func Fn_gdk_visual_get_best_with_both(param0 int, param1 int) unsafe.Pointer {
-	cValue0 := (C.gint)(param0)
+func Fn_gdk_visual_get_best_with_both(depth int, visualType int) unsafe.Pointer {
+	c_depth := (C.gint)(depth)
 
-	cValue1 := (C.GdkVisualType)(param1)
+	c_visualType := (C.GdkVisualType)(visualType)
 
-	ret := C.gdk_visual_get_best_with_both(cValue0, cValue1)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_visual_get_best_with_depth(param0 int) unsafe.Pointer {
-	cValue0 := (C.gint)(param0)
-
-	ret := C.gdk_visual_get_best_with_depth(cValue0)
+	ret := C.gdk_visual_get_best_with_both(c_depth, c_visualType)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_visual_get_best_with_type(param0 int) unsafe.Pointer {
-	cValue0 := (C.GdkVisualType)(param0)
+func Fn_gdk_visual_get_best_with_depth(depth int) unsafe.Pointer {
+	c_depth := (C.gint)(depth)
 
-	ret := C.gdk_visual_get_best_with_type(cValue0)
+	ret := C.gdk_visual_get_best_with_depth(c_depth)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_visual_get_best_with_type(visualType int) unsafe.Pointer {
+	c_visualType := (C.GdkVisualType)(visualType)
+
+	ret := C.gdk_visual_get_best_with_type(c_visualType)
 
 	return unsafe.Pointer(ret)
 }
@@ -3025,1342 +3025,1342 @@ func Fn_gdk_visual_get_system() unsafe.Pointer {
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_new(param0 unsafe.Pointer, param1 unsafe.Pointer, param2 int) unsafe.Pointer {
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+func Fn_gdk_window_new(parent unsafe.Pointer, attributes unsafe.Pointer, attributesMask int) unsafe.Pointer {
+	c_parent := (*C.GdkWindow)(unsafe.Pointer(parent))
 
-	cValue1 := (*C.GdkWindowAttr)(unsafe.Pointer(param1))
+	c_attributes := (*C.GdkWindowAttr)(unsafe.Pointer(attributes))
 
-	cValue2 := (C.gint)(param2)
+	c_attributesMask := (C.gint)(attributesMask)
 
-	ret := C.gdk_window_new(cValue0, cValue1, cValue2)
+	ret := C.gdk_window_new(c_parent, c_attributes, c_attributesMask)
 
 	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : gdk_window_add_filter : parameter 'function' is callback
 
-func Fn_gdk_window_beep(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_beep(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_beep(cValueInstance)
+	C.gdk_window_beep(c_window)
 }
 
-func Fn_gdk_window_begin_move_drag(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 uint32) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_begin_move_drag(window unsafe.Pointer, button int, rootX int, rootY int, timestamp uint32) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gint)(param0)
+	c_button := (C.gint)(button)
 
-	cValue1 := (C.gint)(param1)
+	c_rootX := (C.gint)(rootX)
 
-	cValue2 := (C.gint)(param2)
+	c_rootY := (C.gint)(rootY)
 
-	cValue3 := (C.guint32)(param3)
+	c_timestamp := (C.guint32)(timestamp)
 
-	C.gdk_window_begin_move_drag(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	C.gdk_window_begin_move_drag(c_window, c_button, c_rootX, c_rootY, c_timestamp)
 }
 
-func Fn_gdk_window_begin_move_drag_for_device(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 uint32) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_begin_move_drag_for_device(window unsafe.Pointer, device unsafe.Pointer, button int, rootX int, rootY int, timestamp uint32) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue1 := (C.gint)(param1)
+	c_button := (C.gint)(button)
 
-	cValue2 := (C.gint)(param2)
+	c_rootX := (C.gint)(rootX)
 
-	cValue3 := (C.gint)(param3)
+	c_rootY := (C.gint)(rootY)
 
-	cValue4 := (C.guint32)(param4)
+	c_timestamp := (C.guint32)(timestamp)
 
-	C.gdk_window_begin_move_drag_for_device(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4)
+	C.gdk_window_begin_move_drag_for_device(c_window, c_device, c_button, c_rootX, c_rootY, c_timestamp)
 }
 
-func Fn_gdk_window_begin_paint_rect(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_begin_paint_rect(window unsafe.Pointer, rectangle unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkRectangle)(unsafe.Pointer(param0))
+	c_rectangle := (*C.GdkRectangle)(unsafe.Pointer(rectangle))
 
-	C.gdk_window_begin_paint_rect(cValueInstance, cValue0)
+	C.gdk_window_begin_paint_rect(c_window, c_rectangle)
 }
 
-func Fn_gdk_window_begin_paint_region(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_begin_paint_region(window unsafe.Pointer, region unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.cairo_region_t)(unsafe.Pointer(param0))
+	c_region := (*C.cairo_region_t)(unsafe.Pointer(region))
 
-	C.gdk_window_begin_paint_region(cValueInstance, cValue0)
+	C.gdk_window_begin_paint_region(c_window, c_region)
 }
 
-func Fn_gdk_window_begin_resize_drag(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int, param4 uint32) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_begin_resize_drag(window unsafe.Pointer, edge int, button int, rootX int, rootY int, timestamp uint32) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.GdkWindowEdge)(param0)
+	c_edge := (C.GdkWindowEdge)(edge)
 
-	cValue1 := (C.gint)(param1)
+	c_button := (C.gint)(button)
 
-	cValue2 := (C.gint)(param2)
+	c_rootX := (C.gint)(rootX)
 
-	cValue3 := (C.gint)(param3)
+	c_rootY := (C.gint)(rootY)
 
-	cValue4 := (C.guint32)(param4)
+	c_timestamp := (C.guint32)(timestamp)
 
-	C.gdk_window_begin_resize_drag(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4)
+	C.gdk_window_begin_resize_drag(c_window, c_edge, c_button, c_rootX, c_rootY, c_timestamp)
 }
 
-func Fn_gdk_window_begin_resize_drag_for_device(paramInstance unsafe.Pointer, param0 int, param1 unsafe.Pointer, param2 int, param3 int, param4 int, param5 uint32) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_begin_resize_drag_for_device(window unsafe.Pointer, edge int, device unsafe.Pointer, button int, rootX int, rootY int, timestamp uint32) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.GdkWindowEdge)(param0)
+	c_edge := (C.GdkWindowEdge)(edge)
 
-	cValue1 := (*C.GdkDevice)(unsafe.Pointer(param1))
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue2 := (C.gint)(param2)
+	c_button := (C.gint)(button)
 
-	cValue3 := (C.gint)(param3)
+	c_rootX := (C.gint)(rootX)
 
-	cValue4 := (C.gint)(param4)
+	c_rootY := (C.gint)(rootY)
 
-	cValue5 := (C.guint32)(param5)
+	c_timestamp := (C.guint32)(timestamp)
 
-	C.gdk_window_begin_resize_drag_for_device(cValueInstance, cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	C.gdk_window_begin_resize_drag_for_device(c_window, c_edge, c_device, c_button, c_rootX, c_rootY, c_timestamp)
 }
 
-func Fn_gdk_window_configure_finished(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_configure_finished(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_configure_finished(cValueInstance)
+	C.gdk_window_configure_finished(c_window)
 }
 
-func Fn_gdk_window_coords_from_parent(paramInstance unsafe.Pointer, param0 float64, param1 float64, param2 *float64, param3 *float64) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_coords_from_parent(window unsafe.Pointer, parentX float64, parentY float64, x *float64, y *float64) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gdouble)(param0)
+	c_parentX := (C.gdouble)(parentX)
 
-	cValue1 := (C.gdouble)(param1)
+	c_parentY := (C.gdouble)(parentY)
 
-	cValue2 := (*C.gdouble)(unsafe.Pointer(param2))
+	c_x := (*C.gdouble)(unsafe.Pointer(x))
 
-	cValue3 := (*C.gdouble)(unsafe.Pointer(param3))
+	c_y := (*C.gdouble)(unsafe.Pointer(y))
 
-	C.gdk_window_coords_from_parent(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	C.gdk_window_coords_from_parent(c_window, c_parentX, c_parentY, c_x, c_y)
 }
 
-func Fn_gdk_window_coords_to_parent(paramInstance unsafe.Pointer, param0 float64, param1 float64, param2 *float64, param3 *float64) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_coords_to_parent(window unsafe.Pointer, x float64, y float64, parentX *float64, parentY *float64) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gdouble)(param0)
+	c_x := (C.gdouble)(x)
 
-	cValue1 := (C.gdouble)(param1)
+	c_y := (C.gdouble)(y)
 
-	cValue2 := (*C.gdouble)(unsafe.Pointer(param2))
+	c_parentX := (*C.gdouble)(unsafe.Pointer(parentX))
 
-	cValue3 := (*C.gdouble)(unsafe.Pointer(param3))
+	c_parentY := (*C.gdouble)(unsafe.Pointer(parentY))
 
-	C.gdk_window_coords_to_parent(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	C.gdk_window_coords_to_parent(c_window, c_x, c_y, c_parentX, c_parentY)
 }
 
-func Fn_gdk_window_create_gl_context(paramInstance unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_create_gl_context(window unsafe.Pointer, error unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
 	cError := (**C.GError)(error)
 
-	ret := C.gdk_window_create_gl_context(cValueInstance, cError)
+	ret := C.gdk_window_create_gl_context(c_window, cError)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_create_similar_image_surface(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_create_similar_image_surface(window unsafe.Pointer, format int, width int, height int, scale int) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.cairo_format_t)(param0)
+	c_format := (C.cairo_format_t)(format)
 
-	cValue1 := (C.int)(param1)
+	c_width := (C.int)(width)
 
-	cValue2 := (C.int)(param2)
+	c_height := (C.int)(height)
 
-	cValue3 := (C.int)(param3)
+	c_scale := (C.int)(scale)
 
-	ret := C.gdk_window_create_similar_image_surface(cValueInstance, cValue0, cValue1, cValue2, cValue3)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_window_create_similar_surface(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.cairo_content_t)(param0)
-
-	cValue1 := (C.int)(param1)
-
-	cValue2 := (C.int)(param2)
-
-	ret := C.gdk_window_create_similar_surface(cValueInstance, cValue0, cValue1, cValue2)
+	ret := C.gdk_window_create_similar_image_surface(c_window, c_format, c_width, c_height, c_scale)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_deiconify(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_create_similar_surface(window unsafe.Pointer, content int, width int, height int) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_deiconify(cValueInstance)
+	c_content := (C.cairo_content_t)(content)
+
+	c_width := (C.int)(width)
+
+	c_height := (C.int)(height)
+
+	ret := C.gdk_window_create_similar_surface(c_window, c_content, c_width, c_height)
+
+	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_destroy(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_deiconify(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_destroy(cValueInstance)
+	C.gdk_window_deiconify(c_window)
+}
+
+func Fn_gdk_window_destroy(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	C.gdk_window_destroy(c_window)
 }
 
 // UNSUPPORTED : gdk_window_destroy_notify : blacklisted
 
-func Fn_gdk_window_enable_synchronized_configure(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_enable_synchronized_configure(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_enable_synchronized_configure(cValueInstance)
+	C.gdk_window_enable_synchronized_configure(c_window)
 }
 
-func Fn_gdk_window_end_paint(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_end_paint(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_end_paint(cValueInstance)
+	C.gdk_window_end_paint(c_window)
 }
 
-func Fn_gdk_window_ensure_native(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_ensure_native(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_ensure_native(cValueInstance)
+	ret := C.gdk_window_ensure_native(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_flush(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_flush(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_flush(cValueInstance)
+	C.gdk_window_flush(c_window)
 }
 
-func Fn_gdk_window_focus(paramInstance unsafe.Pointer, param0 uint32) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_focus(window unsafe.Pointer, timestamp uint32) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.guint32)(param0)
+	c_timestamp := (C.guint32)(timestamp)
 
-	C.gdk_window_focus(cValueInstance, cValue0)
+	C.gdk_window_focus(c_window, c_timestamp)
 }
 
-func Fn_gdk_window_freeze_toplevel_updates_libgtk_only(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_freeze_toplevel_updates_libgtk_only(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_freeze_toplevel_updates_libgtk_only(cValueInstance)
+	C.gdk_window_freeze_toplevel_updates_libgtk_only(c_window)
 }
 
-func Fn_gdk_window_freeze_updates(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_freeze_updates(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_freeze_updates(cValueInstance)
+	C.gdk_window_freeze_updates(c_window)
 }
 
-func Fn_gdk_window_fullscreen(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_fullscreen(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_fullscreen(cValueInstance)
+	C.gdk_window_fullscreen(c_window)
 }
 
-func Fn_gdk_window_fullscreen_on_monitor(paramInstance unsafe.Pointer, param0 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_fullscreen_on_monitor(window unsafe.Pointer, monitor int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gint)(param0)
+	c_monitor := (C.gint)(monitor)
 
-	C.gdk_window_fullscreen_on_monitor(cValueInstance, cValue0)
+	C.gdk_window_fullscreen_on_monitor(c_window, c_monitor)
 }
 
-func Fn_gdk_window_geometry_changed(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_geometry_changed(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_geometry_changed(cValueInstance)
+	C.gdk_window_geometry_changed(c_window)
 }
 
-func Fn_gdk_window_get_accept_focus(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_accept_focus(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_accept_focus(cValueInstance)
+	ret := C.gdk_window_get_accept_focus(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_get_background_pattern(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_background_pattern(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_background_pattern(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_window_get_children(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_window_get_children(cValueInstance)
+	ret := C.gdk_window_get_background_pattern(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_children_with_user_data(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_children(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gpointer)(param0)
-
-	ret := C.gdk_window_get_children_with_user_data(cValueInstance, cValue0)
+	ret := C.gdk_window_get_children(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_clip_region(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_children_with_user_data(window unsafe.Pointer, userData unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_clip_region(cValueInstance)
+	c_userData := (C.gpointer)(userData)
+
+	ret := C.gdk_window_get_children_with_user_data(c_window, c_userData)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_composited(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_clip_region(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_composited(cValueInstance)
+	ret := C.gdk_window_get_clip_region(c_window)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_window_get_composited(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_composited(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_get_cursor(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_cursor(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_cursor(cValueInstance)
+	ret := C.gdk_window_get_cursor(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_decorations(paramInstance unsafe.Pointer, param0 *int) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_decorations(window unsafe.Pointer, decorations *int) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkWMDecoration)(unsafe.Pointer(param0))
+	c_decorations := (*C.GdkWMDecoration)(unsafe.Pointer(decorations))
 
-	ret := C.gdk_window_get_decorations(cValueInstance, cValue0)
+	ret := C.gdk_window_get_decorations(c_window, c_decorations)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_get_device_cursor(paramInstance unsafe.Pointer, param0 unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_device_cursor(window unsafe.Pointer, device unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_window_get_device_cursor(cValueInstance, cValue0)
+	ret := C.gdk_window_get_device_cursor(c_window, c_device)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_device_events(paramInstance unsafe.Pointer, param0 unsafe.Pointer) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_device_events(window unsafe.Pointer, device unsafe.Pointer) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	ret := C.gdk_window_get_device_events(cValueInstance, cValue0)
+	ret := C.gdk_window_get_device_events(c_window, c_device)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_window_get_device_position(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *int, param2 *int, param3 *int) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_device_position(window unsafe.Pointer, device unsafe.Pointer, x *int, y *int, mask *int) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+	c_x := (*C.gint)(unsafe.Pointer(x))
 
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
+	c_y := (*C.gint)(unsafe.Pointer(y))
 
-	cValue3 := (*C.GdkModifierType)(unsafe.Pointer(param3))
+	c_mask := (*C.GdkModifierType)(unsafe.Pointer(mask))
 
-	ret := C.gdk_window_get_device_position(cValueInstance, cValue0, cValue1, cValue2, cValue3)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_window_get_device_position_double(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 *float64, param2 *float64, param3 *int) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gdouble)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.gdouble)(unsafe.Pointer(param2))
-
-	cValue3 := (*C.GdkModifierType)(unsafe.Pointer(param3))
-
-	ret := C.gdk_window_get_device_position_double(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	ret := C.gdk_window_get_device_position(c_window, c_device, c_x, c_y, c_mask)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_display(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_device_position_double(window unsafe.Pointer, device unsafe.Pointer, x *float64, y *float64, mask *int) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_display(cValueInstance)
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
+
+	c_x := (*C.gdouble)(unsafe.Pointer(x))
+
+	c_y := (*C.gdouble)(unsafe.Pointer(y))
+
+	c_mask := (*C.GdkModifierType)(unsafe.Pointer(mask))
+
+	ret := C.gdk_window_get_device_position_double(c_window, c_device, c_x, c_y, c_mask)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_window_get_display(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_display(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
 // UNSUPPORTED : gdk_window_get_drag_protocol : parameter 'target' is non array with indirect count > 1
 
-func Fn_gdk_window_get_effective_parent(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_effective_parent(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_effective_parent(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_window_get_effective_toplevel(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_window_get_effective_toplevel(cValueInstance)
+	ret := C.gdk_window_get_effective_parent(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_event_compression(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_effective_toplevel(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_event_compression(cValueInstance)
+	ret := C.gdk_window_get_effective_toplevel(c_window)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_window_get_event_compression(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_event_compression(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_get_events(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_events(window unsafe.Pointer) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_events(cValueInstance)
+	ret := C.gdk_window_get_events(c_window)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_window_get_focus_on_map(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_focus_on_map(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_focus_on_map(cValueInstance)
+	ret := C.gdk_window_get_focus_on_map(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_get_frame_clock(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_frame_clock(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_frame_clock(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_window_get_frame_extents(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.GdkRectangle)(unsafe.Pointer(param0))
-
-	C.gdk_window_get_frame_extents(cValueInstance, cValue0)
-}
-
-func Fn_gdk_window_get_fullscreen_mode(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_window_get_fullscreen_mode(cValueInstance)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_window_get_geometry(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 *int, param3 *int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
-
-	cValue3 := (*C.gint)(unsafe.Pointer(param3))
-
-	C.gdk_window_get_geometry(cValueInstance, cValue0, cValue1, cValue2, cValue3)
-}
-
-func Fn_gdk_window_get_group(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_window_get_group(cValueInstance)
+	ret := C.gdk_window_get_frame_clock(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_height(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_frame_extents(window unsafe.Pointer, rect unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_height(cValueInstance)
+	c_rect := (*C.GdkRectangle)(unsafe.Pointer(rect))
+
+	C.gdk_window_get_frame_extents(c_window, c_rect)
+}
+
+func Fn_gdk_window_get_fullscreen_mode(window unsafe.Pointer) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_fullscreen_mode(c_window)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_window_get_modal_hint(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_geometry(window unsafe.Pointer, x *int, y *int, width *int, height *int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_modal_hint(cValueInstance)
+	c_x := (*C.gint)(unsafe.Pointer(x))
+
+	c_y := (*C.gint)(unsafe.Pointer(y))
+
+	c_width := (*C.gint)(unsafe.Pointer(width))
+
+	c_height := (*C.gint)(unsafe.Pointer(height))
+
+	C.gdk_window_get_geometry(c_window, c_x, c_y, c_width, c_height)
+}
+
+func Fn_gdk_window_get_group(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_group(c_window)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_window_get_height(window unsafe.Pointer) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_height(c_window)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_window_get_modal_hint(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_modal_hint(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_get_origin(paramInstance unsafe.Pointer, param0 *int, param1 *int) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_origin(window unsafe.Pointer, x *int, y *int) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+	c_x := (*C.gint)(unsafe.Pointer(x))
 
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+	c_y := (*C.gint)(unsafe.Pointer(y))
 
-	ret := C.gdk_window_get_origin(cValueInstance, cValue0, cValue1)
+	ret := C.gdk_window_get_origin(c_window, c_x, c_y)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_window_get_parent(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_parent(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_parent(cValueInstance)
+	ret := C.gdk_window_get_parent(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_pointer(paramInstance unsafe.Pointer, param0 *int, param1 *int, param2 *int) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_pointer(window unsafe.Pointer, x *int, y *int, mask *int) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+	c_x := (*C.gint)(unsafe.Pointer(x))
 
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+	c_y := (*C.gint)(unsafe.Pointer(y))
 
-	cValue2 := (*C.GdkModifierType)(unsafe.Pointer(param2))
+	c_mask := (*C.GdkModifierType)(unsafe.Pointer(mask))
 
-	ret := C.gdk_window_get_pointer(cValueInstance, cValue0, cValue1, cValue2)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_window_get_position(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	C.gdk_window_get_position(cValueInstance, cValue0, cValue1)
-}
-
-func Fn_gdk_window_get_root_coords(paramInstance unsafe.Pointer, param0 int, param1 int, param2 *int, param3 *int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (C.gint)(param0)
-
-	cValue1 := (C.gint)(param1)
-
-	cValue2 := (*C.gint)(unsafe.Pointer(param2))
-
-	cValue3 := (*C.gint)(unsafe.Pointer(param3))
-
-	C.gdk_window_get_root_coords(cValueInstance, cValue0, cValue1, cValue2, cValue3)
-}
-
-func Fn_gdk_window_get_root_origin(paramInstance unsafe.Pointer, param0 *int, param1 *int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
-
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
-
-	C.gdk_window_get_root_origin(cValueInstance, cValue0, cValue1)
-}
-
-func Fn_gdk_window_get_scale_factor(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_window_get_scale_factor(cValueInstance)
-
-	return (int)(ret)
-}
-
-func Fn_gdk_window_get_screen(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_window_get_screen(cValueInstance)
+	ret := C.gdk_window_get_pointer(c_window, c_x, c_y, c_mask)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_source_events(paramInstance unsafe.Pointer, param0 int) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_position(window unsafe.Pointer, x *int, y *int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.GdkInputSource)(param0)
+	c_x := (*C.gint)(unsafe.Pointer(x))
 
-	ret := C.gdk_window_get_source_events(cValueInstance, cValue0)
+	c_y := (*C.gint)(unsafe.Pointer(y))
+
+	C.gdk_window_get_position(c_window, c_x, c_y)
+}
+
+func Fn_gdk_window_get_root_coords(window unsafe.Pointer, x int, y int, rootX *int, rootY *int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_rootX := (*C.gint)(unsafe.Pointer(rootX))
+
+	c_rootY := (*C.gint)(unsafe.Pointer(rootY))
+
+	C.gdk_window_get_root_coords(c_window, c_x, c_y, c_rootX, c_rootY)
+}
+
+func Fn_gdk_window_get_root_origin(window unsafe.Pointer, x *int, y *int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	c_x := (*C.gint)(unsafe.Pointer(x))
+
+	c_y := (*C.gint)(unsafe.Pointer(y))
+
+	C.gdk_window_get_root_origin(c_window, c_x, c_y)
+}
+
+func Fn_gdk_window_get_scale_factor(window unsafe.Pointer) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_scale_factor(c_window)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_window_get_state(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_screen(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_state(cValueInstance)
+	ret := C.gdk_window_get_screen(c_window)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_window_get_source_events(window unsafe.Pointer, source int) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	c_source := (C.GdkInputSource)(source)
+
+	ret := C.gdk_window_get_source_events(c_window, c_source)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_window_get_support_multidevice(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_state(window unsafe.Pointer) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_support_multidevice(cValueInstance)
+	ret := C.gdk_window_get_state(c_window)
+
+	return (int)(ret)
+}
+
+func Fn_gdk_window_get_support_multidevice(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_support_multidevice(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_get_toplevel(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_toplevel(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_toplevel(cValueInstance)
+	ret := C.gdk_window_get_toplevel(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_type_hint(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_type_hint(window unsafe.Pointer) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_type_hint(cValueInstance)
+	ret := C.gdk_window_get_type_hint(c_window)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_window_get_update_area(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_update_area(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_update_area(cValueInstance)
-
-	return unsafe.Pointer(ret)
-}
-
-func Fn_gdk_window_get_user_data(paramInstance unsafe.Pointer, param0 *unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	cValue0 := (*C.gpointer)(unsafe.Pointer(param0))
-
-	C.gdk_window_get_user_data(cValueInstance, cValue0)
-}
-
-func Fn_gdk_window_get_visible_region(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_window_get_visible_region(cValueInstance)
+	ret := C.gdk_window_get_update_area(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_visual(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_user_data(window unsafe.Pointer, data *unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_visual(cValueInstance)
+	c_data := (*C.gpointer)(unsafe.Pointer(data))
+
+	C.gdk_window_get_user_data(c_window, c_data)
+}
+
+func Fn_gdk_window_get_visible_region(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_visible_region(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_get_width(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_visual(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_width(cValueInstance)
+	ret := C.gdk_window_get_visual(c_window)
+
+	return unsafe.Pointer(ret)
+}
+
+func Fn_gdk_window_get_width(window unsafe.Pointer) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_get_width(c_window)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_window_get_window_type(paramInstance unsafe.Pointer) int {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_get_window_type(window unsafe.Pointer) int {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_get_window_type(cValueInstance)
+	ret := C.gdk_window_get_window_type(c_window)
 
 	return (int)(ret)
 }
 
-func Fn_gdk_window_has_native(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_has_native(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_has_native(cValueInstance)
+	ret := C.gdk_window_has_native(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_hide(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_hide(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_hide(cValueInstance)
+	C.gdk_window_hide(c_window)
 }
 
-func Fn_gdk_window_iconify(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_iconify(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_iconify(cValueInstance)
+	C.gdk_window_iconify(c_window)
 }
 
-func Fn_gdk_window_input_shape_combine_region(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_input_shape_combine_region(window unsafe.Pointer, shapeRegion unsafe.Pointer, offsetX int, offsetY int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.cairo_region_t)(unsafe.Pointer(param0))
+	c_shapeRegion := (*C.cairo_region_t)(unsafe.Pointer(shapeRegion))
 
-	cValue1 := (C.gint)(param1)
+	c_offsetX := (C.gint)(offsetX)
 
-	cValue2 := (C.gint)(param2)
+	c_offsetY := (C.gint)(offsetY)
 
-	C.gdk_window_input_shape_combine_region(cValueInstance, cValue0, cValue1, cValue2)
+	C.gdk_window_input_shape_combine_region(c_window, c_shapeRegion, c_offsetX, c_offsetY)
 }
 
 // UNSUPPORTED : gdk_window_invalidate_maybe_recurse : parameter 'child_func' is callback
 
-func Fn_gdk_window_invalidate_rect(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_invalidate_rect(window unsafe.Pointer, rect unsafe.Pointer, invalidateChildren bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkRectangle)(unsafe.Pointer(param0))
+	c_rect := (*C.GdkRectangle)(unsafe.Pointer(rect))
 
-	cValue1 := toCBool(param1)
+	c_invalidateChildren := toCBool(invalidateChildren)
 
-	C.gdk_window_invalidate_rect(cValueInstance, cValue0, cValue1)
+	C.gdk_window_invalidate_rect(c_window, c_rect, c_invalidateChildren)
 }
 
-func Fn_gdk_window_invalidate_region(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_invalidate_region(window unsafe.Pointer, region unsafe.Pointer, invalidateChildren bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.cairo_region_t)(unsafe.Pointer(param0))
+	c_region := (*C.cairo_region_t)(unsafe.Pointer(region))
 
-	cValue1 := toCBool(param1)
+	c_invalidateChildren := toCBool(invalidateChildren)
 
-	C.gdk_window_invalidate_region(cValueInstance, cValue0, cValue1)
+	C.gdk_window_invalidate_region(c_window, c_region, c_invalidateChildren)
 }
 
-func Fn_gdk_window_is_destroyed(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_is_destroyed(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_is_destroyed(cValueInstance)
+	ret := C.gdk_window_is_destroyed(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_is_input_only(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_is_input_only(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_is_input_only(cValueInstance)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_window_is_shaped(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_window_is_shaped(cValueInstance)
+	ret := C.gdk_window_is_input_only(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_is_viewable(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_is_shaped(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_is_viewable(cValueInstance)
-
-	return toGoBool(ret)
-}
-
-func Fn_gdk_window_is_visible(paramInstance unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
-
-	ret := C.gdk_window_is_visible(cValueInstance)
+	ret := C.gdk_window_is_shaped(c_window)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_lower(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_is_viewable(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_lower(cValueInstance)
+	ret := C.gdk_window_is_viewable(c_window)
+
+	return toGoBool(ret)
 }
 
-func Fn_gdk_window_mark_paint_from_clip(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_is_visible(window unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.cairo_t)(unsafe.Pointer(param0))
+	ret := C.gdk_window_is_visible(c_window)
 
-	C.gdk_window_mark_paint_from_clip(cValueInstance, cValue0)
+	return toGoBool(ret)
 }
 
-func Fn_gdk_window_maximize(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_lower(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_maximize(cValueInstance)
+	C.gdk_window_lower(c_window)
 }
 
-func Fn_gdk_window_merge_child_input_shapes(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_mark_paint_from_clip(window unsafe.Pointer, cr unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_merge_child_input_shapes(cValueInstance)
+	c_cr := (*C.cairo_t)(unsafe.Pointer(cr))
+
+	C.gdk_window_mark_paint_from_clip(c_window, c_cr)
 }
 
-func Fn_gdk_window_merge_child_shapes(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_maximize(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_merge_child_shapes(cValueInstance)
+	C.gdk_window_maximize(c_window)
 }
 
-func Fn_gdk_window_move(paramInstance unsafe.Pointer, param0 int, param1 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_merge_child_input_shapes(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gint)(param0)
-
-	cValue1 := (C.gint)(param1)
-
-	C.gdk_window_move(cValueInstance, cValue0, cValue1)
+	C.gdk_window_merge_child_input_shapes(c_window)
 }
 
-func Fn_gdk_window_move_region(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_merge_child_shapes(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.cairo_region_t)(unsafe.Pointer(param0))
-
-	cValue1 := (C.gint)(param1)
-
-	cValue2 := (C.gint)(param2)
-
-	C.gdk_window_move_region(cValueInstance, cValue0, cValue1, cValue2)
+	C.gdk_window_merge_child_shapes(c_window)
 }
 
-func Fn_gdk_window_move_resize(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_move(window unsafe.Pointer, x int, y int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gint)(param0)
+	c_x := (C.gint)(x)
 
-	cValue1 := (C.gint)(param1)
+	c_y := (C.gint)(y)
 
-	cValue2 := (C.gint)(param2)
-
-	cValue3 := (C.gint)(param3)
-
-	C.gdk_window_move_resize(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	C.gdk_window_move(c_window, c_x, c_y)
 }
 
-func Fn_gdk_window_peek_children(paramInstance unsafe.Pointer) unsafe.Pointer {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_move_region(window unsafe.Pointer, region unsafe.Pointer, dx int, dy int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	ret := C.gdk_window_peek_children(cValueInstance)
+	c_region := (*C.cairo_region_t)(unsafe.Pointer(region))
+
+	c_dx := (C.gint)(dx)
+
+	c_dy := (C.gint)(dy)
+
+	C.gdk_window_move_region(c_window, c_region, c_dx, c_dy)
+}
+
+func Fn_gdk_window_move_resize(window unsafe.Pointer, x int, y int, width int, height int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gdk_window_move_resize(c_window, c_x, c_y, c_width, c_height)
+}
+
+func Fn_gdk_window_peek_children(window unsafe.Pointer) unsafe.Pointer {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
+
+	ret := C.gdk_window_peek_children(c_window)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_process_updates(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_process_updates(window unsafe.Pointer, updateChildren bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_updateChildren := toCBool(updateChildren)
 
-	C.gdk_window_process_updates(cValueInstance, cValue0)
+	C.gdk_window_process_updates(c_window, c_updateChildren)
 }
 
-func Fn_gdk_window_raise(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_raise(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_raise(cValueInstance)
+	C.gdk_window_raise(c_window)
 }
 
-func Fn_gdk_window_register_dnd(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_register_dnd(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_register_dnd(cValueInstance)
+	C.gdk_window_register_dnd(c_window)
 }
 
 // UNSUPPORTED : gdk_window_remove_filter : parameter 'function' is callback
 
-func Fn_gdk_window_reparent(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_reparent(window unsafe.Pointer, newParent unsafe.Pointer, x int, y int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+	c_newParent := (*C.GdkWindow)(unsafe.Pointer(newParent))
 
-	cValue1 := (C.gint)(param1)
+	c_x := (C.gint)(x)
 
-	cValue2 := (C.gint)(param2)
+	c_y := (C.gint)(y)
 
-	C.gdk_window_reparent(cValueInstance, cValue0, cValue1, cValue2)
+	C.gdk_window_reparent(c_window, c_newParent, c_x, c_y)
 }
 
-func Fn_gdk_window_resize(paramInstance unsafe.Pointer, param0 int, param1 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_resize(window unsafe.Pointer, width int, height int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gint)(param0)
+	c_width := (C.gint)(width)
 
-	cValue1 := (C.gint)(param1)
+	c_height := (C.gint)(height)
 
-	C.gdk_window_resize(cValueInstance, cValue0, cValue1)
+	C.gdk_window_resize(c_window, c_width, c_height)
 }
 
-func Fn_gdk_window_restack(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_restack(window unsafe.Pointer, sibling unsafe.Pointer, above bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+	c_sibling := (*C.GdkWindow)(unsafe.Pointer(sibling))
 
-	cValue1 := toCBool(param1)
+	c_above := toCBool(above)
 
-	C.gdk_window_restack(cValueInstance, cValue0, cValue1)
+	C.gdk_window_restack(c_window, c_sibling, c_above)
 }
 
-func Fn_gdk_window_scroll(paramInstance unsafe.Pointer, param0 int, param1 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_scroll(window unsafe.Pointer, dx int, dy int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gint)(param0)
+	c_dx := (C.gint)(dx)
 
-	cValue1 := (C.gint)(param1)
+	c_dy := (C.gint)(dy)
 
-	C.gdk_window_scroll(cValueInstance, cValue0, cValue1)
+	C.gdk_window_scroll(c_window, c_dx, c_dy)
 }
 
-func Fn_gdk_window_set_accept_focus(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_accept_focus(window unsafe.Pointer, acceptFocus bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_acceptFocus := toCBool(acceptFocus)
 
-	C.gdk_window_set_accept_focus(cValueInstance, cValue0)
+	C.gdk_window_set_accept_focus(c_window, c_acceptFocus)
 }
 
-func Fn_gdk_window_set_background(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_background(window unsafe.Pointer, color unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkColor)(unsafe.Pointer(param0))
+	c_color := (*C.GdkColor)(unsafe.Pointer(color))
 
-	C.gdk_window_set_background(cValueInstance, cValue0)
+	C.gdk_window_set_background(c_window, c_color)
 }
 
-func Fn_gdk_window_set_background_pattern(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_background_pattern(window unsafe.Pointer, pattern unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.cairo_pattern_t)(unsafe.Pointer(param0))
+	c_pattern := (*C.cairo_pattern_t)(unsafe.Pointer(pattern))
 
-	C.gdk_window_set_background_pattern(cValueInstance, cValue0)
+	C.gdk_window_set_background_pattern(c_window, c_pattern)
 }
 
-func Fn_gdk_window_set_background_rgba(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_background_rgba(window unsafe.Pointer, rgba unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkRGBA)(unsafe.Pointer(param0))
+	c_rgba := (*C.GdkRGBA)(unsafe.Pointer(rgba))
 
-	C.gdk_window_set_background_rgba(cValueInstance, cValue0)
+	C.gdk_window_set_background_rgba(c_window, c_rgba)
 }
 
-func Fn_gdk_window_set_child_input_shapes(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_child_input_shapes(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_set_child_input_shapes(cValueInstance)
+	C.gdk_window_set_child_input_shapes(c_window)
 }
 
-func Fn_gdk_window_set_child_shapes(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_child_shapes(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_set_child_shapes(cValueInstance)
+	C.gdk_window_set_child_shapes(c_window)
 }
 
-func Fn_gdk_window_set_composited(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_composited(window unsafe.Pointer, composited bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_composited := toCBool(composited)
 
-	C.gdk_window_set_composited(cValueInstance, cValue0)
+	C.gdk_window_set_composited(c_window, c_composited)
 }
 
-func Fn_gdk_window_set_cursor(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_cursor(window unsafe.Pointer, cursor unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkCursor)(unsafe.Pointer(param0))
+	c_cursor := (*C.GdkCursor)(unsafe.Pointer(cursor))
 
-	C.gdk_window_set_cursor(cValueInstance, cValue0)
+	C.gdk_window_set_cursor(c_window, c_cursor)
 }
 
-func Fn_gdk_window_set_decorations(paramInstance unsafe.Pointer, param0 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_decorations(window unsafe.Pointer, decorations int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.GdkWMDecoration)(param0)
+	c_decorations := (C.GdkWMDecoration)(decorations)
 
-	C.gdk_window_set_decorations(cValueInstance, cValue0)
+	C.gdk_window_set_decorations(c_window, c_decorations)
 }
 
-func Fn_gdk_window_set_device_cursor(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_device_cursor(window unsafe.Pointer, device unsafe.Pointer, cursor unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue1 := (*C.GdkCursor)(unsafe.Pointer(param1))
+	c_cursor := (*C.GdkCursor)(unsafe.Pointer(cursor))
 
-	C.gdk_window_set_device_cursor(cValueInstance, cValue0, cValue1)
+	C.gdk_window_set_device_cursor(c_window, c_device, c_cursor)
 }
 
-func Fn_gdk_window_set_device_events(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_device_events(window unsafe.Pointer, device unsafe.Pointer, eventMask int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkDevice)(unsafe.Pointer(param0))
+	c_device := (*C.GdkDevice)(unsafe.Pointer(device))
 
-	cValue1 := (C.GdkEventMask)(param1)
+	c_eventMask := (C.GdkEventMask)(eventMask)
 
-	C.gdk_window_set_device_events(cValueInstance, cValue0, cValue1)
+	C.gdk_window_set_device_events(c_window, c_device, c_eventMask)
 }
 
-func Fn_gdk_window_set_event_compression(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_event_compression(window unsafe.Pointer, eventCompression bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_eventCompression := toCBool(eventCompression)
 
-	C.gdk_window_set_event_compression(cValueInstance, cValue0)
+	C.gdk_window_set_event_compression(c_window, c_eventCompression)
 }
 
-func Fn_gdk_window_set_events(paramInstance unsafe.Pointer, param0 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_events(window unsafe.Pointer, eventMask int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.GdkEventMask)(param0)
+	c_eventMask := (C.GdkEventMask)(eventMask)
 
-	C.gdk_window_set_events(cValueInstance, cValue0)
+	C.gdk_window_set_events(c_window, c_eventMask)
 }
 
-func Fn_gdk_window_set_focus_on_map(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_focus_on_map(window unsafe.Pointer, focusOnMap bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_focusOnMap := toCBool(focusOnMap)
 
-	C.gdk_window_set_focus_on_map(cValueInstance, cValue0)
+	C.gdk_window_set_focus_on_map(c_window, c_focusOnMap)
 }
 
-func Fn_gdk_window_set_fullscreen_mode(paramInstance unsafe.Pointer, param0 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_fullscreen_mode(window unsafe.Pointer, mode int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.GdkFullscreenMode)(param0)
+	c_mode := (C.GdkFullscreenMode)(mode)
 
-	C.gdk_window_set_fullscreen_mode(cValueInstance, cValue0)
+	C.gdk_window_set_fullscreen_mode(c_window, c_mode)
 }
 
-func Fn_gdk_window_set_functions(paramInstance unsafe.Pointer, param0 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_functions(window unsafe.Pointer, functions int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.GdkWMFunction)(param0)
+	c_functions := (C.GdkWMFunction)(functions)
 
-	C.gdk_window_set_functions(cValueInstance, cValue0)
+	C.gdk_window_set_functions(c_window, c_functions)
 }
 
-func Fn_gdk_window_set_geometry_hints(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_geometry_hints(window unsafe.Pointer, geometry unsafe.Pointer, geomMask int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkGeometry)(unsafe.Pointer(param0))
+	c_geometry := (*C.GdkGeometry)(unsafe.Pointer(geometry))
 
-	cValue1 := (C.GdkWindowHints)(param1)
+	c_geomMask := (C.GdkWindowHints)(geomMask)
 
-	C.gdk_window_set_geometry_hints(cValueInstance, cValue0, cValue1)
+	C.gdk_window_set_geometry_hints(c_window, c_geometry, c_geomMask)
 }
 
-func Fn_gdk_window_set_group(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_group(window unsafe.Pointer, leader unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+	c_leader := (*C.GdkWindow)(unsafe.Pointer(leader))
 
-	C.gdk_window_set_group(cValueInstance, cValue0)
+	C.gdk_window_set_group(c_window, c_leader)
 }
 
-func Fn_gdk_window_set_icon_list(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_icon_list(window unsafe.Pointer, pixbufs unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GList)(unsafe.Pointer(param0))
+	c_pixbufs := (*C.GList)(unsafe.Pointer(pixbufs))
 
-	C.gdk_window_set_icon_list(cValueInstance, cValue0)
+	C.gdk_window_set_icon_list(c_window, c_pixbufs)
 }
 
-func Fn_gdk_window_set_icon_name(paramInstance unsafe.Pointer, param0 *string) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_icon_name(window unsafe.Pointer, name *string) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	var cValue0Value (*C.gchar)
-	if param0 != nil {
-		cValue0Value = (*C.gchar)(C.CString(*param0))
-		defer C.free(unsafe.Pointer(cValue0Value))
+	var c_nameValue (*C.gchar)
+	if name != nil {
+		c_nameValue = (*C.gchar)(C.CString(*name))
+		defer C.free(unsafe.Pointer(c_nameValue))
 	}
-	cValue0 := cValue0Value
+	c_name := c_nameValue
 
-	C.gdk_window_set_icon_name(cValueInstance, cValue0)
+	C.gdk_window_set_icon_name(c_window, c_name)
 }
 
 // UNSUPPORTED : gdk_window_set_invalidate_handler : parameter 'handler' is callback
 
-func Fn_gdk_window_set_keep_above(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_keep_above(window unsafe.Pointer, setting bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_setting := toCBool(setting)
 
-	C.gdk_window_set_keep_above(cValueInstance, cValue0)
+	C.gdk_window_set_keep_above(c_window, c_setting)
 }
 
-func Fn_gdk_window_set_keep_below(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_keep_below(window unsafe.Pointer, setting bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_setting := toCBool(setting)
 
-	C.gdk_window_set_keep_below(cValueInstance, cValue0)
+	C.gdk_window_set_keep_below(c_window, c_setting)
 }
 
-func Fn_gdk_window_set_modal_hint(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_modal_hint(window unsafe.Pointer, modal bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_modal := toCBool(modal)
 
-	C.gdk_window_set_modal_hint(cValueInstance, cValue0)
+	C.gdk_window_set_modal_hint(c_window, c_modal)
 }
 
-func Fn_gdk_window_set_opacity(paramInstance unsafe.Pointer, param0 float64) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_opacity(window unsafe.Pointer, opacity float64) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gdouble)(param0)
+	c_opacity := (C.gdouble)(opacity)
 
-	C.gdk_window_set_opacity(cValueInstance, cValue0)
+	C.gdk_window_set_opacity(c_window, c_opacity)
 }
 
-func Fn_gdk_window_set_opaque_region(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_opaque_region(window unsafe.Pointer, region unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.cairo_region_t)(unsafe.Pointer(param0))
+	c_region := (*C.cairo_region_t)(unsafe.Pointer(region))
 
-	C.gdk_window_set_opaque_region(cValueInstance, cValue0)
+	C.gdk_window_set_opaque_region(c_window, c_region)
 }
 
-func Fn_gdk_window_set_override_redirect(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_override_redirect(window unsafe.Pointer, overrideRedirect bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_overrideRedirect := toCBool(overrideRedirect)
 
-	C.gdk_window_set_override_redirect(cValueInstance, cValue0)
+	C.gdk_window_set_override_redirect(c_window, c_overrideRedirect)
 }
 
-func Fn_gdk_window_set_role(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_role(window unsafe.Pointer, role string) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	c_role := (*C.gchar)(C.CString(role))
+	defer C.free(unsafe.Pointer(c_role))
 
-	C.gdk_window_set_role(cValueInstance, cValue0)
+	C.gdk_window_set_role(c_window, c_role)
 }
 
-func Fn_gdk_window_set_shadow_width(paramInstance unsafe.Pointer, param0 int, param1 int, param2 int, param3 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_shadow_width(window unsafe.Pointer, left int, right int, top int, bottom int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gint)(param0)
+	c_left := (C.gint)(left)
 
-	cValue1 := (C.gint)(param1)
+	c_right := (C.gint)(right)
 
-	cValue2 := (C.gint)(param2)
+	c_top := (C.gint)(top)
 
-	cValue3 := (C.gint)(param3)
+	c_bottom := (C.gint)(bottom)
 
-	C.gdk_window_set_shadow_width(cValueInstance, cValue0, cValue1, cValue2, cValue3)
+	C.gdk_window_set_shadow_width(c_window, c_left, c_right, c_top, c_bottom)
 }
 
-func Fn_gdk_window_set_skip_pager_hint(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_skip_pager_hint(window unsafe.Pointer, skipsPager bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_skipsPager := toCBool(skipsPager)
 
-	C.gdk_window_set_skip_pager_hint(cValueInstance, cValue0)
+	C.gdk_window_set_skip_pager_hint(c_window, c_skipsPager)
 }
 
-func Fn_gdk_window_set_skip_taskbar_hint(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_skip_taskbar_hint(window unsafe.Pointer, skipsTaskbar bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_skipsTaskbar := toCBool(skipsTaskbar)
 
-	C.gdk_window_set_skip_taskbar_hint(cValueInstance, cValue0)
+	C.gdk_window_set_skip_taskbar_hint(c_window, c_skipsTaskbar)
 }
 
-func Fn_gdk_window_set_source_events(paramInstance unsafe.Pointer, param0 int, param1 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_source_events(window unsafe.Pointer, source int, eventMask int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.GdkInputSource)(param0)
+	c_source := (C.GdkInputSource)(source)
 
-	cValue1 := (C.GdkEventMask)(param1)
+	c_eventMask := (C.GdkEventMask)(eventMask)
 
-	C.gdk_window_set_source_events(cValueInstance, cValue0, cValue1)
+	C.gdk_window_set_source_events(c_window, c_source, c_eventMask)
 }
 
-func Fn_gdk_window_set_startup_id(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_startup_id(window unsafe.Pointer, startupId string) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	c_startupId := (*C.gchar)(C.CString(startupId))
+	defer C.free(unsafe.Pointer(c_startupId))
 
-	C.gdk_window_set_startup_id(cValueInstance, cValue0)
+	C.gdk_window_set_startup_id(c_window, c_startupId)
 }
 
-func Fn_gdk_window_set_static_gravities(paramInstance unsafe.Pointer, param0 bool) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_static_gravities(window unsafe.Pointer, useStatic bool) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_useStatic := toCBool(useStatic)
 
-	ret := C.gdk_window_set_static_gravities(cValueInstance, cValue0)
+	ret := C.gdk_window_set_static_gravities(c_window, c_useStatic)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_set_support_multidevice(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_support_multidevice(window unsafe.Pointer, supportMultidevice bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_supportMultidevice := toCBool(supportMultidevice)
 
-	C.gdk_window_set_support_multidevice(cValueInstance, cValue0)
+	C.gdk_window_set_support_multidevice(c_window, c_supportMultidevice)
 }
 
-func Fn_gdk_window_set_title(paramInstance unsafe.Pointer, param0 string) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_title(window unsafe.Pointer, title string) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.gchar)(C.CString(param0))
-	defer C.free(unsafe.Pointer(cValue0))
+	c_title := (*C.gchar)(C.CString(title))
+	defer C.free(unsafe.Pointer(c_title))
 
-	C.gdk_window_set_title(cValueInstance, cValue0)
+	C.gdk_window_set_title(c_window, c_title)
 }
 
-func Fn_gdk_window_set_transient_for(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_transient_for(window unsafe.Pointer, parent unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkWindow)(unsafe.Pointer(param0))
+	c_parent := (*C.GdkWindow)(unsafe.Pointer(parent))
 
-	C.gdk_window_set_transient_for(cValueInstance, cValue0)
+	C.gdk_window_set_transient_for(c_window, c_parent)
 }
 
-func Fn_gdk_window_set_type_hint(paramInstance unsafe.Pointer, param0 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_type_hint(window unsafe.Pointer, hint int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.GdkWindowTypeHint)(param0)
+	c_hint := (C.GdkWindowTypeHint)(hint)
 
-	C.gdk_window_set_type_hint(cValueInstance, cValue0)
+	C.gdk_window_set_type_hint(c_window, c_hint)
 }
 
-func Fn_gdk_window_set_urgency_hint(paramInstance unsafe.Pointer, param0 bool) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_urgency_hint(window unsafe.Pointer, urgent bool) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := toCBool(param0)
+	c_urgent := toCBool(urgent)
 
-	C.gdk_window_set_urgency_hint(cValueInstance, cValue0)
+	C.gdk_window_set_urgency_hint(c_window, c_urgent)
 }
 
-func Fn_gdk_window_set_user_data(paramInstance unsafe.Pointer, param0 unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_set_user_data(window unsafe.Pointer, userData unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (C.gpointer)(param0)
+	c_userData := (C.gpointer)(userData)
 
-	C.gdk_window_set_user_data(cValueInstance, cValue0)
+	C.gdk_window_set_user_data(c_window, c_userData)
 }
 
-func Fn_gdk_window_shape_combine_region(paramInstance unsafe.Pointer, param0 unsafe.Pointer, param1 int, param2 int) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_shape_combine_region(window unsafe.Pointer, shapeRegion unsafe.Pointer, offsetX int, offsetY int) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.cairo_region_t)(unsafe.Pointer(param0))
+	c_shapeRegion := (*C.cairo_region_t)(unsafe.Pointer(shapeRegion))
 
-	cValue1 := (C.gint)(param1)
+	c_offsetX := (C.gint)(offsetX)
 
-	cValue2 := (C.gint)(param2)
+	c_offsetY := (C.gint)(offsetY)
 
-	C.gdk_window_shape_combine_region(cValueInstance, cValue0, cValue1, cValue2)
+	C.gdk_window_shape_combine_region(c_window, c_shapeRegion, c_offsetX, c_offsetY)
 }
 
-func Fn_gdk_window_show(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_show(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_show(cValueInstance)
+	C.gdk_window_show(c_window)
 }
 
-func Fn_gdk_window_show_unraised(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_show_unraised(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_show_unraised(cValueInstance)
+	C.gdk_window_show_unraised(c_window)
 }
 
-func Fn_gdk_window_show_window_menu(paramInstance unsafe.Pointer, param0 unsafe.Pointer) bool {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_show_window_menu(window unsafe.Pointer, event unsafe.Pointer) bool {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	cValue0 := (*C.GdkEvent)(unsafe.Pointer(param0))
+	c_event := (*C.GdkEvent)(unsafe.Pointer(event))
 
-	ret := C.gdk_window_show_window_menu(cValueInstance, cValue0)
+	ret := C.gdk_window_show_window_menu(c_window, c_event)
 
 	return toGoBool(ret)
 }
 
-func Fn_gdk_window_stick(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_stick(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_stick(cValueInstance)
+	C.gdk_window_stick(c_window)
 }
 
-func Fn_gdk_window_thaw_toplevel_updates_libgtk_only(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_thaw_toplevel_updates_libgtk_only(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_thaw_toplevel_updates_libgtk_only(cValueInstance)
+	C.gdk_window_thaw_toplevel_updates_libgtk_only(c_window)
 }
 
-func Fn_gdk_window_thaw_updates(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_thaw_updates(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_thaw_updates(cValueInstance)
+	C.gdk_window_thaw_updates(c_window)
 }
 
-func Fn_gdk_window_unfullscreen(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_unfullscreen(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_unfullscreen(cValueInstance)
+	C.gdk_window_unfullscreen(c_window)
 }
 
-func Fn_gdk_window_unmaximize(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_unmaximize(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_unmaximize(cValueInstance)
+	C.gdk_window_unmaximize(c_window)
 }
 
-func Fn_gdk_window_unstick(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_unstick(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_unstick(cValueInstance)
+	C.gdk_window_unstick(c_window)
 }
 
-func Fn_gdk_window_withdraw(paramInstance unsafe.Pointer) {
-	cValueInstance := (*C.GdkWindow)(unsafe.Pointer(paramInstance))
+func Fn_gdk_window_withdraw(window unsafe.Pointer) {
+	c_window := (*C.GdkWindow)(unsafe.Pointer(window))
 
-	C.gdk_window_withdraw(cValueInstance)
+	C.gdk_window_withdraw(c_window)
 }
 
-func Fn_gdk_window_at_pointer(param0 *int, param1 *int) unsafe.Pointer {
-	cValue0 := (*C.gint)(unsafe.Pointer(param0))
+func Fn_gdk_window_at_pointer(winX *int, winY *int) unsafe.Pointer {
+	c_winX := (*C.gint)(unsafe.Pointer(winX))
 
-	cValue1 := (*C.gint)(unsafe.Pointer(param1))
+	c_winY := (*C.gint)(unsafe.Pointer(winY))
 
-	ret := C.gdk_window_at_pointer(cValue0, cValue1)
+	ret := C.gdk_window_at_pointer(c_winX, c_winY)
 
 	return unsafe.Pointer(ret)
 }
 
-func Fn_gdk_window_constrain_size(param0 unsafe.Pointer, param1 int, param2 int, param3 int, param4 *int, param5 *int) {
-	cValue0 := (*C.GdkGeometry)(unsafe.Pointer(param0))
+func Fn_gdk_window_constrain_size(geometry unsafe.Pointer, flags int, width int, height int, newWidth *int, newHeight *int) {
+	c_geometry := (*C.GdkGeometry)(unsafe.Pointer(geometry))
 
-	cValue1 := (C.GdkWindowHints)(param1)
+	c_flags := (C.GdkWindowHints)(flags)
 
-	cValue2 := (C.gint)(param2)
+	c_width := (C.gint)(width)
 
-	cValue3 := (C.gint)(param3)
+	c_height := (C.gint)(height)
 
-	cValue4 := (*C.gint)(unsafe.Pointer(param4))
+	c_newWidth := (*C.gint)(unsafe.Pointer(newWidth))
 
-	cValue5 := (*C.gint)(unsafe.Pointer(param5))
+	c_newHeight := (*C.gint)(unsafe.Pointer(newHeight))
 
-	C.gdk_window_constrain_size(cValue0, cValue1, cValue2, cValue3, cValue4, cValue5)
+	C.gdk_window_constrain_size(c_geometry, c_flags, c_width, c_height, c_newWidth, c_newHeight)
 }
 
 func Fn_gdk_window_process_all_updates() {
 	C.gdk_window_process_all_updates()
 }
 
-func Fn_gdk_window_set_debug_updates(param0 bool) {
-	cValue0 := toCBool(param0)
+func Fn_gdk_window_set_debug_updates(setting bool) {
+	c_setting := toCBool(setting)
 
-	C.gdk_window_set_debug_updates(cValue0)
+	C.gdk_window_set_debug_updates(c_setting)
 }

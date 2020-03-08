@@ -48,7 +48,7 @@ func (f *Function) init(ns *Namespace, record *Record, receiver bool) {
 		f.InstanceParameter.init(ns, f.context)
 	}
 	f.Parameters.init(ns, f.context)
-	f.ReturnValue.init(ns)
+	f.ReturnValue.init(ns, f.Parameters)
 }
 
 func (f *Function) isSupported() (bool, string) {

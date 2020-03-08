@@ -2,7 +2,6 @@ package generate
 
 import (
 	"github.com/dave/jennifer/jen"
-	"strconv"
 )
 
 type ReturnValue struct {
@@ -15,10 +14,10 @@ type ReturnValue struct {
 	Array *Array `xml:"array"`
 }
 
-func (r *ReturnValue) init(ns *Namespace) {
+func (r *ReturnValue) init(ns *Namespace, params Parameters) {
 	r.Namespace = ns
 	r.Type.init(ns)
-	r.Array.init(ns)
+	r.Array.init(ns, params)
 }
 
 func (r *ReturnValue) isVoid() bool {
@@ -95,7 +94,7 @@ func (r *ReturnValue) generateSysGoArrayValue(g *jen.Group, cVarName string) *je
 	retVarName := "retGo"
 	lenVarName := "retLen"
 	sliceVarName := "retSlice"
-	lengthParamName := "cValue" + strconv.Itoa(*r.Array.Length)
+	lengthParamName := r.Array.lengthParam.cVarName
 
 	// retLen := (int)(*cValue?)
 	g.Id(lenVarName).Op(":=").Int().Parens(jen.Op("*").Id(lengthParamName))

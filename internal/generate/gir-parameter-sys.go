@@ -3,7 +3,6 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
-	"strconv"
 )
 
 func (p *Parameter) sysParamGoType() *jen.Statement {
@@ -38,11 +37,11 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 	panic(fmt.Sprintf("Parameter is not a type or an array: %s", p.context))
 }
 
-func (p *Parameter) generateSysCArg(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArg(g *jen.Group) {
 	if p.isType() && p.Nullable && !p.isOut() && !p.Type.isStruct() && !p.Type.isPointer() {
-		p.generateSysCArgNullable(g, goVarName, cVarName)
+		p.generateSysCArgNullable(g, p.goVarName, p.cVarName)
 	} else {
-		p.generateSysCArgPlain(g, true, goVarName, cVarName)
+		p.generateSysCArgPlain(g, true, p.goVarName, p.cVarName)
 	}
 }
 
@@ -202,7 +201,7 @@ func (p *Parameter) generateSysCArgArrayStringPointerOut(g *jen.Group, goVarName
 	lenVarName := outVarName + "Len"
 	cSliceVarName := outVarName + "CSlice"
 	cArrayVarName := cVarName + "ArrayPointer"
-	lengthParamName := "cValue" + strconv.Itoa(p.lengthParamN)
+	lengthParamName := p.lengthParam.cVarName
 
 	// param2OutLen := (int)(*cValue?)
 	g.Id(lenVarName).Op(":=").Int().Parens(jen.Op("*").Id(lengthParamName))
@@ -245,7 +244,7 @@ func (p *Parameter) generateSysCArgArrayPointerOut(g *jen.Group, goVarName strin
 	outVarName := goVarName + "Out"
 	lenVarName := outVarName + "Len"
 	cArrayVarName := cVarName + "ArrayPointer"
-	lengthParamName := "cValue" + strconv.Itoa(p.lengthParamN)
+	lengthParamName := p.lengthParam.cVarName
 
 	// param2OutLen := (int)(*cValue?)
 	g.Id(lenVarName).Op(":=").Int().Parens(jen.Op("*").Id(lengthParamName))

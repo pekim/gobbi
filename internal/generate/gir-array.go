@@ -11,11 +11,12 @@ type Array struct {
 	Length         *int   `xml:"length,attr"`
 	ZeroTerminated bool   `xml:"zero-terminated,attr"`
 
-	namespace *Namespace
-	cType     cType
+	namespace   *Namespace
+	lengthParam *Parameter
+	cType       cType
 }
 
-func (a *Array) init(ns *Namespace) {
+func (a *Array) init(ns *Namespace, params Parameters) {
 	if a == nil {
 		return
 	}
@@ -23,6 +24,10 @@ func (a *Array) init(ns *Namespace) {
 	a.namespace = ns
 	a.Type.init(ns)
 	a.cType = parseCtype(a.CType)
+
+	if params != nil && a.Length != nil {
+		a.lengthParam = params[*a.Length]
+	}
 }
 
 func (a *Array) isSupported() (bool, string) {
