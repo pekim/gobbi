@@ -7,11 +7,6 @@ import (
 
 func (p *Parameter) sysParamGoType() *jen.Statement {
 	if p.isType() {
-		// Atoms are really pointers underneath.
-		if p.Type.CType == "GdkAtom" {
-			return jenUnsafePointer()
-		}
-
 		star := ""
 		if p.Nullable && !p.isOut() && !p.Type.isStruct() && !p.Type.isPointer() {
 			// nullable simple type, so make it a pointer

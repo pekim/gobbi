@@ -53,6 +53,7 @@ func (t *Type) sysParamGoPlainType() *jen.Statement {
 }
 
 func (t *Type) sysParamGoType() *jen.Statement {
+	// Atoms are really pointers underneath.
 	if t.CType == "GdkAtom" {
 		return jenUnsafePointer()
 	}
