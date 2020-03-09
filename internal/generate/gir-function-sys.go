@@ -116,7 +116,7 @@ func (f *Function) generateSysCArgs(g *jen.Group) {
 
 func (f *Function) generateSysCArgsOut(g *jen.Group) {
 	for _, param := range f.Parameters {
-		param.generateSysCArgOut(g, param.goVarName, param.cVarName)
+		param.generateSysCArgOut(g)
 	}
 }
 

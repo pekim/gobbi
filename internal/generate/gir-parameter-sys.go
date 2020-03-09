@@ -39,33 +39,33 @@ func (p *Parameter) sysParamGoType() *jen.Statement {
 
 func (p *Parameter) generateSysCArg(g *jen.Group) {
 	if p.isType() && p.Nullable && !p.isOut() && !p.Type.isStruct() && !p.Type.isPointer() {
-		p.generateSysCArgNullable(g, p.goVarName, p.cVarName)
+		p.generateSysCArgNullable(g, p.cVarName)
 	} else {
-		p.generateSysCArgPlain(g, true, p.goVarName, p.cVarName)
+		p.generateSysCArgPlain(g, true, p.cVarName)
 	}
 }
 
-func (p *Parameter) generateSysCArgPlain(g *jen.Group, newcVar bool, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgPlain(g *jen.Group, newcVar bool, cVarName string) {
 	op := "="
 	if newcVar {
 		op = ":="
 	}
 
 	if p.isArray() {
-		p.generateSysCArgArray(g, op, goVarName, cVarName)
+		p.generateSysCArgArray(g, op, cVarName)
 		return
 	}
 
 	if p.Type.isString() {
-		p.generateSysCArgString(g, op, goVarName, cVarName)
+		p.generateSysCArgString(g, op, cVarName)
 		return
 	}
 
-	cValue := p.generateSysCValue(goVarName)
+	cValue := p.generateSysCValue()
 	g.Id(cVarName).Op(op).Add(cValue)
 }
 
-func (p *Parameter) generateSysCArgNullable(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgNullable(g *jen.Group, cVarName string) {
 	cValueValueVarName := cVarName + "Value"
 
 	var jenGoCType *jen.Statement
@@ -80,9 +80,9 @@ func (p *Parameter) generateSysCArgNullable(g *jen.Group, goVarName string, cVar
 	g.Var().Id(cValueValueVarName).Add(jenGoCType)
 
 	g.
-		If(jen.Id(goVarName).Op("!=").Nil()).
+		If(jen.Id(p.goVarName).Op("!=").Nil()).
 		BlockFunc(func(g *jen.Group) {
-			p.generateSysCArgPlain(g, false, goVarName, cValueValueVarName)
+			p.generateSysCArgPlain(g, false, cValueValueVarName)
 		})
 
 	ampOp := ""
@@ -94,8 +94,8 @@ func (p *Parameter) generateSysCArgNullable(g *jen.Group, goVarName string, cVar
 	g.Id(cVarName).Op(":=").Op(ampOp).Id(cValueValueVarName)
 }
 
-func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
-	goValue := jen.Id(goVarName)
+func (p *Parameter) generateSysCValue() *jen.Statement {
+	goValue := jen.Id(p.goVarName)
 
 	if p.Type.CType == "gboolean" {
 		return jen.Id("toCBool").Call(goValue)
@@ -108,14 +108,14 @@ func (p *Parameter) generateSysCValue(goVarName string) *jen.Statement {
 	return jen.Parens(p.Type.jenGoCType()).Parens(goValue)
 }
 
-func (p *Parameter) generateSysCArgString(g *jen.Group, assignOp string, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgString(g *jen.Group, assignOp string, cVarName string) {
 	if p.Type.cType.indirectionCount == 1 {
-		p.generateSysCArgStringSimple(g, assignOp, goVarName, cVarName)
+		p.generateSysCArgStringSimple(g, assignOp, cVarName)
 		return
 	}
 
 	if p.Type.cType.indirectionCount == 2 {
-		p.generateSysCArgStringPointer(g, assignOp, goVarName, cVarName)
+		p.generateSysCArgStringPointer(g, assignOp, cVarName)
 		return
 	}
 
@@ -123,10 +123,10 @@ func (p *Parameter) generateSysCArgString(g *jen.Group, assignOp string, goVarNa
 		p.Type.cType.indirectionCount, p.context))
 }
 
-func (p *Parameter) generateSysCArgStringSimple(g *jen.Group, assignOp string, goVarName string, cVarName string) {
-	param := jen.Id(goVarName)
+func (p *Parameter) generateSysCArgStringSimple(g *jen.Group, assignOp string, cVarName string) {
+	param := jen.Id(p.goVarName)
 	if p.Nullable {
-		param = jen.Op("*").Id(goVarName)
+		param = jen.Op("*").Id(p.goVarName)
 	}
 
 	cValue := jen.Parens(p.Type.jenGoCType()).Parens(jen.Qual("C", "CString").Call(param))
@@ -137,14 +137,22 @@ func (p *Parameter) generateSysCArgStringSimple(g *jen.Group, assignOp string, g
 	}
 }
 
-func (p *Parameter) generateSysCArgStringPointer(g *jen.Group, assignOp string, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgStringPointer(g *jen.Group, assignOp string, cVarName string) {
 	cStringVarName := cVarName + "String"
 
 	// var cValue0String *C.gchar
 	g.Var().Id(cStringVarName).Op("*").Qual("C", "gchar")
 
 	if p.isIn() {
-		cValue := jen.Parens(jen.Op("*").Qual("C", "gchar")).Parens(jen.Qual("C", "CString").Call(jen.Op("*").Id(goVarName)))
+		cValue := jen.
+			Parens(jen.
+				Op("*").
+				Qual("C", "gchar")).
+			Parens(jen.
+				Qual("C", "CString").
+				Call(jen.
+					Op("*").
+					Id(p.goVarName)))
 		g.Id(cStringVarName).Op("=").Add(cValue)
 	}
 
@@ -155,13 +163,13 @@ func (p *Parameter) generateSysCArgStringPointer(g *jen.Group, assignOp string, 
 	}
 }
 
-func (p *Parameter) generateSysCArgOut(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgOut(g *jen.Group) {
 	if !p.isOut() {
 		return
 	}
 
 	if p.isType() && p.Type.isString() && p.Type.cType.indirectionCount == 2 {
-		p.generateSysCArgStringPointerOut(g, goVarName, cVarName)
+		p.generateSysCArgStringPointerOut(g)
 	}
 
 	if p.isArray() {
@@ -172,9 +180,9 @@ func (p *Parameter) generateSysCArgOut(g *jen.Group, goVarName string, cVarName 
 
 		if p.lengthParam != nil {
 			if p.Array.Type.isString() && p.Array.cType.indirectionCount == 3 {
-				p.generateSysCArgArrayStringPointerOut(g, goVarName, cVarName)
+				p.generateSysCArgArrayStringPointerOut(g)
 			} else {
-				p.generateSysCArgArrayPointerOut(g, goVarName, cVarName)
+				p.generateSysCArgArrayPointerOut(g)
 			}
 
 			return
@@ -184,23 +192,23 @@ func (p *Parameter) generateSysCArgOut(g *jen.Group, goVarName string, cVarName 
 	}
 }
 
-func (p *Parameter) generateSysCArgStringPointerOut(g *jen.Group, goVarName string, cVarName string) {
-	cStringVarName := cVarName + "String"
-	goStringVarName := goVarName + "String"
+func (p *Parameter) generateSysCArgStringPointerOut(g *jen.Group) {
+	cStringVarName := p.cVarName + "String"
+	goStringVarName := p.goVarName + "String"
 
 	g.Line()
 
 	g.Id(goStringVarName).Op(":=").Qual("C", "GoString").Call(jen.Id(cStringVarName))
-	g.Op("*").Id(goVarName).Op("=").Id(goStringVarName)
+	g.Op("*").Id(p.goVarName).Op("=").Id(goStringVarName)
 }
 
-func (p *Parameter) generateSysCArgArrayStringPointerOut(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgArrayStringPointerOut(g *jen.Group) {
 	g.Line()
 
-	outVarName := goVarName + "Out"
+	outVarName := p.goVarName + "Out"
 	lenVarName := outVarName + "Len"
 	cSliceVarName := outVarName + "CSlice"
-	cArrayVarName := cVarName + "ArrayPointer"
+	cArrayVarName := p.cVarName + "ArrayPointer"
 	lengthParamName := p.lengthParam.cVarName
 
 	// param2OutLen := (int)(*cValue?)
@@ -235,15 +243,15 @@ func (p *Parameter) generateSysCArgArrayStringPointerOut(g *jen.Group, goVarName
 	})
 
 	// *param2 = param2Out
-	g.Op("*").Id(goVarName).Op("=").Id(outVarName)
+	g.Op("*").Id(p.goVarName).Op("=").Id(outVarName)
 }
 
-func (p *Parameter) generateSysCArgArrayPointerOut(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgArrayPointerOut(g *jen.Group) {
 	g.Line()
 
-	outVarName := goVarName + "Out"
+	outVarName := p.goVarName + "Out"
 	lenVarName := outVarName + "Len"
-	cArrayVarName := cVarName + "ArrayPointer"
+	cArrayVarName := p.cVarName + "ArrayPointer"
 	lengthParamName := p.lengthParam.cVarName
 
 	// param2OutLen := (int)(*cValue?)
@@ -270,22 +278,22 @@ func (p *Parameter) generateSysCArgArrayPointerOut(g *jen.Group, goVarName strin
 	})
 
 	// *param2 = param2Out
-	g.Op("*").Id(goVarName).Op("=").Id(outVarName)
+	g.Op("*").Id(p.goVarName).Op("=").Id(outVarName)
 }
 
-func (p *Parameter) generateSysCArgArray(g *jen.Group, assignOp string, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgArray(g *jen.Group, assignOp string, cVarName string) {
 	if p.Array.ZeroTerminated {
 		g.Comment("TODO")
 	}
 
 	if p.Array.Type.isString() {
 		if p.Array.cType.indirectionCount == 2 {
-			p.generateSysCArgArrayString(g, goVarName, cVarName)
+			p.generateSysCArgArrayString(g, cVarName)
 			return
 		}
 
 		if p.Array.cType.indirectionCount == 3 {
-			p.generateSysCArgArrayStringPointer(g, goVarName, cVarName)
+			p.generateSysCArgArrayStringPointer(g, cVarName)
 			return
 		}
 
@@ -294,23 +302,23 @@ func (p *Parameter) generateSysCArgArray(g *jen.Group, assignOp string, goVarNam
 	}
 
 	if p.isOut() {
-		p.generateSysCArgArrayNonStringOut(g, assignOp, goVarName, cVarName)
+		p.generateSysCArgArrayNonStringOut(g, assignOp, p.goVarName, cVarName)
 		return
 	} else {
-		p.generateSysCArgArrayNonString(g, assignOp, goVarName, cVarName)
+		p.generateSysCArgArrayNonString(g, assignOp, p.goVarName, cVarName)
 		return
 	}
 }
 
-func (p *Parameter) generateSysCArgArrayString(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgArrayString(g *jen.Group, cVarName string) {
 	// Convert Go slice of strings to C array of null terminated strings.
-	goSliceVarName := p.generateGoArrayStringToC(g, goVarName, cVarName)
+	goSliceVarName := p.generateGoArrayStringToC(g, p.goVarName, cVarName)
 
 	// cValue2 := &cValue2Array[0]
 	g.Id(cVarName).Op(":=").Op("&").Id(goSliceVarName).Index(jen.Lit(0))
 }
 
-func (p *Parameter) generateSysCArgArrayStringPointer(g *jen.Group, goVarName string, cVarName string) {
+func (p *Parameter) generateSysCArgArrayStringPointer(g *jen.Group, cVarName string) {
 	cArrayPointerVarName := cVarName + "ArrayPointer"
 
 	// var cValue2ArrayPointer **C.gchar
@@ -320,9 +328,9 @@ func (p *Parameter) generateSysCArgArrayStringPointer(g *jen.Group, goVarName st
 	g.Id(cVarName).Op(":=").Op("&").Id(cArrayPointerVarName)
 
 	if p.isIn() {
-		goVarIndirectedName := goVarName + "Indirected"
+		goVarIndirectedName := p.goVarName + "Indirected"
 		// param2Indirected := *param2
-		g.Id(goVarIndirectedName).Op(":=").Op("*").Id(goVarName)
+		g.Id(goVarIndirectedName).Op(":=").Op("*").Id(p.goVarName)
 
 		// Convert Go slice of strings to C array of null terminated strings.
 		goCPtrSliceVarName := p.generateGoArrayStringToC(g, goVarIndirectedName, cVarName)
