@@ -20,7 +20,7 @@ func main() {
 	//	fmt.Print(message)
 	//})
 
-	gtk.Init()
+	gtk.Init([]string{})
 
 	window := gtk.WindowNew(gtk.WindowType_Toplevel)
 	window.SetTitle("gobbi")
