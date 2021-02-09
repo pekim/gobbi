@@ -81,7 +81,7 @@ func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
 		cOutLen = C.int(len(out))
 	}
 
-	fmt.Println(cInLen, in)
+	//fmt.Println(cInLen, in)
 
 	// invoke
 	invoked := C.g_function_info_invoke(

@@ -5,7 +5,6 @@ package gi
 import "C"
 
 import (
-	"fmt"
 	"unsafe"
 )
 
@@ -64,15 +63,15 @@ func (a Argument) String(transferOwnership bool) string {
 	return goString
 }
 
-func (a Argument) OutStringArray(transferOwnership bool) []string {
+func (a Argument) PtrStringArray(transferOwnership bool) []string {
 	pointerToArrayPointer := a.Pointer()
-	fmt.Println("pointerToArrayPointer", pointerToArrayPointer)
+	//fmt.Println("pointerToArrayPointer", pointerToArrayPointer)
 	if pointerToArrayPointer == nil {
 		return []string{}
 	}
 
 	arrayPointer := unsafe.Pointer(*(***C.char)(pointerToArrayPointer))
-	fmt.Println("arrayPointer", arrayPointer)
+	//fmt.Println("arrayPointer", arrayPointer)
 	if arrayPointer == nil {
 		return []string{}
 	}
@@ -82,7 +81,7 @@ func (a Argument) OutStringArray(transferOwnership bool) []string {
 
 func (a Argument) StringArray(transferOwnership bool) []string {
 	arrayPointer := a.Pointer()
-	fmt.Println("arrayPointer", arrayPointer)
+	//fmt.Println("arrayPointer", arrayPointer)
 	if arrayPointer == nil {
 		return []string{}
 	}
@@ -94,19 +93,19 @@ func (a Argument) stringArray(arrayPointer unsafe.Pointer, transferOwnership boo
 	var strings []string
 
 	stringPointer := *(**C.char)(arrayPointer)
-	fmt.Println("stringPointer", stringPointer)
+	//fmt.Println("stringPointer", stringPointer)
 
 	for stringPointer != nil {
 		str := C.GoString((*C.char)(stringPointer))
 		strings = append(strings, str)
 
 		arrayPointer = incrPointerPointer(arrayPointer)
-		fmt.Println("  arrayPointer", arrayPointer)
+		//fmt.Println("  arrayPointer", arrayPointer)
 		stringPointer = *(**C.char)(arrayPointer)
-		fmt.Println("  stringPointer", stringPointer)
+		//fmt.Println("  stringPointer", stringPointer)
 	}
 
-	fmt.Println("STRINGS", strings)
+	//fmt.Println("STRINGS", strings)
 	return strings
 }
 

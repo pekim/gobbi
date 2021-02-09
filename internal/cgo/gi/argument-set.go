@@ -5,7 +5,6 @@ package gi
 import "C"
 
 import (
-	"fmt"
 	"unsafe"
 )
 
@@ -78,13 +77,13 @@ func (a *Argument) SetStringArray(value []string) {
 	}
 	cStrings[count-1] = nil
 
-	fmt.Println(cArray, &cStrings[0], cStrings)
+	//fmt.Println(cArray, &cStrings[0], cStrings)
 
 	cArrayPtr := (***C.gchar)(C.malloc(C.ulong(C.sizeof_gpointer)))
 	*cArrayPtr = cArray
 	a.SetPointer(unsafe.Pointer(cArrayPtr))
 	//a.SetPointer(unsafe.Pointer(cArray))
-	fmt.Println(a)
+	//fmt.Println(a)
 }
 
 func (a *Argument) SetPointer(value unsafe.Pointer) {
