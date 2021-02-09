@@ -1375,7 +1375,7 @@ func Init(argv []string) (int32, []string) {
 	}
 
 	out0 := argc
-	out1 := outArgs[1].StringArray(true)
+	out1 := outArgs[1].OutStringArray(true)
 
 	return out0, out1
 }

@@ -64,14 +64,34 @@ func (a Argument) String(transferOwnership bool) string {
 	return goString
 }
 
-func (a Argument) StringArray(transferOwnership bool) []string {
-	var strings []string
+func (a Argument) OutStringArray(transferOwnership bool) []string {
+	pointerToArrayPointer := a.Pointer()
+	fmt.Println("pointerToArrayPointer", pointerToArrayPointer)
+	if pointerToArrayPointer == nil {
+		return []string{}
+	}
 
+	arrayPointer := unsafe.Pointer(*(***C.char)(pointerToArrayPointer))
+	fmt.Println("arrayPointer", arrayPointer)
+	if arrayPointer == nil {
+		return []string{}
+	}
+
+	return a.stringArray(arrayPointer, transferOwnership)
+}
+
+func (a Argument) StringArray(transferOwnership bool) []string {
 	arrayPointer := a.Pointer()
 	fmt.Println("arrayPointer", arrayPointer)
 	if arrayPointer == nil {
-		return strings
+		return []string{}
 	}
+
+	return a.stringArray(arrayPointer, transferOwnership)
+}
+
+func (a Argument) stringArray(arrayPointer unsafe.Pointer, transferOwnership bool) []string {
+	var strings []string
 
 	stringPointer := *(**C.char)(arrayPointer)
 	fmt.Println("stringPointer", stringPointer)
@@ -86,6 +106,7 @@ func (a Argument) StringArray(transferOwnership bool) []string {
 		fmt.Println("  stringPointer", stringPointer)
 	}
 
+	fmt.Println("STRINGS", strings)
 	return strings
 }
 

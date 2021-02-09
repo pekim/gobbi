@@ -1,10 +1,11 @@
 package glib
 
 import (
-	"github.com/stretchr/testify/assert"
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestCleanBuild(t *testing.T) {
