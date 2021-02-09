@@ -6,8 +6,9 @@ import "C"
 
 import (
 	"fmt"
-	"github.com/pekim/gobbi/internal/cgo"
 	"unsafe"
+
+	"github.com/pekim/gobbi/internal/cgo"
 )
 
 type Function struct {
@@ -79,6 +80,8 @@ func (fi *Function) Invoke(in []Argument, out []Argument) Argument {
 		cOut = (*C.GIArgument)(&out[0])
 		cOutLen = C.int(len(out))
 	}
+
+	fmt.Println(cInLen, in)
 
 	// invoke
 	invoked := C.g_function_info_invoke(

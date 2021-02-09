@@ -1,9 +1,11 @@
 package main
 
 import (
+	"os"
+	"runtime"
+
 	"github.com/pekim/gobbi"
 	"github.com/pekim/gobbi/lib/gtk"
-	"runtime"
 )
 
 func init() {
@@ -20,12 +22,14 @@ func main() {
 	//	fmt.Print(message)
 	//})
 
-	gtk.Init([]string{})
+	gtk.Init(os.Args)
 
 	window := gtk.WindowNew(gtk.WindowType_Toplevel)
 	window.SetTitle("gobbi")
 	window.SetDefaultSize(400, 300)
-	window.Widget().ConnectDestroy(func(_ *gtk.Widget) { gtk.MainQuit() })
+	window.Widget().ConnectDestroy(func(_ *gtk.Widget) {
+		gtk.MainQuit()
+	})
 
 	window.Widget().ShowAll()
 

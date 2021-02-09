@@ -3,6 +3,9 @@
 package gtk
 
 import (
+	"sync"
+	"unsafe"
+
 	gi "github.com/pekim/gobbi/internal/cgo/gi"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
@@ -11,8 +14,6 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
-	"sync"
-	"unsafe"
 )
 
 // UNSUPPORTED : C value 'gtk_accel_groups_activate' : parameter 'accel_mods' of type 'Gdk.ModifierType' not supported
@@ -1357,18 +1358,23 @@ func initFunction_Set() error {
 
 // Init is a representation of the C type gtk_init.
 func Init(argv []string) (int32, []string) {
+	argc := int32(len(argv))
+
 	var inArgs [2]gi.Argument
-	inArgs[0].SetInt32(int32(len(argv)))
+	//inArgs[0].SetInt32(int32(len(argv)))
+	inArgs[0].SetPointer(unsafe.Pointer(&argc))
 	inArgs[1].SetStringArray(argv)
 
 	var outArgs [2]gi.Argument
+	outArgs[0] = inArgs[0]
+	outArgs[1] = inArgs[1]
 
 	err := initFunction_Set()
 	if err == nil {
 		initFunction.Invoke(inArgs[:], outArgs[:])
 	}
 
-	out0 := outArgs[0].Int32()
+	out0 := argc
 	out1 := outArgs[1].StringArray(true)
 
 	return out0, out1

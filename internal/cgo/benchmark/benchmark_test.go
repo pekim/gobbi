@@ -1,9 +1,10 @@
 package benchmark
 
 import (
+	"testing"
+
 	"github.com/pekim/gobbi/internal/ffi"
 	"github.com/pekim/gobbi/lib/glib"
-	"testing"
 )
 
 func BenchmarkGiGlibCall(b *testing.B) {

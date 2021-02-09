@@ -5,6 +5,7 @@ package gi
 import "C"
 
 import (
+	"fmt"
 	"unsafe"
 )
 
@@ -67,18 +68,22 @@ func (a Argument) StringArray(transferOwnership bool) []string {
 	var strings []string
 
 	arrayPointer := a.Pointer()
+	fmt.Println("arrayPointer", arrayPointer)
 	if arrayPointer == nil {
 		return strings
 	}
 
 	stringPointer := *(**C.char)(arrayPointer)
+	fmt.Println("stringPointer", stringPointer)
 
 	for stringPointer != nil {
 		str := C.GoString((*C.char)(stringPointer))
 		strings = append(strings, str)
 
 		arrayPointer = incrPointerPointer(arrayPointer)
+		fmt.Println("  arrayPointer", arrayPointer)
 		stringPointer = *(**C.char)(arrayPointer)
+		fmt.Println("  stringPointer", stringPointer)
 	}
 
 	return strings

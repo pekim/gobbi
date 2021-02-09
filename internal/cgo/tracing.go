@@ -1,6 +1,7 @@
 package cgo
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -24,6 +25,7 @@ func Tracing() bool {
 }
 
 func Trace(message string) {
+	fmt.Println(traceToStdout, message)
 	if traceToStdout {
 		os.Stdout.WriteString(message)
 		return
