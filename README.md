@@ -1,3 +1,7 @@
+**This project is no longer actively developed.**
+For a promising set of generated gtk bindings,
+take a look at https://github.com/diamondburned/gotk4.
+
 # gobbi
 
 **gob**ject **bi**ndings
